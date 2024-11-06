@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #232427;
+    --secondary: #29ced2;
+    --background: #f9f9f9;
+    --background-secondary: #f4f5f7;
+    --button: #29ced2;
+    --button-text: #fff;
+    --text-secondary: #3c3c3c;
+    --dropdown: #e0f4ff;
+    --dropdown-hover: #b3e5ff;
+    --button-secondary: #e7e7e7;
+    --selected: #9ec6ff;
+    --logo-shadow: #053949;
+    --logo-body: #00d8fe;
+    --span-bg: linear-gradient(to right, #4e4e9e, #29ced2, #3e87ed);
+    --main-red: #870037;
+    --main-red-light: #87003712;
+    --main-green: #00575b;
+    --main-green-light: #00575b1a;
+    --main-green-gradient: linear-gradient(90deg, #00575b 100%, #00969d 100%);
+    --content-primary: #0d0d0d;
+    --content-secondary: #4b4a4a;
+    --content-tertiary: #838383;
+  }
+}
+
+@layer base {
+  div::selection,
+  h1::selection,
+  button::selection,
+  p::selection,
+  span::selection,
+  a::selection,
+  h2::selection {
+    /* background-color: rgb(121, 255, 225);
+    text-shadow: rgb(0, 102, 255) 0px 0px 7px;
+    color: rgb(248, 28, 229); */
+    background-color: orange; /* Light yellow background */
+    text-shadow: rgb(102, 102, 102) 1px 1px 2px; /* Subtle grey shadow */
+    color: rgb(51, 51, 51); /* Dark grey text color */
+  }
+  body {
+    @apply bg-background text-primary;
+  }
+}
+
+.sub-menu {
+  overflow: hidden;
+  transition: height 300ms;
+}
