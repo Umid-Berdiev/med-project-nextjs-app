@@ -1,4 +1,4 @@
-import Button from '@/src/app/[locale]/components/Button'
+import Button from '@/src/app/components/Button'
 import { useTranslations } from 'next-intl'
 import AppInput from '../forms/AppInput'
 
