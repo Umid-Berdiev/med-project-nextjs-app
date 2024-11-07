@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@/src/app/[locale]/components/ThemeProvider'
+import { ThemeProvider } from '@/src/app/components/ThemeProvider'
 import type { Metadata } from 'next'
 import {
   AbstractIntlMessages,
@@ -7,8 +7,7 @@ import {
 } from 'next-intl'
 import { Inter } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
-import { Header } from './components/Header'
-import TheSidebar from './components/Sidebar'
+
 import './globals.css'
 
 // const roboto = Roboto_Flex({
@@ -106,15 +105,7 @@ export default function RootLayout({
               color='var(--primary)'
               showSpinner={false}
             />
-            <main className='mx-auto'>
-              <div className='flex'>
-                <TheSidebar />
-                <div className='flex-grow'>
-                  <Header locale={locale} />
-                  {children}
-                </div>
-              </div>
-            </main>
+            <main className='mx-auto'>{children}</main>
             {/* <TheFooter /> */}
           </NextIntlClientProvider>
         </ThemeProvider>
