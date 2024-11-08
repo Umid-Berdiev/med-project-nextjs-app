@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { InputHTMLAttributes } from 'react'
+import classnames from 'classnames'
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  // You can add custom props here if needed
+}
 
-
-const Input: React.FC<InputEvent> = ({
-  
-}) => {
-
+const Input: React.FC<InputProps> = ({ ...props }) => {
   return (
-    <input className='border h-9 px-3 border-[#2324271A] rounded-lg text-[#161624] font-normal text-[13px] outline-none w-full' />
+    <input
+      {...props}
+      className={classnames(
+        'h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none',
+        props.className
+      )}
+    />
   )
 }
 

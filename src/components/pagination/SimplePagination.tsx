@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { act, useMemo } from 'react'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 
 interface PaginationButtonProps {
@@ -24,7 +24,7 @@ function PaginationButton({
     <button
       className={`hover:bg-customDark flex h-8 w-8 items-center justify-center rounded-lg disabled:cursor-not-allowed disabled:hover:bg-transparent ${
         page === activePage
-          ? 'bg-customSuccessDeep hover:bg-customSuccessDeep text-white hover:bg-opacity-100'
+          ? 'hover:bg-customSuccessDeep bg-button text-white hover:bg-opacity-100'
           : 'hover:bg-customDark hover:bg-opacity-5'
       }`}
       onClick={handleClick}
@@ -80,6 +80,7 @@ export default function SimplePagination({
       { length: endPage - startPage },
       (_, i) => startPage + i
     )
+    console.log(activePage, pageCount, startPage, endPage, pages)
 
     if (startPage > 1) {
       pages.unshift('...')

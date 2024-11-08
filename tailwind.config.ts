@@ -44,7 +44,13 @@ const config = {
         contentPrimary: 'var(--content-primary)',
         contentSecondary: 'var(--content-secondary)',
         contentTertiary: 'var(--content-tertiary)',
-        textDark: '#232427'
+        textDark: '#232427',
+        softError: '#FDEEEC80',
+        softSuccess: '#EAF9F580',
+        'soft-secondary': 'var(--soft-secondary)',
+        'soft-primary': 'var(--soft-primary)',
+        'soft-error': '#FDEEEC80',
+        'soft-success': '#EAF9F580'
       },
 
       fontFamily: {
