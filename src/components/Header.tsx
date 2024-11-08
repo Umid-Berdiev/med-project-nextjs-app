@@ -15,7 +15,7 @@ export const Header: FC<Props> = ({ locale }) => {
   const isHomePage = pathname === `/${locale}`
 
   return (
-    <header className={`bg-cover bg-no-repeat pb-6`}>
+    <header className={`bg-white bg-cover bg-no-repeat `}>
       <div className='container flex flex-row items-center justify-between text-contentPrimary'>
         <AppNavbar locale={locale} />
       </div>

@@ -43,7 +43,8 @@ const config = {
         mainGreenGradient: 'var(--main-green-gradient)',
         contentPrimary: 'var(--content-primary)',
         contentSecondary: 'var(--content-secondary)',
-        contentTertiary: 'var(--content-tertiary)'
+        contentTertiary: 'var(--content-tertiary)',
+        textDark: '#232427'
       },
 
       fontFamily: {

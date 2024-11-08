@@ -1,11 +1,13 @@
-import React, { ReactNode } from 'react'
-import { HiChevronDown } from 'react-icons/hi'
+import React, { ReactNode, useState } from 'react'
+import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
+import { LuChevronsUpDown } from 'react-icons/lu'
 import { PiFolderOpenLight } from 'react-icons/pi'
 
 export interface ITableColumn<T, M> {
   header: string
   width?: string
   col: (row: T, index?: number, meta?: M) => ReactNode
+  sortable?: boolean
 }
 
 export interface ITableProps<T, M> {
@@ -15,6 +17,8 @@ export interface ITableProps<T, M> {
   hoverable?: boolean
   stripped?: boolean
   classRow?: (row: T, index: number) => string
+  sortBy?: { column: string; direction: 'asc' | 'desc' }
+  setSortBy?: (column: string) => void
 }
 
 export default function Table<T, M>({
@@ -23,37 +27,68 @@ export default function Table<T, M>({
   meta,
   hoverable = false,
   stripped = true,
-  classRow = () => ''
+  classRow = () => '',
+  sortBy,
+  setSortBy
 }: ITableProps<T, M>) {
+  const sortedData = React.useMemo(() => {
+    if (sortBy) {
+      return [...data].sort((a, b) => {
+        const column = columns.find(col => col.header === sortBy.column)
+        if (!column || !column.sortable) return 0
+        const valueA = column.col(a) as string | number
+        const valueB = column.col(b) as string | number
+        return sortBy.direction === 'asc'
+          ? valueA > valueB
+            ? 1
+            : -1
+          : valueA < valueB
+            ? 1
+            : -1
+      })
+    }
+    return data
+  }, [data, sortBy, columns])
+
   return (
     <div className='mt-4 h-full min-h-96 overflow-x-auto'>
       {data.length ? (
         <table
-          className={`table w-full text-[13px] leading-[18px] drop-shadow-none ${
+          className={`table w-full bg-black  text-[13px] leading-[18px] drop-shadow-none ${
             stripped ? 'table-zebra' : ''
           }`}
         >
-          <thead>
+          <thead className='rounded'>
             <tr>
               {columns.map((column, index) => (
                 <th
                   key={index}
                   className={`min-w-[140px] bg-white ${column.width || ''}`}
+                  onClick={() =>
+                    column.sortable && setSortBy && setSortBy(column.header)
+                  }
                 >
                   <span className='flex cursor-pointer flex-row items-center gap-2'>
-                    <span className='font-bold normal-case'>
+                    <span className='text-textDark  font-bold normal-case'>
                       {column.header}
                     </span>
-                    {index < columns.length - 1 && (
-                      <HiChevronDown className='flex-none' size={'14px'} />
-                    )}
+                    {column.sortable &&
+                      (sortBy?.column === column.header ? (
+                        sortBy.direction === 'asc' ? (
+                          <HiChevronUp className='flex-none' size={18} />
+                        ) : (
+                          <HiChevronDown className='flex-none' size={18} />
+                        )
+                      ) : (
+                        <LuChevronsUpDown className='flex-none' size={18} />
+                      ))}
                   </span>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {data.map((row, rowIndex) => (
+            {sortedData.map((row, rowIndex) => (
               <tr
                 className={`bg-white ${hoverable ? 'hover:bg-gray-100' : ''} ${classRow(
                   row,
