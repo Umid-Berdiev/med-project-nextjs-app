@@ -3,6 +3,7 @@
 import AppInputRadio from '@/src/components/forms/AppInputRadio';
 import AppSelect from '@/src/components/forms/AppSelect';
 import AppInput from '@/src/components/forms/AppInput';
+import AppInputDate from '@/src/components/forms/AppInputDate';
 import AppLabel from '@/src/components/forms/AppLabel';
 import Heading1 from '@/src/components/typography/Heading1'
 import { useTranslations } from 'next-intl'
@@ -38,6 +39,10 @@ export default function DashboardPage() {
           <div>
             <AppLabel isRequired={true} text='Sana' />
             <AppInput value='23.09.2024' />
+          </div>
+          <div>
+            <AppLabel isRequired={true} text='Sana' />
+            <AppInputDate value='23.09.2024' />
           </div>
 
         </div>
