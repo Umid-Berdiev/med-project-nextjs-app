@@ -13,7 +13,9 @@ export default function Layout({
 }) {
   return (
     <>
-      <VerticalLayout params={params}>{children}</VerticalLayout>
+      <VerticalLayout params={params}>
+        <div className='p-4'>{children}</div>
+      </VerticalLayout>
     </>
   )
 }

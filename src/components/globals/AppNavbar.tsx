@@ -1,6 +1,6 @@
-import Button from '@/src/app/components/Button'
 import { useTranslations } from 'next-intl'
 import AppInput from '../forms/AppInput'
+import Button from '../Button'
 
 export default function AppNavbar({ locale }: { locale: string }) {
   const t = useTranslations('')
