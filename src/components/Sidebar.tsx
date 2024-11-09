@@ -92,15 +92,14 @@ export default function MakeSidebar() {
   const pathname = usePathname()
   const { locale } = useParams()
   const currentPath = pathname.startsWith(`/${locale}`)
-    ? pathname.replace(`/${locale}`, '/')
+    ? pathname.replace(`/${locale}`, '')
     : pathname
-  console.log('currentPath', currentPath)
 
   const navBarItems: ISidebarItemProps[] = [
     {
       icon: <BiHome size={20} />,
       text: 'Home',
-      path: '/'
+      path: '/home'
     },
     {
       icon: <BiUserCircle size={20} />,

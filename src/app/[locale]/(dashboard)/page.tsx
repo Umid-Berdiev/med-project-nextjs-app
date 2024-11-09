@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import AppInputRadio from '@/src/components/forms/AppInputRadio';
-import AppSelect from '@/src/components/forms/AppSelect';
 import AppInput from '@/src/components/forms/AppInput';
 import AppInputDate from '@/src/components/forms/AppInputDate';
+import AppInputRadio from '@/src/components/forms/AppInputRadio';
 import AppLabel from '@/src/components/forms/AppLabel';
-import Heading1 from '@/src/components/typography/Heading1'
-import { useTranslations } from 'next-intl'
+import AppSelect from '@/src/components/forms/AppSelect';
+import Heading1 from '@/src/components/typography/Heading1';
+import { useTranslations } from 'next-intl';
 
 export default function DashboardPage() {
   const t = useTranslations('')

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from '../app/components/Header'
-import TheSidebar from '../app/components/Sidebar'
+import { Header } from '../components/Header'
+import TheSidebar from '../components/Sidebar'
 import { Locale } from '../configs/i18n'
 export default function VerticalLayout({
   children,
