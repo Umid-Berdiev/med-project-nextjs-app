@@ -27,6 +27,9 @@ export default function DashboardPage() {
     <div className='container p-4'>
       <section className=''>
         <Heading1>{t('Bemor qo’shish')}</Heading1>
+        <div className="flex gap-5 p-4 bg-white rounded-xl">
+
+        </div>
         <div className='grid grid-cols-4 gap-5'>
           <div>
             <AppLabel isRequired={true} text='Karta turi' />
