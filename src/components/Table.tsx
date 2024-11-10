@@ -54,7 +54,7 @@ export default function Table<T>({
   return (
     <div className='mt-4 h-full overflow-auto rounded-[12px]'>
       {data.length ? (
-        <div className='overflow-x-auto'>
+        <div className='overflow-x-auto overflow-y-hidden'>
           <table
             className={`table w-full min-w-full text-[13px] leading-[18px] drop-shadow-none ${
               stripped ? 'table-zebra' : ''

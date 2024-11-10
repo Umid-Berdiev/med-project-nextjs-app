@@ -13,7 +13,7 @@ export default function Breadcrumb({
   breadcrumbs: BreadcrumbLinkType[]
 }) {
   return (
-    <div className='flex w-full flex-col gap-3 py-6 align-middle'>
+    <div className='flex w-full flex-col gap-3  align-middle'>
       <div className='breadcrumbs flex items-center'>
         <div className='mr-2 flex gap-2 align-middle'>
           <Link
@@ -22,21 +22,28 @@ export default function Breadcrumb({
             href='/'
             className='flex gap-1 align-middle'
           >
-            <GoHome size={18} />
+            <GoHome size={11} />
           </Link>
         </div>
 
         {breadcrumbs.slice(0, -1).map((link, index) => (
-          <div key={index} className='flex gap-2'>
+          <div key={index} className='flex gap-1'>
             <span> / </span>
-            <Link key={index + 1} color='inherit' href={link?.href ?? '/'}>
+            <Link
+              key={index + 1}
+              className='text-[11px]'
+              color='inherit'
+              href={link?.href ?? '/'}
+            >
               {link.label}
             </Link>
           </div>
         ))}
-        <div className='flex gap-2 text-sm'>
+        <div className='flex gap-1 text-sm'>
           <span> / </span>{' '}
-          <div>{breadcrumbs[breadcrumbs.length - 1].label}</div>
+          <div className='text-[11px]'>
+            {breadcrumbs[breadcrumbs.length - 1].label}
+          </div>
         </div>
       </div>
     </div>

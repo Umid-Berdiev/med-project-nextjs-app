@@ -335,12 +335,12 @@ const DoctorsProfileTable = () => {
       />
       <Table
         columns={columns}
-        data={data}
+        data={data.slice(page * perPage, page * perPage + perPage)}
         sortBy={sortBy}
         setSortBy={handleSort}
         classRow={classRow}
-        hoverable
-        stripped
+        hoverable={false}
+        stripped={false}
       />
       <Pagination
         page={page}
