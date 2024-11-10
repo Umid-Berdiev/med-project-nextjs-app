@@ -58,6 +58,8 @@ export default function DashboardPage() {
     { label: 'Link', value: '0' },
   ];
 
+  const numbers = Array.from({ length: 10 }, (_, index) => index + 1);
+
   return (
     <div className='container p-4'>
       <Breadcrumb breadcrumbs={[{ label: 'Bemor qo’shish' }]} />
@@ -178,11 +180,18 @@ export default function DashboardPage() {
           </div>
         </RoundedBlock>
         <div className='grid grid-cols-12 gap-5'>
-          <RoundedBlock className='col-span-9'>
+          <RoundedBlock className='col-span-8'>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam ipsum distinctio harum!
           </RoundedBlock>
-          <RoundedBlock className='col-span-3'>
-          <Heading6>{t('Kalkulyator')}</Heading6>
+          <RoundedBlock className='col-span-4'>
+            <Heading6>{t('Kalkulyator')}</Heading6>
+            <div className="border border-[#2324270D] rounded-lg px-3 gap-1">
+              {numbers.map((number) => (
+                <div className='py-3 text-[13px] border-b border-[#F4F4F4] flex items-center justify-between' key={number}>
+                  <span className='text-[#23242780] font-semibold leading-[18px]'>Fizoterapent - Konsultatsiya</span>
+                  <span className=' font-semibold leading-[18px]'><b className='text-[#29CED2] font-semibold'>10{number} 000 </b>so’m</span>
+                </div>
+              ))}</div>
           </RoundedBlock>
         </div>
 
