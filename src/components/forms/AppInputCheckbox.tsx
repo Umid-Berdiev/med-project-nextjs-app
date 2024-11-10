@@ -2,7 +2,8 @@ import { useState } from "react";
 
 interface IProps {
     options: { label: string; value: string }[];
-    onChange: (selectedValue: string) => void;
+  className?: string
+  onChange: (selectedValue: string) => void;
 }
 
 export default function AppInputRadio(props: IProps) {
@@ -12,24 +13,23 @@ export default function AppInputRadio(props: IProps) {
         props.onChange(value);
       };
     return (
-        <div className="p-[3px] grid grid-flow-col text-center border rounded-lg  border-[#ECEDEF] ">
+        
+        <div className={`grid ${props.className}`}>
             {
+                
                 props.options.map((option: any) => (
                     <label
                         key={option.value}
-                        className={`px-4 py-[6px] text-[13px] leading-4 cursor-pointer rounded-[5px] transition 
-          ${selectedValue === option.value
-                                ? 'bg-secondary text-white border-blue-500'
-                                : 'bg-white text-[#161624] '
-                            }`}
+                        className={`flex items-center gap-2 leading-9 mb-0 cursor-pointer text-xs`}
                     >
                         <input
-                            type="radio"
+                            type="checkbox"
                             name="tabGroup"
                             value={option.value}
                             checked={selectedValue === option.value}
                             onChange={() => handleChange(option.value)}
-                            className="hidden" // Hide the actual radio input
+                            className="checkbox checkbox-sm border-secondary rounded [--chkbg:theme(colors.secondary)] [--chkfg:white] " 
+
                         />
                         {option.label}
                     </label>

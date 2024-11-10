@@ -80,7 +80,7 @@ function Sidebar({ children, expanded, setExpanded }: any) {
               </button>
             </div>
           </div>
-          <ul className='flex-1 px-3'>{children}</ul>
+          <ul className='flex-1'>{children}</ul>
         </nav>
       </aside>
     </div>

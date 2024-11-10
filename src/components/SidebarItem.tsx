@@ -18,8 +18,8 @@ function HoveredSubMenuItem({ icon, text, active }: SubMenuItemProps) {
       }`}
     >
       <div className='flex items-center justify-center '>
-        <span className='text-primary-500  '>{icon}</span>
-        <span className='text-primary-500 ml-3 w-28 text-start'>{text}</span>
+        <span className='text-primary -500  '>{icon}</span>
+        <span className='text-primary -500 ml-3 w-28 text-start'>{text}</span>
         <div className='bg-primary-200 h-1' />
       </div>
     </div>
@@ -60,7 +60,7 @@ export default function SidebarItem({
          ${
            active && !subMenu
              ? 'border-l-4 border-secondary from-indigo-200 to-indigo-100 text-secondary'
-             : 'border-l-4 border-transparent text-gray-600 hover:bg-indigo-50'
+             : 'border-l-4 border-transparent text-primary  hover:bg-indigo-50'
          }
          ${!expanded && 'hidden sm:flex'}
      `}
@@ -69,7 +69,7 @@ export default function SidebarItem({
           <span>{icon}</span>
 
           <span
-            className={`overflow-hidden text-start transition-all ${
+            className={`overflow-hidden text-start transition-all  ${
               expanded ? 'ml-3 w-44' : 'w-0'
             }`}
           >
@@ -89,7 +89,7 @@ export default function SidebarItem({
           {!expanded && (
             <div
               className={`
-            text-primary-500 invisible absolute left-full ml-6 -translate-x-3
+            text-primary -500 invisible absolute left-full ml-6 -translate-x-3
             rounded-md bg-indigo-100 px-2
             py-1 text-sm opacity-20 transition-all
             group-hover:visible group-hover:translate-x-0 group-hover:opacity-100

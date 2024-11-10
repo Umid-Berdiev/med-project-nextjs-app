@@ -1,5 +1,5 @@
 interface IProps {
-    options: string[];
+    options: { label: string; value: string }[];
     onSelect?: (value: string) => void;
     className?: string;
     selectedValue?: string;
@@ -15,9 +15,9 @@ interface IProps {
        }}
          id="select" value={props.selectedValue} className="cursor-pointer appearance-none border h-9 px-3 border-[#2324271A] rounded-lg text-[#161624] font-normal text-[13px] outline-none w-full"
      >
-         {props.options.map((option, index) => (
-             <option key={index} value={option}>
-                 {option}
+         {props.options.map((option) => (
+             <option key={option.value} value={option.value}>
+                 {option.label}
              </option>
          ))}
      </select>

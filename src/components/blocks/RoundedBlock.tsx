@@ -1,5 +1,3 @@
-import styles from './RoundedBlock.module.scss'
-
 export default function RoundedBlock({
   children,
   className,
@@ -13,7 +11,7 @@ export default function RoundedBlock({
 }) {
   return (
     <div
-      className={`text-contentPrimary rounded-3xl p-6 ${className} ${shadow ? styles.shadow : ''} hover:cursor-pointer`}
+      className={`grid gap-5 p-4 bg-white rounded-xl ${className}`}
       onClick={onClick}
     >
       {children}
