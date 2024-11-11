@@ -19,7 +19,9 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        'span-bg': 'var(--span-bg)'
+        'span-bg': 'var(--span-bg)',
+        'avatar-gradient':
+          'linear-gradient(97.77deg, #FEEEBE 0.6%, #FFEAEA 97.56%)'
       },
       colors: {
         background: 'var(--background)',
