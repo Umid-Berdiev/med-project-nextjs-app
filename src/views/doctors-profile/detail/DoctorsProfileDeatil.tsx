@@ -1,46 +1,47 @@
-// DoctorsProfileDeatil.tsx
 'use client'
 import ProfileBlock from './ProfileBlock'
-import { Tab, TabContent, TabList, TabPanel } from '@/src/components/tabs/Tab'
-import PatientExamination from './patient-examination/PatientExamination'
-import { SyntheticEvent, useState } from 'react'
+import { useState } from 'react'
+import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
+import { ITab, ITabContent, ITabContentList } from '@/src/utils/interfaces'
+import { useParams, useRouter } from 'next/navigation'
 
 export default function DoctorsProfileDeatil({
   tabContentList
 }: {
-  tabContentList: { [key: string]: React.ReactElement }
+  tabContentList: ITabContentList[]
 }) {
-  const [activeTab, setActiveTab] = useState('patient-examination')
+  const { locale, id, tab } = useParams()
 
-  const handleChange = (event: SyntheticEvent, value: string) => {
-    setActiveTab(value)
-  }
+  const [activeTab, setActiveTab] = useState<string>(
+    Array.isArray(tab) ? tab[0] : tab
+  )
+  const router = useRouter()
+  const tabs: ITab[] = tabContentList.map(tab => ({
+    id: tab.id,
+    label: tab.label
+  }))
+
+  const tabContents: ITabContent[] = tabContentList.map(tab => ({
+    id: tab.id,
+    content: tab.content
+  }))
+
   return (
     <div>
       <ProfileBlock />
       <div className='my-4'>
-        <TabContent activeTab={activeTab}>
-          <TabList
-            onChange={handleChange}
-            activeColor='text-black'
-            bgColor='bg-white'
-            className='text-[#23242780]'
-          >
-            <Tab
-              label='Bemorni ko’rikdan o’tkazish'
-              value='patient-examination'
-            />
-            <Tab label='Tibbiy karta' value='medical-record' />
-            <Tab label='Ambulator tekshiruv' value='ambulatory-examination' />
-          </TabList>
-          <TabPanel value='patient-examination'>
-            <PatientExamination />
-          </TabPanel>
-          <TabPanel value='medical-record'>Tibbiy karta</TabPanel>
-          <TabPanel value='ambulatory-examination'>
-            Ambulator tekshirish
-          </TabPanel>
-        </TabContent>
+        <Tablist
+          activeColor='text-black'
+          bgColor='bg-white'
+          className='text-[#23242780]'
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabClick={e => {
+            setActiveTab(e)
+            router.push(`/${locale}/doctors-profile/${id}/${e}`)
+          }}
+        />
+        <Tabs activeTab={activeTab} tabContents={tabContents} />
       </div>
     </div>
   )

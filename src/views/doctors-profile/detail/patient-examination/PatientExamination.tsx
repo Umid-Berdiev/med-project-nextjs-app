@@ -1,28 +1,39 @@
 'use client'
-import { Tab, TabContent, TabList, TabPanel } from '@/src/components/tabs/Tab'
+import { Tab, TabList, TabPanel } from '@/src/components/tabs/Tab'
+import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
+import { ITab, ITabContent } from '@/src/utils/interfaces'
+import { useState } from 'react'
+import Complaints from './Complaints'
+import ObjectiveExamination from './ObjectiveExamination'
 
 export default function PatientExamination() {
+  const [activeTab, setActiveTab] = useState('complaints')
+
+  const tabs: ITab[] = [
+    { id: 'complaints', label: 'Shikoyatlar' },
+    { id: 'objective-examination', label: "Ob'ektiv tekshiruv" },
+    { id: 'diagnosis', label: 'Diagnoz' },
+    { id: 'recommendations', label: 'Tavsiyalar' }
+  ]
+
+  const tabContents: ITabContent[] = [
+    { id: 'complaints', content: <Complaints /> },
+    { id: 'objective-examination', content: <ObjectiveExamination /> },
+    { id: 'diagnosis', content: 'Diagnoz' },
+    { id: 'recommendations', content: 'Tavsiyalar' }
+  ]
   return (
     <div>
       <div className='my-4'>
-        <TabContent activeTab='complaints'>
-          <TabList
-            activeColor='text-white'
-            bgColor='bg-secondary'
-            className='text-[#23242780]'
-          >
-            <Tab label='Shikoyatlar' value='complaints' />
-            <Tab label="Ob'ektiv tekshiruv" value='objective-examination' />
-            <Tab label='Diagnoz' value='diagnosis' />
-            <Tab label='Tavsiyalar' value='recommendations' />
-          </TabList>
-          <TabPanel value='complaints'>
-            <PatientExamination />
-          </TabPanel>
-          <TabPanel value='objective-examination'>Ob`ektiv tekshiruv</TabPanel>
-          <TabPanel value='diagnosis'>Ambulator tekshirish</TabPanel>
-          <TabPanel value='recommendations'>Ambulator tekshirish</TabPanel>
-        </TabContent>
+        <Tablist
+          activeColor='text-white'
+          bgColor='bg-secondary'
+          className='text-textDark'
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabClick={setActiveTab}
+        />
+        <Tabs activeTab={activeTab} tabContents={tabContents} />
       </div>
     </div>
   )

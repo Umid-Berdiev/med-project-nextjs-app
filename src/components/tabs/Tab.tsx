@@ -36,25 +36,6 @@ interface TabListProps {
   variant?: 'standart' | 'fullWidth'
 }
 
-const TabContent = ({
-  activeTab = '',
-  setActiveTab = () => {},
-  children
-}: TabsProps) => {
-  return (
-    <div>
-      {React.Children.map(children, child =>
-        React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement<any>, {
-              activeTab,
-              setActiveTab
-            })
-          : child
-      )}
-    </div>
-  )
-}
-
 const TabList = ({
   activeTab = '',
   setActiveTab = () => {},
@@ -129,4 +110,4 @@ const TabPanel = ({ value, activeTab = '', children }: TabPanelProps) => {
   ) : null
 }
 
-export { TabContent, TabList, Tab, TabPanel }
+export { TabList, Tab, TabPanel }
