@@ -3,9 +3,9 @@ import React from 'react'
 export default function ProfileBlock() {
   return (
     <div>
-      <div className='flex w-full items-center justify-between rounded-lg bg-white p-4 shadow-md sm:flex-col md:flex md:flex-col lg:flex-row'>
+      <div className='flex w-full items-center justify-between rounded-lg bg-white p-4  sm:flex-col md:flex md:flex-col lg:flex-row'>
         <div className='flex items-center space-x-4'>
-          <div className='bg-avatar-gradient flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-gray-700'>
+          <div className='flex h-12 w-12 items-center justify-center rounded-full bg-avatar-gradient text-lg font-bold text-gray-700'>
             IS
           </div>
           <div>
