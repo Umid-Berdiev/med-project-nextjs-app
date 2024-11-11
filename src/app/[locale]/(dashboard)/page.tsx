@@ -65,8 +65,8 @@ export default function DashboardPage() {
       <Breadcrumb breadcrumbs={[{ label: 'Bemor qo’shish' }]} />
       <section>
         <Heading1>{t('Bemor qo’shish')}</Heading1>
-        <RoundedBlock className='grid-cols-12 mb-4'>
-          <div className='grid gap-5 col-span-8 grid-cols-3'>
+        <RoundedBlock className='xl:grid-cols-12 mb-4'>
+          <div className='grid gap-5 xl:col-span-8 lg:grid-cols-3'>
             <div>
               <AppLabel isRequired={true} text='Karta turi' />
               <AppSelect options={selectOptions} />
@@ -80,7 +80,7 @@ export default function DashboardPage() {
               <AppInputDate />
             </div>
           </div>
-          <div className='col-span-4'>
+          <div className='xl:col-span-4'>
             <div className='col-span-12'>
               <AppLabel text='Bemorni izlash' />
               <AppInput isSearch={true} placeholder='Bemorni izlash' />
@@ -88,7 +88,7 @@ export default function DashboardPage() {
           </div>
         </RoundedBlock>
         <RoundedBlock className='mb-4'>
-          <div className='grid gap-5 grid-cols-3 col-span-12'>
+          <div className='grid gap-5 xl:grid-cols-3 lg:grid-cols-2 col-span-12'>
             <div>
               <AppLabel isRequired={true} text='Familiya' />
               <AppInput placeholder='Familiya' />
@@ -128,7 +128,7 @@ export default function DashboardPage() {
             </div>
           </div>
           <hr className='col-span-12' />
-          <div className='grid gap-5 grid-cols-5 col-span-12'>
+          <div className='grid gap-5 xl:grid-cols-5 lg:grid-cols-2 col-span-12'>
             <div>
               <AppLabel text='Xujjat turi' />
               <AppSelect options={documentOptions} />
@@ -150,7 +150,7 @@ export default function DashboardPage() {
               <AppInput placeholder='Toshkent shahar, Yunusobod IIB' />
             </div>
           </div>
-          <div className='grid gap-5 grid-cols-4 col-span-12'>
+          <div className='grid gap-5 xl:grid-cols-4 lg:grid-cols-2 col-span-12'>
             <div>
               <AppLabel text='Davlat' />
               <AppSelect options={stateOptions} />
@@ -179,11 +179,11 @@ export default function DashboardPage() {
             </div>
           </div>
         </RoundedBlock>
-        <div className='grid grid-cols-12 gap-5'>
-          <RoundedBlock className='col-span-8'>
+        <div className='grid sm:grid-cols-12 gap-5'>
+          <RoundedBlock className='xl:col-span-8 sm:col-span-7'>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam ipsum distinctio harum!
           </RoundedBlock>
-          <RoundedBlock className='col-span-4'>
+          <RoundedBlock className='xl:col-span-4 sm:col-span-5'>
             <Heading6>{t('Kalkulyator')}</Heading6>
             <div className="border border-[#2324270D] rounded-lg px-3 gap-1">
               {numbers.map((number) => (
