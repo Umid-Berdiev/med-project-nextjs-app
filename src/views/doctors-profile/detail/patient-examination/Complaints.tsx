@@ -1,11 +1,20 @@
 import Button from '@/src/components/Button'
 import CustomEditor from '@/src/components/CustomEditor'
+import Modal from '@/src/components/Modal'
 
 import React from 'react'
 import { BiPlusCircle } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 
 export default function Complaints() {
+  const [open, setOpen] = React.useState(false)
+  const handleClick = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+  
   return (
     <div className='flex flex-col gap-3'>
       <div>
@@ -16,6 +25,7 @@ export default function Complaints() {
         <div>
           <Button
             startIcon={<FiFileText />}
+            onClick={handleClick}
             variant='text'
             color='secondary'
             size='small'
@@ -91,6 +101,11 @@ export default function Complaints() {
           Keyingisi
         </Button>
       </div>
+      <Modal open={open} onClick={handleClose} onClose={handleClose}>
+        <div>
+          <h1>Modal</h1>
+        </div>
+      </Modal>
     </div>
   )
 }
