@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 import AppInput from '../forms/AppInput'
 import Button from '../Button'
+import Image from 'next/image';
 
 export default function AppNavbar({ locale }: { locale: string }) {
   const t = useTranslations('')
@@ -22,15 +23,19 @@ export default function AppNavbar({ locale }: { locale: string }) {
             role='button'
             className='btn-ghost text-right hover:bg-transparent'
           >
-            <div className="flex items-center space-x-4">
-              <div className="avatar">
-                <div className="w-16 rounded-full">
-                  <img src="" alt="User Avatar" />
-                </div>
-              </div>
+            <div className="flex items-center gap-3">
               <div>
-              <p className='text-sm font-semibold'>Shakhzod Ismoilov Design</p>
-              <p className='text-xs opacity-50'>Administrator</p>
+                <p className='text-sm font-semibold whitespace-nowrap'>Shakhzod Ismoilov Design</p>
+                <p className='text-xs opacity-50'>Administrator</p>
+              </div>
+              <div className="avatar size-9 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/userAvatar.jpg" // Rasm yo'li
+                  alt="Example Image"
+                  width={36}
+                  height={36}
+                 className='size-full object-cover object-center'
+                />
               </div>
             </div>
           </div>
