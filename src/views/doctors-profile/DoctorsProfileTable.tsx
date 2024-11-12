@@ -4,6 +4,10 @@ import Button from '@/src/components/Button'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/Table'
 import TableHeader from '@/src/components/TableHeader'
+import { Locale } from '@/src/configs/i18n'
+import { getLocalizedUrl } from '@/src/utils/i18n'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import React, { useState } from 'react'
 import { BiExport } from 'react-icons/bi'
 import { FaFileAlt } from 'react-icons/fa'
@@ -20,7 +24,7 @@ const DoctorsProfileTable = () => {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-
+  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column
@@ -78,7 +82,7 @@ const DoctorsProfileTable = () => {
           <TbTableOptions size={18} />
         </div>
       ),
-      col: () => (
+      col: (row: CellType) => (
         <div className='dropdown dropdown-left dropdown-bottom'>
           <div tabIndex={0} role='button' className='btn'>
             <SlOptionsVertical size={14} />
@@ -88,7 +92,14 @@ const DoctorsProfileTable = () => {
             className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
           >
             <li>
-              <a>Item 1</a>
+              <Link
+                href={getLocalizedUrl(
+                  `doctors-profile/${row.id}/patient-examination`,
+                  locale as Locale
+                )}
+              >
+                Ko`rish
+              </Link>
             </li>
             <li>
               <a>Item 2</a>
