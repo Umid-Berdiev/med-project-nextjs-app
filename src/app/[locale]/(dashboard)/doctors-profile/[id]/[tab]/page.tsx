@@ -5,6 +5,7 @@ import DoctorsProfileDeatil from '@/src/views/doctors-profile/detail/DoctorsProf
 import { redirect } from 'next/navigation'
 import { Locale } from '@/src/configs/i18n'
 import { ITabContentList } from '@/src/utils/interfaces'
+import MedicalRecord from '@/src/views/doctors-profile/detail/medical-record/MedicalRecord'
 
 const PatientExamination = dynamic(
   () =>
@@ -19,7 +20,7 @@ const tabContentList: ITabContentList[] = [
     content: <PatientExamination />,
     label: 'Bemorni ko’rikdan o’tkazish'
   },
-  { id: 'medical-record', content: <>Tibbiy karta</>, label: 'Tibbiy karta' },
+  { id: 'medical-record', content: <MedicalRecord />, label: 'Tibbiy karta' },
   {
     id: 'ambulatory-examination',
     content: <>Ambulator tekshirish</>,

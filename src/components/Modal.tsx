@@ -1,58 +1,52 @@
-import React, { useEffect, useRef } from 'react'
-import classnames from 'classnames'
-
+import React, { useRef } from 'react'
+import cn from 'classnames'
+import { useOnClickOutside } from 'usehooks-ts'
 type Props = {
-  open: boolean
-  onClick: () => void
-  onClose: () => void
-  size?: 'md' | 'lg'
   children: React.ReactNode
+  open: boolean
+  disableClickOutside?: boolean
+  onClose(): void
+  size?: 'lg' | 'md'
+  title?: string
 }
 
-const Modal = ({ open, onClick, onClose, size, children }: Props) => {
-  const modalRef = useRef<HTMLDialogElement>(null)
-
-  useEffect(() => {
-    if (modalRef.current) {
-      if (open) {
-        modalRef.current.setAttribute('open', 'true')
-      } else {
-        modalRef.current.removeAttribute('open')
-      }
+const Modal = ({
+  children,
+  open,
+  disableClickOutside,
+  onClose,
+  size,
+  title
+}: Props) => {
+  const ref = useRef(null)
+  useOnClickOutside(ref, () => {
+    if (!disableClickOutside) {
+      onClose()
     }
-  }, [open])
+  })
 
-  const handleClose = () => {
-    onClose()
-    if (modalRef.current) {
-      modalRef.current.removeAttribute('open')
-    }
-  }
-
+  const modalClass = cn(
+    {
+      'modal-open ': open
+    },
+    'modal '
+  )
   return (
-    <dialog ref={modalRef} id='my_modal_1' className='modal'>
-      <form
-        method='dialog'
-        className={classnames(
-          'modal-box',
-          size === 'lg' ? 'w-11/12 max-w-5xl' : ''
-        )}
+    <div className={modalClass}>
+      <div
+        className={`modal-box ${size === 'lg' ? ' max-w-5xl' : ''}`}
+        ref={ref}
       >
-        <button className='btn btn-circle btn-ghost btn-sm absolute right-2 top-2'>
+        <button
+          className='btn btn-circle btn-ghost btn-sm absolute right-2 top-2'
+          onClick={onClose}
+        >
           ✕
         </button>
-
+        <h1 className='text-[18px] font-semibold text-[#232427]'>{title}</h1>
         {children}
-        <div className='modal-action'>
-          <button className='btn' onClick={onClick}>
-            Save
-          </button>
-          <button className='btn' onClick={handleClose}>
-            Close
-          </button>
-        </div>
-      </form>
-    </dialog>
+      </div>
+    </div>
   )
 }
 

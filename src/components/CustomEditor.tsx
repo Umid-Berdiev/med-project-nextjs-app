@@ -1,15 +1,13 @@
 import React from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 
-export default function CustomEditor() {
+export default function CustomEditor({ height }: { height?: number }) {
   return (
     <Editor
       apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
       init={{
-        plugins:
-          'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar:
-          'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
+        height: height || 400,
+        menubar: false
       }}
       initialValue='Welcome to TinyMCE!'
     />
