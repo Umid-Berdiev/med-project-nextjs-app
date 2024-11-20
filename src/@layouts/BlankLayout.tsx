@@ -9,7 +9,7 @@ type Props = {
 const BlankLayout = (props: Props) => {
   const { children } = props
 
-  return <div className='is-full bs-full'>{children}</div>
+  return <div className='h-screen w-screen'>{children}</div>
 }
 
 export default BlankLayout

@@ -8,10 +8,9 @@ import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import React, { useState } from 'react'
-import { BiExport } from 'react-icons/bi'
+import { useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
-import { SlOptions, SlOptionsVertical } from 'react-icons/sl'
+import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 
 const DoctorsProfileTable = () => {

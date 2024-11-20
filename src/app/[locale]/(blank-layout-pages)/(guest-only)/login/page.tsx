@@ -9,7 +9,7 @@ type Props = {
 
 const LoginPage = async ({ params }: Props) => {
   return (
-    <div className='min-bs-[100dvh] flex flex-col items-center justify-center p-6'>
+    <div className='flex h-full flex-col items-center justify-center p-6'>
       {params.locale}
     </div>
   )

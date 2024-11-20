@@ -1,10 +1,17 @@
 'use client'
 
-import AppLogo from '@/src/app/icons/AppLogo'
+import AppLogo from '@/src/components/icons/AppLogo'
 import { ISidebarItemProps } from '@/src/utils/interfaces'
 import { useParams, usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { BiUserCircle } from 'react-icons/bi'
+import { BiCog } from 'react-icons/bi'
+import DiagnosticIcon from './icons/DiagnosticIcon'
+import ListIcon from './icons/ListIcon'
+import MoneyWithCalcIcon from './icons/MoneyWithCalcIcon'
+import SyringeIcon from './icons/SyringeIcon'
+import UnorderedListIcon from './icons/UnorderedListIcon'
+import UsersIcon from './icons/UsersIcon'
+import UserSuitcaseIcon from './icons/UserSuitcaseIcon'
 import SidebarItem from './SidebarItem'
 
 // This sidebar component is for both mobile and desktop
@@ -96,15 +103,40 @@ export default function MakeSidebar() {
     //   path: '/home'
     // },
     {
-      icon: <BiUserCircle size={20} />,
-      text: 'Registration',
-      path: '/'
+      icon: <UsersIcon />,
+      text: 'Bemorlar',
+      path: '/patients'
     },
     {
-      icon: <BiUserCircle size={20} />,
-      text: "Doctor's profile",
+      icon: <UserSuitcaseIcon />,
+      text: 'Shifokor kabineti',
       path: '/doctors-profile'
-    }
+    },
+    {
+      icon: <DiagnosticIcon />,
+      text: 'Diagnostika',
+      path: '/diagnostics'
+    },
+    {
+      icon: <SyringeIcon />,
+      text: 'Laboratoriya',
+      path: '/laboratory'
+    },
+    {
+      icon: <MoneyWithCalcIcon />,
+      text: 'Kassa',
+      path: '/cashbox'
+    },
+    {
+      icon: <ListIcon />,
+      text: 'Hisobot',
+      path: '/report'
+    },
+    {
+      icon: <UnorderedListIcon />,
+      text: "Ma'lumotlar",
+      path: '/information'
+    },
     // {
     //   icon: <BiUser />,
     //   subMenu: [
@@ -122,10 +154,11 @@ export default function MakeSidebar() {
     //   text: 'Profile'
     // },
 
-    // {
-    //   icon: <BiCog />,
-    //   text: 'Settings'
-    // }
+    {
+      icon: <BiCog />,
+      text: 'Sozlamalar',
+      path: '/settings'
+    }
   ]
 
   // Desktop Sidebar

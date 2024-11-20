@@ -1,9 +1,9 @@
+import { getLocalizedUrl } from '@/src/utils/i18n'
 import { ISidebarItemProps } from '@/src/utils/interfaces'
+import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { BiChevronRight } from 'react-icons/bi'
 import Link from './Link'
-import { useParams } from 'next/navigation'
-import { getLocalizedUrl } from '@/src/utils/i18n'
 
 interface SubMenuItemProps extends Omit<ISidebarItemProps, 'expanded'> {
   expanded?: never
@@ -18,8 +18,8 @@ function HoveredSubMenuItem({ icon, text, active }: SubMenuItemProps) {
       }`}
     >
       <div className='flex items-center justify-center '>
-        <span className='text-primary -500  '>{icon}</span>
-        <span className='text-primary -500 ml-3 w-28 text-start'>{text}</span>
+        <span className='-500 text-primary  '>{icon}</span>
+        <span className='-500 ml-3 w-28 text-start text-primary'>{text}</span>
         <div className='bg-primary-200 h-1' />
       </div>
     </div>
@@ -60,9 +60,9 @@ export default function SidebarItem({
          ${
            active && !subMenu
              ? 'border-l-4 border-secondary from-indigo-200 to-indigo-100 text-secondary'
-             : 'border-l-4 border-transparent text-primary  hover:bg-indigo-50'
+             : 'border-l-4 border-transparent text-primary hover:bg-indigo-50'
          }
-         ${!expanded && 'hidden sm:flex'}
+         ${!expanded && 'hidden justify-center sm:flex'}
      `}
           onClick={() => setExpandSubMenu(curr => expanded && !curr)}
         >
@@ -89,9 +89,9 @@ export default function SidebarItem({
           {!expanded && (
             <div
               className={`
-            text-primary -500 invisible absolute left-full ml-6 -translate-x-3
-            rounded-md bg-indigo-100 px-2
-            py-1 text-sm opacity-20 transition-all
+            -500 invisible absolute left-full ml-6 -translate-x-3 rounded-md
+            bg-indigo-100 px-2 py-1
+            text-sm text-primary opacity-20 transition-all
             group-hover:visible group-hover:translate-x-0 group-hover:opacity-100
         `}
             >

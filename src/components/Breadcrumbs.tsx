@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { BiHome } from 'react-icons/bi'
 import { GoHome } from 'react-icons/go'
 
 export type BreadcrumbLinkType = {
@@ -13,38 +12,45 @@ export default function Breadcrumb({
   breadcrumbs: BreadcrumbLinkType[]
 }) {
   return (
-    <div className='flex w-full flex-col gap-3  align-middle'>
-      <div className='breadcrumbs flex items-center'>
-        <div className='mr-2 flex gap-2 align-middle'>
-          <Link
-            key='1'
-            color='inherit'
-            href='/'
-            className='flex gap-1 align-middle'
-          >
-            <GoHome size={11} />
+    <div className='flex w-full flex-col gap-3 align-middle'>
+      <div className='breadcrumbs flex items-center gap-x-2'>
+        <div className='flex gap-x-2 align-middle'>
+          <Link href='/home' className='flex gap-1 align-middle'>
+            <GoHome size={12} />
           </Link>
         </div>
 
-        {breadcrumbs.slice(0, -1).map((link, index) => (
+        {/* {breadcrumbs.slice(0, -1).map((link, index) => (
           <div key={index} className='flex gap-1'>
             <span> / </span>
-            <Link
-              key={index + 1}
-              className='text-[11px]'
-              color='inherit'
-              href={link?.href ?? '/'}
-            >
+            <Link className='text-xs' href={link.href ?? '/'}>
               {link.label}
             </Link>
           </div>
         ))}
         <div className='flex gap-1 text-sm'>
-          <span> / </span>{' '}
-          <div className='text-[11px]'>
+          <span> / </span>
+          <div className='text-xs'>
             {breadcrumbs[breadcrumbs.length - 1].label}
           </div>
-        </div>
+        </div> */}
+
+        {breadcrumbs.map((link, index) => (
+          <div key={index} className='flex items-center gap-x-2'>
+            <span> / </span>
+            {/* <Link href={link.href ? link.href : '/home'}>
+              <span className='text-xs'>{link.label}</span>
+            </Link> */}
+
+            {link.href ? (
+              <Link href={link.href}>
+                <span className='text-xs'>{link.label}</span>
+              </Link>
+            ) : (
+              <p className='mt-1 text-xs'>{link.label}</p>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   )

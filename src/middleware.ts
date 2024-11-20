@@ -6,6 +6,14 @@ import { localePrefix } from './navigation'
 type CustomMiddleware = (req: NextRequest) => Promise<NextRequest>
 const customMiddleware: CustomMiddleware = async req => {
   console.log('Custom middleware executed before next-intl')
+  // console.log(req.cookies.get('NEXT_LOCALE')?.value)
+  const locale = req.cookies.get('NEXT_LOCALE')?.value
+
+  // redirect to dashboard if the path is /
+  if (req.nextUrl.pathname === `/${locale}`) {
+    req.nextUrl.pathname = `/${locale}/patients`
+  }
+
   return req
 }
 
@@ -23,5 +31,5 @@ export default async function middleware(
 }
 
 export const config = {
-  matcher: ['/', '/(en|ru|uz)/:path*']
+  matcher: ['/', '/(ru|uz)/:path*']
 }

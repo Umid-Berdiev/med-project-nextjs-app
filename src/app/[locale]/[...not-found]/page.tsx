@@ -7,7 +7,7 @@ import NotFound from '@/src/views/NotFound'
 const NotFoundPage = ({ params }: { params: { locale: Locale } }) => {
   return (
     <BlankLayout>
-      <NotFound />
+      <NotFound locale={params.locale} />
     </BlankLayout>
   )
 }
