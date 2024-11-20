@@ -6,7 +6,7 @@ export default function Heading4({
   className?: string
 }) {
   return (
-    <h4 className={`font-serif text-2xl font-semibold ${className}`}>
+    <h4 className={`text-2xl font-semibold ${className}`}>
       {children}
     </h4>
   )

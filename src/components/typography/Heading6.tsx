@@ -6,8 +6,6 @@ export default function Heading6({
   className?: string
 }) {
   return (
-    <h6 className={`font-serif mb-3 text-sm font-semibold ${className}`}>
-      {children}
-    </h6>
+    <h6 className={`mb-3 text-sm font-semibold ${className}`}>{children}</h6>
   )
 }

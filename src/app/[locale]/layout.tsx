@@ -8,7 +8,9 @@ import {
 import { Inter } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 
-import './globals.css'
+import '@/src/styles/globals.css'
+
+import '@/src/styles/custom.scss'
 
 // const roboto = Roboto_Flex({
 //   subsets: ['latin', 'cyrillic'],
