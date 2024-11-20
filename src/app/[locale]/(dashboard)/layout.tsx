@@ -14,7 +14,7 @@ export default function Layout({
   return (
     <>
       <VerticalLayout params={params}>
-        <div className='p-4'>{children}</div>
+        <div className='sm:p-4'>{children}</div>
       </VerticalLayout>
     </>
   )
