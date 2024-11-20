@@ -1,17 +1,11 @@
 'use client'
 
 import AppLogo from '@/src/app/icons/AppLogo'
-import { useState } from 'react'
-import {
-  BiCog,
-  BiHome,
-  BiUser,
-  BiUserCircle,
-  BiUserVoice
-} from 'react-icons/bi'
-import SidebarItem from './SidebarItem'
 import { ISidebarItemProps } from '@/src/utils/interfaces'
 import { useParams, usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { BiUserCircle } from 'react-icons/bi'
+import SidebarItem from './SidebarItem'
 
 // This sidebar component is for both mobile and desktop
 function Sidebar({ children, expanded, setExpanded }: any) {
@@ -96,37 +90,42 @@ export default function MakeSidebar() {
     : pathname
 
   const navBarItems: ISidebarItemProps[] = [
+    // {
+    //   icon: <BiHome size={20} />,
+    //   text: 'Home',
+    //   path: '/home'
+    // },
     {
-      icon: <BiHome size={20} />,
-      text: 'Home',
-      path: '/home'
+      icon: <BiUserCircle size={20} />,
+      text: 'Registration',
+      path: '/'
     },
     {
       icon: <BiUserCircle size={20} />,
-      text: 'DoctorsProfile',
+      text: "Doctor's profile",
       path: '/doctors-profile'
-    },
-    {
-      icon: <BiUser />,
-      subMenu: [
-        {
-          icon: '•',
-          text: 'Profile',
-          path: '/profile'
-        },
-        {
-          icon: '•',
-          text: 'Settings',
-          path: '/settings'
-        }
-      ],
-      text: 'Profile'
-    },
-
-    {
-      icon: <BiCog />,
-      text: 'Settings'
     }
+    // {
+    //   icon: <BiUser />,
+    //   subMenu: [
+    //     {
+    //       icon: '•',
+    //       text: 'Profile',
+    //       path: '/profile'
+    //     },
+    //     {
+    //       icon: '•',
+    //       text: 'Settings',
+    //       path: '/settings'
+    //     }
+    //   ],
+    //   text: 'Profile'
+    // },
+
+    // {
+    //   icon: <BiCog />,
+    //   text: 'Settings'
+    // }
   ]
 
   // Desktop Sidebar

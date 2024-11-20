@@ -44,9 +44,17 @@ const Button: React.FC<ButtonProps> = ({
   `
 
   return (
-    <button className={'border-0 bg-secondary h-9 px-5 text-white rounded-lg gap-2 flex items-center whitespace-nowrap' + {buttonStyles}} {...props}>
+    <button
+      className={
+        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0 bg-secondary px-5 text-white' +
+        { buttonStyles }
+      }
+      {...props}
+    >
       {startIcon && <span className='flex items-center'>{startIcon}</span>}
-      <span className='flex  items-center gap-2 whitespace-nowrap'>{children}</span>
+      <span className='flex  items-center gap-2 whitespace-nowrap'>
+        {children}
+      </span>
       {endIcon && <span className='flex  items-center'>{endIcon}</span>}
     </button>
   )

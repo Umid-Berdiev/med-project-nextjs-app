@@ -13,7 +13,6 @@ export default function LangSwitcher() {
   const urlSegments = useSelectedLayoutSegments()
 
   const options: Option[] = [
-    { label: 'Eng', code: 'en' }, // Native name is the same
     { label: 'Рус', code: 'ru' },
     { label: "O'zb", code: 'uz' }
   ]

@@ -82,8 +82,8 @@ export default function RootLayout({
           attribute='class'
           defaultTheme='light'
           themes={[
-            'light',
-            'dark'
+            'light'
+            // 'dark'
             // 'instagram',
             // 'facebook',
             // 'discord',
