@@ -42,3 +42,15 @@ export interface ITabsProps {
   activeTab: string
   tabContents: ITabContent[]
 }
+
+export type DiagnosticsTableCellType = {
+  id: number
+  name: string
+  birthDate: string
+  phone: string
+  createdAt: string
+  doctor: string
+  service_count: number
+  total_sum: number
+  status: string
+}
