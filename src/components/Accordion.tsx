@@ -1,54 +1,60 @@
 import React, { useState } from 'react'
-
-type AccordionItem = {
-  id: number
-  title: string
-  header?: React.ReactNode
-  content: string
-}
+import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 type AccordionProps = {
-  items: AccordionItem[]
+  title: string
+  header?: React.ReactNode
+  content: React.ReactNode
   iconPosition?: 'start' | 'end'
 }
 
 const AppAccordion: React.FC<AccordionProps> = ({
-  items,
+  content,
+  title,
+  header,
   iconPosition = 'start'
 }) => {
-  const [openItemId, setOpenItemId] = useState<number | null>(null)
+  const [isExpanded, setIsExpanded] = useState(false)
 
-  const toggleAccordion = (id: number) => {
-    setOpenItemId(prev => (prev === id ? null : id))
+  const toggleCollapse = () => {
+    setIsExpanded(!isExpanded)
   }
 
   return (
-    <div className='join join-vertical w-full'>
-      {items.map(item => (
+    <div className='w-full rounded-md border p-4 shadow-md'>
+      {/* Header Section */}
+      <div
+        className='flex cursor-pointer items-center justify-between'
+        onClick={toggleCollapse}
+      >
         <div
-          key={item.id}
-          className='collapse join-item collapse-arrow border border-base-300'
+          className={`flex items-center gap-3 ${
+            iconPosition === 'start' ? 'flex-row' : 'flex-row-reverse'
+          }`}
         >
+          {/* Checkbox */}
           <input
-            type='radio'
-            name='accordion'
-            checked={openItemId === item.id}
-            readOnly
-            onClick={() => toggleAccordion(item.id)}
+            checked={isExpanded}
+            onChange={toggleCollapse}
+            type='checkbox'
+            className='checkbox checkbox-sm rounded border-secondary [--chkbg:theme(colors.secondary)] [--chkfg:white]'
           />
-          <div
-            className={`collapse-title flex text-xl font-medium ${
-              iconPosition === 'start' ? 'flex-row' : 'flex-row-reverse'
-            } items-center`}
-          >
-            <span className='mr-2'>&#9654;</span> {/* Icon */}
-            {item.header ?? item.title}
-          </div>
-          <div className='collapse-content'>
-            <p>{item.content}</p>
+
+          {/* Icon and Title/Header */}
+          <div className='flex items-center gap-2'>
+            {isExpanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            {header ?? <span>{title}</span>}
           </div>
         </div>
-      ))}
+      </div>
+
+      {/* Collapsible Content */}
+      {isExpanded && (
+        <div className='mt-4 border-t pt-4'>
+          <div>{content}</div>
+        </div>
+      )}
     </div>
   )
 }
