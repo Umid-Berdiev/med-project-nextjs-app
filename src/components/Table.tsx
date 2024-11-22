@@ -52,11 +52,11 @@ export default function Table<T>({
   }, [data, sortBy, columns])
 
   return (
-    <div className='mt-4 h-full overflow-auto rounded-[12px]'>
+    <div className='mt-4 h-full rounded-[12px]'>
       {data.length ? (
-        <div className='overflow-x-auto overflow-y-hidden'>
+        <div className='w-full max-w-[calc(100vw-338px)] overflow-x-auto overflow-y-hidden'>
           <table
-            className={`table w-full max-w-full  text-[13px] leading-[18px] drop-shadow-none ${
+            className={`table w-full min-w-full text-sm drop-shadow-none ${
               stripped ? 'table-zebra' : ''
             }`}
           >

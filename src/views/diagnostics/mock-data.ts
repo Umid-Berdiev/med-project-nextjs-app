@@ -1,0 +1,290 @@
+import { DiagnosticsTableCellType } from '@/src/utils/interfaces'
+
+export const diagnosticsTableData: DiagnosticsTableCellType[] = [
+  {
+    id: 1,
+    name: 'Alice',
+    birthDate: '1998-01-01',
+    phone: '1234567890',
+    createdAt: '2023-01-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 2,
+    name: 'Bob',
+    birthDate: '1993-02-02',
+    phone: '1234567891',
+    createdAt: '2023-02-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 3,
+    name: 'Charlie',
+    birthDate: '2001-03-03',
+    phone: '1234567892',
+    createdAt: '2023-03-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 4,
+    name: 'David',
+    birthDate: '1995-04-04',
+    phone: '1234567893',
+    createdAt: '2023-04-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 5,
+    name: 'Eve',
+    birthDate: '1997-05-05',
+    phone: '1234567894',
+    createdAt: '2023-05-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 6,
+    name: 'Frank',
+    birthDate: '1988-06-06',
+    phone: '1234567895',
+    createdAt: '2023-06-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 7,
+    name: 'George',
+    birthDate: '1999-07-07',
+    phone: '1234567896',
+    createdAt: '2023-07-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 8,
+    name: 'Hannah',
+    birthDate: '1995-08-08',
+    phone: '1234567897',
+    createdAt: '2023-08-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 9,
+    name: 'Ivan',
+    birthDate: '1996-09-09',
+    phone: '1234567898',
+    createdAt: '2023-09-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 10,
+    name: 'John',
+    birthDate: '1999-10-10',
+    phone: '1234567899',
+    createdAt: '2023-10-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 11,
+    name: 'Katie',
+    birthDate: '1994-11-11',
+    phone: '1234567800',
+    createdAt: '2023-11-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 12,
+    name: 'Liam',
+    birthDate: '1992-12-12',
+    phone: '1234567801',
+    createdAt: '2023-12-01',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 13,
+    name: 'Mia',
+    birthDate: '1991-01-13',
+    phone: '1234567802',
+    createdAt: '2023-01-13',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 14,
+    name: 'Nathan',
+    birthDate: '1990-02-14',
+    phone: '1234567803',
+    createdAt: '2023-02-14',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 15,
+    name: 'Olivia',
+    birthDate: '1989-03-15',
+    phone: '1234567804',
+    createdAt: '2023-03-15',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 16,
+    name: 'Peter',
+    birthDate: '1988-04-16',
+    phone: '1234567805',
+    createdAt: '2023-04-16',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 17,
+    name: 'Quinn',
+    birthDate: '1987-05-17',
+    phone: '1234567806',
+    createdAt: '2023-05-17',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 18,
+    name: 'Robert',
+    birthDate: '1986-06-18',
+    phone: '1234567807',
+    createdAt: '2023-06-18',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 19,
+    name: 'Sarah',
+    birthDate: '1985-07-19',
+    phone: '1234567808',
+    createdAt: '2023-07-19',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 20,
+    name: 'Tom',
+    birthDate: '1984-08-20',
+    phone: '1234567809',
+    createdAt: '2023-08-20',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 21,
+    name: 'Ursula',
+    birthDate: '1983-09-21',
+    phone: '1234567810',
+    createdAt: '2023-09-21',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 22,
+    name: 'Victor',
+    birthDate: '1982-10-22',
+    phone: '1234567811',
+    createdAt: '2023-10-22',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 23,
+    name: 'Wendy',
+    birthDate: '1981-11-23',
+    phone: '1234567812',
+    createdAt: '2023-11-23',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 24,
+    name: 'Xavier',
+    birthDate: '1980-12-24',
+    phone: '1234567813',
+    createdAt: '2023-12-24',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 25,
+    name: 'Yvonne',
+    birthDate: '1979-01-25',
+    phone: '1234567814',
+    createdAt: '2023-01-25',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  },
+  {
+    id: 26,
+    name: 'Zach',
+    birthDate: '1978-02-26',
+    phone: '1234567815',
+    createdAt: '2023-02-26',
+    doctor: 'Dr. Smith',
+    service_count: 5,
+    total_sum: 1000,
+    status: 'active'
+  }
+]
