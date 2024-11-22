@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation'
 import { Locale } from '@/src/configs/i18n'
 import { ITabContentList } from '@/src/utils/interfaces'
 import MedicalRecord from '@/src/views/doctors-profile/detail/medical-record/MedicalRecord'
+import AmbulatoryExamination from '@/src/views/doctors-profile/detail/ambulatory-examination/AmbulatoryExamination'
 
 const PatientExamination = dynamic(
   () =>
@@ -23,7 +24,7 @@ const tabContentList: ITabContentList[] = [
   { id: 'medical-record', content: <MedicalRecord />, label: 'Tibbiy karta' },
   {
     id: 'ambulatory-examination',
-    content: <>Ambulator tekshirish</>,
+    content: <AmbulatoryExamination />,
     label: 'Ambulator tekshiruv'
   }
 ]

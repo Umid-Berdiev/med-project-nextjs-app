@@ -66,7 +66,7 @@ export default function Table<T>({
                   <th
                     key={index}
                     className={classnames(
-                      `min-w-[140px] bg-white ${column.width || ''}`
+                      ` bg-white ${column.width ?? 'min-w-[140px]'}`
                     )}
                     onClick={() =>
                       column.sortable &&
@@ -112,10 +112,11 @@ export default function Table<T>({
                   {columns.map((column, columnIndex) => (
                     <td
                       className={classnames(
-                        'px-4 py-2.5 font-medium',
+                        'px-4 py-2.5 font-medium ',
                         column.alignItem
                           ? `text-${column.alignItem}`
-                          : 'text-left'
+                          : 'text-left',
+                        column.width ?? ''
                       )}
                       key={columnIndex}
                     >
