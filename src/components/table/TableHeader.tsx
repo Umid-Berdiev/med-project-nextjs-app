@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import Heading4 from './typography/Heading4'
 
 export default function TableHeader({
   title,

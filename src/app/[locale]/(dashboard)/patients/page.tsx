@@ -2,7 +2,7 @@
 
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import Button from '@/src/components/Button'
-import TableHeader from '@/src/components/TableHeader'
+import TableHeader from '@/src/components/table/TableHeader'
 import PatientsTable from '@/src/views/patients/PatientsTable'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'

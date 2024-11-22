@@ -2,8 +2,8 @@
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import Button from '@/src/components/Button'
 import Pagination from '@/src/components/pagination/Pagination'
-import Table, { ITableColumn } from '@/src/components/Table'
-import TableHeader from '@/src/components/TableHeader'
+import Table, { ITableColumn } from '@/src/components/table/Table'
+import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
 import Link from 'next/link'
@@ -16,9 +16,9 @@ import { TbTableOptions } from 'react-icons/tb'
 export default function CashboxPage() {
   const [sortBy, setSortBy] = useState<
     | {
-      column: string
-      direction: 'asc' | 'desc'
-    }
+        column: string
+        direction: 'asc' | 'desc'
+      }
     | undefined
   >(undefined)
   const [perPage, setPerPage] = useState(10)
