@@ -32,6 +32,7 @@ export default function PatientsIndexPage({
                 variant='text'
                 color={open ? 'secondary' : 'primary'}
                 onClick={() => setOpen(!open)}
+                className='rounded-none border-b border-dashed border-secondary'
               >
                 {t('Filtr')}
               </Button>
