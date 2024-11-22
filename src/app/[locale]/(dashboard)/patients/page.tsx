@@ -3,6 +3,7 @@
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import Button from '@/src/components/Button'
 import TableHeader from '@/src/components/TableHeader'
+import PatientsTable from '@/src/views/patients/PatientsTable'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { BiUserPlus } from 'react-icons/bi'
@@ -47,6 +48,7 @@ export default function PatientsIndexPage({
           }
         />
       </section>
+      <PatientsTable />
     </div>
   )
 }

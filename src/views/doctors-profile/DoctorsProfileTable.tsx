@@ -42,13 +42,14 @@ const DoctorsProfileTable = () => {
   const columns: ITableColumn<CellType>[] = [
     {
       header: '№',
+      width: 'max-w-12',
+
       col: (_: CellType, index?: number) =>
         index !== undefined ? index + 1 : 0
     },
     {
       header: 'ID',
-      headerAlign: 'center',
-      alignItem: 'center',
+      width: 'max-w-12',
       col: (row: CellType) => row.id,
       sortable: true
     },
