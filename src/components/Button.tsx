@@ -46,8 +46,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={
-        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0 bg-secondary px-5 text-white' +
-        { buttonStyles }
+        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0 bg-secondary px-5 ' +
+        buttonStyles
       }
       {...props}
     >
