@@ -56,7 +56,7 @@ export default function Table<T>({
       {data.length ? (
         <div className='overflow-x-auto overflow-y-hidden'>
           <table
-            className={`table w-full min-w-full  text-[13px] leading-[18px] drop-shadow-none ${
+            className={`table w-full max-w-full  text-[13px] leading-[18px] drop-shadow-none ${
               stripped ? 'table-zebra' : ''
             }`}
           >
