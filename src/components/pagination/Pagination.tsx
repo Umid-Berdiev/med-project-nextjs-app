@@ -2,9 +2,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import SimplePagination from './SimplePagination'
 
-import { useSearchParams, useRouter } from 'next/navigation'
-import Input from '../Input'
-import InputComponent from '../InputComponent'
+import classNames from 'classnames'
+import { useTranslations } from 'next-intl'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const Pagination = ({
   page,
@@ -19,6 +19,7 @@ const Pagination = ({
   changeCurrentPage: (page: number) => void
   changePerPage: (size: number) => void
 }) => {
+  const t = useTranslations()
   const pageCount = Math.ceil(totalCount / size)
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -70,7 +71,9 @@ const Pagination = ({
           <option value={'25'}>25</option>
           <option value={'50'}>50</option>
         </select>
-        <span className='min-w-12'>{totalCount} tadan</span>
+        <span className='min-w-12'>
+          {totalCount} {t('tadan')}
+        </span>
       </div>
       <div className='min-[400px] max-[50%] flex gap-1'>
         <SimplePagination
@@ -80,10 +83,13 @@ const Pagination = ({
         />
       </div>
       <div className='flex items-center gap-2 align-middle'>
-        <span className='text-customDark'>{'Sahifaga o’tish'}</span>
-        <Input
+        <span className='text-customDark'>{t("Sahifaga o'tish")}</span>
+        <input
+          className={classNames(
+            'h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm font-normal text-[#161624] outline-none',
+            'max-w-9'
+          )}
           value={page + 1}
-          className='max-w-9'
           onChange={e => changeCurrentPage(Number(e.target.value) - 1)}
         />
       </div>

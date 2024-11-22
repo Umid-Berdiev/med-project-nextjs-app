@@ -1,24 +1,61 @@
 'use client'
-import ProfileBlock from './ProfileBlock'
 import { useState } from 'react'
 import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { ITab, ITabContent, ITabContentList } from '@/src/utils/interfaces'
 import { useParams, useRouter } from 'next/navigation'
 import Breadcrumb from '@/src/components/Breadcrumbs'
+import ProfileBlock from '@/src/views/doctors-profile/detail/ProfileBlock'
 
-export default function DoctorsProfileDeatil({
-  tabContentList
-}: {
-  tabContentList: ITabContentList[]
-}) {
+export default function PatientsDetailPage() {
   const { locale, id, tab } = useParams()
-
+  const tabContentList = [
+    {
+      id: '1',
+      label: 'Bemor tarixi',
+      content: 'Bemor tarixi'
+    },
+    {
+      id: '2',
+      label: 'Shaxsiy ma’lumotlari',
+      content: 'Shaxsiy ma’lumotlari'
+    },
+    {
+      id: '3',
+      label: 'Loglar tarixi',
+      content: 'Loglar tarixi'
+    },
+    {
+      id: '4',
+      label: 'Med karta',
+      content: 'Med karta'
+    },
+    {
+      id: '5',
+      label: 'Stat karta',
+      content: 'Stat karta'
+    },
+    {
+      id: '6',
+      label: 'Buyurtmalar',
+      content: 'Buyurtmalar'
+    },
+    {
+      id: '7',
+      label: 'PDF fayllar',
+      content: 'PDF fayllar'
+    },
+    {
+      id: '8',
+      label: 'Kurslar',
+      content: 'Kurslar'
+    }
+  ]
   const [activeTab, setActiveTab] = useState<string>(
     Array.isArray(tab) ? tab[0] : tab
   )
   const router = useRouter()
   const tabs: ITab[] = tabContentList.map(tab => ({
-    id: tab.id,
+    id: tab.id.toString(),
     label: tab.label
   }))
 
@@ -32,7 +69,7 @@ export default function DoctorsProfileDeatil({
       <Breadcrumb
         breadcrumbs={[
           { label: 'Bosh sahifa', href: `/${locale}/dashboard` },
-          { label: 'Shifokor kabineti', href: `/${locale}/doctors-profile` },
+          { label: 'Bemorlar', href: `/${locale}/patients` },
           { label: 'Ismoilov Shaxzod Farrux o’g’li' }
         ]}
       />
@@ -46,7 +83,6 @@ export default function DoctorsProfileDeatil({
           activeTab={activeTab}
           onTabClick={e => {
             setActiveTab(e)
-            router.push(`/${locale}/doctors-profile/${id}/${e}`)
           }}
         />
         <Tabs activeTab={activeTab} tabContents={tabContents} />

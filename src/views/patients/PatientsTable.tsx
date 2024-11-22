@@ -1,19 +1,16 @@
 'use client'
-import Breadcrumb from '@/src/components/Breadcrumbs'
-import Button from '@/src/components/Button'
 import Pagination from '@/src/components/pagination/Pagination'
-import Table, { ITableColumn } from '@/src/components/Table'
-import TableHeader from '@/src/components/TableHeader'
+import Table, { ITableColumn } from '@/src/components/table/Table'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
-import { FaFileAlt } from 'react-icons/fa'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 import FilterPatients from './FilterPatients'
+import NoData from '@/src/components/table/NoData'
 
 const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   const t = useTranslations('')
@@ -116,10 +113,7 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
           >
             <li>
               <Link
-                href={getLocalizedUrl(
-                  `doctors-profile/${row.id}/patient-examination`,
-                  locale as Locale
-                )}
+                href={getLocalizedUrl(`patients/${row.id}`, locale as Locale)}
               >
                 Ko`rish
               </Link>
@@ -196,6 +190,7 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
         hoverable={false}
         stripped={false}
       />
+      <NoData />
       <Pagination
         page={page}
         size={perPage}

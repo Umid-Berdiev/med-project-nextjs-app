@@ -1,15 +1,15 @@
 import Button from '@/src/components/Button'
 import CustomEditor from '@/src/components/CustomEditor'
-import AppInputRadio from '@/src/components/forms/AppInputCheckbox'
-import InputComponent from '@/src/components/InputComponent'
 import Modal from '@/src/components/Modal'
-import Table, { ITableColumn } from '@/src/components/Table'
+import Table, { ITableColumn } from '@/src/components/table/Table'
+import { useTranslations } from 'next-intl'
 
 import React from 'react'
 import { BiPlusCircle } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 
 export default function Complaints() {
+  const t = useTranslations()
   const [open, setOpen] = React.useState(false)
   const [openTpemp, setOpenTemp] = React.useState(false)
   const handleClick = () => {
@@ -187,7 +187,18 @@ export default function Complaints() {
         onClose={() => setOpenTemp(false)}
       >
         <form className='flex h-full flex-col gap-2'>
-          <InputComponent label='Nomi' placeholder='Shablon nomi' isRequired />
+          <div className='w-full'>
+            <label className='mb-1 text-xs font-semibold leading-4 text-[#232427]'>
+              <span className='pr-1 text-[#E6533C]'>*</span>
+              {t('Nomi')}
+            </label>
+            <input
+              type='text'
+              id='input'
+              placeholder={t('Shablon nomi')}
+              className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none'
+            />
+          </div>
           <CustomEditor height={220} />
           <div className='modal-action  flex  justify-end gap-1 py-1'>
             <Button
