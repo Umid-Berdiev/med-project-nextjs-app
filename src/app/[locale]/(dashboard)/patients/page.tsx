@@ -6,6 +6,7 @@ import TableHeader from '@/src/components/TableHeader'
 import PatientsTable from '@/src/views/patients/PatientsTable'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { BiUserPlus } from 'react-icons/bi'
 import { FaFileAlt } from 'react-icons/fa'
 
@@ -16,6 +17,7 @@ export default function PatientsIndexPage({
 }) {
   const t = useTranslations()
   const router = useRouter()
+  const [open, setOpen] = useState(false)
 
   return (
     <div className='container p-4'>
@@ -26,7 +28,11 @@ export default function PatientsIndexPage({
           title={t('Bemorlar')}
           actions={
             <>
-              <Button variant='text' color='primary'>
+              <Button
+                variant='text'
+                color={open ? 'secondary' : 'primary'}
+                onClick={() => setOpen(!open)}
+              >
                 {t('Filtr')}
               </Button>
               <Button
@@ -48,7 +54,7 @@ export default function PatientsIndexPage({
           }
         />
       </section>
-      <PatientsTable />
+      <PatientsTable openFilter={open} />
     </div>
   )
 }

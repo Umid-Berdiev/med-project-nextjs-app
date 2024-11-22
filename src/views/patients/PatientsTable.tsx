@@ -6,14 +6,17 @@ import Table, { ITableColumn } from '@/src/components/Table'
 import TableHeader from '@/src/components/TableHeader'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
+import FilterPatients from './FilterPatients'
 
-const PatientsTable = () => {
+const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
+  const t = useTranslations('')
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -50,29 +53,29 @@ const PatientsTable = () => {
         index !== undefined ? index + 1 : 0
     },
     {
-      header: 'ID',
+      header: t('ID'),
       width: 'max-w-12',
       col: (row: CellType) => row.id,
       sortable: true
     },
     {
-      header: 'Bemor ism familiyasi',
+      header: t('Bemor ism familiyasi'),
       headerAlign: 'center',
       alignItem: 'center',
       col: (row: CellType) => row.name,
       sortable: true
     },
     {
-      header: 'Tug`ilgan kun',
+      header: t('Tug`ilgan kun'),
       col: (row: CellType) => row.birthDate,
       sortable: true
     },
     {
-      header: 'Telefon raqami',
+      header: t('Telefon raqami'),
       col: (row: CellType) => row.phone
     },
     {
-      header: 'Balansi',
+      header: t('Balansi'),
       col: (row: CellType) => (
         <div>
           {row.balance > 0 ? (
@@ -84,15 +87,15 @@ const PatientsTable = () => {
       )
     },
     {
-      header: 'Tashrif buyurgan',
+      header: t('Tashrif buyurgan'),
       col: (row: CellType) => row.createdAt,
       sortable: true
     },
 
-    { header: 'Ligota', col: (row: CellType) => 'Rezident', sortable: true },
+    { header: t('Ligota'), col: (row: CellType) => 'Rezident', sortable: true },
 
     {
-      header: 'Registrator',
+      header: t('Registrator'),
       col: (row: CellType) => 'Yusupova Iroda Xasan qizi',
       sortable: true
     },
@@ -183,6 +186,7 @@ const PatientsTable = () => {
 
   return (
     <div>
+      {openFilter && <FilterPatients />}
       <Table
         columns={columns}
         data={data.slice(page * perPage, page * perPage + perPage)}
