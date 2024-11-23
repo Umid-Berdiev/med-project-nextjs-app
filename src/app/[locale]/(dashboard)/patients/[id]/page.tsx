@@ -13,6 +13,12 @@ import FileListIcon from '@/src/components/icons/FileListIcon'
 import PatientsHistory from '@/src/views/patients/detail/patients-history/PatientsHistory'
 import Select from '@/src/components/forms/AppSelect'
 import PersonalInfo from '@/src/views/patients/detail/personal-info/PersonalInfo'
+import HistoryLogs from '@/src/views/patients/detail/patients-log/HistoryLogs'
+import MedCard from '@/src/views/patients/detail/med-card/Medcard'
+import StatCard from '@/src/views/patients/detail/stat-card/StatCard'
+import PatientsOrders from '@/src/views/patients/detail/orders/PatientsOrders'
+import PdfFiles from '@/src/views/patients/detail/pdf-files/PdfFiles'
+import MedCourse from '@/src/views/patients/detail/course/MedCourse'
 
 export default function PatientsDetailPage() {
   const { locale, id } = useParams()
@@ -30,32 +36,32 @@ export default function PatientsDetailPage() {
     {
       id: '3',
       label: 'Loglar tarixi',
-      content: 'Loglar tarixi'
+      content: <HistoryLogs />
     },
     {
       id: '4',
       label: 'Med karta',
-      content: 'Med karta'
+      content: <MedCard />
     },
     {
       id: '5',
       label: 'Stat karta',
-      content: 'Stat karta'
+      content: <StatCard />
     },
     {
       id: '6',
       label: 'Buyurtmalar',
-      content: 'Buyurtmalar'
+      content: <PatientsOrders />
     },
     {
       id: '7',
       label: 'PDF fayllar',
-      content: 'PDF fayllar'
+      content: <PdfFiles />
     },
     {
       id: '8',
       label: 'Kurslar',
-      content: 'Kurslar'
+      content: <MedCourse />
     }
   ]
   const [activeTab, setActiveTab] = useState<string>(
