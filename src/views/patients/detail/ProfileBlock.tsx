@@ -1,8 +1,6 @@
 import Button from '@/src/components/Button'
-import Link from '@/src/components/Link'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-import { BiArrowFromRight, BiPlusCircle } from 'react-icons/bi'
 import { BsFillPlusCircleFill } from 'react-icons/bs'
 import { IoIosArrowForward } from 'react-icons/io'
 import { LuPrinter } from 'react-icons/lu'
@@ -57,7 +55,7 @@ export default function ProfileBlock() {
               tabIndex={0}
               color='secondary'
               variant='tonal'
-              className='shadow-custom-blue bg-white'
+              className='bg-white shadow-custom-blue'
               size='small'
             >
               <SlOptions size={20} />
@@ -108,7 +106,7 @@ export default function ProfileBlock() {
           <Button
             color='secondary'
             variant='tonal'
-            className='shadow-custom-blue bg-white'
+            className='bg-white shadow-custom-blue'
             size='small'
           >
             <LuPrinter size={20} />

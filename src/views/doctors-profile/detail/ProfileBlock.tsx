@@ -23,18 +23,14 @@ export default function ProfileBlock() {
 
         <div className='flex items-center gap-2'>
           <div className='mr-1 flex flex-col'>
-            <span className='text-[12px] font-normal text-[#23242780]'>
-              Telefon raqami:
-            </span>
+            <span className='text-xs  text-[#23242780]'>Telefon raqami:</span>
             <p className='text-lg font-semibold text-textDark'>
               +998 83 956 6961
             </p>
           </div>
           <div className='h-[58px] w-px bg-[#2324271A]'></div>
           <div className='ml-1 flex flex-col'>
-            <span className='text-[12px] font-normal text-[#23242780]'>
-              Tug’ilgan sanasi:
-            </span>
+            <span className='text-xs  text-[#23242780]'>Tug’ilgan sanasi:</span>
             <p className='text-lg font-semibold text-textDark'>12.02.2000</p>
           </div>
         </div>

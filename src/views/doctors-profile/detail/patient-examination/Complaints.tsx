@@ -83,7 +83,7 @@ export default function Complaints() {
   return (
     <div className='flex flex-col gap-3'>
       <div>
-        <div className='text-[rgba(35, 36, 39, 1)] text-[12px] font-semibold'>
+        <div className='text-[rgba(35, 36, 39, 1)] text-xs font-semibold'>
           Bemor shikoyati
         </div>
         <CustomEditor />
@@ -94,7 +94,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] font-normal'
+            className='text-[11px] '
           >
             Shablondan tanlash
           </Button>
@@ -103,7 +103,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] font-normal'
+            className='text-[11px] '
             onClick={() => setOpenTemp(true)}
           >
             Shablonga qo’shish
@@ -111,7 +111,7 @@ export default function Complaints() {
         </div>
       </div>
       <div>
-        <div className='text-[rgba(35, 36, 39, 1)] text-[12px] font-semibold'>
+        <div className='text-[rgba(35, 36, 39, 1)] text-xs font-semibold'>
           Аnamnesis Morbi
         </div>
         <CustomEditor />
@@ -121,7 +121,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] font-normal'
+            className='text-[11px] '
           >
             Shablondan tanlash
           </Button>
@@ -130,7 +130,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] font-normal'
+            className='text-[11px] '
             onClick={() => setOpenTemp(true)}
           >
             Shablonga qo’shish
@@ -138,7 +138,7 @@ export default function Complaints() {
         </div>
       </div>
       <div>
-        <div className='text-[rgba(35, 36, 39, 1)] text-[12px] font-semibold'>
+        <div className='text-[rgba(35, 36, 39, 1)] text-xs font-semibold'>
           Аnamnesis Vitae
         </div>
         <CustomEditor />
@@ -148,7 +148,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] font-normal'
+            className='text-[11px] '
           >
             Shablondan tanlash
           </Button>
@@ -157,7 +157,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] font-normal'
+            className='text-[11px] '
             onClick={() => setOpenTemp(true)}
           >
             Shablonga qo’shish
@@ -196,7 +196,7 @@ export default function Complaints() {
               type='text'
               id='input'
               placeholder={t('Shablon nomi')}
-              className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none'
+              className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px]  text-[#161624] outline-none'
             />
           </div>
           <CustomEditor height={220} />

@@ -69,10 +69,14 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
     },
     {
       header: t('Telefon raqami'),
+      width: 'w-48',
+
       col: (row: CellType) => row.phone
     },
     {
       header: t('Balansi'),
+      width: 'w-48',
+
       col: (row: CellType) => (
         <div>
           {row.balance > 0 ? (

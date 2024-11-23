@@ -191,7 +191,7 @@ export default function DiagnosticsTableWrapper() {
           <ProfileBlock />
           <div className='grid grid-cols-2 gap-4'>
             <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
-              <span className='text-sm font-normal text-contentTertiary'>
+              <span className='text-sm  text-contentTertiary'>
                 {t('Tibbiy xizmatlar')}
               </span>
               <span className='text-sm text-secondary'>
@@ -199,7 +199,7 @@ export default function DiagnosticsTableWrapper() {
               </span>
             </div>
             <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
-              <span className='text-sm font-normal text-contentTertiary'>
+              <span className='text-sm  text-contentTertiary'>
                 {t('Yashash manzili')}
               </span>
               <span className='text-sm '>

@@ -86,7 +86,7 @@ const Pagination = ({
         <span className='text-customDark'>{t("Sahifaga o'tish")}</span>
         <input
           className={classNames(
-            'h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm font-normal text-[#161624] outline-none',
+            'h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm  text-[#161624] outline-none',
             'max-w-9'
           )}
           value={page + 1}

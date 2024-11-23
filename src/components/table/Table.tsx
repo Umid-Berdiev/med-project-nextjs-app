@@ -56,8 +56,9 @@ export default function Table<T>({
       {data.length ? (
         <div className='w-full max-w-[calc(100vw-338px)] overflow-x-auto overflow-y-hidden'>
           <table
-            className={`table w-full min-w-full text-sm drop-shadow-none ${stripped ? 'table-zebra' : ''
-              }`}
+            className={`table w-full min-w-full text-sm drop-shadow-none ${
+              stripped ? 'table-zebra' : ''
+            }`}
           >
             <thead className='rounded'>
               <tr>
@@ -101,8 +102,9 @@ export default function Table<T>({
             <tbody>
               {sortedData.map((row, rowIndex) => (
                 <tr
-                  className={`${hoverable ? 'hover:bg-gray-100' : ''
-                    } ${classRow(row, rowIndex)}`}
+                  className={`${
+                    hoverable ? 'hover:bg-gray-100' : ''
+                  } ${classRow(row, rowIndex)}`}
                   key={rowIndex}
                 >
                   {columns.map((column, columnIndex) => (
@@ -116,7 +118,7 @@ export default function Table<T>({
                       )}
                       key={columnIndex}
                     >
-                      <span className='inline-flex'>
+                      <span className='inline-flex w-full'>
                         {column.col(row, rowIndex + 1)}
                       </span>
                     </td>

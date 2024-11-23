@@ -19,7 +19,7 @@ export default function AppSelect(props: IProps) {
       id='select'
       value={props.selectedValue || ''}
       className={classnames(
-        'h-9 w-full cursor-pointer appearance-none rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none',
+        'h-9 w-full cursor-pointer appearance-none rounded-lg border border-[#2324271A] px-3 text-[13px]  text-[#161624] outline-none',
         'bg-[url(/images/SelectArrow.svg)]',
         'bg-[position:right_12px_center]',
         'bg-no-repeat',
