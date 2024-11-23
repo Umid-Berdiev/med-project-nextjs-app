@@ -62,8 +62,7 @@ export default function CashboxPage() {
     const columns: ITableColumn<CellType>[] = [
         {
             header: '№',
-            width: '10px',
-
+            width: 'max-w-4',
             col: (_: CellType, index?: number) =>
                 index !== undefined ? index + 1 : 0
         },
@@ -89,6 +88,7 @@ export default function CashboxPage() {
                     {/* <TbLayoutGridRemove size={18} /> */}
                 </>
             ),
+            width: 'max-w-4',
             col: (row: CellType) => (
                 <AppInputCheckboxNoLabel isChecked={false} />
             )
@@ -169,22 +169,26 @@ export default function CashboxPage() {
         {
             header: '№',
             col: (_: CellModalType, index?: number) =>
-                index !== undefined ? index + 1 : 0
+                index !== undefined ? index + 1 : 0,
+            width: 'max-w-4',
         },
         {
             header: t('ID'),
             col: (row: CellModalType) => row.id,
+            width: 'max-w-20',
             sortable: true
         },
         {
             header: t('Karta raqami'),
             col: (row: CellModalType) => row.numberCard,
+            width: 'max-w-20',
             sortable: true
         },
         
         {
             header: t('Kvitansiya raqami'),
             col: (row: CellModalType) => row.numberReceipt,
+            width: 'max-w-20',
             sortable: true
         },
         {
@@ -200,6 +204,7 @@ export default function CashboxPage() {
         {
             header: t('To’lov sanasi'),
             col: (row: CellModalType) => row.datePay,
+            width: 'max-w-20',
             sortable: true
         },
         {
@@ -208,6 +213,7 @@ export default function CashboxPage() {
                     <TbTableOptions color='#23242780' size={18} />
                 </div>
             ),
+            width: 'max-w-8',
             col: (row: CellModalType) => (
                 <div className='dropdown dropdown-left  dropdown-bottom'>
                     <div tabIndex={0} role='button' className='btn  bg-white'>
