@@ -18,6 +18,9 @@ const config = {
       }
     },
     extend: {
+      boxShadow: {
+        'custom-blue': '0px 2px 10px 0px #29CED266'
+      },
       backgroundImage: {
         'span-bg': 'var(--span-bg)',
         'avatar-gradient':
@@ -33,6 +36,11 @@ const config = {
         'text-secondary': 'var(--text-secondary)',
         'background-secondary': 'var(--background-secondary)',
         secondary: 'var(--secondary)',
+        info: 'var(--info)',
+        error: 'var(--error)',
+        success: 'var(--success)',
+        warning: 'var(--warning)',
+        white: 'var(--white)',
         button: 'var(--button)',
         selected: 'var(--selected)',
         dropdown: 'var(--dropdown)',

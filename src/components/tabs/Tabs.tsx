@@ -1,5 +1,6 @@
 import { ITablistProps, ITabsProps } from '@/src/utils/interfaces'
 import classnames from 'classnames'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 const Tablist: React.FC<ITablistProps> = ({
@@ -9,30 +10,36 @@ const Tablist: React.FC<ITablistProps> = ({
   activeColor = 'text-black',
   bgColor = 'bg-white',
   className = '',
-  variant = 'standart'
+  variant = 'standart',
+  filter
 }) => {
+  const t = useTranslations('')
   return (
-    <div
-      className={classnames(
-        `tabs-boxed ${variant === 'fullWidth' ? 'tabs' : ''}`,
-        className
-      )}
-      role='tablist'
-    >
-      {tabs.map(tab => (
-        <a
-          role='tab'
-          id={`tab-item-${tab.id}`}
-          className={classnames(
-            className,
-            `tab ${activeTab == tab.id ? `${bgColor} ${activeColor}` : ''}`
-          )}
-          key={tab.id}
-          onClick={() => onTabClick(tab.id)}
-        >
-          {tab.label}
-        </a>
-      ))}
+    <div className='flex justify-between'>
+      <div
+        className={classnames(
+          `tabs-boxed`,
+          variant === 'standart' && 'inline-flex', // Makes the Tablist fit the content
+          className
+        )}
+        role='tablist'
+      >
+        {tabs.map(tab => (
+          <a
+            role='tab'
+            id={`tab-item-${tab.id}`}
+            className={classnames(
+              `tab`,
+              activeTab === tab.id ? `${bgColor} ${activeColor}` : ''
+            )}
+            key={tab.id}
+            onClick={() => onTabClick(tab.id)}
+          >
+            {t(tab.label)}
+          </a>
+        ))}
+      </div>
+      <div>{filter}</div>
     </div>
   )
 }

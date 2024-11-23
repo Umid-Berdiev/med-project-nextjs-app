@@ -4,15 +4,22 @@ import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { ITab, ITabContent, ITabContentList } from '@/src/utils/interfaces'
 import { useParams, useRouter } from 'next/navigation'
 import Breadcrumb from '@/src/components/Breadcrumbs'
-import ProfileBlock from '@/src/views/doctors-profile/detail/ProfileBlock'
+import ProfileBlock from '@/src/views/patients/detail/ProfileBlock'
+import AppCard from '@/src/components/cards/AppCard'
+import ListFileIcon from '@/src/components/icons/ListFileIcon'
+import Link from 'next/link'
+import BalanceIcon from '@/src/components/icons/BalanceIcon'
+import FileListIcon from '@/src/components/icons/FileListIcon'
+import PatientsHistory from '@/src/views/patients/detail/patients-history/PatientsHistory'
+import Select from '@/src/components/forms/AppSelect'
 
 export default function PatientsDetailPage() {
-  const { locale, id, tab } = useParams()
+  const { locale, id } = useParams()
   const tabContentList = [
     {
       id: '1',
       label: 'Bemor tarixi',
-      content: 'Bemor tarixi'
+      content: <PatientsHistory />
     },
     {
       id: '2',
@@ -51,9 +58,8 @@ export default function PatientsDetailPage() {
     }
   ]
   const [activeTab, setActiveTab] = useState<string>(
-    Array.isArray(tab) ? tab[0] : tab
+    tabContentList[0].id.toString()
   )
-  const router = useRouter()
   const tabs: ITab[] = tabContentList.map(tab => ({
     id: tab.id.toString(),
     label: tab.label
@@ -68,12 +74,50 @@ export default function PatientsDetailPage() {
     <div>
       <Breadcrumb
         breadcrumbs={[
-          { label: 'Bosh sahifa', href: `/${locale}/dashboard` },
           { label: 'Bemorlar', href: `/${locale}/patients` },
           { label: 'Ismoilov Shaxzod Farrux o’g’li' }
         ]}
       />
       <ProfileBlock />
+      <div className='my-4 grid w-full gap-4 md:grid-cols-2 lg:grid-cols-3'>
+        <AppCard
+          icon={<ListFileIcon />}
+          title='Loglarning soni:'
+          value='32'
+          actions={
+            <div className='flex items-start'>
+              <Link
+                href='#'
+                className='border-b border-dashed text-[#23242780]'
+              >
+                Ko`rish
+              </Link>
+            </div>
+          }
+        />
+        <AppCard
+          icon={<BalanceIcon />}
+          title='Balans:'
+          value="- 1 846 843 so'm"
+          color='text-red-500'
+        />
+        <AppCard
+          icon={<FileListIcon />}
+          title='Xarid qilgan tovarlar soni:'
+          value='23 ta'
+          actions={
+            <div className='flex items-start'>
+              <Link
+                href='#'
+                className='border-b border-dashed text-[#23242780]'
+              >
+                Ko`rish
+              </Link>
+            </div>
+          }
+        />
+      </div>
+
       <div className='my-4'>
         <Tablist
           activeColor='text-black'
@@ -84,6 +128,21 @@ export default function PatientsDetailPage() {
           onTabClick={e => {
             setActiveTab(e)
           }}
+          filter={
+            <Select
+              options={[
+                {
+                  value: '1',
+                  label: '12845 - 2024 Cтационарный карта 27.09.2024'
+                }
+              ]}
+              selectedValue='1'
+              placeholder="Ro'yxatdan tanlang"
+              onSelect={e => {
+                console.log(e)
+              }}
+            />
+          }
         />
         <Tabs activeTab={activeTab} tabContents={tabContents} />
       </div>

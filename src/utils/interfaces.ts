@@ -36,6 +36,7 @@ export interface ITablistProps {
   bgColor?: string
   className?: string
   variant?: 'standart' | 'fullWidth'
+  filter?: React.ReactNode
 }
 
 export interface ITabsProps {
