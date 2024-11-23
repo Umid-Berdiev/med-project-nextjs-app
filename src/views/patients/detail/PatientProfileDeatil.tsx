@@ -5,6 +5,7 @@ import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { ITab, ITabContent, ITabContentList } from '@/src/utils/interfaces'
 import { useParams, useRouter } from 'next/navigation'
 import Breadcrumb from '@/src/components/Breadcrumbs'
+import Select from '@/src/components/forms/AppSelect'
 
 export default function DoctorsProfileDeatil({
   tabContentList
@@ -31,6 +32,7 @@ export default function DoctorsProfileDeatil({
     <div>
       <Breadcrumb
         breadcrumbs={[
+          { label: 'Bosh sahifa', href: `/${locale}/dashboard` },
           { label: 'Shifokor kabineti', href: `/${locale}/doctors-profile` },
           { label: 'Ismoilov Shaxzod Farrux o’g’li' }
         ]}
@@ -42,12 +44,14 @@ export default function DoctorsProfileDeatil({
           bgColor='bg-white'
           className='text-[#23242780]'
           tabs={tabs}
+          variant='standart'
           activeTab={activeTab}
           onTabClick={e => {
             setActiveTab(e)
             router.push(`/${locale}/doctors-profile/${id}/${e}`)
           }}
         />
+
         <Tabs activeTab={activeTab} tabContents={tabContents} />
       </div>
     </div>

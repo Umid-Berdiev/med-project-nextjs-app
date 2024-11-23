@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import Flatpickr from 'react-flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
-
+import React, { useState } from 'react'
+import Flatpickr from 'react-flatpickr'
+import 'flatpickr/dist/flatpickr.min.css'
 
 interface IProps {
   placeholder?: string
   className?: string
   value?: string
   onDateChange?: string
+  mode: 'single' | 'multiple' | 'range'
 }
 
 type DatePickerProps = {
-  onDateChange: (date: Date[]) => void;
-};
+  onDateChange: (date: Date[]) => void
+}
 
 export default function AppInputDate(props: IProps) {
-  const [selectedDate, setSelectedDate] = useState<Date[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date[]>([])
 
   const handleDateChange = (date: Date[]) => {
-    setSelectedDate(date);
-  };
+    setSelectedDate(date)
+  }
 
   return (
-      <Flatpickr
-        value={selectedDate}
-        onChange={handleDateChange}
-        placeholder={props.placeholder}
-
-        style={{
-          backgroundImage: "url('/images/CalendarIcon.svg')",
-          backgroundPosition: 'right 12px center',
-          backgroundRepeat: 'no-repeat',
-        }}
-        options={{
-          dateFormat: 'Y-m-d', // Sana formati: Yil-Oy-Kun
-        }}
-        className="border h-9 px-3 border-[#2324271A] rounded-lg text-[#161624] font-normal text-[13px] outline-none w-full"
-      />
+    <Flatpickr
+      value={selectedDate}
+      onChange={handleDateChange}
+      placeholder={props.placeholder}
+      style={{
+        backgroundImage: "url('/images/CalendarIcon.svg')",
+        backgroundPosition: 'right 12px center',
+        backgroundRepeat: 'no-repeat'
+      }}
+      options={{
+        mode: props.mode || 'single',
+        dateFormat: 'Y-m-d'
+      }}
+      className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none'
+    />
   )
 }

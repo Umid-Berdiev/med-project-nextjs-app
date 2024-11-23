@@ -9,10 +9,9 @@ import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
-import FilterPatients from './FilterPatients'
 import NoData from '@/src/components/table/NoData'
 
-const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
+const HistoryLogs = () => {
   const t = useTranslations('')
   const [sortBy, setSortBy] = useState<
     | {
@@ -63,33 +62,14 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       sortable: true
     },
     {
-      header: t('Tug`ilgan kun'),
-      col: (row: CellType) => row.birthDate,
-      sortable: true
-    },
-    {
-      header: t('Telefon raqami'),
-      col: (row: CellType) => row.phone
-    },
-    {
-      header: t('Balansi'),
+      header: t('Status'),
       col: (row: CellType) => (
-        <div>
-          {row.balance > 0 ? (
-            <div className='text-success'>+{row.balance} so`m </div>
-          ) : (
-            <div className='text-error'>{row.balance} so`m</div>
-          )}
-        </div>
-      )
-    },
-    {
-      header: t('Tashrif buyurgan'),
-      col: (row: CellType) => row.createdAt,
+        <span className='rounded bg-[#EDE7F6] px-2 py-1 text-xs uppercase text-[#845ADF]'>
+          Xizmat ko’rsatilgan
+        </span>
+      ),
       sortable: true
     },
-
-    { header: t('Ligota'), col: (row: CellType) => 'Rezident', sortable: true },
 
     {
       header: t('Registrator'),
@@ -97,33 +77,9 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       sortable: true
     },
     {
-      header: (
-        <div className='text-center'>
-          <TbTableOptions size={18} />
-        </div>
-      ),
-      col: (row: CellType) => (
-        <div className='dropdown dropdown-left dropdown-bottom'>
-          <div tabIndex={0} role='button' className='btn'>
-            <SlOptionsVertical size={14} />
-          </div>
-          <ul
-            tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
-          >
-            <li>
-              <Link
-                href={getLocalizedUrl(`patients/${row.id}`, locale as Locale)}
-              >
-                Ko`rish
-              </Link>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-      )
+      header: t('Sana'),
+      col: (row: CellType) => row.createdAt,
+      sortable: true
     }
   ]
 
@@ -174,23 +130,17 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       balance: -500
     }
   ]
-  const classRow = (row: CellType) => {
-    return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
-  }
 
   return (
     <div>
-      {openFilter && <FilterPatients />}
       <Table
         columns={columns}
         data={data.slice(page * perPage, page * perPage + perPage)}
         sortBy={sortBy}
         setSortBy={handleSort}
-        classRow={classRow}
         hoverable={false}
-        stripped={false}
+        stripped={true}
       />
-      <NoData />
       <Pagination
         page={page}
         size={perPage}
@@ -202,4 +152,4 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   )
 }
 
-export default PatientsTable
+export default HistoryLogs

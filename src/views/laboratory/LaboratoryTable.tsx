@@ -1,18 +1,19 @@
 'use client'
+import Button from '@/src/components/Button'
+import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import { Locale } from '@/src/configs/i18n'
-import { getLocalizedUrl } from '@/src/utils/i18n'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
-import FilterPatients from './FilterPatients'
-import NoData from '@/src/components/table/NoData'
+import ProfileBlock from '../doctors-profile/detail/ProfileBlock'
+import AppInput from '@/src/components/forms/AppInput'
+import AppLabel from '@/src/components/forms/AppLabel'
+import AppInputDate from '@/src/components/forms/AppInputDate'
 
-const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
+const LaboratoryTable = () => {
   const t = useTranslations('')
   const [sortBy, setSortBy] = useState<
     | {
@@ -31,6 +32,7 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
         : { column, direction: 'asc' }
     )
   }
+  const [open, setOpen] = useState(false)
   type CellType = {
     id: number
     name: string
@@ -63,6 +65,19 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       sortable: true
     },
     {
+      header: t('Xizmatlar soni'),
+      col: (row: CellType) => 2,
+      sortable: true
+    },
+    {
+      header: t('Jami summa'),
+      col: (row: CellType) => <div>{row.balance} so`m</div>
+    },
+    {
+      header: t('Holati'),
+      col: (row: CellType) => 'To’lanmagan'
+    },
+    {
       header: t('Tug`ilgan kun'),
       col: (row: CellType) => row.birthDate,
       sortable: true
@@ -71,31 +86,13 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       header: t('Telefon raqami'),
       col: (row: CellType) => row.phone
     },
+
     {
-      header: t('Balansi'),
-      col: (row: CellType) => (
-        <div>
-          {row.balance > 0 ? (
-            <div className='text-success'>+{row.balance} so`m </div>
-          ) : (
-            <div className='text-error'>{row.balance} so`m</div>
-          )}
-        </div>
-      )
-    },
-    {
-      header: t('Tashrif buyurgan'),
+      header: t('Sana'),
       col: (row: CellType) => row.createdAt,
       sortable: true
     },
 
-    { header: t('Ligota'), col: (row: CellType) => 'Rezident', sortable: true },
-
-    {
-      header: t('Registrator'),
-      col: (row: CellType) => 'Yusupova Iroda Xasan qizi',
-      sortable: true
-    },
     {
       header: (
         <div className='text-center'>
@@ -112,20 +109,18 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
             className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
           >
             <li>
-              <Link
-                href={getLocalizedUrl(`patients/${row.id}`, locale as Locale)}
-              >
-                Ko`rish
-              </Link>
-            </li>
-            <li>
-              <a>Item 2</a>
+              <button onClick={() => setOpen(true)}>
+                Diagnostika natijalari
+              </button>
             </li>
           </ul>
         </div>
       )
     }
   ]
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   const data: CellType[] = [
     {
@@ -153,7 +148,7 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       phone: '+998 33 332-12-14',
       createdAt: '2023-03-01',
       doctor: 'Dr. Smith',
-      balance: -400
+      balance: 400
     },
     {
       id: 4,
@@ -171,7 +166,7 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       phone: '+998 33 332-12-14',
       createdAt: '2023-05-01',
       doctor: 'Dr. Smith',
-      balance: -500
+      balance: 500
     }
   ]
   const classRow = (row: CellType) => {
@@ -180,7 +175,6 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
 
   return (
     <div>
-      {openFilter && <FilterPatients />}
       <Table
         columns={columns}
         data={data.slice(page * perPage, page * perPage + perPage)}
@@ -190,7 +184,6 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
         hoverable={false}
         stripped={false}
       />
-      <NoData />
       <Pagination
         page={page}
         size={perPage}
@@ -198,8 +191,59 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
         changeCurrentPage={e => setPage(e)}
         changePerPage={e => setPerPage(e)}
       />
+      <Modal
+        bg='bg-background'
+        title='Diagnostika natijalari'
+        open={open}
+        size='lg'
+        onClose={handleClose}
+      >
+        <div className='flex flex-col gap-3 py-4'>
+          <ProfileBlock />
+          <div className='grid grid-cols-2 gap-4'>
+            <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
+              <span className='text-sm font-normal text-contentTertiary'>
+                Tibbiy xizmatlar
+              </span>
+              <span className='text-sm text-secondary'>
+                MRT bosh miyasi; EXO Kardiografiya
+              </span>
+            </div>
+            <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
+              <span className='text-sm font-normal text-contentTertiary'>
+                Yashash manzili
+              </span>
+              <span className='text-sm '>
+                Toshkent shahar, Yunusobod 4, Abdulla Qodiriy 29, 5
+              </span>
+            </div>
+          </div>
+          <div className='grid grid-cols-8 gap-4'>
+            <div className='grid-cols-2'>
+              <AppLabel text='Natija raqami' />
+              <AppInput placeholder='Natija raqami' />
+            </div>
+            <div className='grid-cols-2'>
+              <AppLabel text='Qabul qilingan sana' />
+              <AppInputDate mode='single' placeholder='Qabul qilingan sana' />
+            </div>
+            <div className='grid-cols-2'>
+              <AppLabel text='Natija sanasi' />
+              <AppInputDate mode='single' placeholder='Natija sanasi' />
+            </div>
+          </div>
+        </div>
+        <div className='flex justify-end gap-1 py-2'>
+          <Button variant='outlined' color='secondary' onClick={handleClose}>
+            Bekor qilish
+          </Button>
+          <Button variant='contained' color='secondary'>
+            Saqlash
+          </Button>
+        </div>
+      </Modal>
     </div>
   )
 }
 
-export default PatientsTable
+export default LaboratoryTable

@@ -7,7 +7,13 @@
     --primary: #232427;
     --secondary: #29ced2;
     --background: #f9f9f9;
-    --soft-secondary: #9ceef0;
+    --info: #2cbae6;
+    --success: #00d25b;
+    --warning: #f7b924;
+    --danger: #ff4f4f;
+    --error: #ff4f4f;
+    --white: #fff;
+    --soft-secondary: #2aced01a;
     --background-secondary: #f4f5f7;
     --button: #29ced2;
     --button-text: #fff;
@@ -53,4 +59,22 @@
 .sub-menu {
   overflow: hidden;
   transition: height 300ms;
+}
+.flatpickr-day.selected {
+  background: var(--secondary) !important;
+  border: 1px solid var(--secondary) !important;
+  border-radius: 5px !important;
+}
+.flatpickr-day.today {
+  border: 1px solid var(--soft-secondary) !important;
+  border-radius: 5px !important;
+}
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  border: 1px solid var(--soft-secondary) !important;
+  border-radius: 5px !important;
+  margin: 5px !important;
+}
+.flatpickr-calendar.animate.open {
+  padding: 20px !important;
 }

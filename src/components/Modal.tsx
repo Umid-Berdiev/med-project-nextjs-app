@@ -6,8 +6,9 @@ type Props = {
   open: boolean
   disableClickOutside?: boolean
   onClose(): void
-  size?: 'lg' | 'md'
+  size?: 'lg' | 'md' | 'sm'
   title?: string
+  bg?: string
 }
 
 const Modal = ({
@@ -16,7 +17,8 @@ const Modal = ({
   disableClickOutside,
   onClose,
   size,
-  title
+  title,
+  bg
 }: Props) => {
   const ref = useRef(null)
   useOnClickOutside(ref, () => {
@@ -34,7 +36,7 @@ const Modal = ({
   return (
     <div className={modalClass}>
       <div
-        className={`modal-box ${size === 'lg' ? ' max-w-5xl' : ''}`}
+        className={`modal-box ${bg} ${size === 'lg' ? ' max-w-screen-2xl' : size === 'md' ? 'max-w-5xl' : 'max-w-sm'}`}
         ref={ref}
       >
         <button

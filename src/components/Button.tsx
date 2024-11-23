@@ -1,9 +1,16 @@
 import React from 'react'
-
+import classnames from 'classnames'
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   variant?: 'contained' | 'outlined' | 'text' | 'tonal'
-  color?: 'primary' | 'secondary' | 'error' | 'info'
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'white'
   size?: 'small' | 'medium' | 'large'
   rounded?: boolean
   startIcon?: React.ReactNode
@@ -13,12 +20,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'contained',
-  color = 'primary',
+  color = 'secondary',
   size = 'medium',
   rounded = false,
   startIcon,
   endIcon,
-  className,
+  className = '',
   ...props
 }) => {
   const sizeStyles = {
@@ -45,10 +52,10 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={
-        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0 bg-secondary px-5 ' +
+      className={classnames(
+        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0  px-5 ',
         buttonStyles
-      }
+      )}
       {...props}
     >
       {startIcon && <span className='flex items-center'>{startIcon}</span>}

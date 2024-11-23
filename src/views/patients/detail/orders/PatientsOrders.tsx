@@ -1,18 +1,11 @@
 'use client'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import { Locale } from '@/src/configs/i18n'
-import { getLocalizedUrl } from '@/src/utils/i18n'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
-import { SlOptionsVertical } from 'react-icons/sl'
-import { TbTableOptions } from 'react-icons/tb'
-import FilterPatients from './FilterPatients'
-import NoData from '@/src/components/table/NoData'
 
-const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
+const PatientsOrders = () => {
   const t = useTranslations('')
   const [sortBy, setSortBy] = useState<
     | {
@@ -62,68 +55,21 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       col: (row: CellType) => row.name,
       sortable: true
     },
+
     {
-      header: t('Tug`ilgan kun'),
-      col: (row: CellType) => row.birthDate,
+      header: t('Buyurtma raqami'),
+      col: (row: CellType) => '457844',
       sortable: true
     },
     {
-      header: t('Telefon raqami'),
-      col: (row: CellType) => row.phone
-    },
-    {
-      header: t('Balansi'),
-      col: (row: CellType) => (
-        <div>
-          {row.balance > 0 ? (
-            <div className='text-success'>+{row.balance} so`m </div>
-          ) : (
-            <div className='text-error'>{row.balance} so`m</div>
-          )}
-        </div>
-      )
-    },
-    {
-      header: t('Tashrif buyurgan'),
+      header: t('Buyurtma sanasi'),
       col: (row: CellType) => row.createdAt,
       sortable: true
     },
-
-    { header: t('Ligota'), col: (row: CellType) => 'Rezident', sortable: true },
-
     {
-      header: t('Registrator'),
-      col: (row: CellType) => 'Yusupova Iroda Xasan qizi',
+      header: t('Ro’yxatdan o’tgan sanasi'),
+      col: (row: CellType) => '29.04.2022, 15:09',
       sortable: true
-    },
-    {
-      header: (
-        <div className='text-center'>
-          <TbTableOptions size={18} />
-        </div>
-      ),
-      col: (row: CellType) => (
-        <div className='dropdown dropdown-left dropdown-bottom'>
-          <div tabIndex={0} role='button' className='btn'>
-            <SlOptionsVertical size={14} />
-          </div>
-          <ul
-            tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
-          >
-            <li>
-              <Link
-                href={getLocalizedUrl(`patients/${row.id}`, locale as Locale)}
-              >
-                Ko`rish
-              </Link>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-      )
     }
   ]
 
@@ -174,23 +120,17 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       balance: -500
     }
   ]
-  const classRow = (row: CellType) => {
-    return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
-  }
 
   return (
     <div>
-      {openFilter && <FilterPatients />}
       <Table
         columns={columns}
         data={data.slice(page * perPage, page * perPage + perPage)}
         sortBy={sortBy}
         setSortBy={handleSort}
-        classRow={classRow}
         hoverable={false}
-        stripped={false}
+        stripped={true}
       />
-      <NoData />
       <Pagination
         page={page}
         size={perPage}
@@ -202,4 +142,4 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   )
 }
 
-export default PatientsTable
+export default PatientsOrders

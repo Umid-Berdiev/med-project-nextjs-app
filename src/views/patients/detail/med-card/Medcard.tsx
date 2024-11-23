@@ -9,10 +9,11 @@ import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
-import FilterPatients from './FilterPatients'
 import NoData from '@/src/components/table/NoData'
+import { BsPrinterFill } from 'react-icons/bs'
+import { BiPrinter } from 'react-icons/bi'
 
-const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
+const MedCard = () => {
   const t = useTranslations('')
   const [sortBy, setSortBy] = useState<
     | {
@@ -63,34 +64,22 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       sortable: true
     },
     {
-      header: t('Tug`ilgan kun'),
-      col: (row: CellType) => row.birthDate,
-      sortable: true
-    },
-    {
-      header: t('Telefon raqami'),
-      col: (row: CellType) => row.phone
-    },
-    {
-      header: t('Balansi'),
+      header: t('Karta turi'),
       col: (row: CellType) => (
-        <div>
-          {row.balance > 0 ? (
-            <div className='text-success'>+{row.balance} so`m </div>
-          ) : (
-            <div className='text-error'>{row.balance} so`m</div>
-          )}
-        </div>
-      )
-    },
-    {
-      header: t('Tashrif buyurgan'),
-      col: (row: CellType) => row.createdAt,
+        <span className='rounded bg-[#EDE7F6] px-2 py-1 text-xs uppercase text-[#845ADF]'>
+          Statsionar karta
+        </span>
+      ),
       sortable: true
     },
-
-    { header: t('Ligota'), col: (row: CellType) => 'Rezident', sortable: true },
-
+    {
+      header: t('Karta raqami'),
+      col: (row: CellType) => '2024/12981'
+    },
+    {
+      header: t('Javobgar doktor'),
+      col: (row: CellType) => row.doctor
+    },
     {
       header: t('Registrator'),
       col: (row: CellType) => 'Yusupova Iroda Xasan qizi',
@@ -103,25 +92,8 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
         </div>
       ),
       col: (row: CellType) => (
-        <div className='dropdown dropdown-left dropdown-bottom'>
-          <div tabIndex={0} role='button' className='btn'>
-            <SlOptionsVertical size={14} />
-          </div>
-          <ul
-            tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
-          >
-            <li>
-              <Link
-                href={getLocalizedUrl(`patients/${row.id}`, locale as Locale)}
-              >
-                Ko`rish
-              </Link>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
+        <div className=' text-center'>
+          <BiPrinter size={18} />
         </div>
       )
     }
@@ -136,61 +108,19 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       createdAt: '2023-01-01',
       doctor: 'Dr. Smith',
       balance: 10000
-    },
-    {
-      id: 2,
-      name: 'Акулич Александр Александрович',
-      birthDate: '1993-02-02',
-      phone: '+998 33 332-12-14',
-      createdAt: '2023-02-01',
-      doctor: 'Dr. Smith',
-      balance: 20000
-    },
-    {
-      id: 3,
-      name: 'Акулич Александр Александрович',
-      birthDate: '2001-03-03',
-      phone: '+998 33 332-12-14',
-      createdAt: '2023-03-01',
-      doctor: 'Dr. Smith',
-      balance: -400
-    },
-    {
-      id: 4,
-      name: 'Акулич Александр Александрович',
-      birthDate: '1995-04-04',
-      phone: '+998 33 332-12-14',
-      createdAt: '2023-04-01',
-      doctor: 'Dr. Smith',
-      balance: 400
-    },
-    {
-      id: 5,
-      name: 'Акулич Александр Александрович',
-      birthDate: '1997-05-05',
-      phone: '+998 33 332-12-14',
-      createdAt: '2023-05-01',
-      doctor: 'Dr. Smith',
-      balance: -500
     }
   ]
-  const classRow = (row: CellType) => {
-    return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
-  }
 
   return (
     <div>
-      {openFilter && <FilterPatients />}
       <Table
         columns={columns}
         data={data.slice(page * perPage, page * perPage + perPage)}
         sortBy={sortBy}
         setSortBy={handleSort}
-        classRow={classRow}
         hoverable={false}
-        stripped={false}
+        stripped={true}
       />
-      <NoData />
       <Pagination
         page={page}
         size={perPage}
@@ -202,4 +132,4 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   )
 }
 
-export default PatientsTable
+export default MedCard
