@@ -2,8 +2,9 @@ import { useState } from "react";
 
 interface IProps {
     options: { label: string; value: string }[];
-  className?: string
-  onChange: (selectedValue: string) => void;
+    className?: string;
+    isRadio?: string;
+    onChange: (selectedValue: string) => void;
 }
 
 export default function AppInputCheckbox(props: IProps) {
@@ -11,12 +12,12 @@ export default function AppInputCheckbox(props: IProps) {
     const handleChange = (value: string) => {
         setSelectedValue(value);
         props.onChange(value);
-      };
+    };
     return (
-        
+
         <div className={`grid ${props.className}`}>
             {
-                
+
                 props.options.map((option: any) => (
                     <label
                         key={option.value}
@@ -28,7 +29,7 @@ export default function AppInputCheckbox(props: IProps) {
                             value={option.value}
                             checked={selectedValue === option.value}
                             onChange={() => handleChange(option.value)}
-                            className="checkbox checkbox-sm border-secondary rounded [--chkbg:theme(colors.secondary)] [--chkfg:white] " 
+                            className="checkbox checkbox-sm border-secondary rounded [--chkbg:theme(colors.secondary)] [--chkfg:white] "
 
                         />
                         {option.label}
