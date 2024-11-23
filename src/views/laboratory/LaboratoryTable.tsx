@@ -1,5 +1,8 @@
 'use client'
 import Button from '@/src/components/Button'
+import AppInput from '@/src/components/forms/AppInput'
+import AppInputDate from '@/src/components/forms/AppInputDate'
+import AppLabel from '@/src/components/forms/AppLabel'
 import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
@@ -9,9 +12,6 @@ import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 import ProfileBlock from '../doctors-profile/detail/ProfileBlock'
-import AppInput from '@/src/components/forms/AppInput'
-import AppLabel from '@/src/components/forms/AppLabel'
-import AppInputDate from '@/src/components/forms/AppInputDate'
 
 const LaboratoryTable = () => {
   const t = useTranslations('')
@@ -110,7 +110,7 @@ const LaboratoryTable = () => {
           >
             <li>
               <button onClick={() => setOpen(true)}>
-                Diagnostika natijalari
+                {t('Diagnostika natijalari')}
               </button>
             </li>
           </ul>

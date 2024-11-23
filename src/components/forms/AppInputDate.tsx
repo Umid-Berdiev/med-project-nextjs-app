@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/flatpickr.min.css'
+import { useState } from 'react'
+import Flatpickr from 'react-flatpickr'
 
 interface IProps {
   placeholder?: string
   className?: string
   value?: string
   onDateChange?: string
-  mode: 'single' | 'multiple' | 'range'
+  mode?: 'single' | 'multiple' | 'range'
 }
 
 type DatePickerProps = {

@@ -3,15 +3,15 @@ import CustomEditor from '@/src/components/CustomEditor'
 import Modal from '@/src/components/Modal'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 
-import React from 'react'
 import { BiPlusCircle } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 
 export default function Complaints() {
   const t = useTranslations()
-  const [open, setOpen] = React.useState(false)
-  const [openTpemp, setOpenTemp] = React.useState(false)
+  const [open, setOpen] = useState(false)
+  const [openTpemp, setOpenTemp] = useState(false)
   const handleClick = () => {
     setOpen(true)
   }
