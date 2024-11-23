@@ -12,6 +12,7 @@ import BalanceIcon from '@/src/components/icons/BalanceIcon'
 import FileListIcon from '@/src/components/icons/FileListIcon'
 import PatientsHistory from '@/src/views/patients/detail/patients-history/PatientsHistory'
 import Select from '@/src/components/forms/AppSelect'
+import PersonalInfo from '@/src/views/patients/detail/personal-info/PersonalInfo'
 
 export default function PatientsDetailPage() {
   const { locale, id } = useParams()
@@ -24,7 +25,7 @@ export default function PatientsDetailPage() {
     {
       id: '2',
       label: 'Shaxsiy ma’lumotlari',
-      content: 'Shaxsiy ma’lumotlari'
+      content: <PersonalInfo />
     },
     {
       id: '3',
