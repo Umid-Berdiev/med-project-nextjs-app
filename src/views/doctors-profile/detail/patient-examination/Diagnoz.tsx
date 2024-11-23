@@ -1,6 +1,5 @@
 import Button from '@/src/components/Button'
-import Select from '@/src/components/forms/AppSelect'
-import React from 'react'
+import AppSelect from '@/src/components/forms/AppSelect'
 import { BiPlusCircle, BiTrash } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 import { PiPlusCircle } from 'react-icons/pi'
@@ -16,7 +15,7 @@ export default function Diagnoz() {
           <button className='h-8 w-8 rounded-md bg-white p-2 shadow-sm'>
             <BiTrash className='text-error' />
           </button>
-          <Select
+          <AppSelect
             options={[
               {
                 value: '1',

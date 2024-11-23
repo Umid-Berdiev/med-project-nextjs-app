@@ -1,24 +1,24 @@
 'use client'
-import { useState } from 'react'
-import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
-import { ITab, ITabContent, ITabContentList } from '@/src/utils/interfaces'
-import { useParams, useRouter } from 'next/navigation'
 import Breadcrumb from '@/src/components/Breadcrumbs'
-import ProfileBlock from '@/src/views/patients/detail/ProfileBlock'
 import AppCard from '@/src/components/cards/AppCard'
-import ListFileIcon from '@/src/components/icons/ListFileIcon'
-import Link from 'next/link'
+import AppSelect from '@/src/components/forms/AppSelect'
 import BalanceIcon from '@/src/components/icons/BalanceIcon'
 import FileListIcon from '@/src/components/icons/FileListIcon'
-import PatientsHistory from '@/src/views/patients/detail/patients-history/PatientsHistory'
-import Select from '@/src/components/forms/AppSelect'
-import PersonalInfo from '@/src/views/patients/detail/personal-info/PersonalInfo'
-import HistoryLogs from '@/src/views/patients/detail/patients-log/HistoryLogs'
-import MedCard from '@/src/views/patients/detail/med-card/Medcard'
-import StatCard from '@/src/views/patients/detail/stat-card/StatCard'
-import PatientsOrders from '@/src/views/patients/detail/orders/PatientsOrders'
-import PdfFiles from '@/src/views/patients/detail/pdf-files/PdfFiles'
+import ListFileIcon from '@/src/components/icons/ListFileIcon'
+import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
+import { ITab, ITabContent } from '@/src/utils/interfaces'
 import MedCourse from '@/src/views/patients/detail/course/MedCourse'
+import MedCard from '@/src/views/patients/detail/med-card/Medcard'
+import PatientsOrders from '@/src/views/patients/detail/orders/PatientsOrders'
+import PatientsHistory from '@/src/views/patients/detail/patients-history/PatientsHistory'
+import HistoryLogs from '@/src/views/patients/detail/patients-log/HistoryLogs'
+import PdfFiles from '@/src/views/patients/detail/pdf-files/PdfFiles'
+import PersonalInfo from '@/src/views/patients/detail/personal-info/PersonalInfo'
+import ProfileBlock from '@/src/views/patients/detail/ProfileBlock'
+import StatCard from '@/src/views/patients/detail/stat-card/StatCard'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import { useState } from 'react'
 
 export default function PatientsDetailPage() {
   const { locale, id } = useParams()
@@ -136,7 +136,7 @@ export default function PatientsDetailPage() {
             setActiveTab(e)
           }}
           filter={
-            <Select
+            <AppSelect
               options={[
                 {
                   value: '1',
