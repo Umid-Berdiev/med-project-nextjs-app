@@ -14,14 +14,9 @@ import UserViewIcon from '@/src/components/icons/UserViewIcon'
 import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import TableHeader from '@/src/components/table/TableHeader'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { FaFileAlt } from 'react-icons/fa'
-import { SlOptionsVertical } from 'react-icons/sl'
-import { TbTableOptions } from 'react-icons/tb'
 
 export default function UserTableWrapper() {
   const t = useTranslations()
@@ -34,9 +29,9 @@ export default function UserTableWrapper() {
   }
   const [sortBy, setSortBy] = useState<
     | {
-      column: string
-      direction: 'asc' | 'desc'
-    }
+        column: string
+        direction: 'asc' | 'desc'
+      }
     | undefined
   >(undefined)
   const [perPage, setPerPage] = useState(10)
@@ -49,7 +44,7 @@ export default function UserTableWrapper() {
     )
   }
   const [open, setOpen] = useState(false)
-  const [openDelete, setOpenDelete] = useState(true)
+  const [openDelete, setOpenDelete] = useState(false)
 
   type UserTableCellType = {
     fullname: string
@@ -60,7 +55,6 @@ export default function UserTableWrapper() {
     registrationDate: string
     lastDate: string
   }
-
 
   const columns: ITableColumn<UserTableCellType>[] = [
     {
@@ -103,21 +97,31 @@ export default function UserTableWrapper() {
       header: t('Amallar'),
       col: (row: UserTableCellType) => (
         <div className='flex items-center gap-3'>
-          <Link href="#" className='bg-white flex justify-center items-center rounded shadow-sm size-7'>
+          <Link
+            href='#'
+            className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
+          >
             <UserViewIcon />
           </Link>
-          <Link href="#" className='bg-white flex justify-center items-center rounded shadow-sm size-7'>
+          <Link
+            href='#'
+            className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
+          >
             <UserEditIcon />
           </Link>
-          <Link href="#" onClick={() => setOpenDelete(!open)} className='bg-white flex justify-center items-center rounded shadow-sm size-7'>
+          <Button
+            variant='text'
+            onClick={() => setOpenDelete(true)}
+            className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
+          >
             <UserDeleteIcon />
-          </Link>
+          </Button>
         </div>
       )
     }
   ]
 
-  const UserTableData: UserTableCellType[] = [
+  const userTableData: UserTableCellType[] = [
     {
       fullname: 'Alice',
       registrationDate: '1998-01-01',
@@ -353,15 +357,14 @@ export default function UserTableWrapper() {
       login: 'mt.sea'
     }
   ]
+
   const handleClose = () => {
     setOpen(false)
     setOpenDelete(false)
   }
 
-
   return (
     <>
-
       <div className='flex items-center justify-between'>
         <AppInput className='max-w-60' isSearch={true} placeholder='Qidirish' />
         <Button onClick={() => setOpen(!open)}>
@@ -382,10 +385,7 @@ export default function UserTableWrapper() {
       </div>
       <Table
         columns={columns}
-        data={UserTableData.slice(
-          page * perPage,
-          page * perPage + perPage
-        )}
+        data={userTableData.slice(page * perPage, page * perPage + perPage)}
         sortBy={sortBy}
         setSortBy={handleSort}
         hoverable={false}
@@ -394,7 +394,7 @@ export default function UserTableWrapper() {
       <Pagination
         page={page}
         size={perPage}
-        totalCount={UserTableData.length}
+        totalCount={userTableData.length}
         changeCurrentPage={e => setPage(e)}
         changePerPage={e => setPerPage(e)}
       />
@@ -408,8 +408,10 @@ export default function UserTableWrapper() {
       >
         <div className='grid grid-cols-12 gap-4'>
           <RoundedBlock className='col-span-6 !block'>
-            <h5 className='text-lg mb-4'>{t('Foydalanuvchi haqida malumot')}</h5>
-            <div className='grid grid-cols-12 gap-4 mb-3'>
+            <h5 className='mb-4 text-lg'>
+              {t('Foydalanuvchi haqida malumot')}
+            </h5>
+            <div className='mb-3 grid grid-cols-12 gap-4'>
               <div className='col-span-6'>
                 <AppLabel isRequired text={t('FISh')} />
                 <AppInput placeholder={t('FISh ni kiriting')} />
@@ -421,22 +423,32 @@ export default function UserTableWrapper() {
             </div>
             <div>
               <AppLabel text={t('Parolni o’zgartirish')} />
-              <AppInputRadioRound onChange={handleTabChange} options={passwordChangeOptions} />
+              <AppInputRadioRound
+                onChange={handleTabChange}
+                options={passwordChangeOptions}
+              />
             </div>
-            <div className="grid grid-cols-12 gap-x-2 gap-y-4 mb-4">
+            <div className='mb-4 grid grid-cols-12 gap-x-2 gap-y-4'>
               <div className='col-span-7'>
                 <AppLabel isRequired text={t('Yangi parol')} />
                 <AppInput placeholder={t('Yangi parolni kiriting')} />
               </div>
               <div className='col-span-5'>
-                <AppLabel className='opacity-0 block mb-2 text-sm' isRequired text={t('Yangi parol')} />
-                <Button className='w-full'>{t('Parolni generatsiya qilish')}</Button>
+                <AppLabel
+                  className='mb-2 block text-sm opacity-0'
+                  isRequired
+                  text={t('Yangi parol')}
+                />
+                <Button className='w-full'>
+                  {t('Parolni generatsiya qilish')}
+                </Button>
               </div>
             </div>
             <div className='grid grid-cols-12 gap-4'>
               <div className='col-span-6'>
                 <AppLabel isRequired text={t('Filial')} />
-                <AppSelect placeholder={t('Filialni tanlang')}
+                <AppSelect
+                  placeholder={t('Filialni tanlang')}
                   options={[
                     { value: '1', label: 'Filial1' },
                     { value: '2', label: 'Filial2' },
@@ -446,7 +458,8 @@ export default function UserTableWrapper() {
               </div>
               <div className='col-span-6'>
                 <AppLabel isRequired text={t('Foydalanuvchi roli')} />
-                <AppSelect placeholder={t('Rolni tanlang')}
+                <AppSelect
+                  placeholder={t('Rolni tanlang')}
                   options={[
                     { value: '1', label: 'Rol1' },
                     { value: '2', label: 'Rol2' },
@@ -472,181 +485,238 @@ export default function UserTableWrapper() {
             </div>
             <div className=''>
               <AppLabel text={t('Jinsi')} />
-              <AppInputRadioRound onChange={handleTabChange} options={[
-                { value: '1', label: 'Erkak' },
-                { value: '0', label: 'Ayol' }
-              ]} />
+              <AppInputRadioRound
+                onChange={handleTabChange}
+                options={[
+                  { value: '1', label: 'Erkak' },
+                  { value: '0', label: 'Ayol' }
+                ]}
+              />
             </div>
             <div>
               <AppLabel text={t('Faqat ozini hisobotini korish')} />
-              <AppInputRadioRound onChange={handleTabChange} options={[
-                { value: '10', label: 'Ha' },
-                { value: '11', label: 'Yoq' }
-              ]} />
+              <AppInputRadioRound
+                onChange={handleTabChange}
+                options={[
+                  { value: '10', label: 'Ha' },
+                  { value: '11', label: 'Yoq' }
+                ]}
+              />
             </div>
             <div>
               <AppLabel text={t('Assistent')} />
-              <AppInputRadioRound onChange={handleTabChange} options={[
-                { value: '101', label: 'Ha' },
-                { value: '111', label: 'Yoq' }
-              ]} />
+              <AppInputRadioRound
+                onChange={handleTabChange}
+                options={[
+                  { value: '101', label: 'Ha' },
+                  { value: '111', label: 'Yoq' }
+                ]}
+              />
             </div>
             <div>
               <AppLabel text={t('HrPlus')} />
-              <AppInputRadioRound onChange={handleTabChange} options={[
-                { value: '141', label: 'Ha' },
-                { value: '1131', label: 'Yoq' }
-              ]} />
+              <AppInputRadioRound
+                onChange={handleTabChange}
+                options={[
+                  { value: '141', label: 'Ha' },
+                  { value: '1131', label: 'Yoq' }
+                ]}
+              />
             </div>
-
           </RoundedBlock>
           <RoundedBlock className='col-span-6'>
-            <h5 className='text-lg'>{t('Belgilangan foydalanuvchilar guruhlari')}</h5>
+            <h5 className='text-lg'>
+              {t('Belgilangan foydalanuvchilar guruhlari')}
+            </h5>
             <div className=''>
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Sklad"
-                }, {
-                  value: "2",
-                  label: "Transplantologiya va angioxiturgiya (kattalar va bolalar)"
-                }, {
-                  value: "3",
-                  label: "RSN-PMS Kardinatologiyalar Samarqand filiali"
-                }, {
-                  value: "4",
-                  label: "RSN-PMS Kardinatologiyalar Samarqand filiali"
-                }]}
+                options={[
+                  {
+                    value: '1',
+                    label: 'Sklad'
+                  },
+                  {
+                    value: '2',
+                    label:
+                      'Transplantologiya va angioxiturgiya (kattalar va bolalar)'
+                  },
+                  {
+                    value: '3',
+                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
+                  },
+                  {
+                    value: '4',
+                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
+                  }
+                ]}
               />
               <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Kislorod bo’limi"
-                }, {
-                  value: "2",
-                  label: "Yurak ishimik kassaliklar (kardioxirurgiya)"
-                }, {
-                  value: "3",
-                  label: "Dorixona"
-                }, {
-                  value: "4",
-                  label: "Endovizual (abdominal va torakal) xirurgiya"
-                }]}
+                options={[
+                  {
+                    value: '1',
+                    label: 'Kislorod bo’limi'
+                  },
+                  {
+                    value: '2',
+                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
+                  },
+                  {
+                    value: '3',
+                    label: 'Dorixona'
+                  },
+                  {
+                    value: '4',
+                    label: 'Endovizual (abdominal va torakal) xirurgiya'
+                  }
+                ]}
               />
               <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Sklad"
-                }, {
-                  value: "2",
-                  label: "Transplantologiya va angioxiturgiya (kattalar va bolalar)"
-                }, {
-                  value: "3",
-                  label: "RSN-PMS Kardinatologiyalar Samarqand filiali"
-                }, {
-                  value: "4",
-                  label: "RSN-PMS Kardinatologiyalar Samarqand filiali"
-                }]}
+                options={[
+                  {
+                    value: '1',
+                    label: 'Sklad'
+                  },
+                  {
+                    value: '2',
+                    label:
+                      'Transplantologiya va angioxiturgiya (kattalar va bolalar)'
+                  },
+                  {
+                    value: '3',
+                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
+                  },
+                  {
+                    value: '4',
+                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
+                  }
+                ]}
               />
               <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Kislorod bo’limi"
-                }, {
-                  value: "2",
-                  label: "Yurak ishimik kassaliklar (kardioxirurgiya)"
-                }, {
-                  value: "3",
-                  label: "Dorixona"
-                }, {
-                  value: "4",
-                  label: "Endovizual (abdominal va torakal) xirurgiya"
-                }]}
+                options={[
+                  {
+                    value: '1',
+                    label: 'Kislorod bo’limi'
+                  },
+                  {
+                    value: '2',
+                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
+                  },
+                  {
+                    value: '3',
+                    label: 'Dorixona'
+                  },
+                  {
+                    value: '4',
+                    label: 'Endovizual (abdominal va torakal) xirurgiya'
+                  }
+                ]}
               />
               <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Sklad"
-                }, {
-                  value: "2",
-                  label: "Transplantologiya va angioxiturgiya (kattalar va bolalar)"
-                }, {
-                  value: "3",
-                  label: "RSN-PMS Kardinatologiyalar Samarqand filiali"
-                }, {
-                  value: "4",
-                  label: "RSN-PMS Kardinatologiyalar Samarqand filiali"
-                }]}
+                options={[
+                  {
+                    value: '1',
+                    label: 'Sklad'
+                  },
+                  {
+                    value: '2',
+                    label:
+                      'Transplantologiya va angioxiturgiya (kattalar va bolalar)'
+                  },
+                  {
+                    value: '3',
+                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
+                  },
+                  {
+                    value: '4',
+                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
+                  }
+                ]}
               />
               <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Kislorod bo’limi"
-                }, {
-                  value: "2",
-                  label: "Yurak ishimik kassaliklar (kardioxirurgiya)"
-                }, {
-                  value: "3",
-                  label: "Dorixona"
-                }, {
-                  value: "4",
-                  label: "Endovizual (abdominal va torakal) xirurgiya"
-                }]}
-              /> <hr />
+                options={[
+                  {
+                    value: '1',
+                    label: 'Kislorod bo’limi'
+                  },
+                  {
+                    value: '2',
+                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
+                  },
+                  {
+                    value: '3',
+                    label: 'Dorixona'
+                  },
+                  {
+                    value: '4',
+                    label: 'Endovizual (abdominal va torakal) xirurgiya'
+                  }
+                ]}
+              />{' '}
+              <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Kislorod bo’limi"
-                }, {
-                  value: "2",
-                  label: "Yurak ishimik kassaliklar (kardioxirurgiya)"
-                }, {
-                  value: "3",
-                  label: "Dorixona"
-                }, {
-                  value: "4",
-                  label: "Endovizual (abdominal va torakal) xirurgiya"
-                }]}
-              /> <hr />
+                options={[
+                  {
+                    value: '1',
+                    label: 'Kislorod bo’limi'
+                  },
+                  {
+                    value: '2',
+                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
+                  },
+                  {
+                    value: '3',
+                    label: 'Dorixona'
+                  },
+                  {
+                    value: '4',
+                    label: 'Endovizual (abdominal va torakal) xirurgiya'
+                  }
+                ]}
+              />{' '}
+              <hr />
               <AppInputCheckbox
                 className='block'
                 onChange={handleTabChange}
-                options={[{
-                  value: "1",
-                  label: "Kislorod bo’limi"
-                }, {
-                  value: "2",
-                  label: "Yurak ishimik kassaliklar (kardioxirurgiya)"
-                }, {
-                  value: "3",
-                  label: "Dorixona"
-                }, {
-                  value: "4",
-                  label: "Endovizual (abdominal va torakal) xirurgiya"
-                }]}
+                options={[
+                  {
+                    value: '1',
+                    label: 'Kislorod bo’limi'
+                  },
+                  {
+                    value: '2',
+                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
+                  },
+                  {
+                    value: '3',
+                    label: 'Dorixona'
+                  },
+                  {
+                    value: '4',
+                    label: 'Endovizual (abdominal va torakal) xirurgiya'
+                  }
+                ]}
               />
             </div>
           </RoundedBlock>
-
         </div>
         <div className='flex justify-end gap-1 py-2'>
           <Button variant='contained' color='secondary'>
@@ -661,10 +731,9 @@ export default function UserTableWrapper() {
         open={openDelete}
         size='md'
         onClose={handleClose}
-        
       >
         <div className='flex flex-col gap-3 py-4'>
-          <p className='text-center p-6'>
+          <p className='p-6 text-center'>
             Siz ushbu <b> Ismoilov Shaxzod Farrux o’g’li </b> foydalanuvchini
             o’chirib yubormoqchimisiz?
           </p>

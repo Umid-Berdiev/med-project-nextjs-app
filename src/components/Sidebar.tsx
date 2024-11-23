@@ -157,7 +157,29 @@ export default function MakeSidebar() {
     {
       icon: <BiCog />,
       text: 'Sozlamalar',
-      path: '/settings'
+      path: '/settings',
+      subMenu: [
+        {
+          icon: '•',
+          text: 'Foydalanuvchilar',
+          path: '/settings/user'
+        }
+        // {
+        //   icon: '•',
+        //   text: 'Turkum narxlari',
+        //   path: '/settings/prices'
+        // },
+        // {
+        //   icon: '•',
+        //   text: 'Tibbiy xizmatlar',
+        //   path: '/settings/medical-services'
+        // },
+        // {
+        //   icon: '•',
+        //   text: 'Narxlar varaqasi',
+        //   path: '/settings/price-list'
+        // },
+      ]
     }
   ]
 
@@ -167,7 +189,7 @@ export default function MakeSidebar() {
       {navBarItems.map((item, index) => (
         <SidebarItem
           path={`/${locale}${item.path}`}
-          active={item.path == currentPath}
+          active={currentPath.startsWith(item.path as string)}
           key={index}
           expanded={expanded}
           {...item}
