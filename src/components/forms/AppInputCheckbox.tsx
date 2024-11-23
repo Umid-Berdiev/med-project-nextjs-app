@@ -6,7 +6,7 @@ interface IProps {
   onChange: (selectedValue: string) => void;
 }
 
-export default function AppInputRadio(props: IProps) {
+export default function AppInputCheckbox(props: IProps) {
     const [selectedValue, setSelectedValue] = useState<string>(props.options[0]?.value || '');
     const handleChange = (value: string) => {
         setSelectedValue(value);
