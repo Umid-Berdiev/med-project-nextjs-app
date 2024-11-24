@@ -261,6 +261,9 @@ export default function UserRoleWrapper() {
 
   const handleClose = () => {
     setOpen(false)
+  }
+
+  const handleCloseDelete = () => {
     setOpenDelete(false)
   }
 
@@ -325,11 +328,11 @@ export default function UserRoleWrapper() {
               ]} />
             </div>
           </div>
-              
+
 
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button variant='contained' color='secondary'>
+          <Button  onClick={handleClose} variant='contained' color='secondary'>
             {t('Qoshish')}
           </Button>
         </div>
@@ -340,7 +343,7 @@ export default function UserRoleWrapper() {
         title='Ochirib yuborish'
         open={openDelete}
         size='lg/2'
-        onClose={handleClose}
+        onClose={handleCloseDelete}
       >
         <div className='block bg-white my-4 p-6'>
           <p className='text-center'>
@@ -349,7 +352,7 @@ export default function UserRoleWrapper() {
           </p>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button variant='outlined' color='secondary' onClick={handleClose}>
+          <Button variant='outlined' color='secondary' onClick={handleCloseDelete}>
             {t('Bekor qilish')}
           </Button>
           <Button variant='contained' className='bg-[#E6533C]' color='error'>

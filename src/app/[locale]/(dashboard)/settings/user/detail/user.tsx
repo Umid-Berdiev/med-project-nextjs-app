@@ -360,6 +360,9 @@ export default function UserTableWrapper() {
 
   const handleClose = () => {
     setOpen(false)
+  }
+
+  const handleCloseDelete = () => {
     setOpenDelete(false)
   }
 
@@ -719,7 +722,7 @@ export default function UserTableWrapper() {
           </RoundedBlock>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button variant='contained' color='secondary'>
+          <Button  variant='contained' color='secondary'  onClick={handleClose}>
             {t('Qoshish')}
           </Button>
         </div>
@@ -730,7 +733,7 @@ export default function UserTableWrapper() {
         title='Ochirib yuborish'
         open={openDelete}
         size='lg/2'
-        onClose={handleClose}
+        onClose={handleCloseDelete}
       >
         <div className='block bg-white my-4 p-6'>
           <p className='text-center'>
@@ -739,7 +742,7 @@ export default function UserTableWrapper() {
           </p>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button variant='outlined' color='secondary' onClick={handleClose}>
+          <Button variant='outlined' color='secondary' onClick={handleCloseDelete}>
             {t('Bekor qilish')}
           </Button>
           <Button variant='contained' className='bg-[#E6533C]' color='error'>
