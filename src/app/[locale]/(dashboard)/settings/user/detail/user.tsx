@@ -109,13 +109,12 @@ export default function UserTableWrapper() {
           >
             <UserEditIcon />
           </Link>
-          <Button
-            variant='text'
+          <Link href="#"
             onClick={() => setOpenDelete(true)}
-            className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
+            className='flex size-7 p-0 items-center justify-center rounded bg-white shadow-sm'
           >
             <UserDeleteIcon />
-          </Button>
+          </Link>
         </div>
       )
     }

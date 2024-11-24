@@ -36,7 +36,7 @@ export default function UserRoleWrapper() {
         : { column, direction: 'asc' }
     )
   }
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
 
   type UserTableCellType = {
@@ -88,13 +88,12 @@ export default function UserRoleWrapper() {
           >
             <UserEditIcon />
           </Link>
-          <Button
-            variant='text'
+           <Link href="#"
             onClick={() => setOpenDelete(true)}
             className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
           >
             <UserDeleteIcon />
-          </Button>
+          </Link>
         </div>
       )
     }
