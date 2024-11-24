@@ -726,14 +726,14 @@ export default function UserTableWrapper() {
       </Modal>
 
       <Modal
-        bg='bg-background'
+        bg='bg-[#F9F9F9]'
         title='Ochirib yuborish'
         open={openDelete}
-        size='md'
+        size='lg/2'
         onClose={handleClose}
       >
-        <div className='flex flex-col gap-3 py-4'>
-          <p className='p-6 text-center'>
+        <div className='block bg-white my-4 p-6'>
+          <p className='text-center'>
             Siz ushbu <b> Ismoilov Shaxzod Farrux o’g’li </b> foydalanuvchini
             o’chirib yubormoqchimisiz?
           </p>
