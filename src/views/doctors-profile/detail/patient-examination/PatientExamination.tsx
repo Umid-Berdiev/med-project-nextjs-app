@@ -1,11 +1,10 @@
 'use client'
-import { Tab, TabList, TabPanel } from '@/src/components/tabs/Tab'
 import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
 import { useState } from 'react'
 import Complaints from './Complaints'
-import ObjectiveExamination from './ObjectiveExamination'
 import Diagnoz from './Diagnoz'
+import ObjectiveExamination from './ObjectiveExamination'
 import Recommendations from './Recommendations'
 
 export default function PatientExamination() {
@@ -24,6 +23,7 @@ export default function PatientExamination() {
     { id: 'diagnosis', content: <Diagnoz /> },
     { id: 'recommendations', content: <Recommendations /> }
   ]
+
   return (
     <div>
       <div className='my-4'>

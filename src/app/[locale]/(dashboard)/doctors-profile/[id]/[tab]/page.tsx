@@ -1,12 +1,10 @@
-import type { ReactElement } from 'react'
-
-import dynamic from 'next/dynamic'
-import DoctorsProfileDeatil from '@/src/views/doctors-profile/detail/DoctorsProfileDeatil'
-import { redirect } from 'next/navigation'
 import { Locale } from '@/src/configs/i18n'
 import { ITabContentList } from '@/src/utils/interfaces'
-import MedicalRecord from '@/src/views/doctors-profile/detail/medical-record/MedicalRecord'
 import AmbulatoryExamination from '@/src/views/doctors-profile/detail/ambulatory-examination/AmbulatoryExamination'
+import DoctorsProfileDeatil from '@/src/views/doctors-profile/detail/DoctorsProfileDeatil'
+import MedicalRecord from '@/src/views/doctors-profile/detail/medical-record/MedicalRecord'
+import dynamic from 'next/dynamic'
+import { redirect } from 'next/navigation'
 
 const PatientExamination = dynamic(
   () =>
@@ -19,7 +17,7 @@ const tabContentList: ITabContentList[] = [
   {
     id: 'patient-examination',
     content: <PatientExamination />,
-    label: 'Bemorni ko’rikdan o’tkazish'
+    label: "Bemorni ko'rikdan o'tkazish"
   },
   { id: 'medical-record', content: <MedicalRecord />, label: 'Tibbiy karta' },
   {

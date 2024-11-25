@@ -13,10 +13,31 @@ import AppInput from '@/src/components/forms/AppInput'
 import AppLabel from '@/src/components/forms/AppLabel'
 import AppInputDate from '@/src/components/forms/AppInputDate'
 import { Locale } from '@/src/configs/i18n'
+import AppSelect from '@/src/components/forms/AppSelect'
+import RoundedBlock from '@/src/components/blocks/RoundedBlock'
+import { ITab, ITabContent } from '@/src/utils/interfaces'
+import MRIBrain from './MRI-brain'
+import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
+import ImageUpload from './ImageUpload'
 
+const tabs: ITab[] = [
+  { id: 'MRI-brain', label: 'MRT bosh miyasi' },
+  { id: 'EXOCardiography', label: 'EXO Kardoigrafiya' },
+  { id: 'image-upload', label: 'Rasm yuklash' },
+  { id: 'results', label: 'Barcha natijalar' }
+]
+
+const tabContents: ITabContent[] = [
+  { id: 'MRI-brain', content: <MRIBrain /> },
+  { id: 'EXOCardiography', content: 'EXO Kardoigrafiya' },
+  { id: 'image-upload', content: <ImageUpload /> },
+  { id: 'results', content: 'Barcha natijalar' }
+]
 const LaboratoryTable = () => {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
+  const [activeTab, setActiveTab] = useState('MRI-brain')
+
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -85,11 +106,14 @@ const LaboratoryTable = () => {
     },
     {
       header: t('Telefon raqami'),
+      width: 'w-48',
       col: (row: CellType) => row.phone
     },
 
     {
       header: t('Sana'),
+      width: 'w-48',
+
       col: (row: CellType) => row.createdAt,
       sortable: true
     },
@@ -111,7 +135,7 @@ const LaboratoryTable = () => {
           >
             <li>
               <button onClick={() => setOpen(true)}>
-                Diagnostika natijalari
+                {t('Diagnostika natijalari')}
               </button>
             </li>
           </ul>
@@ -203,37 +227,84 @@ const LaboratoryTable = () => {
           <ProfileBlock />
           <div className='grid grid-cols-2 gap-4'>
             <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
-              <span className='text-sm font-normal text-contentTertiary'>
-                Tibbiy xizmatlar
+              <span className='text-sm  text-contentTertiary'>
+                {t('Tibbiy xizmatlar')}
               </span>
               <span className='text-sm text-secondary'>
                 MRT bosh miyasi; EXO Kardiografiya
               </span>
             </div>
             <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
-              <span className='text-sm font-normal text-contentTertiary'>
-                Yashash manzili
+              <span className='text-sm  text-contentTertiary'>
+                {t('Yashash manzili')}
               </span>
               <span className='text-sm '>
                 Toshkent shahar, Yunusobod 4, Abdulla Qodiriy 29, 5
               </span>
             </div>
           </div>
-          <div className='grid grid-cols-8 gap-4'>
-            <div className='grid-cols-2'>
+          <div className='col-span-12 grid grid-cols-8 gap-5 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8'>
+            <div className='col-span-2'>
               <AppLabel text='Natija raqami' />
               <AppInput placeholder='Natija raqami' />
             </div>
-            <div className='grid-cols-2'>
+            <div className='col-span-2'>
               <AppLabel text='Qabul qilingan sana' />
               <AppInputDate mode='single' placeholder='Qabul qilingan sana' />
             </div>
-            <div className='grid-cols-2'>
+            <div className='col-span-2'>
               <AppLabel text='Natija sanasi' />
               <AppInputDate mode='single' placeholder='Natija sanasi' />
             </div>
+            <div className='col-span-1'>
+              <AppLabel text={t('Vazni')} />
+              <AppInput placeholder={t('Vazni')} disabled />
+            </div>
+            <div className='col-span-1'>
+              <AppLabel text={t("Bo'yi")} />
+              <AppInput placeholder={t("Bo'yi")} disabled />
+            </div>
+            <div className='col-span-2'>
+              <AppLabel text={t('FISH shifokor labarant')} />
+
+              <AppInput placeholder={t('Shifokor labarant')} />
+            </div>
+            <div className='col-span-2'>
+              <AppLabel text={t('Ijrochi')} />
+              <AppSelect
+                options={[
+                  {
+                    value: 'Abdullayev Alibek - II toifa',
+                    label: 'Abdullayev Alibek - II toifa'
+                  }
+                ]}
+                selectedValue='Abdullayev Alibek - II toifa'
+              />
+            </div>
+            <div className='col-span-2'>
+              <AppLabel text={t('Tavsiya')} />
+              <AppInput />
+            </div>
+            <div className='col-span-2'>
+              <AppLabel text={t('Bolim')} />
+              <AppInput placeholder={t('Bolim')} />
+            </div>
           </div>
         </div>
+        <RoundedBlock>
+          {' '}
+          <div className='my-4'>
+            <Tablist
+              activeColor='text-white'
+              bgColor='bg-secondary'
+              className='text-textDark'
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabClick={setActiveTab}
+            />
+            <Tabs activeTab={activeTab} tabContents={tabContents} />
+          </div>
+        </RoundedBlock>
         <div className='flex justify-end gap-1 py-2'>
           <Button variant='outlined' color='secondary' onClick={handleClose}>
             Bekor qilish

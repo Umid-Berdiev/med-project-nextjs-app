@@ -14,7 +14,7 @@ export default function Recommendations() {
           variant='text'
           color='secondary'
           size='small'
-          className='text-[11px] font-normal'
+          className='text-[11px] '
         >
           Shablondan tanlash
         </Button>
@@ -23,7 +23,7 @@ export default function Recommendations() {
           variant='text'
           color='secondary'
           size='small'
-          className='text-[11px] font-normal'
+          className='text-[11px] '
         >
           Shablonga qo’shish
         </Button>

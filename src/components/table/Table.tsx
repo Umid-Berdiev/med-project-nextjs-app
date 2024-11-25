@@ -65,9 +65,7 @@ export default function Table<T>({
                 {columns.map((column, index) => (
                   <th
                     key={index}
-                    className={classnames(
-                      ` bg-white ${column.width ?? 'min-w-[140px]'}`
-                    )}
+                    className={`bg-white ${column.width ?? ''}`}
                     onClick={() =>
                       column.sortable &&
                       setSortBy &&
@@ -120,7 +118,7 @@ export default function Table<T>({
                       )}
                       key={columnIndex}
                     >
-                      <span className='inline-flex'>
+                      <span className='inline-flex w-full'>
                         {column.col(row, rowIndex + 1)}
                       </span>
                     </td>

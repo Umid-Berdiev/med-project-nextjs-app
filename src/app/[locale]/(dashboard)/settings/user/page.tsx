@@ -1,25 +1,34 @@
 'use client'
-import ProfileBlock from './ProfileBlock'
 import { useState } from 'react'
 import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
-import { ITab, ITabContent, ITabContentList } from '@/src/utils/interfaces'
-import { useParams, useRouter } from 'next/navigation'
+import { ITab, ITabContent } from '@/src/utils/interfaces'
+import { useParams } from 'next/navigation'
 import Breadcrumb from '@/src/components/Breadcrumbs'
-import Select from '@/src/components/forms/AppSelect'
+import UserPage from '@/src/app/[locale]/(dashboard)/settings/user/detail/user'
+import RolePage from '@/src/app/[locale]/(dashboard)/settings/user/detail/role'
+import { useTranslations } from 'next-intl'
 
-export default function DoctorsProfileDeatil({
-  tabContentList
-}: {
-  tabContentList: ITabContentList[]
-}) {
-  const { locale, id, tab } = useParams()
 
+export default function PatientsDetailPage() {
+  const { locale, id } = useParams()
+    const t = useTranslations('')
+    const tabContentList = [
+    {
+      id: '1',
+      label: t('Foydalanuvchilar'),
+      content: <UserPage/>
+    },
+    {
+      id: '2',
+      label: t('Rollar'),
+      content: <RolePage />
+    },
+  ]
   const [activeTab, setActiveTab] = useState<string>(
-    Array.isArray(tab) ? tab[0] : tab
+    tabContentList[1].id.toString()
   )
-  const router = useRouter()
   const tabs: ITab[] = tabContentList.map(tab => ({
-    id: tab.id,
+    id: tab.id.toString(),
     label: tab.label
   }))
 
@@ -32,26 +41,21 @@ export default function DoctorsProfileDeatil({
     <div>
       <Breadcrumb
         breadcrumbs={[
-          { label: 'Bosh sahifa', href: `/${locale}/dashboard` },
-          { label: 'Shifokor kabineti', href: `/${locale}/doctors-profile` },
-          { label: 'Ismoilov Shaxzod Farrux o’g’li' }
+          { label: 'Sozlamalar', href: `/${locale}/settings/user` },
+          { label: 'Foydalanuvchi' }
         ]}
       />
-      <ProfileBlock />
       <div className='my-4'>
         <Tablist
           activeColor='text-black'
           bgColor='bg-white'
           className='text-[#23242780]'
           tabs={tabs}
-          variant='standart'
           activeTab={activeTab}
           onTabClick={e => {
             setActiveTab(e)
-            router.push(`/${locale}/doctors-profile/${id}/${e}`)
           }}
         />
-
         <Tabs activeTab={activeTab} tabContents={tabContents} />
       </div>
     </div>

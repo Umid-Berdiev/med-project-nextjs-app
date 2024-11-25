@@ -1,23 +1,29 @@
 'use client'
 
 import Button from '@/src/components/Button'
+import AppInput from '@/src/components/forms/AppInput'
+import AppInputDate from '@/src/components/forms/AppInputDate'
+import AppLabel from '@/src/components/forms/AppLabel'
+import AppSelect from '@/src/components/forms/AppSelect'
+import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
-import { DiagnosticsTableCellType } from '@/src/utils/interfaces'
+import { DiagnosticsTableCellType, ITab } from '@/src/utils/interfaces'
 import { useTranslations } from '@/src/configs/t'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
+import ProfileBlock from './detail/ProfileBlock'
 import { diagnosticsTableData } from './mock-data'
 
 export default function DiagnosticsTableWrapper() {
-  const { locale } = useParams()
+  const { locale, id, tab } = useParams()
 
   const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
@@ -36,6 +42,7 @@ export default function DiagnosticsTableWrapper() {
         : { column, direction: 'asc' }
     )
   }
+  const [open, setOpen] = useState(false)
 
   const columns: ITableColumn<DiagnosticsTableCellType>[] = [
     {
@@ -52,8 +59,8 @@ export default function DiagnosticsTableWrapper() {
     },
     {
       header: t('Bemor ism familiyasi'),
-      headerAlign: 'center',
-      alignItem: 'center',
+      // headerAlign: 'center',
+      // alignItem: 'center',
       col: (row: DiagnosticsTableCellType) => row.name,
       sortable: true
     },
@@ -102,17 +109,9 @@ export default function DiagnosticsTableWrapper() {
             className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
           >
             <li>
-              <Link
-                href={getLocalizedUrl(
-                  `doctors-profile/${row.id}/patient-examination`,
-                  locale as Locale
-                )}
-              >
-                Ko`rish
-              </Link>
-            </li>
-            <li>
-              <a>Item 2</a>
+              <button onClick={() => setOpen(true)}>
+                {t('Diagnostika natijalari')}
+              </button>
             </li>
           </ul>
         </div>
@@ -120,9 +119,31 @@ export default function DiagnosticsTableWrapper() {
     }
   ]
 
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   const classRow = (row: DiagnosticsTableCellType) => {
     return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
   }
+
+  const [activeTab, setActiveTab] = useState<string>(
+    Array.isArray(tab) ? tab[0] : tab
+  )
+  const router = useRouter()
+
+  // 1-Umumiy klinik tekshiruvlar, 2-Biokimyoviy tekshiruvlar, 3-Gormonlar tekshiruvi, 4-TORCH infeksiyalari, 5-Onkomarkerlar, 6-Allergologik tekshiruv, 7-Ekspress test, 8-Koagulogramma, 9-Barcha Natijalar
+  const tabs: ITab[] = [
+    { id: '1', label: t('Umumiy klinik tekshiruvlar') },
+    { id: '2', label: t('Biokimyoviy tekshiruvlar') },
+    { id: '3', label: t('Gormonlar tekshiruvi') },
+    { id: '4', label: t('TORCH infeksiyalari') },
+    { id: '5', label: t('Onkomarkerlar') },
+    { id: '6', label: t('Allergologik tekshiruv') },
+    { id: '7', label: t('Ekspress test') },
+    { id: '8', label: t('Koagulogramma') },
+    { id: '9', label: t('Barcha Natijalar') }
+  ]
 
   return (
     <>
@@ -131,7 +152,7 @@ export default function DiagnosticsTableWrapper() {
         actions={
           <>
             <Button variant='text' color='primary'>
-              {t('Filtr')}
+              <span className='decoration-dashed'>{t('Filtr')}</span>
             </Button>
             <Button
               variant='outlined'
@@ -162,6 +183,148 @@ export default function DiagnosticsTableWrapper() {
         changeCurrentPage={e => setPage(e)}
         changePerPage={e => setPerPage(e)}
       />
+
+      <Modal
+        bg='bg-background'
+        title='Diagnostika natijalari'
+        open={open}
+        size='lg'
+        onClose={handleClose}
+      >
+        <div className='flex flex-col gap-3 py-4'>
+          <ProfileBlock />
+          <div className='grid grid-cols-2 gap-4'>
+            <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
+              <span className='text-sm  text-contentTertiary'>
+                {t('Tibbiy xizmatlar')}
+              </span>
+              <span className='text-sm text-secondary'>
+                MRT bosh miyasi; EXO Kardiografiya
+              </span>
+            </div>
+            <div className='flex items-center justify-between gap-2 rounded-lg bg-white p-3'>
+              <span className='text-sm  text-contentTertiary'>
+                {t('Yashash manzili')}
+              </span>
+              <span className='text-sm '>
+                Toshkent shahar, Yunusobod 4, Abdulla Qodiriy 29, 5
+              </span>
+            </div>
+          </div>
+          <div className='grid grid-cols-4 gap-4'>
+            <div className=''>
+              <AppLabel text={t('Natija raqami')} />
+              <AppInput placeholder={t('Natija raqami')} />
+            </div>
+            <div className=''>
+              <AppLabel text={t('Qabul qilingan sana')} />
+              <AppInputDate
+                mode='single'
+                placeholder={t('Qabul qilingan sana')}
+              />
+            </div>
+            <div className=''>
+              <AppLabel text={t('Natija sanasi')} />
+              <AppInputDate mode='single' placeholder={t('Natija sanasi')} />
+            </div>
+            <div className=''>
+              <div className='flex gap-4'>
+                <div>
+                  <AppLabel text={t('Vazni')} />
+                  <AppInput placeholder={t('Vazni')} />
+                </div>
+                <div>
+                  <AppLabel text={t("Bo'yi")} />
+                  <AppInput placeholder={t("Bo'yi")} />
+                </div>
+              </div>
+            </div>
+            <div className=''>
+              <AppLabel text={t('FISH shifokor labarant')} />
+              <AppInput placeholder={t('FISH shifokor labarant')} />
+            </div>
+            <div className=''>
+              <AppLabel text={t('Ijrochi')} />
+              <AppSelect
+                options={[
+                  { value: '1', label: 'Ijrochi1' },
+                  { value: '2', label: 'Ijrochi2' },
+                  { value: '3', label: 'Ijrochi3' }
+                ]}
+              />
+            </div>
+            <div className=''>
+              <AppLabel text={t('Tavsiya')} />
+              <AppInput placeholder={t('Tavsiya')} />
+            </div>
+            <div className=''>
+              <AppLabel text={t("Bo'lim")} />
+              <AppInput placeholder={t("Bo'lim")} />
+            </div>
+          </div>
+        </div>
+        <div className='my-4'>
+          {/* create buttons group with active one */}
+          <div className='flex gap-1 overflow-x-auto rounded-lg border p-1'>
+            {tabs.map(tab => (
+              <Button
+                key={tab.id}
+                variant='text'
+                color='primary'
+                onClick={() => setActiveTab(tab.id)}
+                className={`text-sm ${activeTab === tab.id ? '!bg-secondary text-white' : ''}`}
+              >
+                {tab.label}
+              </Button>
+            ))}
+          </div>
+          <div>
+            {activeTab === '1' && (
+              <div className='overflow-x-auto'>
+                <table className='table table-zebra'>
+                  {/* head */}
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Name</th>
+                      <th>Job</th>
+                      <th>Favorite Color</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* row 1 */}
+                    <tr>
+                      <th>1</th>
+                      <td>Cy Ganderton</td>
+                      <td>Quality Control Specialist</td>
+                      <td>Blue</td>
+                    </tr>
+                    {/* row 2 */}
+                    <tr>
+                      <th>2</th>
+                      <td>Hart Hagerty</td>
+                      <td>Desktop Support Technician</td>
+                      <td>Purple</td>
+                    </tr>
+                    {/* row 3 */}
+                    <tr>
+                      <th>3</th>
+                      <td>Brice Swyre</td>
+                      <td>Tax Accountant</td>
+                      <td>Red</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className='flex justify-end gap-1 py-2'>
+          <Button variant='contained' color='secondary'>
+            {t('Saqlash')}
+          </Button>
+        </div>
+      </Modal>
     </>
   )
 }

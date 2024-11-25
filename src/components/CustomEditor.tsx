@@ -7,7 +7,8 @@ export default function CustomEditor({ height }: { height?: number }) {
       apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
       init={{
         height: height || 400,
-        menubar: false
+        menubar: false,
+        width: '100%'
       }}
       initialValue='Welcome to TinyMCE!'
     />

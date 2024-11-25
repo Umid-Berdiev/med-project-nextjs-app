@@ -6,6 +6,7 @@ import Table, { ITableColumn } from '@/src/components/table/Table'
 import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
@@ -14,6 +15,7 @@ import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 
 export default function CashboxPage() {
+  const t = useTranslations()
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -54,33 +56,33 @@ export default function CashboxPage() {
       sortable: true
     },
     {
-      header: 'Bemor ism familiyasi',
+      header: t('Bemor ism familiyasi'),
       headerAlign: 'center',
       alignItem: 'center',
       col: (row: CellType) => row.name,
       sortable: true
     },
     {
-      header: 'Telefon raqami',
+      header: t('Telefon raqami'),
       col: (row: CellType) => row.phone
     },
     {
-      header: 'Balans',
+      header: t('Balans'),
       col: (row: CellType) => row.balance,
       sortable: true
     },
     {
-      header: 'Ligota',
+      header: t('Ligota'),
       col: (row: CellType) => row.ligota,
       sortable: true
     },
     {
-      header: 'Tashrif sanasi',
+      header: t('Tashrif sanasi'),
       col: (row: CellType) => row.createdAt,
       sortable: true
     },
 
-    { header: 'Filial', col: (row: CellType) => row.filial, sortable: true },
+    { header: t('Filial'), col: (row: CellType) => row.filial, sortable: true },
     {
       header: (
         <div className='text-center'>
@@ -89,7 +91,7 @@ export default function CashboxPage() {
       ),
       col: (row: CellType) => (
         <div className='dropdown dropdown-left dropdown-bottom'>
-          <div tabIndex={0} role='button' className='btn'>
+          <div tabIndex={0} role='button' className='btn bg-white'>
             <SlOptionsVertical size={14} />
           </div>
           <ul
@@ -99,7 +101,7 @@ export default function CashboxPage() {
             <li>
               <Link
                 href={getLocalizedUrl(
-                  `doctors-profile/${row.id}/patient-examination`,
+                  `cashbox/${row.id}`,
                   locale as Locale
                 )}
               >

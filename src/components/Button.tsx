@@ -1,5 +1,5 @@
-import React from 'react'
 import classnames from 'classnames'
+import React from 'react'
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   variant?: 'contained' | 'outlined' | 'text' | 'tonal'
@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'contained',
   color = 'secondary',
-  size = 'medium',
+  size = 'small',
   rounded = false,
   startIcon,
   endIcon,

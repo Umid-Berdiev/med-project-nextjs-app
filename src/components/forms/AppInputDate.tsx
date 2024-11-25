@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/flatpickr.min.css'
+import { useState } from 'react'
+import Flatpickr from 'react-flatpickr'
 
 interface IProps {
   placeholder?: string
@@ -35,7 +35,7 @@ export default function AppInputDate(props: IProps) {
         mode: props.mode || 'single',
         dateFormat: 'Y-m-d'
       }}
-      className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none'
+      className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px]  text-[#161624] outline-none'
     />
   )
 }
