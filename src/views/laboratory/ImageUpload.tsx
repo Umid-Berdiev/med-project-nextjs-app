@@ -1,15 +1,17 @@
 'use client'
-import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
-import AppSelect from '@/src/components/forms/AppSelect'
 import CameraIcon from '@/src/components/icons/CameraIcon'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 import { BiPlusCircle, BiTrash } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 import { PiPlusCircle } from 'react-icons/pi'
 
 export default function ImageUpload() {
-  const t = useTranslations('')
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
+  
   return (
     <div className='flex flex-col gap-2'>
       <div className='grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-2'>

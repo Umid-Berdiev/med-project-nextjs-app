@@ -1,7 +1,10 @@
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 
 export default function ProfileBlock() {
-  const t = useTranslations()
+  const { locale } = useParams() as { locale: Locale }
+  const { t } = useTranslations(locale as Locale)
 
   return (
     <div>
@@ -14,11 +17,11 @@ export default function ProfileBlock() {
           </div>
           <div>
             <p className='text-lg font-semibold text-gray-800'>
-              Ismoilov Shaxzod Farrux o'g'li
+              {"Ismoilov Shaxzod Farrux o'g'li"}
             </p>
             <div className='flex items-center space-x-2'>
               <span className='text-xs text-gray-500'>ID: 38042</span>
-              <span className='text-2xs rounded-lg bg-[#FDEEEC] px-2 py-1 text-[#E6533C]'>
+              <span className='rounded-lg bg-[#FDEEEC] px-2 py-1 text-2xs text-[#E6533C]'>
                 QARZDOR
               </span>
             </div>

@@ -5,8 +5,8 @@ import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import { getLocalizedUrl } from '@/src/utils/i18n'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
@@ -15,7 +15,8 @@ import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 
 export default function CashboxPage() {
-  const t = useTranslations()
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -25,7 +26,6 @@ export default function CashboxPage() {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column
@@ -100,10 +100,7 @@ export default function CashboxPage() {
           >
             <li>
               <Link
-                href={getLocalizedUrl(
-                  `cashbox/${row.id}`,
-                  locale as Locale
-                )}
+                href={getLocalizedUrl(`cashbox/${row.id}`, locale as Locale)}
               >
                 Ko`rish
               </Link>
