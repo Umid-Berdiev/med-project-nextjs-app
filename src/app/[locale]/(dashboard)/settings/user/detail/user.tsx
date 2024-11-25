@@ -14,12 +14,16 @@ import UserViewIcon from '@/src/components/icons/UserViewIcon'
 import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
 export default function UserTableWrapper() {
-  const t = useTranslations()
+  const { locale } = useParams()
+
+  const { t } = useTranslations(locale as Locale)
   const passwordChangeOptions = [
     { label: 'Ha', value: '1' },
     { label: 'Yoq', value: '0' }
@@ -109,9 +113,10 @@ export default function UserTableWrapper() {
           >
             <UserEditIcon />
           </Link>
-          <Link href="#"
+          <Link
+            href='#'
             onClick={() => setOpenDelete(true)}
-            className='flex size-7 p-0 items-center justify-center rounded bg-white shadow-sm'
+            className='flex size-7 items-center justify-center rounded bg-white p-0 shadow-sm'
           >
             <UserDeleteIcon />
           </Link>
@@ -721,7 +726,7 @@ export default function UserTableWrapper() {
           </RoundedBlock>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button  variant='contained' color='secondary'  onClick={handleClose}>
+          <Button variant='contained' color='secondary' onClick={handleClose}>
             {t('Qoshish')}
           </Button>
         </div>
@@ -734,14 +739,18 @@ export default function UserTableWrapper() {
         size='lg/2'
         onClose={handleCloseDelete}
       >
-        <div className='block bg-white my-4 p-6'>
+        <div className='my-4 block bg-white p-6'>
           <p className='text-center'>
             Siz ushbu <b> Ismoilov Shaxzod Farrux o’g’li </b> foydalanuvchini
             o’chirib yubormoqchimisiz?
           </p>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button variant='outlined' color='secondary' onClick={handleCloseDelete}>
+          <Button
+            variant='outlined'
+            color='secondary'
+            onClick={handleCloseDelete}
+          >
             {t('Bekor qilish')}
           </Button>
           <Button variant='contained' className='bg-[#E6533C]' color='error'>

@@ -6,23 +6,24 @@ import { useParams } from 'next/navigation'
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import UserPage from '@/src/app/[locale]/(dashboard)/settings/user/detail/user'
 import RolePage from '@/src/app/[locale]/(dashboard)/settings/user/detail/role'
-import { useTranslations } from 'next-intl'
-
+import { useTranslations } from '@/src/configs/t'
+import { Locale } from '@/src/configs/i18n'
 
 export default function PatientsDetailPage() {
   const { locale, id } = useParams()
-    const t = useTranslations('')
-    const tabContentList = [
+
+  const { t } = useTranslations(locale as Locale)
+  const tabContentList = [
     {
       id: '1',
       label: t('Foydalanuvchilar'),
-      content: <UserPage/>
+      content: <UserPage />
     },
     {
       id: '2',
       label: t('Rollar'),
       content: <RolePage />
-    },
+    }
   ]
   const [activeTab, setActiveTab] = useState<string>(
     tabContentList[1].id.toString()
