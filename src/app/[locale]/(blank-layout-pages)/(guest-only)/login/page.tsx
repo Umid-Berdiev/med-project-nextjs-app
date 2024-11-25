@@ -47,10 +47,10 @@ const LoginPage = () => {
     <div className='flex h-screen w-full flex-col items-center justify-center bg-background p-16'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex w-96 flex-col gap-6 rounded-lg bg-white p-6 shadow-lg'
+        className='flex w-[480px] flex-col gap-6 rounded-lg bg-white p-8 shadow-lg'
       >
         <div className='flex w-full justify-center'>
-          <AppLogo width={200} height={80} />
+          <AppLogo width={200} height={70} />
         </div>
         <div className='text-center text-xl font-semibold text-gray-700'>
           {t('Tizimga kirish')}

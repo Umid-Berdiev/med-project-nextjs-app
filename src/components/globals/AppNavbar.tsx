@@ -3,6 +3,7 @@ import AppInput from '../forms/AppInput'
 import Button from '../Button'
 import Image from 'next/image'
 import { Locale } from '@/src/configs/i18n'
+import { cleareStorage } from '@/src/configs/storage'
 
 export default function AppNavbar({ locale }: { locale: string }) {
   const { t } = useTranslations(locale as Locale)
@@ -44,7 +45,7 @@ export default function AppNavbar({ locale }: { locale: string }) {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content z-[1] rounded-box p-2 shadow bg-white'
+            className='menu dropdown-content z-[1] rounded-box bg-white p-2 shadow'
           >
             <li>
               <a href={`/${locale}/profile`} className='text-black'>
@@ -52,7 +53,13 @@ export default function AppNavbar({ locale }: { locale: string }) {
               </a>
             </li>
             <li>
-              <a href={`/${locale}/logout`} className='text-black'>
+              <a
+                href={`/${locale}/login`}
+                className='text-black'
+                onClick={() => {
+                  cleareStorage()
+                }}
+              >
                 {t('Chiqish')}
               </a>
             </li>
