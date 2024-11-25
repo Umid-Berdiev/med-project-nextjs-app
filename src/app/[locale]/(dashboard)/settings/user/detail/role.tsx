@@ -88,7 +88,7 @@ export default function UserRoleWrapper() {
           >
             <UserEditIcon />
           </Link>
-           <Link href="#"
+          <Link href="#"
             onClick={() => setOpenDelete(true)}
             className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
           >
@@ -327,11 +327,14 @@ export default function UserRoleWrapper() {
               ]} />
             </div>
           </div>
-
+          <table>
+            <thead></thead>
+            <tbody></tbody>
+          </table>
 
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button  onClick={handleClose} variant='contained' color='secondary'>
+          <Button onClick={handleClose} variant='contained' color='secondary'>
             {t('Qoshish')}
           </Button>
         </div>
