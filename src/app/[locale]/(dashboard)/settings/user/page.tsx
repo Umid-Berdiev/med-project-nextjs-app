@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+
 import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
 import { useParams } from 'next/navigation'
@@ -8,10 +8,10 @@ import UserPage from '@/src/app/[locale]/(dashboard)/settings/user/detail/user'
 import RolePage from '@/src/app/[locale]/(dashboard)/settings/user/detail/role'
 import { useTranslations } from '@/src/configs/t'
 import { Locale } from '@/src/configs/i18n'
+import { useState } from 'react'
 
 export default function PatientsDetailPage() {
   const { locale, id } = useParams()
-
   const { t } = useTranslations(locale as Locale)
   const tabContentList = [
     {

@@ -17,7 +17,7 @@ import SidebarItem from './SidebarItem'
 // This sidebar component is for both mobile and desktop
 function Sidebar({ children, expanded, setExpanded }: any) {
   return (
-    <div className='relative'>
+    <div className='relative z-40'>
       {/* 
         This div is used to create the background overlay when the sidebar is expanded
         It is only visible on mobile screens

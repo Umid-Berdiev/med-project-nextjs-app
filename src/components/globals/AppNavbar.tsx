@@ -44,7 +44,7 @@ export default function AppNavbar({ locale }: { locale: string }) {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content z-[1] rounded-box p-2 shadow'
+            className='menu dropdown-content z-[1] rounded-box p-2 shadow bg-white'
           >
             <li>
               <a href={`/${locale}/profile`} className='text-black'>

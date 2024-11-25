@@ -14,8 +14,10 @@ export default function ProfileBlock() {
           <div className='avatar'>
             <div className='w-16 rounded-full'>
               <Image
-                src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+                src='/images/avatar-1.webp'
                 alt={''}
+                width={64}
+                height={64}
               />
             </div>
           </div>

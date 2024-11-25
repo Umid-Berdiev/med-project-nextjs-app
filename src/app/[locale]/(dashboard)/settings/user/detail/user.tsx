@@ -22,7 +22,6 @@ import { useState } from 'react'
 
 export default function UserTableWrapper() {
   const { locale } = useParams()
-
   const { t } = useTranslations(locale as Locale)
   const passwordChangeOptions = [
     { label: 'Ha', value: '1' },

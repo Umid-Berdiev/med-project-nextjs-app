@@ -16,7 +16,6 @@ import { TbTableOptions } from 'react-icons/tb'
 
 export default function CashboxPage() {
   const { locale } = useParams()
-
   const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {

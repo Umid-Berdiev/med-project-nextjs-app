@@ -1,7 +1,5 @@
 'use client'
-import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
-import AppSelect from '@/src/components/forms/AppSelect'
 import CameraIcon from '@/src/components/icons/CameraIcon'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
