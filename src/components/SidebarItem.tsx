@@ -88,7 +88,7 @@ export default function SidebarItem({
           {!expanded && (
             <div
               className={`
-                  -500 invisible absolute left-full ml-6 -translate-x-3 rounded-md
+                  -500 invisible absolute left-full ml-3 -translate-x-3 rounded-md
                   bg-indigo-100 px-2 py-1
                   text-sm text-primary opacity-20 transition-all
                   group-hover:visible group-hover:translate-x-0 group-hover:opacity-100

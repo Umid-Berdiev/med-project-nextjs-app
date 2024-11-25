@@ -33,7 +33,7 @@ export default function LangSwitcher() {
       </div>
       <ul
         tabIndex={0}
-        className='menu dropdown-content z-[1] rounded-box p-2 shadow'
+        className='menu dropdown-content z-[1] rounded-box p-2 shadow bg-white'
       >
         {options.map(lang => {
           return (

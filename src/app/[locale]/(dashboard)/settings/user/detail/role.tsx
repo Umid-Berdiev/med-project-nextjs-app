@@ -4,6 +4,7 @@ import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
+import AppInputCheckboxNoLabel from '@/src/components/forms/AppInputCheckboxNoLabel'
 import AppInputDate from '@/src/components/forms/AppInputDate'
 import AppInputRadioRound from '@/src/components/forms/AppInputRadioRound'
 import AppLabel from '@/src/components/forms/AppLabel'
@@ -88,7 +89,7 @@ export default function UserRoleWrapper() {
           >
             <UserEditIcon />
           </Link>
-           <Link href="#"
+          <Link href="#"
             onClick={() => setOpenDelete(true)}
             className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
           >
@@ -327,11 +328,303 @@ export default function UserRoleWrapper() {
               ]} />
             </div>
           </div>
-
-
+          <div className="overflow-auto bg-white">
+            <table className='text-center border-collapse border'>
+              <thead>
+                <th className='border px-2 py-1 text-sm'>Nomi</th>
+                <th className='border px-2 py-1 text-sm'>Menyu ko’rsatish</th>
+                <th className='border px-2 py-1 text-sm'>Menyu ko’rsatish</th>
+                <th className='border px-2 py-1 text-sm'>Boshqarish</th>
+                <th className='border px-2 py-1 text-sm'>Joylash</th>
+                <th className='border px-2 py-1 text-sm'>O’zgartirish</th>
+                <th className='border px-2 py-1 text-sm'>O’chirish</th>
+                <th className='border px-2 py-1 text-sm'>Ko’rsatish</th>
+                <th className='border px-2 py-1 text-sm'>Bo’sh</th>
+                <th className='border px-2 py-1 text-sm'>Eksport EXEL</th>
+                <th className='border px-2 py-1 text-sm'>Anamnezlar</th>
+                <th className='border px-2 py-1 text-sm'>Diagnozlar</th>
+                <th className='border px-2 py-1 text-sm'>Operatsiyalar</th>
+                <th className='border px-2 py-1 text-sm'>Patsient harakati</th>
+                <th className='border px-2 py-1 text-sm'>Foydalanuchi rolli</th>
+              </thead>
+              <tbody>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Asosiy oyna</td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Bemorlar</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Asosiy oyna</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Bemorlar</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Asosiy oyna</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Asosiy oyna</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat o’chirish</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Bemorlar</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Bemorlar</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Bemorlar</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Bemorlar</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={false} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+                <tr><td className="px-2 py-1 text-sm border !text-left pr-6 text-nowrap">Xizmat qo'shing</td><td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                  <td className="px-2 py-1 text-sm border"><AppInputCheckboxNoLabel className='flex justify-center' isChecked={true} /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button  onClick={handleClose} variant='contained' color='secondary'>
+          <Button onClick={handleClose} variant='contained' color='secondary'>
             {t('Qoshish')}
           </Button>
         </div>
