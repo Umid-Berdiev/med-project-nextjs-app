@@ -1,13 +1,13 @@
 'use client'
 
 // Next Imports
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import Link from 'next/link'
 import Button from '../components/Button'
 import { Locale } from '../configs/i18n'
 
 const NotFound = ({ locale }: { locale: Locale }) => {
-  const t = useTranslations()
+  const { t } = useTranslations(locale as Locale)
 
   return (
     <div className='relative flex h-full items-center justify-center overflow-x-hidden p-6'>

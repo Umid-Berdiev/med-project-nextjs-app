@@ -1,8 +1,8 @@
-function LogoIcon() {
+function AppLogo({ width = 134, height = 19 }) {
   return (
     <svg
-      width='134'
-      height='19'
+      width={width}
+      height={height}
       viewBox='0 0 134 19'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -19,4 +19,4 @@ function LogoIcon() {
   )
 }
 
-export default LogoIcon
+export default AppLogo

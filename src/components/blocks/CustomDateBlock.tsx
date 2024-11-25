@@ -1,10 +1,11 @@
-import { useTranslations, useLocale } from 'next-intl'
+'use client'
 import Heading2 from '../typography/Heading2'
 import dayjs from 'dayjs'
 import * as uzLatn from 'dayjs/locale/uz-latn' // import locale uz-latn
 import * as ru from 'dayjs/locale/ru' // import locale ru
 import * as en from 'dayjs/locale/en' // import locale en
 import * as uz from 'dayjs/locale/uz' // import locale uz
+import { useParams } from 'next/navigation'
 
 export default function CustomDateBlock({
   date,
@@ -13,8 +14,8 @@ export default function CustomDateBlock({
   date: string
   className?: string
 }) {
-  const t = useTranslations('')
-  const locale = useLocale()
+  const { locale } = useParams()
+
   const _locale =
     locale === 'uz' ? uzLatn : locale === 'uzc' ? uz : locale === 'ru' ? ru : en
   const [day, month, year] = dayjs(date)

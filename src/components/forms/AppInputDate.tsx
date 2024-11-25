@@ -7,7 +7,7 @@ interface IProps {
   className?: string
   value?: string
   onDateChange?: string
-  mode: 'single' | 'multiple' | 'range'
+  mode?: 'single' | 'multiple' | 'range'
 }
 
 type DatePickerProps = {

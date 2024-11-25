@@ -3,8 +3,9 @@ import { useCallback, useEffect, useState } from 'react'
 import SimplePagination from './SimplePagination'
 
 import classNames from 'classnames'
-import { useTranslations } from 'next-intl'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from '@/src/configs/t'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import { Locale } from '@/src/configs/i18n'
 
 const Pagination = ({
   page,
@@ -19,7 +20,8 @@ const Pagination = ({
   changeCurrentPage: (page: number) => void
   changePerPage: (size: number) => void
 }) => {
-  const t = useTranslations()
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const pageCount = Math.ceil(totalCount / size)
   const searchParams = useSearchParams()
   const router = useRouter()

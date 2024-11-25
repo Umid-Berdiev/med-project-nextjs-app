@@ -1,16 +1,17 @@
 'use client'
 
 import AppNavbar from '@/src/components/globals/AppNavbar'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
+import { Locale } from '../configs/i18n'
 
 interface Props {
   locale: string
 }
 
 export const Header: FC<Props> = ({ locale }) => {
-  const t = useTranslations('')
+  const { t } = useTranslations(locale as Locale)
   const pathname = usePathname()
   const isHomePage = pathname === `/${locale}`
 

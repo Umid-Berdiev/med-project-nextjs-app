@@ -1,22 +1,24 @@
-import AppLogo from '@/src/components/globals/AppLogo'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import {
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoLinkedinSquare,
   BiLogoTwitter
 } from 'react-icons/bi'
+import { Locale } from '../configs/i18n'
+import AppLogo from './icons/AppLogo'
 
 export default function TheFooter() {
-  const t = useTranslations('')
-
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   return (
     <footer className=''>
       <div className='container flex flex-col gap-y-8 pb-6 pt-12'>
         <div className='flex flex-row'>
           <div className='max-w-[227px]'>
-            <AppLogo className={'text-mainRed'} />
+            <AppLogo />
             <p className='mt-6'>
               {t('Yorqin kelajagingizni ISFT Instituti bilan boshlang!')}
             </p>

@@ -1,16 +1,13 @@
 import { ThemeProvider } from '@/src/components/ThemeProvider'
 import type { Metadata } from 'next'
-import {
-  AbstractIntlMessages,
-  NextIntlClientProvider,
-  useMessages
-} from 'next-intl'
+
 import { Inter } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 
 import '@/src/styles/globals.css'
 
 import '@/src/styles/custom.scss'
+import { Toaster } from 'react-hot-toast'
 
 // const roboto = Roboto_Flex({
 //   subsets: ['latin', 'cyrillic'],
@@ -68,7 +65,6 @@ export default function RootLayout({
   children: React.ReactNode
   params: { locale: string }
 }) {
-  const messages = useMessages()
   return (
     <html
       className={`${inter.variable} scroll-smooth`}
@@ -77,6 +73,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <Toaster />
         <ThemeProvider
           enableSystem
           attribute='class'
@@ -92,24 +89,19 @@ export default function RootLayout({
             // 'reddit'
           ]}
         >
-          <NextIntlClientProvider
-            locale={locale}
-            messages={messages as AbstractIntlMessages}
-          >
-            <NextTopLoader
-              initialPosition={0.08}
-              crawlSpeed={200}
-              height={3}
-              crawl={true}
-              easing='ease'
-              speed={200}
-              shadow='0 0 10px #2299DD,0 0 5px #2299DD'
-              color='var(--primary)'
-              showSpinner={false}
-            />
-            <main className='mx-auto'>{children}</main>
-            {/* <TheFooter /> */}
-          </NextIntlClientProvider>
+          <NextTopLoader
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            easing='ease'
+            speed={200}
+            shadow='0 0 10px #2299DD,0 0 5px #2299DD'
+            color='var(--primary)'
+            showSpinner={false}
+          />
+          <main className='mx-auto'>{children}</main>
+          {/* <TheFooter /> */}
         </ThemeProvider>
       </body>
     </html>

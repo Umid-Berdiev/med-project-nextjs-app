@@ -2,14 +2,18 @@ import Button from '@/src/components/Button'
 import CustomEditor from '@/src/components/CustomEditor'
 import Modal from '@/src/components/Modal'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 
 import React from 'react'
 import { BiPlusCircle } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 
 export default function Complaints() {
-  const t = useTranslations()
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
+
   const [open, setOpen] = React.useState(false)
   const [openTpemp, setOpenTemp] = React.useState(false)
   const handleClick = () => {

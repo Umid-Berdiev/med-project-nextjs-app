@@ -3,7 +3,7 @@ import Button from '@/src/components/Button'
 import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
@@ -12,9 +12,11 @@ import ProfileBlock from '../doctors-profile/detail/ProfileBlock'
 import AppInput from '@/src/components/forms/AppInput'
 import AppLabel from '@/src/components/forms/AppLabel'
 import AppInputDate from '@/src/components/forms/AppInputDate'
+import { Locale } from '@/src/configs/i18n'
 
 const LaboratoryTable = () => {
-  const t = useTranslations('')
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -24,7 +26,6 @@ const LaboratoryTable = () => {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column

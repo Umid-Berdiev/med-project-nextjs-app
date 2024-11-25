@@ -1,12 +1,14 @@
 'use client'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
 const PatientsOrders = () => {
-  const t = useTranslations('')
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -16,7 +18,6 @@ const PatientsOrders = () => {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column

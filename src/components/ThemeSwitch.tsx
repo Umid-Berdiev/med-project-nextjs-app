@@ -1,13 +1,12 @@
 'use client'
 import { capitalize } from '@/lib/utils'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState } from 'react'
 import { FiMoon, FiSun } from 'react-icons/fi'
 import { useOnClickOutside } from 'usehooks-ts'
 
 export default function ThemeSwitch() {
-  const t = useTranslations('')
   const [mounted, setMounted] = useState(false)
   const [isOpen, setIsOpen] = useState(false) // New state to control dropdown visibility
   const { setTheme, resolvedTheme, themes, theme } = useTheme()

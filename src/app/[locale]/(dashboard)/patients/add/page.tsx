@@ -11,15 +11,15 @@ import AppLabel from '@/src/components/forms/AppLabel'
 import AppSelect from '@/src/components/forms/AppSelect'
 import Heading1 from '@/src/components/typography/Heading1'
 import Heading6 from '@/src/components/typography/Heading6'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 
 export default function PatientsAddPage({
   params: { locale }
 }: {
   params: { locale: string }
 }) {
-  const t = useTranslations('')
-
+  const { t } = useTranslations(locale as Locale)
   const handleTabChange = (selectedValue: string) => {
     console.log(`Selected tab: ${selectedValue}`)
   }
@@ -104,7 +104,7 @@ export default function PatientsAddPage({
             </div>
             <div>
               <AppLabel isRequired={true} text='Sana' />
-              <AppInputDate />
+              <AppInputDate mode='single' />
             </div>
           </div>
           <div className='xl:col-span-4'>

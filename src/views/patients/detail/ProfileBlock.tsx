@@ -1,6 +1,8 @@
 import Button from '@/src/components/Button'
 import Link from '@/src/components/Link'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 import React from 'react'
 import { BiArrowFromRight, BiPlusCircle } from 'react-icons/bi'
 import { BsFillPlusCircleFill } from 'react-icons/bs'
@@ -9,7 +11,8 @@ import { LuPrinter } from 'react-icons/lu'
 import { SlOptions } from 'react-icons/sl'
 
 export default function ProfileBlock() {
-  const t = useTranslations('')
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   return (
     <div>
       <div className='flex w-full items-center justify-between rounded-lg bg-white p-4  sm:flex-col md:flex md:flex-col lg:flex-row'>
@@ -57,7 +60,7 @@ export default function ProfileBlock() {
               tabIndex={0}
               color='secondary'
               variant='tonal'
-              className='shadow-custom-blue bg-white'
+              className='bg-white shadow-custom-blue'
               size='small'
             >
               <SlOptions size={20} />
@@ -108,7 +111,7 @@ export default function ProfileBlock() {
           <Button
             color='secondary'
             variant='tonal'
-            className='shadow-custom-blue bg-white'
+            className='bg-white shadow-custom-blue'
             size='small'
           >
             <LuPrinter size={20} />

@@ -5,18 +5,19 @@ import Button from '@/src/components/Button'
 import TableHeader from '@/src/components/table/TableHeader'
 import LaboratoryTable from '@/src/views/laboratory/LaboratoryTable'
 import PatientsTable from '@/src/views/patients/PatientsTable'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { BiUserPlus } from 'react-icons/bi'
 import { FaFileAlt } from 'react-icons/fa'
+import { Locale } from '@/src/configs/i18n'
 
 export default function LaboratoryIndexPage({
   params: { locale }
 }: {
   params: { locale: string }
 }) {
-  const t = useTranslations()
+  const { t } = useTranslations(locale as Locale)
   const router = useRouter()
   const [open, setOpen] = useState(false)
 

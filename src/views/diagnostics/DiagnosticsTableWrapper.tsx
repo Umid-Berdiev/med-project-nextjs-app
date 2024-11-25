@@ -7,7 +7,7 @@ import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
 import { DiagnosticsTableCellType } from '@/src/utils/interfaces'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
@@ -17,7 +17,9 @@ import { TbTableOptions } from 'react-icons/tb'
 import { diagnosticsTableData } from './mock-data'
 
 export default function DiagnosticsTableWrapper() {
-  const t = useTranslations()
+  const { locale } = useParams()
+
+  const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -27,7 +29,6 @@ export default function DiagnosticsTableWrapper() {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column

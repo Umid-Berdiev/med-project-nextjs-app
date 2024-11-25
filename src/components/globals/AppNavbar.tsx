@@ -1,13 +1,14 @@
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import AppInput from '../forms/AppInput'
 import Button from '../Button'
-import Image from 'next/image';
+import Image from 'next/image'
+import { Locale } from '@/src/configs/i18n'
 
 export default function AppNavbar({ locale }: { locale: string }) {
-  const t = useTranslations('')
+  const { t } = useTranslations(locale as Locale)
 
   return (
-    <div className='navbar p-4 gap-2'>
+    <div className='navbar gap-2 p-4'>
       <div className='gap-2'>
         {/*  */}
         <Button>{t('Bemor qo’shish')}</Button>
@@ -23,18 +24,20 @@ export default function AppNavbar({ locale }: { locale: string }) {
             role='button'
             className='btn-ghost text-right hover:bg-transparent'
           >
-            <div className="flex items-center gap-3">
+            <div className='flex items-center gap-3'>
               <div>
-                <p className='text-sm font-semibold whitespace-nowrap'>Shakhzod Ismoilov Design</p>
+                <p className='whitespace-nowrap text-sm font-semibold'>
+                  Shakhzod Ismoilov Design
+                </p>
                 <p className='text-xs opacity-50'>Administrator</p>
               </div>
-              <div className="avatar size-9 rounded-lg overflow-hidden">
+              <div className='avatar size-9 overflow-hidden rounded-lg'>
                 <Image
-                  src="/images/userAvatar.jpg" // Rasm yo'li
-                  alt="Example Image"
+                  src='/images/userAvatar.jpg' // Rasm yo'li
+                  alt='Example Image'
                   width={36}
                   height={36}
-                 className='size-full object-cover object-center'
+                  className='size-full object-cover object-center'
                 />
               </div>
             </div>

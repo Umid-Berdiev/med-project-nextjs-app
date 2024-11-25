@@ -1,10 +1,13 @@
 'use client'
 
 import Heading2 from '@/src/components/typography/Heading2'
-import { useTranslations } from 'next-intl'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 
 export default function DashboardPage() {
-  const t = useTranslations('')
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
 
   return (
     <div className='container pb-10'>

@@ -3,7 +3,7 @@ import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import { Locale } from '@/src/configs/i18n'
 import { getLocalizedUrl } from '@/src/utils/i18n'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
@@ -13,7 +13,8 @@ import FilterPatients from './FilterPatients'
 import NoData from '@/src/components/table/NoData'
 
 const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
-  const t = useTranslations('')
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -23,7 +24,6 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column

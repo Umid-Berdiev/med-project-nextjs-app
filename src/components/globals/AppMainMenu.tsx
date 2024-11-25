@@ -1,6 +1,7 @@
 import { Link, locations } from '@/src/navigation'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/src/configs/t'
 import { usePathname } from 'next/navigation'
+import { Locale } from '@/src/configs/i18n'
 
 export default function AppMainMenu({
   locale,
@@ -9,7 +10,7 @@ export default function AppMainMenu({
   mode?: 'light' | 'dark'
   locale: string
 }) {
-  const t = useTranslations('')
+  const { t } = useTranslations(locale as Locale)
   const pathname = usePathname()
 
   const setClasses = (path: string) => {

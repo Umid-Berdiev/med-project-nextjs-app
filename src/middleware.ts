@@ -1,33 +1,37 @@
-import { locales } from '@/i18n/request'
-import createMiddleware from 'next-intl/middleware'
-import { NextRequest } from 'next/server'
-import { localePrefix } from './navigation'
+import { NextRequest, NextResponse } from 'next/server'
 
-type CustomMiddleware = (req: NextRequest) => Promise<NextRequest>
-const customMiddleware: CustomMiddleware = async req => {
-  console.log('Custom middleware executed before next-intl')
-  // console.log(req.cookies.get('NEXT_LOCALE')?.value)
-  const locale = req.cookies.get('NEXT_LOCALE')?.value
+const customMiddleware = async (
+  req: NextRequest
+): Promise<NextResponse | undefined> => {
+  const locale = req.cookies.get('NEXT_LOCALE')?.value || 'ru'
+  const token = req.cookies.get('_med_control_token')?.value
 
-  // redirect to dashboard if the path is /
-  if (req.nextUrl.pathname === `/${locale}`) {
-    req.nextUrl.pathname = `/${locale}/patients`
+  // Agar `/login` yoki `/patients` sahifasida bo'lsa, qayta yo'naltirmaslik uchun
+  if (
+    req.nextUrl.pathname === `/${locale}/login` ||
+    req.nextUrl.pathname === `/${locale}/patients`
+  ) {
+    return undefined
   }
 
-  return req
+  if (!token) {
+    console.log('Redirecting to login...')
+    return NextResponse.redirect(new URL(`/${locale}/login`, req.url))
+  }
+
+  if (req.nextUrl.pathname === `/${locale}`) {
+    console.log('Redirecting to patients...')
+    return NextResponse.redirect(new URL(`/${locale}/patients`, req.url))
+  }
+
+  return undefined // Agar shartlardan hech biri bajarilmasa
 }
 
-const intlMiddleware = createMiddleware({
-  locales,
-  defaultLocale: 'ru',
-  localePrefix
-})
-
-export default async function middleware(
-  req: NextRequest
-): Promise<ReturnType<typeof intlMiddleware>> {
-  await customMiddleware(req)
-  return intlMiddleware(req)
+export default async function middleware(req: NextRequest) {
+  const customResponse = await customMiddleware(req)
+  if (customResponse) {
+    return customResponse
+  }
 }
 
 export const config = {
