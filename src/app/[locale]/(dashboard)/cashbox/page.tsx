@@ -361,7 +361,9 @@ export default function CashboxPage() {
         actions={
           <>
             <Button variant='text' color='primary'>
-              Filter
+              <span className='border-b border-dashed border-secondary'>
+                {t('Filtr')}
+              </span>
             </Button>
             <Button
               variant='outlined'

@@ -10,10 +10,8 @@ import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
-import { getLocalizedUrl } from '@/src/utils/i18n'
-import { DiagnosticsTableCellType, ITab } from '@/src/utils/interfaces'
 import { useTranslations } from '@/src/configs/t'
-import Link from 'next/link'
+import { DiagnosticsTableCellType, ITab } from '@/src/utils/interfaces'
 import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
@@ -152,7 +150,9 @@ export default function DiagnosticsTableWrapper() {
         actions={
           <>
             <Button variant='text' color='primary'>
-              <span className='decoration-dashed'>{t('Filtr')}</span>
+              <span className='border-b border-dashed border-secondary'>
+                {t('Filtr')}
+              </span>
             </Button>
             <Button
               variant='outlined'

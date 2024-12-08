@@ -2,15 +2,15 @@
 const nextConfig = {
   reactStrictMode: false,
 
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/uz',
-        permanent: true
-      }
-    ]
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/uz',
+  //       permanent: true
+  //     }
+  //   ]
+  // },
 
   typescript: {
     ignoreBuildErrors: true

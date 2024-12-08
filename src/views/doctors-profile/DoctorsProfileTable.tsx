@@ -5,6 +5,7 @@ import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import TableHeader from '@/src/components/table/TableHeader'
 import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import { getLocalizedUrl } from '@/src/utils/i18n'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -14,6 +15,8 @@ import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 
 const DoctorsProfileTable = () => {
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -23,7 +26,6 @@ const DoctorsProfileTable = () => {
   >(undefined)
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
-  const { locale } = useParams()
   const handleSort = (column: string) => {
     setSortBy(prev =>
       prev?.column === column
@@ -332,7 +334,9 @@ const DoctorsProfileTable = () => {
         actions={
           <>
             <Button variant='text' color='primary'>
-              Filter
+              <span className='border-b border-dashed border-secondary'>
+                {t('Filtr')}
+              </span>
             </Button>
             <Button
               variant='outlined'

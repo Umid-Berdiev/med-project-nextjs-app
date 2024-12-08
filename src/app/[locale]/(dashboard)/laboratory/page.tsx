@@ -3,14 +3,12 @@
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import Button from '@/src/components/Button'
 import TableHeader from '@/src/components/table/TableHeader'
-import LaboratoryTable from '@/src/views/laboratory/LaboratoryTable'
-import PatientsTable from '@/src/views/patients/PatientsTable'
+import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
+import LaboratoryTable from '@/src/views/laboratory/LaboratoryTable'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { BiUserPlus } from 'react-icons/bi'
 import { FaFileAlt } from 'react-icons/fa'
-import { Locale } from '@/src/configs/i18n'
 
 export default function LaboratoryIndexPage({
   params: { locale }
@@ -33,9 +31,11 @@ export default function LaboratoryIndexPage({
                 variant='text'
                 color={open ? 'secondary' : 'primary'}
                 onClick={() => setOpen(!open)}
-                className='rounded-none border-b border-dashed border-secondary'
+                className='rounded-none'
               >
-                {t('Filtr')}
+                <span className='border-b border-dashed border-secondary'>
+                  {t('Filtr')}
+                </span>
               </Button>
               <Button
                 variant='outlined'
