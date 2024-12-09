@@ -1,5 +1,9 @@
+'use client'
+
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import { GoHome } from 'react-icons/go'
+import { Locale } from '../configs/i18n'
 
 export type BreadcrumbLinkType = {
   label: string
@@ -11,11 +15,13 @@ export default function Breadcrumb({
 }: {
   breadcrumbs: BreadcrumbLinkType[]
 }) {
+  const { locale } = useParams() as { locale: Locale }
+
   return (
     <div className='flex w-full flex-col gap-3 align-middle'>
       <div className='breadcrumbs flex items-center gap-x-2'>
         <div className='flex gap-x-2 align-middle'>
-          <Link href='/home' className='flex gap-1 align-middle'>
+          <Link href={`/${locale}/home`} className='flex gap-1 align-middle'>
             <GoHome size={12} />
           </Link>
         </div>
