@@ -33,7 +33,7 @@ export default function AppInput(props: IProps) {
         type='text'
         value={props.value}
         placeholder={props.placeholder}
-        className={`h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none ${
+        className={`h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm font-normal text-[#161624] outline-none ${
           props.iconPosition === 'left' ? 'pl-10' : ''
         } ${props.iconPosition === 'right' ? 'pr-10' : ''}`}
         {...rest}

@@ -52,14 +52,13 @@ export default function Table<T>({
   }, [data, sortBy, columns])
 
   return (
-    <div className='mt-4 h-full rounded-[12px]'>
+    <div className='mt-4 h-full'>
       {data.length ? (
-        <div className='w-full max-w-[calc(100vw-338px)] overflow-x-auto overflow-y-hidden'>
-          <table
-            className={`table w-full min-w-full text-sm drop-shadow-none ${
-              stripped ? 'table-zebra' : ''
-            }`}
-          >
+        <div
+          className='overflow-x-auto
+        '
+        >
+          <table className={`table ${stripped ? 'table-zebra' : ''}`}>
             <thead className='rounded'>
               <tr>
                 {columns.map((column, index) => (

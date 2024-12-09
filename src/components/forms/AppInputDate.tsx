@@ -35,7 +35,7 @@ export default function AppInputDate(props: IProps) {
         mode: props.mode || 'single',
         dateFormat: 'Y-m-d'
       }}
-      className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px]  text-[#161624] outline-none'
+      className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm  text-[#161624] outline-none'
     />
   )
 }

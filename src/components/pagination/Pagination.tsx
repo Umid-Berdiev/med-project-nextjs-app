@@ -2,10 +2,10 @@
 import { useCallback, useEffect, useState } from 'react'
 import SimplePagination from './SimplePagination'
 
-import classNames from 'classnames'
-import { useTranslations } from '@/src/configs/t'
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import classNames from 'classnames'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 const Pagination = ({
   page,
@@ -61,12 +61,12 @@ const Pagination = ({
   )
 
   return (
-    <div className='font-inter text-customDark mt-6 flex w-full flex-wrap items-center justify-between gap-3 text-[13px] font-semibold text-opacity-50'>
+    <div className='font-inter text-customDark mt-6 flex w-full flex-wrap items-center justify-between gap-3 text-sm font-semibold text-opacity-50'>
       <div className='flex items-center gap-2'>
         <select
           value={perPage}
           onChange={changePerPageHandler}
-          className='text-customDark rounded-lg border-[#2324271A] px-3 py-1.5 text-[13px] font-semibold text-opacity-50'
+          className='text-customDark rounded-lg border-[#2324271A] px-3 py-1.5 text-sm font-semibold text-opacity-50'
         >
           <option value={'10'}>10</option>
           <option value={'20'}>20</option>

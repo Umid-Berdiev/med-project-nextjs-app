@@ -7,7 +7,7 @@ export default function Heading1({
 }) {
   return (
     <h1
-      className={`mb-[18px] text-left text-[23px] font-semibold leading-8 text-[#232427] ${className}`}
+      className={`text-left text-2xl font-semibold text-[#232427] ${className}`}
     >
       {children}
     </h1>

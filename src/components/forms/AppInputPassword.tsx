@@ -34,7 +34,7 @@ export default function AppInputPassword(props: IProps) {
         type={showPassword ? 'text' : 'password'}
         value={props.value}
         placeholder={props.placeholder}
-        className={`h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none ${iconPosition === 'left' ? 'pl-10' : ''} ${iconPosition === 'right' ? 'pr-10' : ''}`}
+        className={`h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm font-normal text-[#161624] outline-none ${iconPosition === 'left' ? 'pl-10' : ''} ${iconPosition === 'right' ? 'pr-10' : ''}`}
         {...rest}
       />
 

@@ -1,14 +1,11 @@
+import Button from '@/src/components/Button'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputDate from '@/src/components/forms/AppInputDate'
-import { useTranslations } from '@/src/configs/t'
-import React from 'react'
 import AppSelect from '@/src/components/forms/AppSelect'
-import Button from '@/src/components/Button'
 import FilterIcon from '@/src/components/icons/FilterIcon'
-import { useParams } from 'next/navigation'
 import { Locale } from '@/src/configs/i18n'
-import AppLabel from '@/src/components/forms/AppLabel'
-import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 
 export default function FilterPatients() {
   const { locale } = useParams()
@@ -52,11 +49,11 @@ export default function FilterPatients() {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
+            className='menu dropdown-content z-50 w-52 rounded-lg bg-base-100 p-2 shadow'
           >
             <li>
               <label
-                className={`mb-0 flex cursor-pointer items-center justify-between gap-2 text-xs leading-9`}
+                className={`flex cursor-pointer items-center justify-between gap-2 text-xs`}
               >
                 <span> Bemor IDsi</span>
                 <input
@@ -68,7 +65,7 @@ export default function FilterPatients() {
             </li>
             <li>
               <label
-                className={`mb-0 flex cursor-pointer items-center justify-between gap-2 text-xs leading-9`}
+                className={`flex cursor-pointer items-center justify-between gap-2 text-xs`}
               >
                 <span> Telefon raqami</span>
                 <input
@@ -80,7 +77,7 @@ export default function FilterPatients() {
             </li>
             <li>
               <label
-                className={`mb-0 flex cursor-pointer items-center justify-between gap-2 text-xs leading-9`}
+                className={`flex cursor-pointer items-center justify-between gap-2 text-xs`}
               >
                 <span> Sana</span>
                 <input

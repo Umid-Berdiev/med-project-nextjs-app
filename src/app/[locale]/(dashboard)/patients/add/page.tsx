@@ -222,7 +222,7 @@ export default function PatientsAddPage({
             <div className='gap-1 rounded-lg border border-[#2324270D] px-3'>
               {numbers.map(number => (
                 <div
-                  className='flex items-center justify-between border-b border-[#F4F4F4] py-3 text-[13px]'
+                  className='flex items-center justify-between border-b border-[#F4F4F4] py-3 text-sm'
                   key={number}
                 >
                   <span className='font-semibold leading-[18px] text-[#23242780]'>

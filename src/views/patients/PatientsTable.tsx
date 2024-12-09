@@ -1,16 +1,16 @@
 'use client'
 import Pagination from '@/src/components/pagination/Pagination'
+import NoData from '@/src/components/table/NoData'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import { Locale } from '@/src/configs/i18n'
-import { getLocalizedUrl } from '@/src/utils/i18n'
 import { useTranslations } from '@/src/configs/t'
+import { getLocalizedUrl } from '@/src/utils/i18n'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 import FilterPatients from './FilterPatients'
-import NoData from '@/src/components/table/NoData'
 
 const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   const { locale } = useParams()
@@ -63,7 +63,7 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       sortable: true
     },
     {
-      header: t('Tug`ilgan kun'),
+      header: t("Tug'ilgan kun"),
       col: (row: CellType) => row.birthDate,
       sortable: true
     },
@@ -80,10 +80,11 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
       col: (row: CellType) => (
         <div>
           {row.balance > 0 ? (
-            <div className='text-success'>+{row.balance} so`m </div>
+            <div className='text-success'>+{row.balance}</div>
           ) : (
-            <div className='text-error'>{row.balance} so`m</div>
-          )}
+            <div className='text-error'>{row.balance}</div>
+          )}{' '}
+          + {"so'm"}
         </div>
       )
     },
@@ -113,13 +114,13 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
+            className='menu dropdown-content z-50 w-52 rounded-lg bg-base-100 p-2 shadow'
           >
             <li>
               <Link
                 href={getLocalizedUrl(`patients/${row.id}`, locale as Locale)}
               >
-                Ko`rish
+                {t("Ko'rish")}
               </Link>
             </li>
             <li>
@@ -185,23 +186,28 @@ const PatientsTable = ({ openFilter }: { openFilter: boolean }) => {
   return (
     <div>
       {openFilter && <FilterPatients />}
-      <Table
-        columns={columns}
-        data={data.slice(page * perPage, page * perPage + perPage)}
-        sortBy={sortBy}
-        setSortBy={handleSort}
-        classRow={classRow}
-        hoverable={false}
-        stripped={false}
-      />
-      <NoData />
-      <Pagination
-        page={page}
-        size={perPage}
-        totalCount={data.length}
-        changeCurrentPage={e => setPage(e)}
-        changePerPage={e => setPerPage(e)}
-      />
+      {data.length > 0 ? (
+        <>
+          <Table
+            columns={columns}
+            data={data.slice(page * perPage, page * perPage + perPage)}
+            sortBy={sortBy}
+            setSortBy={handleSort}
+            classRow={classRow}
+            hoverable={false}
+            stripped={false}
+          />
+          <Pagination
+            page={page}
+            size={perPage}
+            totalCount={data.length}
+            changeCurrentPage={e => setPage(e)}
+            changePerPage={e => setPerPage(e)}
+          />
+        </>
+      ) : (
+        <NoData />
+      )}
     </div>
   )
 }

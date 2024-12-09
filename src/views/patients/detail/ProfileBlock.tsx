@@ -1,9 +1,7 @@
 import Button from '@/src/components/Button'
-import Link from '@/src/components/Link'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { useParams } from 'next/navigation'
-import React from 'react'
 import { BsFillPlusCircleFill } from 'react-icons/bs'
 import { IoIosArrowForward } from 'react-icons/io'
 import { LuPrinter } from 'react-icons/lu'
@@ -66,7 +64,7 @@ export default function ProfileBlock() {
             </Button>
             <ul
               tabIndex={0}
-              className='menu dropdown-content  z-[1000] w-72 rounded-s-md bg-base-100 p-2 shadow'
+              className='menu dropdown-content z-50 w-72 rounded-lg bg-base-100 p-2 shadow'
             >
               <li>
                 <div className='flex w-full justify-between hover:bg-soft-secondary'>

@@ -99,7 +99,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] '
+            className='text-xs '
           >
             Shablondan tanlash
           </Button>
@@ -108,7 +108,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] '
+            className='text-xs '
             onClick={() => setOpenTemp(true)}
           >
             Shablonga qo’shish
@@ -126,7 +126,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] '
+            className='text-xs '
           >
             Shablondan tanlash
           </Button>
@@ -135,7 +135,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] '
+            className='text-xs '
             onClick={() => setOpenTemp(true)}
           >
             Shablonga qo’shish
@@ -153,7 +153,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] '
+            className='text-xs '
           >
             Shablondan tanlash
           </Button>
@@ -162,7 +162,7 @@ export default function Complaints() {
             variant='text'
             color='secondary'
             size='small'
-            className='text-[11px] '
+            className='text-xs '
             onClick={() => setOpenTemp(true)}
           >
             Shablonga qo’shish
@@ -201,7 +201,7 @@ export default function Complaints() {
               type='text'
               id='input'
               placeholder={t('Shablon nomi')}
-              className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px]  text-[#161624] outline-none'
+              className='h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm  text-[#161624] outline-none'
             />
           </div>
           <CustomEditor height={220} />

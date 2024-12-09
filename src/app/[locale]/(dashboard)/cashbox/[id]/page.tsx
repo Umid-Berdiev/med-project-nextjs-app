@@ -15,14 +15,14 @@ import Modal from '@/src/components/Modal'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import Heading5 from '@/src/components/typography/Heading5'
 
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import ProfileBlock from '@/src/views/doctors-profile/detail/ProfileBlock'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
+import { AiOutlineDelete } from 'react-icons/ai'
 import { BiPrinter } from 'react-icons/bi'
 import { FiEdit2 } from 'react-icons/fi'
-import { AiOutlineDelete } from 'react-icons/ai'
-import { useTranslations } from '@/src/configs/t'
-import { Locale } from '@/src/configs/i18n'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 
@@ -219,7 +219,7 @@ export default function CashboxPage() {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
+            className='menu dropdown-content z-50 w-52 rounded-lg bg-base-100 p-2 shadow'
           >
             <li>
               <a className='flex items-center gap-2'>
@@ -324,7 +324,7 @@ export default function CashboxPage() {
           <div className='relative flex gap-3'>
             <ListIconLog />
             <div>
-              <h5 className='mb-1 text-[13px]'>{t('Tolangan xizmatlar')}:</h5>
+              <h5 className='mb-1 text-sm'>{t('Tolangan xizmatlar')}:</h5>
               <b className='text-lg font-bold leading-6'>
                 2 451 500{' '}
                 <span className='pl-1 text-xs font-semibold text-[#23242780]'>
@@ -338,7 +338,7 @@ export default function CashboxPage() {
           <div className='relative flex gap-3'>
             <ProductListCountIcon />
             <div>
-              <h5 className='mb-1 text-[13px]'>
+              <h5 className='mb-1 text-sm'>
                 {t('Xarid qilgan tovarlar soni')}:
               </h5>
               <b className='text-lg font-bold leading-6'>23 {t('ta')}</b>
@@ -355,7 +355,7 @@ export default function CashboxPage() {
           <div className='flex gap-3'>
             <BalanceIcon2 />
             <div>
-              <h5 className='mb-1 text-[13px]'>{t('Jami qarzdorlik')}:</h5>
+              <h5 className='mb-1 text-sm'>{t('Jami qarzdorlik')}:</h5>
               <div>
                 <b className='text-lg font-bold leading-6 text-error'>
                   - 1 846 843
@@ -382,7 +382,7 @@ export default function CashboxPage() {
               stripped={false}
             />
             <div className='flex items-center justify-between pb-4'>
-              <p className='mb-0 text-[13px] leading-5 text-[#23242780]'>
+              <p className='mb-0 text-sm leading-5 text-[#23242780]'>
                 {t('Tanlangan jami xizmat va tovarlar narxi')}:
               </p>
               <div>

@@ -113,7 +113,7 @@ const MRIBrain = () => {
               variant='text'
               color='secondary'
               size='small'
-              className='text-[11px] '
+              className='text-xs '
             >
               Shablondan tanlash
             </Button>
@@ -122,7 +122,7 @@ const MRIBrain = () => {
               variant='text'
               color='secondary'
               size='small'
-              className='text-[11px] '
+              className='text-xs '
             >
               Shablonga qo’shish
             </Button>

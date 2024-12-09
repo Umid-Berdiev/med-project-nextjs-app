@@ -1,11 +1,10 @@
 'use client'
 import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import AppInput from '@/src/components/forms/AppInput'
+import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
 import AppInputDate from '@/src/components/forms/AppInputDate'
 import AppInputRadio from '@/src/components/forms/AppInputRadio'
 import AppLabel from '@/src/components/forms/AppLabel'
-import React from 'react'
-import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
 import AppSelect from '@/src/components/forms/AppSelect'
 import Heading6 from '@/src/components/typography/Heading6'
 
@@ -181,7 +180,7 @@ export default function MedicalRecord() {
           <div className='gap-1 rounded-lg border border-[#2324270D] px-3'>
             {numbers.map(number => (
               <div
-                className='flex items-center justify-between border-b border-[#F4F4F4] py-3 text-[13px]'
+                className='flex items-center justify-between border-b border-[#F4F4F4] py-3 text-sm'
                 key={number}
               >
                 <span className='font-semibold leading-[18px] text-[#23242780]'>

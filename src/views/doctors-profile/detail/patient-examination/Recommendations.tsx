@@ -1,6 +1,5 @@
 import Button from '@/src/components/Button'
 import CustomEditor from '@/src/components/CustomEditor'
-import React from 'react'
 import { BiPlusCircle } from 'react-icons/bi'
 import { FiFileText } from 'react-icons/fi'
 
@@ -14,7 +13,7 @@ export default function Recommendations() {
           variant='text'
           color='secondary'
           size='small'
-          className='text-[11px] '
+          className='text-xs '
         >
           Shablondan tanlash
         </Button>
@@ -23,7 +22,7 @@ export default function Recommendations() {
           variant='text'
           color='secondary'
           size='small'
-          className='text-[11px] '
+          className='text-xs '
         >
           Shablonga qo’shish
         </Button>

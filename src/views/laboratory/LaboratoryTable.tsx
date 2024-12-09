@@ -1,24 +1,24 @@
 'use client'
+import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
+import AppInput from '@/src/components/forms/AppInput'
+import AppInputDate from '@/src/components/forms/AppInputDate'
+import AppLabel from '@/src/components/forms/AppLabel'
+import AppSelect from '@/src/components/forms/AppSelect'
 import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
+import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
+import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
+import { ITab, ITabContent } from '@/src/utils/interfaces'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
 import ProfileBlock from '../doctors-profile/detail/ProfileBlock'
-import AppInput from '@/src/components/forms/AppInput'
-import AppLabel from '@/src/components/forms/AppLabel'
-import AppInputDate from '@/src/components/forms/AppInputDate'
-import { Locale } from '@/src/configs/i18n'
-import AppSelect from '@/src/components/forms/AppSelect'
-import RoundedBlock from '@/src/components/blocks/RoundedBlock'
-import { ITab, ITabContent } from '@/src/utils/interfaces'
-import MRIBrain from './MRI-brain'
-import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import ImageUpload from './ImageUpload'
+import MRIBrain from './MRI-brain'
 
 const tabs: ITab[] = [
   { id: 'MRI-brain', label: 'MRT bosh miyasi' },
@@ -131,7 +131,7 @@ const LaboratoryTable = () => {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
+            className='menu dropdown-content z-50 w-52 rounded-lg bg-base-100 p-2 shadow'
           >
             <li>
               <button onClick={() => setOpen(true)}>

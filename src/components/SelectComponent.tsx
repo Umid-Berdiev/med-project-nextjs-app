@@ -37,7 +37,7 @@ const SelectComponent: React.FC<SelectProps> = ({
         id='select'
         value={selectedValue}
         onChange={handleChange}
-        className='h-9 w-full appearance-none rounded-lg border border-[#2324271A] px-3  text-[13px] text-[#161624] outline-none'
+        className='h-9 w-full appearance-none rounded-lg border border-[#2324271A] px-3  text-sm text-[#161624] outline-none'
       >
         {options.map((option, index) => (
           <option key={index} value={option}>

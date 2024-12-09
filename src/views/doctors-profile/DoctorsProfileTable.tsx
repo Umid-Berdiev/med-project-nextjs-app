@@ -91,7 +91,7 @@ const DoctorsProfileTable = () => {
           </div>
           <ul
             tabIndex={0}
-            className='menu dropdown-content  z-[1000] w-52 rounded-s-md bg-base-100 p-2 shadow'
+            className='menu dropdown-content z-50 w-52 rounded-lg bg-base-100 p-2 shadow'
           >
             <li>
               <Link
