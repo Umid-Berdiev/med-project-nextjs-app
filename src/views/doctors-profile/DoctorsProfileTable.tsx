@@ -104,7 +104,14 @@ const DoctorsProfileTable = () => {
               </Link>
             </li>
             <li>
-              <a>Item 2</a>
+              <Link
+                href={getLocalizedUrl(
+                  `doctors-profile/item/${row.id}/patient-examination`,
+                  locale as Locale
+                )}
+              >
+                Item
+              </Link>
             </li>
           </ul>
         </div>

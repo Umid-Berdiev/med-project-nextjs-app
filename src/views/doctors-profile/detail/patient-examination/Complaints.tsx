@@ -1,3 +1,4 @@
+'use client'
 import Button from '@/src/components/Button'
 import CustomEditor from '@/src/components/CustomEditor'
 import Modal from '@/src/components/Modal'
