@@ -13,7 +13,7 @@ import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { DiagnosticsTableCellType, ITab } from '@/src/utils/interfaces'
 import { useParams, useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
@@ -31,6 +31,7 @@ export default function DiagnosticsTableWrapper() {
       }
     | undefined
   >(undefined)
+  const [activeTab, setActiveTab] = useState<string>('1')
   const [perPage, setPerPage] = useState(10)
   const [page, setPage] = useState(0)
   const handleSort = (column: string) => {
@@ -124,10 +125,6 @@ export default function DiagnosticsTableWrapper() {
   const classRow = (row: DiagnosticsTableCellType) => {
     return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
   }
-
-  const [activeTab, setActiveTab] = useState<string>(
-    Array.isArray(tab) ? tab[0] : tab
-  )
   const router = useRouter()
 
   // 1-Umumiy klinik tekshiruvlar, 2-Biokimyoviy tekshiruvlar, 3-Gormonlar tekshiruvi, 4-TORCH infeksiyalari, 5-Onkomarkerlar, 6-Allergologik tekshiruv, 7-Ekspress test, 8-Koagulogramma, 9-Barcha Natijalar
@@ -142,6 +139,16 @@ export default function DiagnosticsTableWrapper() {
     { id: '8', label: t('Koagulogramma') },
     { id: '9', label: t('Barcha Natijalar') }
   ]
+
+  useEffect(() => {
+    if (tab) {
+      if (Array.isArray(tab)) {
+        setActiveTab(tab[0])
+      } else {
+        setActiveTab(tab)
+      }
+    }
+  }, [tab])
 
   return (
     <>
