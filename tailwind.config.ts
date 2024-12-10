@@ -60,7 +60,8 @@ const config = {
         'soft-secondary': 'var(--soft-secondary)',
         'soft-primary': 'var(--soft-primary)',
         'soft-error': '#FDEEEC80',
-        'soft-success': '#EAF9F580'
+        'soft-success': '#EAF9F580',
+        'secondary-light': 'var(--secondary-light)'
       },
 
       fontFamily: {

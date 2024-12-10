@@ -59,7 +59,7 @@ export default function MedicalRecord() {
   return (
     <div>
       <RoundedBlock className='mb-4'>
-        <div className='col-span-12 grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
           <div>
             <AppLabel isRequired={true} text='Karta turi' />
             <AppSelect selectedValue='1' options={cardTypes} />

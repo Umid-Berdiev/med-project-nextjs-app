@@ -1,13 +1,13 @@
 'use client'
 
+import RolePage from '@/src/app/[locale]/(dashboard)/settings/user/detail/role'
+import UserPage from '@/src/app/[locale]/(dashboard)/settings/user/detail/user'
+import Breadcrumb from '@/src/components/Breadcrumbs'
 import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
 import { useParams } from 'next/navigation'
-import Breadcrumb from '@/src/components/Breadcrumbs'
-import UserPage from '@/src/app/[locale]/(dashboard)/settings/user/detail/user'
-import RolePage from '@/src/app/[locale]/(dashboard)/settings/user/detail/role'
-import { useTranslations } from '@/src/configs/t'
-import { Locale } from '@/src/configs/i18n'
 import { useState } from 'react'
 
 export default function PatientsDetailPage() {
@@ -48,9 +48,9 @@ export default function PatientsDetailPage() {
       />
       <div className='my-4'>
         <Tablist
+          className='text-[#23242780]'
           activeColor='text-black'
           bgColor='bg-white'
-          className='text-[#23242780]'
           tabs={tabs}
           activeTab={activeTab}
           onTabClick={e => {

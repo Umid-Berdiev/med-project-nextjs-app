@@ -354,7 +354,7 @@ export default function CashboxPage() {
     return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
   }
   return (
-    <div className='container p-4'>
+    <div className='container'>
       <Breadcrumb breadcrumbs={[{ label: 'Kassa' }]} />
       <TableHeader
         title='Kassa'

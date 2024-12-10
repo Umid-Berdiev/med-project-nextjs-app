@@ -372,7 +372,9 @@ export default function UserTableWrapper() {
   return (
     <>
       <div className='flex items-center justify-between'>
-        <AppInput className='max-w-60' isSearch={true} placeholder='Qidirish' />
+        <div className='w-full max-w-72'>
+          <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
+        </div>
         <Button onClick={() => setOpen(!open)}>
           {t('Qo’shish')}{' '}
           <svg

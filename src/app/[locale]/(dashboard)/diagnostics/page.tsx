@@ -3,7 +3,7 @@ import DiagnosticsTableWrapper from '@/src/views/diagnostics/DiagnosticsTableWra
 
 export default function DiagnosticsIndexPage() {
   return (
-    <div className='container p-4'>
+    <div className='container'>
       <Breadcrumb breadcrumbs={[{ label: 'Diagnostika' }]} />
       <DiagnosticsTableWrapper />
     </div>

@@ -311,7 +311,7 @@ export default function CashboxPage() {
     }
   ]
   return (
-    <div className='container p-4'>
+    <div className='container'>
       <Breadcrumb
         breadcrumbs={[
           { label: t('Kassa'), href: `/${locale}/cashbox` },

@@ -20,7 +20,7 @@ export default function LaboratoryIndexPage({
   const [open, setOpen] = useState(false)
 
   return (
-    <div className='container p-4'>
+    <div className='container'>
       <Breadcrumb breadcrumbs={[{ label: t('Labaratoriya') }]} />
       <section>
         <TableHeader

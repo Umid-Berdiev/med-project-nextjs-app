@@ -3,13 +3,13 @@
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import Button from '@/src/components/Button'
 import TableHeader from '@/src/components/table/TableHeader'
-import PatientsTable from '@/src/views/patients/PatientsTable'
+import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
+import PatientsTable from '@/src/views/patients/PatientsTable'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { BiUserPlus } from 'react-icons/bi'
 import { FaFileAlt } from 'react-icons/fa'
-import { Locale } from '@/src/configs/i18n'
 
 export default function PatientsIndexPage({
   params: { locale }
@@ -21,7 +21,7 @@ export default function PatientsIndexPage({
   const [open, setOpen] = useState(false)
 
   return (
-    <div className='container p-4'>
+    <div className='container'>
       <Breadcrumb breadcrumbs={[{ label: t('Bemorlar') }]} />
       <section>
         {/* TODO: bemorlar listi sahifasi shu yerda bo'ladi */}

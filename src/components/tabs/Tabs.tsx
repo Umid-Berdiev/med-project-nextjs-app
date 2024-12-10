@@ -1,9 +1,9 @@
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
 import { ITablistProps, ITabsProps } from '@/src/utils/interfaces'
 import classnames from 'classnames'
-import { useTranslations } from '@/src/configs/t'
-import React from 'react'
 import { useParams } from 'next/navigation'
-import { Locale } from '@/src/configs/i18n'
+import React from 'react'
 
 const Tablist: React.FC<ITablistProps> = ({
   tabs,
@@ -17,6 +17,7 @@ const Tablist: React.FC<ITablistProps> = ({
 }) => {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
+
   return (
     <div className='flex justify-between'>
       <div

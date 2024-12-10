@@ -292,7 +292,6 @@ const LaboratoryTable = () => {
           </div>
         </div>
         <RoundedBlock>
-          {' '}
           <div className='my-4'>
             <Tablist
               activeColor='text-white'

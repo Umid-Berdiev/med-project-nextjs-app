@@ -1,4 +1,4 @@
-import { act, useMemo } from 'react'
+import { useMemo } from 'react'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 
 interface PaginationButtonProps {
@@ -80,7 +80,6 @@ export default function SimplePagination({
       { length: endPage - startPage },
       (_, i) => startPage + i
     )
-    console.log(activePage, pageCount, startPage, endPage, pages)
 
     if (startPage > 1) {
       pages.unshift('...')

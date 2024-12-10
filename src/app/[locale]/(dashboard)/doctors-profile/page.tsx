@@ -9,8 +9,8 @@ export default function PageComponent({
   params: { locale: string }
 }) {
   return (
-    <>
+    <div className='container'>
       <DoctorsProfileTable />
-    </>
+    </div>
   )
 }
