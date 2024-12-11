@@ -12,15 +12,10 @@ interface IProps {
 export default function AppSelect(props: IProps) {
   return (
     <select
-      // style={{
-      //   backgroundImage: "url('/images/SelectArrow.svg')",
-      //   backgroundPosition: 'right 12px center',
-      //   backgroundRepeat: 'no-repeat'
-      // }}
       id='select'
       defaultValue={props.selectedValue || ''}
       className={classnames(
-        'h-9 w-full cursor-pointer appearance-none rounded-lg border border-[#2324271A] px-3 text-sm  text-[#161624] outline-none',
+        'h-9 w-full cursor-pointer appearance-none rounded-lg border border-[#2324271A] px-3 text-sm text-[#161624] outline-none',
         'bg-[url(/images/SelectArrow.svg)]',
         'bg-[position:right_12px_center]',
         'bg-no-repeat',
@@ -28,9 +23,6 @@ export default function AppSelect(props: IProps) {
         props.className
       )}
     >
-      {/* <option value='' disabled>
-        {props.placeholder}
-      </option> */}
       {props.placeholder && (
         <option value='' disabled>
           {props.placeholder}

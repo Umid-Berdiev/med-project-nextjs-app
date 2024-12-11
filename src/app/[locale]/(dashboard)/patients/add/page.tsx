@@ -1,9 +1,9 @@
 'use client'
 
 import RoundedBlock from '@/src/components/blocks/RoundedBlock'
+import ServicesBlock from '@/src/components/blocks/ServicesBlock'
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import Button from '@/src/components/Button'
-import AppDropdown from '@/src/components/dropdowns/AppDropdown'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
 import AppInputDate from '@/src/components/forms/AppInputDate'
@@ -62,50 +62,6 @@ export default function PatientsAddPage({
   const smsOptions = [
     { label: 'Sms', value: '1' },
     { label: 'Link', value: '0' }
-  ]
-
-  const dropdownOptions = [
-    () => (
-      <label className='label flex w-full cursor-pointer px-2'>
-        <span className='label-text'>Blue pill</span>
-        <input
-          type='radio'
-          name='radio-10'
-          className='radio radio-sm checked:bg-blue-500'
-          defaultChecked
-        />
-      </label>
-    ),
-    () => (
-      <label className='label flex w-full cursor-pointer px-2'>
-        <span className='label-text'>Red pill</span>
-        <input
-          type='radio'
-          name='radio-10'
-          className='radio radio-sm checked:bg-red-500'
-        />
-      </label>
-    ),
-    () => (
-      <label className='label flex w-full cursor-pointer px-2'>
-        <span className='label-text'>Green pill</span>
-        <input
-          type='radio'
-          name='radio-10'
-          className='radio radio-sm checked:bg-green-500'
-        />
-      </label>
-    ),
-    () => (
-      <label className='label flex w-full cursor-pointer px-2'>
-        <span className='label-text'>Yellow pill</span>
-        <input
-          type='radio'
-          name='radio-10'
-          className='radio radio-sm checked:bg-yellow-500'
-        />
-      </label>
-    )
   ]
 
   const numbers = Array.from({ length: 10 }, (_, index) => index + 1)
@@ -258,20 +214,7 @@ export default function PatientsAddPage({
           </div>
         </RoundedBlock>
         <div className='grid gap-5 sm:grid-cols-12'>
-          <RoundedBlock className='sm:col-span-7 xl:col-span-8'>
-            <div className='flex gap-3'>
-              <AppDropdown
-                search
-                options={dropdownOptions}
-                title={t('Qabul')}
-              />
-              <AppDropdown
-                search
-                options={dropdownOptions}
-                title={t('Diagnostika')}
-              />
-            </div>
-          </RoundedBlock>
+          <ServicesBlock className='sm:col-span-7 xl:col-span-8' />
           <RoundedBlock className='sm:col-span-5 xl:col-span-4'>
             <Heading6>{t('Kalkulyator')}</Heading6>
             <div className='gap-1 rounded-lg border border-[#2324270D] px-3'>
