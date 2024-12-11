@@ -1,5 +1,5 @@
 import React from 'react'
-import { BiSearch } from 'react-icons/bi'
+import { IoIosSearch } from 'react-icons/io'
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isSearch?: boolean
@@ -7,41 +7,41 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   iconPosition?: 'left' | 'right'
 }
 
-export default function AppInput({
-  className = '',
-  isSearch = false,
-  icon,
-  iconPosition = 'left',
-  value,
-  placeholder
-}: IProps) {
-  // const { isSearch, icon, iconPosition, ...rest } = props
-  const defaultIcon = isSearch ? <BiSearch size={20} /> : icon
+export default function AppInput(props: IProps) {
+  const { isSearch, icon, iconPosition, ...rest } = props
+  const defaultIcon = props.isSearch ? (
+    <IoIosSearch color='#23242780' />
+  ) : (
+    props.icon
+  )
 
   return (
-    <label
-      className={`input input-bordered flex h-9 min-w-40 items-center gap-2 rounded-lg text-sm ${className}`}
+    <div
+      className={`relative flex items-center ${props.className ? props.className : ''}`}
     >
-      {defaultIcon && iconPosition === 'left' && (
-        <span className='text-[#23242780]'>{defaultIcon}</span>
+      {defaultIcon && props.iconPosition === 'left' && (
+        <span className='absolute left-3 text-[#23242780]'>{defaultIcon}</span>
       )}
 
       <input
-        // style={{
-        //   paddingLeft:
-        //     defaultIcon && props.iconPosition === 'left' ? '2.5rem' : '',
-        //   paddingRight:
-        //     defaultIcon && props.iconPosition === 'right' ? '2.5rem' : ''
-        // }}
-        className={`grow`}
+        style={{
+          paddingLeft:
+            defaultIcon && props.iconPosition === 'left' ? '2.5rem' : '',
+          paddingRight:
+            defaultIcon && props.iconPosition === 'right' ? '2.5rem' : ''
+        }}
         type='text'
-        defaultValue={value}
-        placeholder={placeholder}
+        value={props.value}
+        placeholder={props.placeholder}
+        className={`h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none ${
+          props.iconPosition === 'left' ? 'pl-10' : ''
+        } ${props.iconPosition === 'right' ? 'pr-10' : ''}`}
+        {...rest}
       />
 
-      {defaultIcon && iconPosition === 'right' && (
-        <span className='text-[#23242780]'>{defaultIcon}</span>
+      {defaultIcon && props.iconPosition != 'left' && (
+        <span className='absolute right-3 text-[#23242780]'>{defaultIcon}</span>
       )}
-    </label>
+    </div>
   )
 }
