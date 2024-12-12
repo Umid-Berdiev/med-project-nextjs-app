@@ -14,6 +14,7 @@ export interface ITableColumn<T> {
 }
 
 export interface ITableProps<T> {
+  className?: string
   columns: ITableColumn<T>[]
   data: T[]
   hoverable?: boolean
@@ -24,6 +25,7 @@ export interface ITableProps<T> {
 }
 
 export default function Table<T>({
+  className,
   columns = [],
   data = [],
   hoverable = false,
@@ -58,7 +60,9 @@ export default function Table<T>({
           className='overflow-x-auto
         '
         >
-          <table className={`table ${stripped ? 'table-zebra' : ''}`}>
+          <table
+            className={`table ${stripped ? 'table-zebra' : ''} ${className}`}
+          >
             <thead className='rounded'>
               <tr>
                 {columns.map((column, index) => (

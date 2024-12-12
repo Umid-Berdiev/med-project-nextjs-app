@@ -163,7 +163,7 @@ export default function MakeSidebar() {
           icon: '•',
           text: 'Foydalanuvchilar',
           path: '/settings/user'
-        }
+        },
         // {
         //   icon: '•',
         //   text: 'Turkum narxlari',
@@ -174,11 +174,11 @@ export default function MakeSidebar() {
         //   text: 'Tibbiy xizmatlar',
         //   path: '/settings/medical-services'
         // },
-        // {
-        //   icon: '•',
-        //   text: 'Narxlar varaqasi',
-        //   path: '/settings/price-list'
-        // },
+        {
+          icon: '•',
+          text: 'Narxlar varaqasi',
+          path: '/settings/prices'
+        }
       ]
     }
   ]

@@ -8,9 +8,10 @@ import AppInputDate from '@/src/components/forms/AppInputDate'
 import AppInputRadioRound from '@/src/components/forms/AppInputRadioRound'
 import AppLabel from '@/src/components/forms/AppLabel'
 import AppSelect from '@/src/components/forms/AppSelect'
-import UserDeleteIcon from '@/src/components/icons/UserDeleteIcon'
-import UserEditIcon from '@/src/components/icons/UserEditIcon'
-import UserViewIcon from '@/src/components/icons/UserViewIcon'
+import DeleteIcon from '@/src/components/icons/DeleteIcon'
+import EyeIcon from '@/src/components/icons/EyeIcon'
+import PencilIcon from '@/src/components/icons/PencilIcon'
+import PlusCircleIcon from '@/src/components/icons/PlusCircleIcon'
 import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
@@ -104,20 +105,20 @@ export default function UserTableWrapper() {
             href='#'
             className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
           >
-            <UserViewIcon />
+            <EyeIcon />
           </Link>
           <Link
             href='#'
             className='flex size-7 items-center justify-center rounded bg-white shadow-sm'
           >
-            <UserEditIcon />
+            <PencilIcon />
           </Link>
           <Link
             href='#'
             onClick={() => setOpenDelete(true)}
-            className='flex size-7 items-center justify-center rounded bg-white p-0 shadow-sm'
+            className='text-danger flex size-7 items-center justify-center rounded bg-white p-0 shadow-sm'
           >
-            <UserDeleteIcon />
+            <DeleteIcon />
           </Link>
         </div>
       )
@@ -376,22 +377,11 @@ export default function UserTableWrapper() {
           <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
         </div>
         <Button onClick={() => setOpen(!open)}>
-          {t('Qo’shish')}{' '}
-          <svg
-            width='20'
-            height='20'
-            viewBox='0 0 20 20'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M9.99984 1.66675C14.6022 1.66675 18.3332 5.39771 18.3332 10.0001C18.3332 14.6025 14.6022 18.3334 9.99984 18.3334C5.39746 18.3334 1.6665 14.6025 1.6665 10.0001C1.6665 5.39771 5.39746 1.66675 9.99984 1.66675ZM9.99984 5.83342C9.68342 5.83342 9.42193 6.06854 9.38054 6.37361L9.37484 6.45842V9.37508H6.45817C6.11299 9.37508 5.83317 9.6549 5.83317 10.0001C5.83317 10.3165 6.0683 10.578 6.37336 10.6194L6.45817 10.6251H9.37484V13.5417C9.37484 13.8869 9.65466 14.1667 9.99984 14.1667C10.3163 14.1667 10.5777 13.9316 10.6191 13.6266L10.6248 13.5417V10.6251H13.5415C13.8867 10.6251 14.1665 10.3453 14.1665 10.0001C14.1665 9.68367 13.9314 9.42217 13.6263 9.38079L13.5415 9.37508H10.6248V6.45842C10.6248 6.11324 10.345 5.83342 9.99984 5.83342Z'
-              fill='white'
-            />
-          </svg>
+          {t('Qo’shish')} <PlusCircleIcon />
         </Button>
       </div>
       <Table
+        className='bg-white'
         columns={columns}
         data={userTableData.slice(page * perPage, page * perPage + perPage)}
         sortBy={sortBy}

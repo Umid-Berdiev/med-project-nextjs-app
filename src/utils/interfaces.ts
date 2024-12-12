@@ -55,3 +55,10 @@ export type DiagnosticsTableCellType = {
   total_sum: number
   status: string
 }
+
+export interface IPrice {
+  id: number
+  date: string
+  state: 'Tasdiqlangan' | 'Tanlanmadi' | 'Bekor qilingan'
+  export: string
+}

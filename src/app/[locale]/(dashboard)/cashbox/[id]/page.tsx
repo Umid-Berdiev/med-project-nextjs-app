@@ -9,7 +9,7 @@ import AppSelect from '@/src/components/forms/AppSelect'
 import BalanceIcon2 from '@/src/components/icons/BalanceIcon2'
 import DeleteIcon from '@/src/components/icons/DeleteIcon'
 import ListIcon from '@/src/components/icons/ListIcon'
-import ListIconLog from '@/src/components/icons/ListILogcon'
+import ListLogIcon from '@/src/components/icons/ListLogIcon'
 import ProductListCountIcon from '@/src/components/icons/ProductListCountIcon'
 import Modal from '@/src/components/Modal'
 import Table, { ITableColumn } from '@/src/components/table/Table'
@@ -322,7 +322,7 @@ export default function CashboxPage() {
       <div className='mt-4 grid grid-cols-3 gap-4'>
         <RoundedBlock>
           <div className='relative flex gap-3'>
-            <ListIconLog />
+            <ListLogIcon />
             <div>
               <h5 className='mb-1 text-sm'>{t('Tolangan xizmatlar')}:</h5>
               <b className='text-lg font-bold leading-6'>
