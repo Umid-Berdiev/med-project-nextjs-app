@@ -83,42 +83,49 @@ export default function ServicesBlock({ className }: { className?: string }) {
           title={t('Qabul')}
           selectedOption={selectedReception}
           setSelectedOption={setSelectedReception}
+          name='reception-radio'
         />
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t('Diagnostika')}
           selectedOption={selectedDiagnostic}
           setSelectedOption={setSelectedDiagnostic}
+          name='diagnostic-radio'
         />
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t("Qo'shimcha xizmatlar")}
           selectedOption={selectedAdditionService}
           setSelectedOption={setSelectedAdditionService}
+          name='addition-service-radio'
         />
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t('Operatsiya')}
           selectedOption={selectedOperation}
           setSelectedOption={setSelectedOperation}
+          name='operation-radio'
         />
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t('Fizioterapiya')}
           selectedOption={selectedOperation}
           setSelectedOption={setSelectedOperation}
+          name='physiotherapy-radio'
         />
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t('Labaratoriya')}
           selectedOption={selectedOperation}
           setSelectedOption={setSelectedOperation}
+          name='lab-radio'
         />
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t('Stomatologiya')}
           selectedOption={selectedOperation}
           setSelectedOption={setSelectedOperation}
+          name='stomatology-radio'
         />
       </div>
       {selectedReception === 'allergolog' && (

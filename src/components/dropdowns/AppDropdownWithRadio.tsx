@@ -16,7 +16,7 @@ export default function AppDropdownWithRadio({
   options: Record<string, any>[]
   title: string
   selectedOption: string
-  name: string
+  name?: string
   setSelectedOption: (value: string) => void
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
