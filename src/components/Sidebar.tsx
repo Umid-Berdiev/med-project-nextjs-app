@@ -169,11 +169,11 @@ export default function MakeSidebar() {
         //   text: 'Turkum narxlari',
         //   path: '/settings/prices'
         // },
-        // {
-        //   icon: '•',
-        //   text: 'Tibbiy xizmatlar',
-        //   path: '/settings/medical-services'
-        // },
+        {
+          icon: '•',
+          text: 'Tibbiy xizmatlar',
+          path: '/settings/medical-services'
+        },
         {
           icon: '•',
           text: 'Narxlar varaqasi',

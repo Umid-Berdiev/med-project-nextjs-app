@@ -1,7 +1,6 @@
 import AppAccordion, {
   AccordionProps
 } from '@/src/components/Accordion/Accordion'
-import Button from '@/src/components/Button'
 import BiometralIcon from '@/src/components/icons/BiometralIcon'
 import React from 'react'
 import { BiTrash } from 'react-icons/bi'
