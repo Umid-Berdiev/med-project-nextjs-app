@@ -21,9 +21,14 @@ import { useTranslations } from '@/src/configs/t'
 import { IPrice } from '@/src/utils/interfaces'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { useState } from 'react'
+import React, { useState } from "react";
+
+// import { useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
 import { tableData } from './mock-data'
+import PlusRoundIcon from '@/src/components/icons/PlusRoundIcon'
+
+type RowDatas = { [key: string]: string };
 
 export default function PriceTableWrapper() {
   const { locale } = useParams()
@@ -37,9 +42,9 @@ export default function PriceTableWrapper() {
   }
   const [sortBy, setSortBy] = useState<
     | {
-        column: string
-        direction: 'asc' | 'desc'
-      }
+      column: string
+      direction: 'asc' | 'desc'
+    }
     | undefined
   >(undefined)
   const [perPage, setPerPage] = useState(10)
@@ -136,6 +141,77 @@ export default function PriceTableWrapper() {
     setOpenDelete(false)
   }
 
+  const [columns11, setColumns11] = useState<string[]>(["xizmatlar_nomi", "xizmatlar_kategoriyasi"]); // Jadval ustunlari
+  const [datas, setDatas] = useState<RowDatas[]>([
+    { xizmatlar_nomi: "Qon ivish vaqti", xizmatlar_kategoriyasi: "Gruppa" },
+    { xizmatlar_nomi: "Qon izlanish", xizmatlar_kategoriyasi: "Gruppa" },
+  ]); // Jadval ma'lumotlari
+  const [editingColumn, setEditingColumn] = useState<string | null>(null); // Tahrirlanayotgan ustun nomi
+
+  // Yangi ustun qo‘shish funksiyasi
+  const addColumn = () => {
+    const newColumn = ""; // Yangi ustun uchun bo'sh nom
+    setColumns11([...columns11, newColumn]);
+    setEditingColumn(newColumn); // Tahrirlash rejimiga o‘tish
+
+    // Har bir qatorga yangi ustunni qo‘shish
+    const updatedDatas = datas.map((row) => ({ ...row, [newColumn]: "" }));
+    setDatas(updatedDatas);
+  };
+
+  // Ustun nomini saqlash funksiyasi
+  const saveColumnName = (oldName: string, newName: string) => {
+    // if ((!newName || columns11.includes(newName)) && step) {
+    //   alert("Yangi ustun nomini to‘ldiring yoki takrorlanmas nom tanlang!");
+    //   return;
+    // }
+
+    // Ustunni yangilash
+    const updatedColumns11 = columns11.map((col) =>
+      col === oldName ? newName : col
+    );
+    setColumns11(updatedColumns11);
+
+    // Ma'lumotlarda ustun nomini yangilash
+    const updatedDatas = datas.map((row) => {
+      const newRow: RowDatas = {};
+      for (const key in row) {
+        newRow[key === oldName ? newName : key] = row[key];
+      }
+      return newRow;
+    });
+    setDatas(updatedDatas);
+
+    // Tahrirlash rejimini yopish
+    setEditingColumn(null);
+  };
+
+  // Ustunni tahrirlash funksiyasi
+  const editColumn = (columnName: string) => {
+    setEditingColumn(columnName);
+  };
+
+  // Ustunni o‘chirish funksiyasi
+  const deleteColumn = (columnToDelete: string) => {
+    const updatedColumns11 = columns11.filter((col) => col !== columnToDelete);
+    setColumns11(updatedColumns11);
+
+    // Ma'lumotlardan ustunni o‘chirish
+    const updatedDatas = datas.map((row) => {
+      const { [columnToDelete]: _, ...rest } = row; // O'chirilayotgan ustunni olib tashlash
+      return rest;
+    });
+    setDatas(updatedDatas);
+  };
+
+  // Jadval hujayrasini o'zgartirish funksiyasi
+  const handleChange = (rowIndex: number, columnName: string, value: string) => {
+    const updatedDatas = [...datas];
+    updatedDatas[rowIndex][columnName] = value;
+    setDatas(updatedDatas);
+  };
+
+
   return (
     <>
       <Heading4 className=''>{t('Narxlar varaqasi')}</Heading4>
@@ -176,321 +252,83 @@ export default function PriceTableWrapper() {
         size='lg'
         onClose={handleClose}
       >
-        <div className='grid grid-cols-12 gap-4'>
-          <RoundedBlock className='col-span-6 !block'>
-            <h5 className='mb-4 text-lg'>
-              {t('Foydalanuvchi haqida malumot')}
-            </h5>
-            <div className='mb-3 grid grid-cols-12 gap-4'>
-              <div className='col-span-6'>
-                <AppLabel isRequired text={t('FISh')} />
-                <AppInput placeholder={t('FISh ni kiriting')} />
-              </div>
-              <div className='col-span-6'>
-                <AppLabel isRequired text={t('Login')} />
-                <AppInput placeholder={t('Login ni kiriting')} />
-              </div>
-            </div>
-            <div>
-              <AppLabel text={t('Parolni o’zgartirish')} />
-              <AppInputRadioRound
-                onChange={handleTabChange}
-                options={passwordChangeOptions}
-              />
-            </div>
-            <div className='mb-4 grid grid-cols-12 gap-x-2 gap-y-4'>
-              <div className='col-span-7'>
-                <AppLabel isRequired text={t('Yangi parol')} />
-                <AppInput placeholder={t('Yangi parolni kiriting')} />
-              </div>
-              <div className='col-span-5'>
-                <AppLabel
-                  className='mb-2 block text-sm opacity-0'
-                  isRequired
-                  text={t('Yangi parol')}
-                />
-                <Button className='w-full'>
-                  {t('Parolni generatsiya qilish')}
-                </Button>
-              </div>
-            </div>
-            <div className='grid grid-cols-12 gap-4'>
-              <div className='col-span-6'>
-                <AppLabel isRequired text={t('Filial')} />
-                <AppSelect
-                  placeholder={t('Filialni tanlang')}
-                  options={[
-                    { value: '1', label: 'Filial1' },
-                    { value: '2', label: 'Filial2' },
-                    { value: '3', label: 'Filial3' }
-                  ]}
-                />
-              </div>
-              <div className='col-span-6'>
-                <AppLabel isRequired text={t('Foydalanuvchi roli')} />
-                <AppSelect
-                  placeholder={t('Rolni tanlang')}
-                  options={[
-                    { value: '1', label: 'Rol1' },
-                    { value: '2', label: 'Rol2' },
-                    { value: '3', label: 'Rol3' }
-                  ]}
-                />
-              </div>
-              <div className='col-span-6'>
-                <AppLabel isRequired text={t('Hamkor ID')} />
-                <AppInput placeholder={t('Id ni kiriting')} />
-              </div>
-              <div className='col-span-6'>
-                <AppLabel isRequired text={t('Telefon raqam')} />
-                <AppInput placeholder={t('Telefon raqam kiriting')} />
-              </div>
-              <div className='col-span-6 mb-3'>
-                <AppLabel text={t('Tug’ilgan sanasi')} />
-                <AppInputDate
-                  mode='single'
-                  placeholder={t('Tug’ilgan sanasi')}
-                />
-              </div>
-            </div>
-            <div className=''>
-              <AppLabel text={t('Jinsi')} />
-              <AppInputRadioRound
-                onChange={handleTabChange}
-                options={[
-                  { value: '1', label: 'Erkak' },
-                  { value: '0', label: 'Ayol' }
-                ]}
-              />
-            </div>
-            <div>
-              <AppLabel text={t('Faqat ozini hisobotini korish')} />
-              <AppInputRadioRound
-                onChange={handleTabChange}
-                options={[
-                  { value: '10', label: 'Ha' },
-                  { value: '11', label: 'Yoq' }
-                ]}
-              />
-            </div>
-            <div>
-              <AppLabel text={t('Assistent')} />
-              <AppInputRadioRound
-                onChange={handleTabChange}
-                options={[
-                  { value: '101', label: 'Ha' },
-                  { value: '111', label: 'Yoq' }
-                ]}
-              />
-            </div>
-            <div>
-              <AppLabel text={t('HrPlus')} />
-              <AppInputRadioRound
-                onChange={handleTabChange}
-                options={[
-                  { value: '141', label: 'Ha' },
-                  { value: '1131', label: 'Yoq' }
-                ]}
-              />
-            </div>
-          </RoundedBlock>
-          <RoundedBlock className='col-span-6'>
-            <h5 className='text-lg'>
-              {t('Belgilangan foydalanuvchilar guruhlari')}
-            </h5>
-            <div className=''>
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Sklad'
-                  },
-                  {
-                    value: '2',
-                    label:
-                      'Transplantologiya va angioxiturgiya (kattalar va bolalar)'
-                  },
-                  {
-                    value: '3',
-                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
-                  },
-                  {
-                    value: '4',
-                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
-                  }
-                ]}
-              />
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Kislorod bo’limi'
-                  },
-                  {
-                    value: '2',
-                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
-                  },
-                  {
-                    value: '3',
-                    label: 'Dorixona'
-                  },
-                  {
-                    value: '4',
-                    label: 'Endovizual (abdominal va torakal) xirurgiya'
-                  }
-                ]}
-              />
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Sklad'
-                  },
-                  {
-                    value: '2',
-                    label:
-                      'Transplantologiya va angioxiturgiya (kattalar va bolalar)'
-                  },
-                  {
-                    value: '3',
-                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
-                  },
-                  {
-                    value: '4',
-                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
-                  }
-                ]}
-              />
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Kislorod bo’limi'
-                  },
-                  {
-                    value: '2',
-                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
-                  },
-                  {
-                    value: '3',
-                    label: 'Dorixona'
-                  },
-                  {
-                    value: '4',
-                    label: 'Endovizual (abdominal va torakal) xirurgiya'
-                  }
-                ]}
-              />
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Sklad'
-                  },
-                  {
-                    value: '2',
-                    label:
-                      'Transplantologiya va angioxiturgiya (kattalar va bolalar)'
-                  },
-                  {
-                    value: '3',
-                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
-                  },
-                  {
-                    value: '4',
-                    label: 'RSN-PMS Kardinatologiyalar Samarqand filiali'
-                  }
-                ]}
-              />
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Kislorod bo’limi'
-                  },
-                  {
-                    value: '2',
-                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
-                  },
-                  {
-                    value: '3',
-                    label: 'Dorixona'
-                  },
-                  {
-                    value: '4',
-                    label: 'Endovizual (abdominal va torakal) xirurgiya'
-                  }
-                ]}
-              />{' '}
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Kislorod bo’limi'
-                  },
-                  {
-                    value: '2',
-                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
-                  },
-                  {
-                    value: '3',
-                    label: 'Dorixona'
-                  },
-                  {
-                    value: '4',
-                    label: 'Endovizual (abdominal va torakal) xirurgiya'
-                  }
-                ]}
-              />{' '}
-              <hr />
-              <AppInputCheckbox
-                className='block'
-                onChange={handleTabChange}
-                options={[
-                  {
-                    value: '1',
-                    label: 'Kislorod bo’limi'
-                  },
-                  {
-                    value: '2',
-                    label: 'Yurak ishimik kassaliklar (kardioxirurgiya)'
-                  },
-                  {
-                    value: '3',
-                    label: 'Dorixona'
-                  },
-                  {
-                    value: '4',
-                    label: 'Endovizual (abdominal va torakal) xirurgiya'
-                  }
-                ]}
-              />
-            </div>
-          </RoundedBlock>
-        </div>
+        <RoundedBlock className='mb-4'>
+          <div className='grid grid-cols-4 gap-4'>
+            <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
+            <AppSelect placeholder='Xizmatlar kategoriyasi' options={[
+              { label: 'Xizmat 1', value: '2' },
+              { label: 'Xizmat 2', value: '1' },
+            ]} />
+          </div>
+        </RoundedBlock>
+        <RoundedBlock className='mb-4'>
+          <div className='overflow-x-auto'>
+            <table style={{ marginTop: "10px", width: "100%" }}>
+              <thead>
+                <tr>
+                  {columns11.map((col, index) => (
+                    <th className='text-[13px] font-bold pl-4 py-3' key={index}>
+                      {editingColumn === col ? (
+                        <AppInput
+                          type="text"
+                          placeholder={t("Yangi ustun nomi")}
+                          autoFocus
+                          onBlur={(e) => saveColumnName(col, e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") saveColumnName(col, e.currentTarget.value);
+                          }}
+                        />
+                      ) : (
+                        <div className='flex items-center pr-4 gap-4'>
+                          <span>
+                            {col || "Yangi ustun"}
+                          </span>
+                          {index > 1 && (
+                            <div className='flex items-center gap-3'>
+                              <button className='shadow-[0px_2px_5px_0px_#00000012] rounded size-7 flex items-center justify-center' onClick={() => editColumn(col)}><PencilIcon /></button>
+                              <button className='shadow-[0px_2px_5px_0px_#00000012] rounded size-7 flex items-center justify-center' onClick={() => deleteColumn(col)}><DeleteIcon currentColor="#E6533C" /></button>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </th>
+                  ))}
+                  {/* Yangi ustun qo‘shish tugmasi */}
+                  <th>
+                    <button className='text-sm whitespace-nowrap text-[#29CED2] flex gap-2 ml-4' onClick={addColumn}>Narx ustunini qo’shish <PlusRoundIcon /></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {datas.map((row, rowIndex) => (
+                  <tr className='text-[13px] text-[#232427]' key={rowIndex}>
+                    {columns11.map((col, colIndex) => (
+                      <td style={{ width: '240px', minWidth: '240px' }} className={`${rowIndex % 2 ? 'bg-[#F4F4F4] border-y border-[#DFE0E0]' : 'bg-white'} pl-4 py-3`} key={colIndex}>
+                        {colIndex > 1 ? (
+                          <AppInput
+                            type="text"
+                            value={row[col] || ""}
+                            onChange={(e) =>
+                              handleChange(rowIndex, col, e.target.value)
+                            }
+                          />
+                        ) : (
+                          row[col]
+                        )}
+                      </td>
+                    ))}
+                    {/* Bo'sh ustun - tugma joylashishi uchun */}
+                    <td className={`${rowIndex % 2 ? 'bg-[#F4F4F4] border-y border-[#DFE0E0]' : 'bg-white'} pl-4 py-3`}></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </RoundedBlock>
+
         <div className='flex justify-end gap-1 py-2'>
           <Button variant='contained' color='secondary' onClick={handleClose}>
-            {t('Qoshish')}
+            {t('Saqlash')}
           </Button>
         </div>
       </Modal>
@@ -504,8 +342,7 @@ export default function PriceTableWrapper() {
       >
         <div className='my-4 block bg-white p-6'>
           <p className='text-center'>
-            Siz ushbu <b> Ismoilov Shaxzod Farrux o’g’li </b> foydalanuvchini
-            o’chirib yubormoqchimisiz?
+            Siz ushbuID: 1234 narxlar varaqasini o’chirib yubormoqchimisiz?
           </p>
         </div>
         <div className='flex justify-end gap-1 py-2'>
