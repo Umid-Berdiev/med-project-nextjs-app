@@ -3,18 +3,22 @@ import { useTranslations } from '@/src/configs/t'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import AppDropdownWithRadio from '../dropdowns/AppDropdownWithRadio'
+import AppDropdownWithCheckbox from '../dropdowns/AppDropdownWithCheckbox'
 import AppSelect from '../forms/AppSelect'
 import Heading6 from '../typography/Heading6'
 import RoundedBlock from './RoundedBlock'
+import AppInputDate from '../forms/AppInputDate'
 
 export default function ServicesBlock({ className }: { className?: string }) {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [selectedReception, setSelectedReception] = useState('allergolog')
+  const [selectedReception2, setSelectedReception2] = useState('')
   const [selectedDiagnostic, setSelectedDiagnostic] = useState('allergolog')
   const [selectedAdditionService, setSelectedAdditionService] =
     useState('allergolog')
   const [selectedOperation, setSelectedOperation] = useState('allergolog')
+  const [selectedLaboratory, setSelectedLaboratory] = useState('')
   const [selectedDoctor, setSelectedDoctor] = useState('allergolog')
 
   const doctorsList = [
@@ -74,6 +78,24 @@ export default function ServicesBlock({ className }: { className?: string }) {
     }
   ]
 
+  const testBloodOptions = [
+    {
+      name: t('Qon_olish_xizmati'),
+      value: '1',
+      price: '110 000 som'
+    },
+    {
+      name: t('Lipidniy_spektr'),
+      value: '2',
+      price: '88 000 som'
+    },
+    {
+      name: t('Qondagi_leykotsidlar_tahlili'),
+      value: '3',
+      price: '88 000 som'
+    },
+  ]
+
   return (
     <RoundedBlock className={className}>
       <Heading6>{t('Xizmatlar')}</Heading6>
@@ -123,8 +145,8 @@ export default function ServicesBlock({ className }: { className?: string }) {
         <AppDropdownWithRadio
           options={diagnosticOptions}
           title={t('Stomatologiya')}
-          selectedOption={selectedOperation}
-          setSelectedOption={setSelectedOperation}
+          selectedOption={selectedLaboratory}
+          setSelectedOption={setSelectedLaboratory}
           name='stomatology-radio'
         />
       </div>
@@ -140,6 +162,94 @@ export default function ServicesBlock({ className }: { className?: string }) {
               <span className='text-xs font-semibold'>{t('Xizmat turi')}</span>
               <AppSelect selectedValue={selectedDoctor} options={doctorsList} />
             </label>
+          </div>
+        </div>
+      )}
+      {selectedReception === 'allergolog' && (
+        <div className=''>
+          <p className='text-base font-semibold'>{t('Statsionar')}</p>
+          <div className='flex w-full gap-5 mb-5'>
+            <label className='basis-1/2'>
+              <span className='text-xs font-semibold'>{t('Javobgar shifokor')}</span>
+              <AppSelect options={[
+                {
+                  label: 'Istalgan shifokor',
+                  value: "1"
+                },
+                {
+                  label: 'Istalgan shifokor 2',
+                  value: "2"
+                }
+              ]} />
+            </label>
+            <label className='basis-1/2'>
+              <span className='text-xs font-semibold'>{t('Hamshira')}</span>
+              <AppSelect options={[
+                {
+                  label: 'Yoq',
+                  value: "1"
+                },
+                {
+                  label: 'Bor',
+                  value: "2"
+                }
+              ]} />
+            </label>
+          </div>
+          <div className='flex w-full gap-5 mb-5'>
+            <label className='basis-1/2'>
+              <span className='text-xs font-semibold'>{t('Palata')}</span>
+              <AppSelect options={[
+                {
+                  label: 'Palata 1',
+                  value: "1"
+                },
+                {
+                  label: 'Palata 2',
+                  value: "2"
+                }
+              ]} />
+            </label>
+            <label className='basis-1/2'>
+              <span className='text-xs font-semibold'>{t('Tarif')}</span>
+              <AppSelect options={[
+                {
+                  label: 'Tarif 1',
+                  value: "1"
+                },
+                {
+                  label: 'Tarif 2',
+                  value: "2"
+                }
+              ]} />
+            </label>
+          </div>
+          <div className='flex w-full gap-5'>
+            <label className='basis-1/2'>
+              <span className='text-xs font-semibold'>{t('Ovqatlanish')}</span>
+              <AppDropdownWithCheckbox title={t('Ovqatlanish')} selectedOption={selectedReception2}
+                setSelectedOption={setSelectedReception2}
+                name='food-checkbox' options={testBloodOptions} />
+            </label>
+            <div className='basis-1/2 flex w-full gap-5'>
+              <label className='basis-1/2'>
+                <span className='text-xs font-semibold'>{t('Kunlar soni')}</span>
+                <AppSelect options={[
+                  {
+                    label: '10',
+                    value: "1"
+                  },
+                  {
+                    label: '20',
+                    value: "2"
+                  }
+                ]} />
+              </label>
+              <label className='basis-1/2'>
+                <span className='text-xs font-semibold'>{t('Boshlanish kuni')}</span>
+                <AppInputDate />
+              </label>
+            </div>
           </div>
         </div>
       )}
