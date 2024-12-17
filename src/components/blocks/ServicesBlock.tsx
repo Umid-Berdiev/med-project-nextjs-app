@@ -252,7 +252,7 @@ export default function ServicesBlock({ className }: { className?: string }) {
             </div>
           </div>
         </div>
-      )}
+      )} 
     </RoundedBlock>
   )
 }
