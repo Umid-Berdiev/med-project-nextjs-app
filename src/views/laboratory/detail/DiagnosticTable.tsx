@@ -1,3 +1,6 @@
+import RoundedBlock from '@/src/components/blocks/RoundedBlock'
+import Button from '@/src/components/Button'
+import CustomEditor from '@/src/components/CustomEditor'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
 import AppInputCheckboxNoLabel from '@/src/components/forms/AppInputCheckboxNoLabel'
@@ -10,11 +13,13 @@ import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { useParams } from 'next/navigation'
 import React from 'react'
+import { FaFileAlt } from 'react-icons/fa'
 
 export default function DiagnosticTable() {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [open, setOpen] = React.useState(false)
+  const [editor, setEditor] = React.useState(false)
   type CellType = {
     id: number
     name: string
@@ -80,6 +85,62 @@ export default function DiagnosticTable() {
   const handleClose = () => {
     setOpen(false)
   }
+  type CellModalType = {
+    id: number
+    name: string
+    result: string
+    norma: string
+    unit: string
+  }
+  const classRowModal = (row: CellModalType) => {
+    return row.id % 3 == 0 ? 'bg-softError ' : 'bg-softSuccess'
+  }
+  const columnModal: ITableColumn<CellModalType>[] = [
+    {
+      header: t('Nomi'),
+      col: (row: CellModalType) => row.name,
+      sortable: true
+    },
+    {
+      header: t('Natija'),
+      col: (row: CellModalType) => <AppInput defaultValue={row.result} />,
+      sortable: true
+    },
+    {
+      header: t('Norma'),
+      col: (row: CellModalType) => (
+        <div className='w-full'>
+          <AppInput defaultValue={row.norma} />
+        </div>
+      ),
+      sortable: true,
+      width: 'min-w-96'
+    },
+    {
+      header: t('Birlik'),
+      col: (row: CellModalType) => <AppInput defaultValue={row.unit} />,
+      sortable: true
+    }
+  ]
+  const dataModal: CellModalType[] = [
+    {
+      id: 1,
+      name: 'ALT',
+      result: '4.5',
+      norma: 'Erkaklar 10 yosh- 100 yil 0-42  Ayollar 10 yosh- 100 yil 0-32',
+      unit: 'g/l'
+    },
+    {
+      id: 2,
+      name: 'ALT',
+      result: '4.5',
+      norma: 'Erkaklar 10 yosh- 100 yil 0-42  Ayollar 10 yosh- 100 yil 0-32',
+      unit: 'g/l'
+    }
+  ]
+  const onCreate = () => {
+    setEditor(true)
+  }
   return (
     <div className='flex flex-col gap-3'>
       <div className='flex flex-col gap-2'>
@@ -104,14 +165,49 @@ export default function DiagnosticTable() {
       </div>
       <Modal
         bg='bg-background'
-        title='Diagnostika natijalari'
+        title={t('Fibrinogen')}
         open={open}
         size='lg'
         onClose={handleClose}
       >
         <div className='flex flex-col gap-3'>
-          <AppLabel text='Shablon turi' isRequired />
-          <AppSelect options={[]} placeholder='Shablon turi' />
+          <div className='grid grid-cols-2 gap-3'>
+            <div>
+              <AppLabel text='Shablon turi' isRequired />
+              <AppSelect options={[]} placeholder='Shablon turi' />
+            </div>
+          </div>
+          {!editor ? (
+            <RoundedBlock>
+              <div className='flex w-full justify-end'>
+                <Button
+                  variant='outlined'
+                  color='secondary'
+                  endIcon={<FaFileAlt />}
+                >
+                  {t('Eksport')}
+                </Button>
+              </div>
+              <Table
+                columns={columnModal}
+                data={dataModal}
+                classRow={classRowModal}
+                hoverable={false}
+                stripped={false}
+              />
+              <div className='flex justify-end gap-1 py-2'>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={onCreate}
+                >
+                  {t('Saqlash')}
+                </Button>
+              </div>
+            </RoundedBlock>
+          ) : (
+            <CustomEditor />
+          )}
         </div>
       </Modal>
     </div>
