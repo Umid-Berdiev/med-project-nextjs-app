@@ -178,7 +178,13 @@ export default function MakeSidebar() {
           icon: '•',
           text: 'Narxlar varaqasi',
           path: '/settings/prices'
+        },
+        {
+          icon: '•',
+          text: 'Shablonlar',
+          path: '/settings/templates'
         }
+
       ]
     }
   ]
