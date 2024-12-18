@@ -17,7 +17,26 @@ export interface ITabContentList {
   content: React.ReactElement
   label: string
 }
-
+export interface IResponseError {
+  response: {
+    data: {
+      errors: {
+        [key: string]: string
+      }
+    }
+  }
+}
+export interface IUser {
+  full_name: string
+  birthday: string // ISO format: YYYY-MM-DD
+  gender: number // 1 for male, 0 for female (assumption)
+  is_assistant: boolean
+  is_change_password: boolean
+  is_hr_plus: boolean
+  look_own_account: boolean
+  partner_id: string
+  phone: string
+}
 export interface ITab {
   id: string
   label: string

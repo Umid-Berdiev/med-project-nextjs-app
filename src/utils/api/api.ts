@@ -2,9 +2,9 @@ import type { AxiosInstance } from 'axios'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-import { cleareStorage } from './storage'
-import type { Locale } from './i18n'
-import { getTokenCSR } from './auth'
+import { cleareStorage } from '../../configs/storage'
+import type { Locale } from '../../configs/i18n'
+import { getTokenCSR } from '../../configs/auth'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -57,7 +57,7 @@ function createAxios(locale: string = 'uz') {
           message = error.response?.data?.message
           break
         default:
-          message = error.response?.data?.message
+          message = error.response?.data?.errors?.error
       }
 
       if (isCSR) {

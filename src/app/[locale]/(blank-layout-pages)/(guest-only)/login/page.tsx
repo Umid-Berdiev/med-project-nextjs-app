@@ -15,8 +15,12 @@ import { FaRegUser } from 'react-icons/fa'
 import { FiLock } from 'react-icons/fi'
 import Cookies from 'js-cookie'
 import toast from 'react-hot-toast'
+import { withAxios } from '@/src/utils/api/api'
+import endpoints from '@/src/utils/api/endpoints'
+import { IResponseError } from '@/src/utils/interfaces'
+import { useAuth } from '@/src/hooks/useAuth'
 interface FormValues {
-  login: string
+  username: string
   password: string
 }
 
@@ -27,20 +31,33 @@ const LoginPage = () => {
   const router = useRouter()
   const {
     control,
+    setError,
     handleSubmit,
     formState: { errors }
   } = useForm<FormValues>({
     defaultValues: {
-      login: '',
+      username: '',
       password: ''
     }
   })
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data)
-    Cookies.set('_med_control_token', JSON.stringify(data))
-    toast.success(t('Tizimga muvaffaqiyatli kirdingiz'))
-    router.push(`/${locale}/patients`)
+    try {
+      const res = await withAxios().post(endpoints.auth.login, data)
+      Cookies.set('_med_control_token', res.data.result?.access_token)
+      toast.success(t('Tizimga muvaffaqiyatli kirdingiz'))
+      router.push(`/${locale}/patients`)
+    } catch (e) {
+      const { response } = e as IResponseError
+      const { errors } = response.data
+
+      if (errors) {
+        setError('username', {
+          type: 'server',
+          message: errors?.error as string
+        })
+      }
+    }
   }
 
   return (
@@ -57,7 +74,7 @@ const LoginPage = () => {
         </div>
 
         <Controller
-          name='login'
+          name='username'
           control={control}
           rules={{ required: t('Loginni kiriting') }}
           render={({ field }) => (
@@ -70,9 +87,9 @@ const LoginPage = () => {
                 icon={<FaRegUser />}
                 iconPosition='left'
               />
-              {errors.login && (
+              {errors.username && (
                 <div className='text-xs text-red-500'>
-                  {errors.login.message}
+                  {errors.username.message}
                 </div>
               )}
             </div>

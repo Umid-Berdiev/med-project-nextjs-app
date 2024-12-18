@@ -1,7 +1,13 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import { Header } from '../components/Header'
 import TheSidebar from '../components/Sidebar'
 import { Locale } from '../configs/i18n'
+import { useAuth } from '../hooks/useAuth'
+import { withAxios } from '../utils/api/api'
+import endpoints from '../utils/api/endpoints'
+import { Loader } from '../components/spinner/Loader'
+import { useRouter } from 'next/navigation'
 export default function VerticalLayout({
   children,
   params
@@ -11,6 +17,25 @@ export default function VerticalLayout({
     locale: Locale
   }
 }) {
+  const { user, updateUser, loading } = useAuth()
+  const router = useRouter()
+  const fetchData = async () => {
+    const { data } = await withAxios()(endpoints.auth.me)
+
+    updateUser({
+      ...data?.result?.userProfile
+    })
+  }
+
+  useEffect(() => {
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  if (loading) return <Loader />
+  if (!user) {
+    router.push(`/${params.locale}/login`)
+  }
+
   return (
     // <div className='flex'>
     //   <TheSidebar />

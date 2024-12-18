@@ -1,4 +1,5 @@
 import BlankLayout from '@/src/@layouts/BlankLayout'
+import { Providers } from '@/src/components/Provider'
 import { Locale } from '@/src/configs/i18n'
 import { ReactNode } from 'react'
 
@@ -8,7 +9,11 @@ type Props = {
 }
 
 const Layout = ({ children, params }: Props) => {
-  return <BlankLayout>{children}</BlankLayout>
+  return (
+    <Providers>
+      <BlankLayout>{children}</BlankLayout>
+    </Providers>
+  )
 }
 
 export default Layout
