@@ -34,7 +34,7 @@ function Sidebar({ children, expanded, setExpanded }: any) {
           >
             <div
               className={`overflow-hidden transition-all ${
-                expanded ? 'w-32' : 'w-0'
+                expanded ? 'w-full' : 'w-0'
               }`}
             >
               <AppLogo />
@@ -184,7 +184,6 @@ export default function MakeSidebar() {
           text: 'Shablonlar',
           path: '/settings/templates'
         }
-
       ]
     }
   ]

@@ -1,6 +1,5 @@
 'use client'
 
-import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputPassword from '@/src/components/forms/AppInputPassword'
@@ -8,17 +7,17 @@ import AppLabel from '@/src/components/forms/AppLabel'
 import AppLogo from '@/src/components/icons/AppLogo'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
-import { useParams, useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
-import { FaRegUser } from 'react-icons/fa'
-import { FiLock } from 'react-icons/fi'
-import Cookies from 'js-cookie'
-import toast from 'react-hot-toast'
 import { withAxios } from '@/src/utils/api/api'
 import endpoints from '@/src/utils/api/endpoints'
 import { IResponseError } from '@/src/utils/interfaces'
-import { useAuth } from '@/src/hooks/useAuth'
+import Cookies from 'js-cookie'
+import { useParams, useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+import { FaRegUser } from 'react-icons/fa'
+import { FiLock } from 'react-icons/fi'
+import { ImSpinner9 } from 'react-icons/im'
 interface FormValues {
   username: string
   password: string
@@ -29,6 +28,7 @@ const LoginPage = () => {
   const { t } = useTranslations(locale)
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
   const {
     control,
     setError,
@@ -43,6 +43,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data: FormValues) => {
     try {
+      setIsLoading(true)
       const res = await withAxios().post(endpoints.auth.login, data)
       Cookies.set('_med_control_token', res.data.result?.access_token)
       toast.success(t('Tizimga muvaffaqiyatli kirdingiz'))
@@ -57,6 +58,8 @@ const LoginPage = () => {
           message: errors?.error as string
         })
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -120,7 +123,10 @@ const LoginPage = () => {
             </div>
           )}
         />
-        <Button type='submit'>{t('Kirish')}</Button>
+        <Button type='submit'>
+          <span>{t('Kirish')}</span>
+          {isLoading && <ImSpinner9 className='h-4 w-4 animate-spin' />}
+        </Button>
       </form>
     </div>
   )
