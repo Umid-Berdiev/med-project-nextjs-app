@@ -5,27 +5,6 @@ import { useEffect, useState } from 'react'
 import { BiChevronRight } from 'react-icons/bi'
 import Link from './Link'
 
-interface SubMenuItemProps extends Omit<ISidebarItemProps, 'expanded'> {
-  expanded?: never
-  subMenu?: never
-}
-
-function HoveredSubMenuItem({ icon, text, active }: SubMenuItemProps) {
-  return (
-    <div
-      className={`my-2 rounded-md p-2 ${
-        active ? 'bg-gray-300 text-secondary' : ' hover:bg-indigo-50'
-      }`}
-    >
-      <div className='flex items-center justify-center '>
-        <span className='-500 text-primary  '>{icon}</span>
-        <span className='-500 ml-3 w-28 text-start text-primary'>{text}</span>
-        <div className='bg-primary-200 h-1' />
-      </div>
-    </div>
-  )
-}
-
 export default function SidebarItem({
   icon,
   active = false,
@@ -36,15 +15,16 @@ export default function SidebarItem({
 }: ISidebarItemProps) {
   const { locale } = useParams()
   const [expandSubMenu, setExpandSubMenu] = useState(false)
+
   useEffect(() => {
     if (!expanded) {
       setExpandSubMenu(false)
     }
   }, [expanded])
 
-  // Calculate the height of the sub-menu assuming each item is 40px tall
+  // Calculate the height of the sub-menu assuming each item is 42px tall
   const subMenuHeight = expandSubMenu
-    ? `${((subMenu?.length || 0) * 40 + (subMenu! && 15)).toString()}px`
+    ? `${((subMenu?.length || 0) * 44 + (subMenu! && 15)).toString()}px`
     : 0
 
   return (
@@ -53,9 +33,8 @@ export default function SidebarItem({
         <Link
           href={subMenu ? '#' : getLocalizedUrl(path ?? '#', locale as string)}
           className={`
-              group relative my-1 flex w-full cursor-pointer
-              items-center px-3
-              py-2 font-medium transition-colors
+              group relative flex w-full cursor-pointer
+              items-center p-3 font-medium transition-colors
               ${
                 active
                   ? 'border-l-4 border-secondary from-indigo-200 to-indigo-100 text-secondary'
@@ -68,9 +47,7 @@ export default function SidebarItem({
           <span>{icon}</span>
 
           <span
-            className={`overflow-hidden text-start transition-all  ${
-              expanded ? 'ml-3 w-44' : 'w-0'
-            }`}
+            className={`overflow-hidden text-start transition-all ${expanded ? 'ml-3 w-44' : 'w-0'} ${active ? 'text-secondary' : 'text-primary'}`}
           >
             {text}
           </span>
@@ -81,46 +58,18 @@ export default function SidebarItem({
               <BiChevronRight />
             </div>
           )}
-
-          {/* 
-            display item text or sub-menu items when hovered
-          */}
-          {!expanded && (
-            <div
-              className={`
-                  -500 invisible absolute left-full ml-3 -translate-x-3 rounded-md
-                  bg-indigo-100 px-2 py-1
-                  text-sm text-primary opacity-20 transition-all
-                  group-hover:visible group-hover:translate-x-0 group-hover:opacity-100
-              `}
-            >
-              {/* 
-                if hovered item has no sub-menu, display the text
-                else display the sub-menu items
-              */}
-              {!subMenu
-                ? text
-                : subMenu.map((item, index) => (
-                    <HoveredSubMenuItem
-                      key={index}
-                      text={item.text}
-                      icon={item.icon}
-                    />
-                  ))}
-            </div>
-          )}
         </Link>
       </li>
-      <ul className='sub-menu pl-6' style={{ height: subMenuHeight }}>
-        {/* 
-          Render the sub-menu items if the item has a sub-menu
-          The sub-menu items are rendered as SidebarItem components
-        */}
-        {expanded &&
-          subMenu?.map((item, index) => (
+      {expanded && subMenu && (
+        <ul
+          className={`sub-menu overflow-hidden pl-6 transition-all`}
+          style={{ height: subMenuHeight }}
+        >
+          {subMenu?.map((item, index) => (
             <SidebarItem key={index} {...item} expanded={expanded} />
           ))}
-      </ul>
+        </ul>
+      )}
     </>
   )
 }
