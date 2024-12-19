@@ -9,7 +9,9 @@ import { redirect } from 'next/navigation'
 
 const PatientExamination = dynamic(
   () =>
-    import('@/src/views/doctors-profile/detail/patient-examination/Complaints')
+    import(
+      '@/src/views/doctors-profile/detail/patient-examination/FullComplaints'
+    )
 )
 
 const tabContentList: ITabContentList[] = [
