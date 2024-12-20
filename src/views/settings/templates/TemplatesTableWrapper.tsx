@@ -199,81 +199,81 @@ export default function TemplateTableWrapper() {
               <AppLabel isRequired={true} text='Kategoriya' />
               <AppSelect placeholder='Tanlang' options={[]} />
             </div>
-              {/* akkordion */}
-              <div className="w-full max-w-3xl mx-auto mt-10">
-      <div className="border border-base-300 rounded-md">
-        {/* First Row (Main Accordion) */}
-        <div className="border-b border-base-300">
-          <input type="checkbox" id="firstAccordion" className="hidden peer" />
-          <label
-            htmlFor="firstAccordion"
-            className="flex justify-between items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
-          >
-            <span>First Section</span>
-            <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
-          </label>
-          <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
-            <p>This is the detailed content for the first section.</p>
-            
-            {/* Nested Accordion (Second Level) */}
-            <div className="border-b border-base-300 mt-4">
-              <input type="checkbox" id="secondAccordion" className="hidden peer" />
-              <label
-                htmlFor="secondAccordion"
-                className="flex justify-between items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
-              >
-                <span>Second Section (Nested)</span>
-                <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
-              </label>
-              <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
-                <p>This is the detailed content for the second section.</p>
-
-                {/* Nested Accordion (Third Level) */}
-                <div className="border-b border-base-300 mt-4">
-                  <input type="checkbox" id="thirdAccordion" className="hidden peer" />
+            {/* akkordion */}
+            <div className="w-full max-w-3xl mx-auto mt-10">
+              <div className="border border-base-300 rounded-md">
+                {/* First Row (Main Accordion) */}
+                <div className="border-b border-base-300">
+                  <input type="checkbox" id="firstAccordion" className="hidden peer" />
                   <label
-                    htmlFor="thirdAccordion"
-                    className="flex justify-between items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
+                    htmlFor="firstAccordion"
+                    className="flex items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
                   >
-                    <span>Third Section (Nested)</span>
+                    <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
+                    <span>First Section</span>
+                  </label>
+                  <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
+                    <p>This is the detailed content for the first section.</p>
+
+                    {/* Nested Accordion (Second Level) */}
+                    <div className="border-b border-base-300 mt-4">
+                      <input type="checkbox" id="secondAccordion" className="hidden peer" />
+                      <label
+                        htmlFor="secondAccordion"
+                        className="flex items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
+                      >
+                        <span>Second Section (Nested)</span>
+                        <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
+                      </label>
+                      <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
+                        <p>This is the detailed content for the second section.</p>
+
+                        {/* Nested Accordion (Third Level) */}
+                        <div className="border-b border-base-300 mt-4">
+                          <input type="checkbox" id="thirdAccordion" className="hidden peer" />
+                          <label
+                            htmlFor="thirdAccordion"
+                            className="flex justify-between items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
+                          >
+                            <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
+                            <span>Third Section (Nested)</span>
+                          </label>
+                          <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
+                            <p>This is the detailed content for the third section.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Second Row (Another Independent Accordion) */}
+                <div className="border-b border-base-300">
+                  <input type="checkbox" id="secondMainAccordion" className="hidden peer" />
+                  <label
+                    htmlFor="secondMainAccordion"
+                    className="flex items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
+                  >
+                    <span>Second Main Section</span>
                     <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
                   </label>
                   <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
-                    <p>This is the detailed content for the third section.</p>
+                    <p>This is the detailed content for the second main section.</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Second Row (Another Independent Accordion) */}
-        <div className="border-b border-base-300">
-          <input type="checkbox" id="secondMainAccordion" className="hidden peer" />
-          <label
-            htmlFor="secondMainAccordion"
-            className="flex justify-between items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
-          >
-            <span>Second Main Section</span>
-            <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
-          </label>
-          <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
-            <p>This is the detailed content for the second main section.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-              {/* akkordion */}
+            {/* akkordion */}
 
 
-            
+
           </RoundedBlock>
           <RoundedBlock className='col-span-9'>
             <CustomEditor />
           </RoundedBlock>
         </div>
         <div className='flex justify-end gap-4 p-4 bg-white mt-4'>
-          <Button variant='outlined'  endIcon={<BiSolidPrinter />} color='secondary' onClick={handleClose}>
+          <Button variant='outlined' endIcon={<BiSolidPrinter />} color='secondary' onClick={handleClose}>
             {t('Print')}
           </Button>
           <Button variant='contained' color='secondary' onClick={handleClose}>
