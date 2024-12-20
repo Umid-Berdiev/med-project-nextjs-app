@@ -1,9 +1,9 @@
 const endpoints = {
   auth: {
-    login: '/auth/login',
+    login: '/auth/user/login',
     register: '/auth/register',
     logout: '/auth/logout',
-    me: '/auth/me'
+    me: '/auth/user/me?expand=userProfile'
   },
   user: {
     all: '/users',

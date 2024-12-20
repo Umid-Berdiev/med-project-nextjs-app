@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={classnames(
-        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0  px-5 ',
+        'flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border-0 px-5',
         buttonStyles
       )}
       {...props}
@@ -62,7 +62,7 @@ const Button: React.FC<ButtonProps> = ({
       <span className='flex  items-center gap-2 whitespace-nowrap'>
         {children}
       </span>
-      {endIcon && <span className='flex  items-center'>{endIcon}</span>}
+      {endIcon && <span className='flex items-center'>{endIcon}</span>}
     </button>
   )
 }

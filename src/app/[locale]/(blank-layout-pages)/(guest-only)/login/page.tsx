@@ -1,6 +1,5 @@
 'use client'
 
-import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputPassword from '@/src/components/forms/AppInputPassword'
@@ -8,15 +7,19 @@ import AppLabel from '@/src/components/forms/AppLabel'
 import AppLogo from '@/src/components/icons/AppLogo'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
+import { withAxios } from '@/src/utils/api/api'
+import endpoints from '@/src/utils/api/endpoints'
+import { IResponseError } from '@/src/utils/interfaces'
+import Cookies from 'js-cookie'
 import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { FaRegUser } from 'react-icons/fa'
 import { FiLock } from 'react-icons/fi'
-import Cookies from 'js-cookie'
-import toast from 'react-hot-toast'
+import { ImSpinner9 } from 'react-icons/im'
 interface FormValues {
-  login: string
+  username: string
   password: string
 }
 
@@ -25,22 +28,39 @@ const LoginPage = () => {
   const { t } = useTranslations(locale)
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
   const {
     control,
+    setError,
     handleSubmit,
     formState: { errors }
   } = useForm<FormValues>({
     defaultValues: {
-      login: '',
+      username: '',
       password: ''
     }
   })
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data)
-    Cookies.set('_med_control_token', JSON.stringify(data))
-    toast.success(t('Tizimga muvaffaqiyatli kirdingiz'))
-    router.push(`/${locale}/patients`)
+    try {
+      setIsLoading(true)
+      const res = await withAxios().post(endpoints.auth.login, data)
+      Cookies.set('_med_control_token', res.data.result?.access_token)
+      toast.success(t('Tizimga muvaffaqiyatli kirdingiz'))
+      router.push(`/${locale}/patients`)
+    } catch (e) {
+      const { response } = e as IResponseError
+      const { errors } = response.data
+
+      if (errors) {
+        setError('username', {
+          type: 'server',
+          message: errors?.error as string
+        })
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -57,7 +77,7 @@ const LoginPage = () => {
         </div>
 
         <Controller
-          name='login'
+          name='username'
           control={control}
           rules={{ required: t('Loginni kiriting') }}
           render={({ field }) => (
@@ -70,9 +90,9 @@ const LoginPage = () => {
                 icon={<FaRegUser />}
                 iconPosition='left'
               />
-              {errors.login && (
+              {errors.username && (
                 <div className='text-xs text-red-500'>
-                  {errors.login.message}
+                  {errors.username.message}
                 </div>
               )}
             </div>
@@ -103,7 +123,10 @@ const LoginPage = () => {
             </div>
           )}
         />
-        <Button type='submit'>{t('Kirish')}</Button>
+        <Button type='submit'>
+          <span>{t('Kirish')}</span>
+          {isLoading && <ImSpinner9 className='h-4 w-4 animate-spin' />}
+        </Button>
       </form>
     </div>
   )

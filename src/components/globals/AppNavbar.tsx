@@ -4,9 +4,11 @@ import Button from '../Button'
 import Image from 'next/image'
 import { Locale } from '@/src/configs/i18n'
 import { cleareStorage } from '@/src/configs/storage'
+import { useAuth } from '@/src/hooks/useAuth'
 
 export default function AppNavbar({ locale }: { locale: string }) {
   const { t } = useTranslations(locale as Locale)
+  const { user } = useAuth()
 
   return (
     <div className='navbar gap-2 p-4'>
@@ -28,7 +30,7 @@ export default function AppNavbar({ locale }: { locale: string }) {
             <div className='flex items-center gap-3'>
               <div>
                 <p className='whitespace-nowrap text-sm font-semibold'>
-                  Shakhzod Ismoilov Design
+                  {user?.full_name}
                 </p>
                 <p className='text-xs opacity-50'>Administrator</p>
               </div>

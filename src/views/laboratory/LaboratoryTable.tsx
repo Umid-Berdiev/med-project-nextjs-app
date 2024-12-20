@@ -19,6 +19,7 @@ import { TbTableOptions } from 'react-icons/tb'
 import ProfileBlock from '../doctors-profile/detail/ProfileBlock'
 import ImageUpload from './ImageUpload'
 import MRIBrain from './MRI-brain'
+import Link from 'next/link'
 
 const tabs: ITab[] = [
   { id: 'MRI-brain', label: 'MRT bosh miyasi' },
@@ -137,6 +138,11 @@ const LaboratoryTable = () => {
               <button onClick={() => setOpen(true)}>
                 {t('Diagnostika natijalari')}
               </button>
+            </li>
+            <li>
+              <Link href={`/${locale}/laboratory/${row.id}`}>
+                {t('Laboratoriya natijalari')}
+              </Link>
             </li>
           </ul>
         </div>
