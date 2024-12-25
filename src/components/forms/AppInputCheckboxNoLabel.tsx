@@ -12,7 +12,7 @@ export default function AppInputCheckboxNoLabel(props: IProps) {
         <input
           type='checkbox'
           name='tabGroup'
-          checked={props.isChecked}
+          defaultChecked={props.isChecked}
           className='checkbox checkbox-sm rounded border-secondary [--chkbg:theme(colors.secondary)] [--chkfg:white]'
         />
       </label>

@@ -14,9 +14,18 @@ import Pagination from '@/src/components/pagination/Pagination'
 import Table, { ITableColumn } from '@/src/components/table/Table'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
+import { withAxios } from '@/src/utils/api/api'
+import endpoints from '@/src/utils/api/endpoints'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+type UserTableCellType = {
+  name: string
+  order: string
+  createdDate: string
+  changedDate: string
+}
 
 export default function UserRoleWrapper() {
   const { locale } = useParams()
@@ -37,15 +46,12 @@ export default function UserRoleWrapper() {
         : { column, direction: 'asc' }
     )
   }
-  const [open, setOpen] = useState(false)
-  const [openDelete, setOpenDelete] = useState(false)
-
-  type UserTableCellType = {
-    name: string
-    order: string
-    createdDate: string
-    changedDate: string
-  }
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [apiData, setApiData] = useState({
+    data: []
+  })
+  const [loading, setLoading] = useState(false)
 
   const columns: ITableColumn<UserTableCellType>[] = [
     {
@@ -69,7 +75,7 @@ export default function UserRoleWrapper() {
       sortable: true
     },
     {
-      header: t('O’zgartirilgan sana'),
+      header: t("O'zgartirilgan sana"),
       col: (row: UserTableCellType) => row.changedDate,
       sortable: true
     },
@@ -91,8 +97,8 @@ export default function UserRoleWrapper() {
           </Link>
           <Link
             href='#'
-            onClick={() => setOpenDelete(true)}
-            className='text-danger flex size-7 items-center justify-center rounded bg-white shadow-sm'
+            onClick={() => setIsDeleteModalOpen(true)}
+            className='flex size-7 items-center justify-center rounded bg-white text-danger shadow-sm'
           >
             <DeleteIcon />
           </Link>
@@ -260,13 +266,29 @@ export default function UserRoleWrapper() {
     }
   ]
 
-  const handleClose = () => {
-    setOpen(false)
+  const handleFormModalClose = () => {
+    setIsFormModalOpen(false)
   }
 
-  const handleCloseDelete = () => {
-    setOpenDelete(false)
+  const handleDeleteModalClose = () => {
+    setIsDeleteModalOpen(false)
   }
+
+  async function fetchData() {
+    try {
+      setLoading(true)
+      const { data } = await withAxios()(endpoints.common.roles.list)
+      setApiData({ data })
+    } catch (fetchDataError: any) {
+      console.error({ fetchDataError })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <>
@@ -274,14 +296,15 @@ export default function UserRoleWrapper() {
         <div className='w-full max-w-72'>
           <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
         </div>
-        <Button onClick={() => setOpen(!open)}>
-          {t('Qo’shish')} <PlusCircleIcon />
+        <Button onClick={() => setIsFormModalOpen(true)}>
+          {t("Qo'shish")} <PlusCircleIcon />
         </Button>
       </div>
       <Table
         className='bg-white'
         columns={columns}
         data={userTableData.slice(page * perPage, page * perPage + perPage)}
+        // data={apiData.data}
         sortBy={sortBy}
         setSortBy={handleSort}
         hoverable={false}
@@ -297,10 +320,10 @@ export default function UserRoleWrapper() {
 
       <Modal
         bg='bg-background'
-        title='Qo’shish'
-        open={open}
+        title={t("Qo'shish")}
+        open={isFormModalOpen}
         size='lg'
-        onClose={handleClose}
+        onClose={handleFormModalClose}
       >
         <div className='rounded-2xl border border-[#E9EAEA]'>
           <div className='mb-6 grid grid-cols-12 gap-4 overflow-hidden  rounded-2xl bg-white p-4'>
@@ -325,21 +348,35 @@ export default function UserRoleWrapper() {
           <div className='overflow-auto bg-white'>
             <table className='border-collapse border text-center'>
               <thead>
-                <th className='border px-2 py-1 text-sm'>Nomi</th>
-                <th className='border px-2 py-1 text-sm'>Menyu ko’rsatish</th>
-                <th className='border px-2 py-1 text-sm'>Menyu ko’rsatish</th>
-                <th className='border px-2 py-1 text-sm'>Boshqarish</th>
-                <th className='border px-2 py-1 text-sm'>Joylash</th>
-                <th className='border px-2 py-1 text-sm'>O’zgartirish</th>
-                <th className='border px-2 py-1 text-sm'>O’chirish</th>
-                <th className='border px-2 py-1 text-sm'>Ko’rsatish</th>
-                <th className='border px-2 py-1 text-sm'>Bo’sh</th>
-                <th className='border px-2 py-1 text-sm'>Eksport EXEL</th>
-                <th className='border px-2 py-1 text-sm'>Anamnezlar</th>
-                <th className='border px-2 py-1 text-sm'>Diagnozlar</th>
-                <th className='border px-2 py-1 text-sm'>Operatsiyalar</th>
-                <th className='border px-2 py-1 text-sm'>Patsient harakati</th>
-                <th className='border px-2 py-1 text-sm'>Foydalanuchi rolli</th>
+                <th className='border px-2 py-1 text-sm'>{t('Nomi')}</th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t("Menyu ko'rsatish")}
+                </th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t("Menyu ko'rsatish")}
+                </th>
+                <th className='border px-2 py-1 text-sm'>{t('Boshqarish')}</th>
+                <th className='border px-2 py-1 text-sm'>{t('Joylash')}</th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t("O'zgartirish")}
+                </th>
+                <th className='border px-2 py-1 text-sm'>{t("O'chirish")}</th>
+                <th className='border px-2 py-1 text-sm'>{t("Ko'rsatish")}</th>
+                <th className='border px-2 py-1 text-sm'>{t("Bo'sh")}</th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t('Eksport EXEL')}
+                </th>
+                <th className='border px-2 py-1 text-sm'>{t('Anamnezlar')}</th>
+                <th className='border px-2 py-1 text-sm'>{t('Diagnozlar')}</th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t('Operatsiyalar')}
+                </th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t('Patsient harakati')}
+                </th>
+                <th className='border px-2 py-1 text-sm'>
+                  {t('Foydalanuchi rolli')}
+                </th>
               </thead>
               <tbody>
                 <tr>
@@ -967,7 +1004,7 @@ export default function UserRoleWrapper() {
                 </tr>
                 <tr>
                   <td className='text-nowrap border px-2 py-1 pr-6 !text-left text-sm'>
-                    Xizmat o’chirish
+                    {t("Xizmat o'chirish")}
                   </td>
                   <td className='border px-2 py-1 text-sm'>
                     <AppInputCheckboxNoLabel
@@ -1889,7 +1926,11 @@ export default function UserRoleWrapper() {
           </div>
         </div>
         <div className='flex justify-end gap-1 py-2'>
-          <Button onClick={handleClose} variant='contained' color='secondary'>
+          <Button
+            onClick={handleFormModalClose}
+            variant='contained'
+            color='secondary'
+          >
             {t('Qoshish')}
           </Button>
         </div>
@@ -1898,25 +1939,25 @@ export default function UserRoleWrapper() {
       <Modal
         bg='bg-[#F9F9F9]'
         title='Ochirib yuborish'
-        open={openDelete}
+        open={isDeleteModalOpen}
         size='lg/2'
-        onClose={handleCloseDelete}
+        onClose={handleDeleteModalClose}
       >
         <div className='my-4 block bg-white p-6'>
           <p className='text-center'>
-            Siz ushbu <b> Bosh hisobchi </b> rollini o’chirib yubormoqchimisiz?
+            {`Siz ushbu "Bosh hisobchi" rollini o'chirib yubormoqchimisiz?`}
           </p>
         </div>
         <div className='flex justify-end gap-1 py-2'>
           <Button
             variant='outlined'
             color='secondary'
-            onClick={handleCloseDelete}
+            onClick={handleDeleteModalClose}
           >
             {t('Bekor qilish')}
           </Button>
           <Button variant='contained' className='bg-[#E6533C]' color='error'>
-            {t('O’chirish')}
+            {t("O'chirish")}
           </Button>
         </div>
       </Modal>
