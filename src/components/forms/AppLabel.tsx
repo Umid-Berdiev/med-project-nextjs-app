@@ -1,15 +1,16 @@
 interface IProps {
-    text?: string
-    className?: string
-    isRequired?: boolean
+  text?: string
+  className?: string
+  isRequired?: boolean
 }
 
 export default function AppLabel(props: IProps) {
-    return (
-        <label className={`mb-1 font-semibold text-xs leading-4 text-[#232427] ${props.className}`}>
-            {props.isRequired ? (
-                <span className='text-[#E6533C] pr-1'>*</span>) : ''}
-            {props.text}
-        </label>
-    )
+  return (
+    <label
+      className={`text-xs font-semibold text-[#232427] ${props.className}`}
+    >
+      {props.isRequired ? <span className='pr-1 text-[#E6533C]'>*</span> : ''}
+      {props.text}
+    </label>
+  )
 }

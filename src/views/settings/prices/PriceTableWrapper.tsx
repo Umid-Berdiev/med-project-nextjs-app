@@ -3,10 +3,6 @@
 import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
 import AppInput from '@/src/components/forms/AppInput'
-import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
-import AppInputDate from '@/src/components/forms/AppInputDate'
-import AppInputRadioRound from '@/src/components/forms/AppInputRadioRound'
-import AppLabel from '@/src/components/forms/AppLabel'
 import AppSelect from '@/src/components/forms/AppSelect'
 import DeleteIcon from '@/src/components/icons/DeleteIcon'
 import ListsIcon from '@/src/components/icons/ListsIcon'
@@ -21,14 +17,24 @@ import { useTranslations } from '@/src/configs/t'
 import { IPrice } from '@/src/utils/interfaces'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import React, { useState } from "react";
+import { useState } from 'react'
 
 // import { useState } from 'react'
+import PlusRoundIcon from '@/src/components/icons/PlusRoundIcon'
 import { FaFileAlt } from 'react-icons/fa'
 import { tableData } from './mock-data'
-import PlusRoundIcon from '@/src/components/icons/PlusRoundIcon'
 
-type RowDatas = { [key: string]: string };
+type RowDatas = { [key: string]: string }
+
+type UserTableCellType = {
+  fullname: string
+  position: string
+  login: string
+  filial: string
+  role: string
+  registrationDate: string
+  lastDate: string
+}
 
 export default function PriceTableWrapper() {
   const { locale } = useParams()
@@ -42,9 +48,9 @@ export default function PriceTableWrapper() {
   }
   const [sortBy, setSortBy] = useState<
     | {
-      column: string
-      direction: 'asc' | 'desc'
-    }
+        column: string
+        direction: 'asc' | 'desc'
+      }
     | undefined
   >(undefined)
   const [perPage, setPerPage] = useState(10)
@@ -58,16 +64,6 @@ export default function PriceTableWrapper() {
   }
   const [open, setOpen] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
-
-  type UserTableCellType = {
-    fullname: string
-    position: string
-    login: string
-    filial: string
-    role: string
-    registrationDate: string
-    lastDate: string
-  }
 
   const columns: Record<string, any>[] = [
     {
@@ -92,7 +88,7 @@ export default function PriceTableWrapper() {
             {row.state}
           </span>
         ) : (
-          <span className='bg-danger rounded-lg px-2 py-1 text-white'>
+          <span className='rounded-lg bg-danger px-2 py-1 text-white'>
             {row.state}
           </span>
         ),
@@ -124,7 +120,7 @@ export default function PriceTableWrapper() {
           <Link
             href='#'
             onClick={() => setOpenDelete(true)}
-            className='text-danger flex size-7 items-center justify-center rounded bg-white p-0 shadow-sm'
+            className='flex size-7 items-center justify-center rounded bg-white p-0 text-danger shadow-sm'
           >
             <DeleteIcon />
           </Link>
@@ -141,23 +137,26 @@ export default function PriceTableWrapper() {
     setOpenDelete(false)
   }
 
-  const [columns11, setColumns11] = useState<string[]>(["xizmatlar_nomi", "xizmatlar_kategoriyasi"]); // Jadval ustunlari
+  const [columns11, setColumns11] = useState<string[]>([
+    'xizmatlar_nomi',
+    'xizmatlar_kategoriyasi'
+  ]) // Jadval ustunlari
   const [datas, setDatas] = useState<RowDatas[]>([
-    { xizmatlar_nomi: "Qon ivish vaqti", xizmatlar_kategoriyasi: "Gruppa" },
-    { xizmatlar_nomi: "Qon izlanish", xizmatlar_kategoriyasi: "Gruppa" },
-  ]); // Jadval ma'lumotlari
-  const [editingColumn, setEditingColumn] = useState<string | null>(null); // Tahrirlanayotgan ustun nomi
+    { xizmatlar_nomi: 'Qon ivish vaqti', xizmatlar_kategoriyasi: 'Gruppa' },
+    { xizmatlar_nomi: 'Qon izlanish', xizmatlar_kategoriyasi: 'Gruppa' }
+  ]) // Jadval ma'lumotlari
+  const [editingColumn, setEditingColumn] = useState<string | null>(null) // Tahrirlanayotgan ustun nomi
 
   // Yangi ustun qo‘shish funksiyasi
   const addColumn = () => {
-    const newColumn = ""; // Yangi ustun uchun bo'sh nom
-    setColumns11([...columns11, newColumn]);
-    setEditingColumn(newColumn); // Tahrirlash rejimiga o‘tish
+    const newColumn = '' // Yangi ustun uchun bo'sh nom
+    setColumns11([...columns11, newColumn])
+    setEditingColumn(newColumn) // Tahrirlash rejimiga o‘tish
 
     // Har bir qatorga yangi ustunni qo‘shish
-    const updatedDatas = datas.map((row) => ({ ...row, [newColumn]: "" }));
-    setDatas(updatedDatas);
-  };
+    const updatedDatas = datas.map(row => ({ ...row, [newColumn]: '' }))
+    setDatas(updatedDatas)
+  }
 
   // Ustun nomini saqlash funksiyasi
   const saveColumnName = (oldName: string, newName: string) => {
@@ -167,50 +166,53 @@ export default function PriceTableWrapper() {
     // }
 
     // Ustunni yangilash
-    const updatedColumns11 = columns11.map((col) =>
+    const updatedColumns11 = columns11.map(col =>
       col === oldName ? newName : col
-    );
-    setColumns11(updatedColumns11);
+    )
+    setColumns11(updatedColumns11)
 
     // Ma'lumotlarda ustun nomini yangilash
-    const updatedDatas = datas.map((row) => {
-      const newRow: RowDatas = {};
+    const updatedDatas = datas.map(row => {
+      const newRow: RowDatas = {}
       for (const key in row) {
-        newRow[key === oldName ? newName : key] = row[key];
+        newRow[key === oldName ? newName : key] = row[key]
       }
-      return newRow;
-    });
-    setDatas(updatedDatas);
+      return newRow
+    })
+    setDatas(updatedDatas)
 
     // Tahrirlash rejimini yopish
-    setEditingColumn(null);
-  };
+    setEditingColumn(null)
+  }
 
   // Ustunni tahrirlash funksiyasi
   const editColumn = (columnName: string) => {
-    setEditingColumn(columnName);
-  };
+    setEditingColumn(columnName)
+  }
 
   // Ustunni o‘chirish funksiyasi
   const deleteColumn = (columnToDelete: string) => {
-    const updatedColumns11 = columns11.filter((col) => col !== columnToDelete);
-    setColumns11(updatedColumns11);
+    const updatedColumns11 = columns11.filter(col => col !== columnToDelete)
+    setColumns11(updatedColumns11)
 
     // Ma'lumotlardan ustunni o‘chirish
-    const updatedDatas = datas.map((row) => {
-      const { [columnToDelete]: _, ...rest } = row; // O'chirilayotgan ustunni olib tashlash
-      return rest;
-    });
-    setDatas(updatedDatas);
-  };
+    const updatedDatas = datas.map(row => {
+      const { [columnToDelete]: _, ...rest } = row // O'chirilayotgan ustunni olib tashlash
+      return rest
+    })
+    setDatas(updatedDatas)
+  }
 
   // Jadval hujayrasini o'zgartirish funksiyasi
-  const handleChange = (rowIndex: number, columnName: string, value: string) => {
-    const updatedDatas = [...datas];
-    updatedDatas[rowIndex][columnName] = value;
-    setDatas(updatedDatas);
-  };
-
+  const handleChange = (
+    rowIndex: number,
+    columnName: string,
+    value: string
+  ) => {
+    const updatedDatas = [...datas]
+    updatedDatas[rowIndex][columnName] = value
+    setDatas(updatedDatas)
+  }
 
   return (
     <>
@@ -254,39 +256,55 @@ export default function PriceTableWrapper() {
       >
         <RoundedBlock className='mb-4'>
           <div className='grid grid-cols-4 gap-4'>
-            <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
-            <AppSelect placeholder='Xizmatlar kategoriyasi' options={[
-              { label: 'Xizmat 1', value: '2' },
-              { label: 'Xizmat 2', value: '1' },
-            ]} />
+            <AppInput
+              isSearch
+              iconPosition='right'
+              placeholder={t('Qidirish')}
+            />
+            <AppSelect
+              placeholder='Xizmatlar kategoriyasi'
+              options={[
+                { label: 'Xizmat 1', value: '2' },
+                { label: 'Xizmat 2', value: '1' }
+              ]}
+            />
           </div>
         </RoundedBlock>
         <RoundedBlock className='mb-4'>
           <div className='overflow-x-auto'>
-            <table style={{ marginTop: "10px", width: "100%" }}>
+            <table style={{ marginTop: '10px', width: '100%' }}>
               <thead>
                 <tr>
                   {columns11.map((col, index) => (
-                    <th className='text-[13px] font-bold pl-4 py-3' key={index}>
+                    <th className='py-3 pl-4 text-[13px] font-bold' key={index}>
                       {editingColumn === col ? (
                         <AppInput
-                          type="text"
-                          placeholder={t("Yangi ustun nomi")}
+                          type='text'
+                          placeholder={t('Yangi ustun nomi')}
                           autoFocus
-                          onBlur={(e) => saveColumnName(col, e.target.value)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") saveColumnName(col, e.currentTarget.value);
+                          onBlur={e => saveColumnName(col, e.target.value)}
+                          onKeyDown={e => {
+                            if (e.key === 'Enter')
+                              saveColumnName(col, e.currentTarget.value)
                           }}
                         />
                       ) : (
-                        <div className='flex items-center pr-4 gap-4'>
-                          <span>
-                            {col || "Yangi ustun"}
-                          </span>
+                        <div className='flex items-center gap-4 pr-4'>
+                          <span>{col || 'Yangi ustun'}</span>
                           {index > 1 && (
                             <div className='flex items-center gap-3'>
-                              <button className='shadow-[0px_2px_5px_0px_#00000012] rounded size-7 flex items-center justify-center' onClick={() => editColumn(col)}><PencilIcon /></button>
-                              <button className='shadow-[0px_2px_5px_0px_#00000012] rounded size-7 flex items-center justify-center' onClick={() => deleteColumn(col)}><DeleteIcon currentColor="#E6533C" /></button>
+                              <button
+                                className='flex size-7 items-center justify-center rounded shadow-[0px_2px_5px_0px_#00000012]'
+                                onClick={() => editColumn(col)}
+                              >
+                                <PencilIcon />
+                              </button>
+                              <button
+                                className='flex size-7 items-center justify-center rounded shadow-[0px_2px_5px_0px_#00000012]'
+                                onClick={() => deleteColumn(col)}
+                              >
+                                <DeleteIcon currentColor='#E6533C' />
+                              </button>
                             </div>
                           )}
                         </div>
@@ -295,7 +313,12 @@ export default function PriceTableWrapper() {
                   ))}
                   {/* Yangi ustun qo‘shish tugmasi */}
                   <th>
-                    <button className='text-sm whitespace-nowrap text-[#29CED2] flex gap-2 ml-4' onClick={addColumn}>Narx ustunini qo’shish <PlusRoundIcon /></button>
+                    <button
+                      className='ml-4 flex gap-2 whitespace-nowrap text-sm text-[#29CED2]'
+                      onClick={addColumn}
+                    >
+                      Narx ustunini qo’shish <PlusRoundIcon />
+                    </button>
                   </th>
                 </tr>
               </thead>
@@ -303,12 +326,16 @@ export default function PriceTableWrapper() {
                 {datas.map((row, rowIndex) => (
                   <tr className='text-[13px] text-[#232427]' key={rowIndex}>
                     {columns11.map((col, colIndex) => (
-                      <td style={{ width: '240px', minWidth: '240px' }} className={`${rowIndex % 2 ? 'bg-[#F4F4F4] border-y border-[#DFE0E0]' : 'bg-white'} pl-4 py-3`} key={colIndex}>
+                      <td
+                        style={{ width: '240px', minWidth: '240px' }}
+                        className={`${rowIndex % 2 ? 'border-y border-[#DFE0E0] bg-[#F4F4F4]' : 'bg-white'} py-3 pl-4`}
+                        key={colIndex}
+                      >
                         {colIndex > 1 ? (
                           <AppInput
-                            type="text"
-                            value={row[col] || ""}
-                            onChange={(e) =>
+                            type='text'
+                            value={row[col] || ''}
+                            onChange={e =>
                               handleChange(rowIndex, col, e.target.value)
                             }
                           />
@@ -318,7 +345,9 @@ export default function PriceTableWrapper() {
                       </td>
                     ))}
                     {/* Bo'sh ustun - tugma joylashishi uchun */}
-                    <td className={`${rowIndex % 2 ? 'bg-[#F4F4F4] border-y border-[#DFE0E0]' : 'bg-white'} pl-4 py-3`}></td>
+                    <td
+                      className={`${rowIndex % 2 ? 'border-y border-[#DFE0E0] bg-[#F4F4F4]' : 'bg-white'} py-3 pl-4`}
+                    ></td>
                   </tr>
                 ))}
               </tbody>
