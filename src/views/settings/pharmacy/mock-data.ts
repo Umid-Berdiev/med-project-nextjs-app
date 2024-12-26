@@ -25,3 +25,46 @@ export const tableData: Record<string, any>[] = [
     supplier: 'Kontragent'
   }
 ]
+
+export const productTableData: Record<string, any>[] = [
+  {
+    id: 1,
+    name: 'Paracetamol',
+    status: 'Aktiv'
+  },
+  {
+    id: 2,
+    name: 'Ibuprofen',
+    status: 'Noaktiv'
+  },
+  {
+    id: 3,
+    name: 'Nurofen',
+    status: 'Aktiv'
+  },
+  {
+    id: 4,
+    name: 'Aspirin',
+    status: 'Aktiv'
+  },
+  {
+    id: 5,
+    name: 'Panadol',
+    status: 'Noaktiv'
+  },
+  {
+    id: 6,
+    name: 'Drotaverin',
+    status: 'Noaktiv'
+  },
+  {
+    id: 7,
+    name: 'Analgin',
+    status: 'Aktiv'
+  },
+  {
+    id: 8,
+    name: 'Dexalgin',
+    status: 'Aktiv'
+  }
+]

@@ -6,7 +6,8 @@ import Heading4 from '@/src/components/typography/Heading4'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
-import PharmacyGroup from '@/src/views/settings/pharmacy/PharmacyGroup'
+import PharmacyCategoryGroup from '@/src/views/settings/pharmacy/PharmacyCategoryGroup'
+import PharmacyProductGroup from '@/src/views/settings/pharmacy/PharmacyProductGroup'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -17,17 +18,17 @@ export default function PharmacyPage() {
     {
       id: '1',
       label: t('Kategoriyalar'),
-      content: <PharmacyGroup />
+      content: <PharmacyCategoryGroup />
     },
     {
       id: '2',
       label: t('Mahsulot guruhi'),
-      content: <PharmacyGroup />
+      content: <PharmacyProductGroup />
     },
     {
       id: '3',
       label: t("O'lchov birliklar"),
-      content: <PharmacyGroup />
+      content: <PharmacyCategoryGroup />
     }
   ]
   const [activeTab, setActiveTab] = useState<string>(
