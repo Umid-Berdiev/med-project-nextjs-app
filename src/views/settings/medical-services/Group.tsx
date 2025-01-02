@@ -231,7 +231,7 @@ export default function Group() {
           <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
         </div>
         <Button onClick={() => setOpen(!open)}>
-          {t('Qo’shish')} <PlusCircleIcon />
+          {t("Qo'shish")} <PlusCircleIcon />
         </Button>
       </div>
       <div className='rounded-md border-none'>
@@ -254,7 +254,7 @@ export default function Group() {
       </div>
       <Modal
         bg='bg-background'
-        title='Qo’shish'
+        title="Qo'shish"
         open={open}
         size='lg'
         onClose={handleClose}
@@ -303,7 +303,7 @@ export default function Group() {
               >
                 <div className='flex items-center justify-center gap-4'>
                   <div className='text-sm text-secondary'>
-                    {t('Pastki toifa qo’shish')}
+                    {t("Pastki toifa qo'shish")}
                   </div>
                   <BiPlusCircle size={20} className='text-secondary' />
                 </div>
@@ -312,7 +312,7 @@ export default function Group() {
           </div>
         ))}
         <div className='flex justify-end'>
-          <Button className='mt-4'>{t('Qo’shish')}</Button>
+          <Button className='mt-4'>{t("Qo'shish")}</Button>
         </div>
       </Modal>
       <Modal
@@ -324,7 +324,7 @@ export default function Group() {
       >
         <div className='my-4 block bg-white p-6'>
           <p className='text-center'>
-            {t('Siz ushbu Gruppa tibbiy xizmatini o’chirib yubormoqchimisiz?')}
+            {t("Siz ushbu Gruppa tibbiy xizmatini o'chirib yubormoqchimisiz?")}
           </p>
         </div>
         <div className='flex justify-end gap-1 py-2'>
@@ -336,7 +336,7 @@ export default function Group() {
             {t('Bekor qilish')}
           </Button>
           <Button variant='contained' className='bg-[#E6533C]' color='error'>
-            {t('O’chirish')}
+            {t("O'chirish")}
           </Button>
         </div>
       </Modal>

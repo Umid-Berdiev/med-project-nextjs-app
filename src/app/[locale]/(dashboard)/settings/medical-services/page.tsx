@@ -1,7 +1,5 @@
 'use client'
 
-import RolePage from '@/src/app/[locale]/(dashboard)/settings/user/detail/role'
-import UserPage from '@/src/app/[locale]/(dashboard)/settings/user/detail/user'
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { Locale } from '@/src/configs/i18n'

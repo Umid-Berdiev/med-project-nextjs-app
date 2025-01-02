@@ -181,6 +181,11 @@ export default function MakeSidebar() {
         },
         {
           icon: '•',
+          text: 'Dorixona',
+          path: '/settings/pharmacy'
+        },
+        {
+          icon: '•',
           text: 'Shablonlar',
           path: '/settings/templates'
         }

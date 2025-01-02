@@ -1,6 +1,6 @@
 import { getLocalizedUrl } from '@/src/utils/i18n'
 import { ISidebarItemProps } from '@/src/utils/interfaces'
-import { useParams } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { BiChevronRight } from 'react-icons/bi'
 import Link from './Link'
@@ -15,17 +15,21 @@ export default function SidebarItem({
 }: ISidebarItemProps) {
   const { locale } = useParams()
   const [expandSubMenu, setExpandSubMenu] = useState(false)
+  const pathname = usePathname()
+  const currentPath = pathname.startsWith(`/${locale}`)
+    ? pathname.replace(`/${locale}`, '')
+    : pathname
+
+  // Calculate the height of the sub-menu assuming each item is 42px tall
+  const subMenuHeight = expandSubMenu
+    ? `${((subMenu?.length || 0) * 44 + (subMenu! && 15)).toString()}px`
+    : 0
 
   useEffect(() => {
     if (!expanded) {
       setExpandSubMenu(false)
     }
   }, [expanded])
-
-  // Calculate the height of the sub-menu assuming each item is 42px tall
-  const subMenuHeight = expandSubMenu
-    ? `${((subMenu?.length || 0) * 44 + (subMenu! && 15)).toString()}px`
-    : 0
 
   return (
     <>
@@ -47,7 +51,7 @@ export default function SidebarItem({
           <span>{icon}</span>
 
           <span
-            className={`overflow-hidden text-start transition-all ${expanded ? 'ml-3 w-44' : 'w-0'} ${active ? 'text-secondary' : 'text-primary'}`}
+            className={`overflow-hidden text-start transition-all ${expanded ? 'ml-3 w-44' : 'w-0'}`}
           >
             {text}
           </span>
@@ -66,7 +70,12 @@ export default function SidebarItem({
           style={{ height: subMenuHeight }}
         >
           {subMenu?.map((item, index) => (
-            <SidebarItem key={index} {...item} expanded={expanded} />
+            <SidebarItem
+              key={index}
+              {...item}
+              expanded={expanded}
+              active={currentPath === item.path}
+            />
           ))}
         </ul>
       )}

@@ -24,6 +24,14 @@ const endpoints = {
   review: {
     all: '/reviews',
     one: '/reviews/:id'
+  },
+  common: {
+    roles: {
+      list: '/common/auth-item',
+      create: '/common/auth-item/create',
+      update: '/common/auth-item/update',
+      delete: '/common/auth-item/delete'
+    }
   }
 }
 
