@@ -210,7 +210,7 @@ export default function TemplateTableWrapper() {
                     className="flex items-center px-4 py-2 cursor-pointer bg-base-100 hover:bg-base-200 text-sm font-medium"
                   >
                     <span className="peer-checked:rotate-90 transition-transform duration-200">▶</span>
-                    <span>First Section</span>
+                    <span>First Section11</span>
                   </label>
                   <div className="peer-checked:block hidden px-4 py-2 text-xs bg-base-50">
                     <p>This is the detailed content for the first section.</p>
