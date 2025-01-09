@@ -177,6 +177,7 @@ export default function Group() {
           changePerPage={e => console.log(e)}
         />
       </div>
+
       <Modal
         bg='bg-background'
         title="Qo'shish"
@@ -240,9 +241,10 @@ export default function Group() {
           <Button className='mt-4'>{t("Qo'shish")}</Button>
         </div>
       </Modal>
+
       <Modal
         bg='bg-[#F9F9F9]'
-        title='Ochirib yuborish'
+        title={t("O'chirib yuborish")}
         open={openDelete}
         size='lg/2'
         onClose={handleCloseDelete}
