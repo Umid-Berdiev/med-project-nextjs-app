@@ -1,4 +1,5 @@
 const endpoints = {
+  services: 'client/service/index',
   auth: {
     login: '/auth/user/login',
     register: '/auth/register',
