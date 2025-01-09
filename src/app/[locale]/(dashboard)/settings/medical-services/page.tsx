@@ -6,6 +6,7 @@ import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
 import Group from '@/src/views/settings/medical-services/Group'
+import GroupV2 from '@/src/views/settings/medical-services/GroupV2'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -16,7 +17,7 @@ export default function MedicalServicesPage() {
     {
       id: '1',
       label: t('Gruppa'),
-      content: <Group />
+      content: <GroupV2 />
     },
     {
       id: '2',

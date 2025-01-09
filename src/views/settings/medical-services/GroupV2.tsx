@@ -8,13 +8,14 @@ import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import React from 'react'
+import { useState } from 'react'
 import { BiFile, BiPencil, BiPlusCircle, BiTrash } from 'react-icons/bi'
+import SubcategoryForm from './SubcategoryForm'
 
-export default function Group() {
+export default function GroupV2() {
   const itemResultChild: AccordionProps[] = [
     {
       disabled: true,
@@ -37,7 +38,7 @@ export default function Group() {
             <button
               className='rounded-md bg-white p-1'
               onClick={() => {
-                setOpenDelete(true)
+                setOpenDeleteModal(true)
               }}
             >
               <BiTrash color='red' size={20} />
@@ -74,7 +75,7 @@ export default function Group() {
             <button
               className='rounded-md bg-white p-1'
               onClick={() => {
-                setOpenDelete(true)
+                setOpenDeleteModal(true)
               }}
             >
               <BiTrash color='red' size={20} />
@@ -111,7 +112,7 @@ export default function Group() {
             <button
               className='rounded-md bg-white p-1'
               onClick={() => {
-                setOpenDelete(true)
+                setOpenDeleteModal(true)
               }}
             >
               <BiTrash color='red' size={20} />
@@ -139,7 +140,7 @@ export default function Group() {
             <button
               className='rounded-md bg-white p-1'
               onClick={() => {
-                setOpenDelete(true)
+                setOpenDeleteModal(true)
               }}
             >
               <BiTrash color='red' size={20} />
@@ -167,7 +168,7 @@ export default function Group() {
             <button
               className='rounded-md bg-white p-1'
               onClick={() => {
-                setOpenDelete(true)
+                setOpenDeleteModal(true)
               }}
             >
               <BiTrash color='red' size={20} />
@@ -195,7 +196,7 @@ export default function Group() {
             <button
               className='rounded-md bg-white p-1'
               onClick={() => {
-                setOpenDelete(true)
+                setOpenDeleteModal(true)
               }}
             >
               <BiTrash color='red' size={20} />
@@ -207,21 +208,48 @@ export default function Group() {
     }
   ]
 
-  const [open, setOpen] = React.useState(false)
+  const [openFormModal, setOpenFormModal] = useState(false)
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
-  const [states, setStates] = React.useState<{ name?: string; id: number }[]>([
-    {
-      name: '',
-      id: 0
-    }
-  ])
-  const [openDelete, setOpenDelete] = React.useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
+  const [indexForDelete, setIndexForDelete] = useState<number | null>(null)
+
+  const [formData, setFormData] = useState<{
+    rootGroup: { name: string }
+    children: Record<string, any>[]
+  }>({
+    rootGroup: {
+      name: ''
+    },
+    children: []
+  })
+
   const handleClose = () => {
-    setOpen(false)
+    setOpenFormModal(false)
   }
+
   const handleCloseDelete = () => {
-    setOpenDelete(false)
+    setOpenDeleteModal(false)
+  }
+
+  const resetForm = () => {
+    setFormData({
+      rootGroup: {
+        name: ''
+      },
+      children: []
+    })
+  }
+
+  const handleDeleteChild = () => {
+    if (indexForDelete !== null) {
+      const newFormData = { ...formData }
+      newFormData.children.splice(indexForDelete, 1)
+      setFormData(newFormData)
+      setOpenDeleteModal(false)
+    } else {
+      //
+    }
   }
 
   return (
@@ -230,7 +258,7 @@ export default function Group() {
         <div className='w-full max-w-72'>
           <AppInput isSearch iconPosition='right' placeholder={t('Qidirish')} />
         </div>
-        <Button onClick={() => setOpen(!open)}>
+        <Button onClick={() => setOpenFormModal(true)}>
           {t("Qo'shish")} <PlusCircleIcon />
         </Button>
       </div>
@@ -253,74 +281,88 @@ export default function Group() {
         />
       </div>
 
+      {/* add modal */}
       <Modal
         bg='bg-background'
         title="Qo'shish"
-        open={open}
+        open={openFormModal}
         size='lg'
         onClose={handleClose}
       >
-        {states.map((res, index) => (
-          <div key={index}>
-            <div
-              className={classnames(
-                'mb-4 grid grid-cols-12  gap-4 rounded-xl  p-2',
-                index ? 'bg-white' : 'bg-[#2324270D]',
-                `ml-${index + 1}`
-              )}
+        <div className='space-y-2'>
+          <div
+            className={classNames('flex gap-4 rounded-xl bg-[#2324270D] p-2')}
+          >
+            <input
+              value={formData.rootGroup.name}
+              placeholder={t('Nomini kiriting')}
+              className='h-9 flex-grow rounded-lg border border-[#2324271A] px-3 text-sm text-[#161624] outline-none focus:border-secondary focus:shadow-custom-blue'
+              onChange={e => {
+                setFormData({
+                  ...formData,
+                  rootGroup: { name: e.target.value }
+                })
+              }}
+            />
+            <Button
+              variant='tonal'
+              className='flex w-12 items-center justify-center'
+              onClick={resetForm}
             >
-              {index + 1 == states.length ? (
-                <input
-                  value={res.name}
-                  onChange={e => {
-                    states[index].name = e.target.value
-                    setStates([...states])
-                  }}
-                  placeholder={t('Nomini kiriting')}
-                  className='col-span-11 h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none  focus:border-secondary focus:shadow-custom-blue'
-                />
-              ) : (
-                <div className='col-span-11 px-3 text-sm'>{res.name}</div>
-              )}
-              <div
-                className='col-span-1 flex items-center justify-center'
-                onClick={() => {
-                  setOpenDelete(true)
+              <BiTrash color='red' size={20} />
+            </Button>
+          </div>
+          <div className='flex flex-col gap-2'>
+            {formData.children.map((res, index) => (
+              <SubcategoryForm
+                key={index}
+                formData={res}
+                setFormData={(value: Record<string, any>) => {
+                  const newFormData = { ...formData }
+                  newFormData.children[index] = value
+                  setFormData(newFormData)
                 }}
-              >
-                {Boolean(res?.name) && <BiTrash color='red' size={20} />}
+                deleteForm={() => {
+                  setIndexForDelete(index)
+                  setOpenDeleteModal(true)
+                }}
+              />
+            ))}
+          </div>
+          {formData.rootGroup.name && (
+            <div
+              className={classNames(
+                `cursor-pointer rounded-xl bg-white p-2`,
+                `mx-4`
+              )}
+              onClick={() => {
+                const newFormData = { ...formData }
+                newFormData.children.push({
+                  name: '',
+                  children: []
+                })
+                setFormData(newFormData)
+              }}
+            >
+              <div className='flex items-center justify-center gap-4'>
+                <div className='text-sm text-secondary'>
+                  {t("Pastki toifa qo'shish")}
+                </div>
+                <BiPlusCircle size={20} className='text-secondary' />
               </div>
             </div>
-
-            {Boolean(res.name) && index + 1 == states.length && (
-              <div
-                className={classnames(
-                  `mt-4 cursor-pointer rounded-xl bg-white p-2`,
-                  `ml-${states.reduce((a, b) => a + b.id, 0) + 1}`
-                )}
-                onClick={() =>
-                  setStates([...states, { id: states.length + 1 }])
-                }
-              >
-                <div className='flex items-center justify-center gap-4'>
-                  <div className='text-sm text-secondary'>
-                    {t("Pastki toifa qo'shish")}
-                  </div>
-                  <BiPlusCircle size={20} className='text-secondary' />
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+          )}
+        </div>
         <div className='flex justify-end'>
           <Button className='mt-4'>{t("Qo'shish")}</Button>
         </div>
       </Modal>
 
+      {/* delete modal */}
       <Modal
         bg='bg-[#F9F9F9]'
         title={t("O'chirib yuborish")}
-        open={openDelete}
+        open={openDeleteModal}
         size='lg/2'
         onClose={handleCloseDelete}
       >
@@ -337,7 +379,12 @@ export default function Group() {
           >
             {t('Bekor qilish')}
           </Button>
-          <Button variant='contained' className='bg-[#E6533C]' color='error'>
+          <Button
+            variant='contained'
+            className='bg-[#E6533C]'
+            color='error'
+            onClick={handleDeleteChild}
+          >
             {t("O'chirish")}
           </Button>
         </div>
