@@ -142,8 +142,9 @@ export default function Group() {
   }
   useEffect(() => {
     getServicesQuery({
-      parent: 1,
-      expand: 'child'
+      // parent: 1,
+      // parent_id: 1
+      // expand: 'child'
     }).then(res => {
       console.log(res)
     })
