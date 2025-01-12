@@ -9,221 +9,71 @@ import Pagination from '@/src/components/pagination/Pagination'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import classNames from 'classnames'
-import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
-import { BiFile, BiPencil, BiPlusCircle, BiTrash } from 'react-icons/bi'
+import { BiPencil, BiPlusCircle, BiTrash } from 'react-icons/bi'
 import SubcategoryForm from './SubcategoryForm'
+import { IServices } from '@/src/utils/interfaces'
+import { deleteServicesQuery } from '@/src/utils/api/api-services'
 
-export default function GroupV2() {
-  const itemResultChild: AccordionProps[] = [
-    {
-      disabled: true,
-      content: <div className='flex gap-2'></div>,
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Qon ivish vaqti</div>
-          <Link
-            href='/settings/medical-services/Group'
-            className='flex gap-2 text-sm text-[#2C9A73]'
-          >
-            <BiFile size={20} /> <span>Sablon 2</span>
-          </Link>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDeleteModal(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      )
-    }
-  ]
-
-  const itemResult: AccordionProps[] = [
-    {
-      content: (
-        <div className='flex gap-2 pl-4 '>
-          {itemResultChild.map((item: AccordionProps, index: number) => (
-            <AppAccordionTable
-              key={'grand-child-' + index}
-              {...item}
-              className='border-b px-2 py-2 pl-4'
-            />
-          ))}{' '}
-        </div>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Qon ivish vaqti</div>
-
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDeleteModal(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      )
-    }
-  ]
-  const items: AccordionProps[] = [
-    {
-      content: (
-        <>
-          <div className='flex gap-2 bg-[#2324270D] pl-4'>
-            {itemResult.map((item: AccordionProps, index: number) => (
-              <AppAccordionTable
-                key={'child-' + index}
-                {...item}
-                className='border-b px-2 py-2 '
-              />
-            ))}{' '}
-          </div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Bioximiya izlanish</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDeleteModal(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
-    },
-    {
-      content: (
-        <>
-          <div className='flex gap-2'></div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Ekspress test</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDeleteModal(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
-    },
-    {
-      content: (
-        <>
-          <div className='flex gap-2'></div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Ormarkerlar</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDeleteModal(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
-    },
-    {
-      content: (
-        <>
-          <div className='flex gap-2'></div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Koagulogramma</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDeleteModal(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
-    }
-  ]
+export default function GroupV2({ services }: { services: IServices[] }) {
+  const [currentData, setCurrentData] = useState<IServices>()
 
   const [openFormModal, setOpenFormModal] = useState(false)
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
-  const [indexForDelete, setIndexForDelete] = useState<number | null>(null)
-
+  const [openDelete, setOpenDelete] = useState(false)
   const [formData, setFormData] = useState<{
-    rootGroup: { name: string }
-    children: Record<string, any>[]
+    rootGroup: { title: string; id: string }
+    child: IServices[]
   }>({
     rootGroup: {
-      name: ''
+      title: '',
+      id: ''
     },
-    children: []
+    child: []
   })
-
+  const items = (data: IServices[]) =>
+    data.map(res => {
+      return {
+        content: (
+          <>
+            <div className='flex gap-2 bg-[#2324270D] pl-4'>
+              {items(res.child)?.map((item: AccordionProps, index: number) => (
+                <AppAccordionTable
+                  key={'child-' + index}
+                  {...item}
+                  className='border-b px-2 py-2 '
+                />
+              ))}{' '}
+            </div>
+          </>
+        ),
+        iconPosition: 'start',
+        border: false,
+        header: (
+          <div className='flex w-full items-center justify-between'>
+            <div className='text-sm'>{res.title}</div>
+            <div className='flex gap-2'>
+              <button className='rounded-md bg-white p-1'>
+                <BiPencil size={20} />
+              </button>
+              <button
+                className='rounded-md bg-white p-1'
+                onClick={() => {
+                  setCurrentData(res)
+                  setOpenDelete(true)
+                }}
+              >
+                <BiTrash color='red' size={20} />
+              </button>
+            </div>
+          </div>
+        ),
+        title: ''
+      }
+    })
   const handleClose = () => {
     setOpenFormModal(false)
   }
@@ -235,20 +85,28 @@ export default function GroupV2() {
   const resetForm = () => {
     setFormData({
       rootGroup: {
-        name: ''
+        title: '',
+        id: ''
       },
-      children: []
+      child: []
     })
   }
 
-  const handleDeleteChild = () => {
+  const handleDeleteChild = (indexForDelete: number) => {
     if (indexForDelete !== null) {
       const newFormData = { ...formData }
       newFormData.children.splice(indexForDelete, 1)
       setFormData(newFormData)
-      setOpenDeleteModal(false)
+      // setOpenDeleteModal(false)
     } else {
       //
+    }
+  }
+  const onDelete = async () => {
+    if (currentData) {
+      await deleteServicesQuery(currentData.id)
+      setOpenDeleteModal(false)
+      setCurrentData(undefined)
     }
   }
 
@@ -264,7 +122,7 @@ export default function GroupV2() {
       </div>
       <div className='rounded-md border-none'>
         <div>
-          {items.map((item: AccordionProps, index: number) => (
+          {items(services)?.map((item: AccordionProps, index: number) => (
             <AppAccordionTable
               key={index}
               {...item}
@@ -272,13 +130,13 @@ export default function GroupV2() {
             />
           ))}
         </div>
-        <Pagination
+        {/* <Pagination
           page={1}
           size={10}
           totalCount={20}
           changeCurrentPage={e => console.log(e)}
           changePerPage={e => console.log(e)}
-        />
+        /> */}
       </div>
 
       {/* add modal */}
@@ -287,20 +145,23 @@ export default function GroupV2() {
         title="Qo'shish"
         open={openFormModal}
         size='lg'
-        onClose={handleClose}
+        onClose={() => handleClose()}
       >
         <div className='space-y-2'>
           <div
             className={classNames('flex gap-4 rounded-xl bg-[#2324270D] p-2')}
           >
             <input
-              value={formData.rootGroup.name}
+              value={formData.rootGroup.title}
               placeholder={t('Nomini kiriting')}
               className='h-9 flex-grow rounded-lg border border-[#2324271A] px-3 text-sm text-[#161624] outline-none focus:border-secondary focus:shadow-custom-blue'
               onChange={e => {
                 setFormData({
                   ...formData,
-                  rootGroup: { name: e.target.value }
+                  rootGroup: {
+                    title: e.target.value,
+                    id: `parent_${e.target.value}`
+                  }
                 })
               }}
             />
@@ -313,23 +174,22 @@ export default function GroupV2() {
             </Button>
           </div>
           <div className='flex flex-col gap-2'>
-            {formData.children.map((res, index) => (
+            {formData.child.map((res, index) => (
               <SubcategoryForm
                 key={index}
                 formData={res}
-                setFormData={(value: Record<string, any>) => {
+                setFormData={(value: IServices) => {
                   const newFormData = { ...formData }
-                  newFormData.children[index] = value
+                  newFormData.child[index] = value
+                  newFormData.child[index].order = index
+
                   setFormData(newFormData)
                 }}
-                deleteForm={() => {
-                  setIndexForDelete(index)
-                  setOpenDeleteModal(true)
-                }}
+                deleteForm={handleDeleteChild}
               />
             ))}
           </div>
-          {formData.rootGroup.name && (
+          {formData.rootGroup.title && (
             <div
               className={classNames(
                 `cursor-pointer rounded-xl bg-white p-2`,
@@ -337,9 +197,10 @@ export default function GroupV2() {
               )}
               onClick={() => {
                 const newFormData = { ...formData }
-                newFormData.children.push({
-                  name: '',
-                  children: []
+                newFormData.child.push({
+                  title: '',
+                  order: formData.child.length,
+                  child: []
                 })
                 setFormData(newFormData)
               }}
@@ -359,10 +220,11 @@ export default function GroupV2() {
       </Modal>
 
       {/* delete modal */}
+
       <Modal
         bg='bg-[#F9F9F9]'
         title={t("O'chirib yuborish")}
-        open={openDeleteModal}
+        open={openDelete}
         size='lg/2'
         onClose={handleCloseDelete}
       >
@@ -370,6 +232,7 @@ export default function GroupV2() {
           <p className='text-center'>
             {t("Siz ushbu Gruppa tibbiy xizmatini o'chirib yubormoqchimisiz?")}
           </p>
+          <div className='text-center text-error'>{currentData?.title}</div>
         </div>
         <div className='flex justify-end gap-1 py-2'>
           <Button
@@ -383,7 +246,7 @@ export default function GroupV2() {
             variant='contained'
             className='bg-[#E6533C]'
             color='error'
-            onClick={handleDeleteChild}
+            onClick={onDelete}
           >
             {t("O'chirish")}
           </Button>

@@ -11,3 +11,9 @@ export const getServicesQuery = async (params: Props) => {
   })
   return response
 }
+export const deleteServicesQuery = async (id: number) => {
+  const { data: response } = await withAxios().post(
+    `${endpoints.deleteService}?id=${id}`
+  )
+  return response
+}

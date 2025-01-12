@@ -1,3 +1,20 @@
+export interface IServices {
+  id?: number
+  parent_id?: number | null
+  order?: number
+  status?: string | null
+  created_at?: number
+  created_by?: number
+  updated_at?: number
+  updated_by?: number
+  is_deleted?: boolean | null
+  deleted_by?: number | null
+  deleted_at?: number | null
+  title?: string
+  child?: IServices[] // Rekursiv bolalar ro'yxati
+  _links?: any[] // Agar kerakli havolalar uchun to'liq aniqlik kerak bo'lsa, uning strukturasi aniqlanishi mumkin
+}
+
 export interface ISidebarItemProps {
   active?: boolean
   icon?: React.ReactNode
@@ -7,10 +24,10 @@ export interface ISidebarItemProps {
   subMenu?: ISidebarItemProps[] | null
 }
 export interface IPagination {
-  page: number
-  size: number
-  totalCount?: number
-  pageCount?: number
+  currentPage: number
+  pageCount: number
+  perPage: number
+  totalCount: number
 }
 export interface ITabContentList {
   id: string

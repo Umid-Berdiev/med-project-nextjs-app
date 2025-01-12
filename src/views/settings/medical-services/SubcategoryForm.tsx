@@ -1,12 +1,9 @@
 'use client'
 
-import Button from '@/src/components/Button'
-import Modal from '@/src/components/Modal'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import classNames from 'classnames'
 import { useParams } from 'next/navigation'
-import { useState } from 'react'
 import { BiPlusCircle } from 'react-icons/bi'
 import SubcategoryItem from './SubcategoryItem'
 
@@ -21,23 +18,11 @@ export default function SubcategoryForm({
 }) {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
-  const [openDeleteModal, setOpenDeleteModal] = useState(false)
-  const [indexForDelete, setIndexForDelete] = useState<number | null>(null)
-
-  const handleCloseDeleteModal = () => {
-    setOpenDeleteModal(false)
-  }
-
-  const handleDeleteItem = () => {
-    const newFormData = { ...formData }
-    newFormData.children.splice(indexForDelete, 1)
-    setFormData(newFormData)
-    setOpenDeleteModal(false)
-  }
 
   const deleteChild = (index: number) => () => {
-    setIndexForDelete(index)
-    setOpenDeleteModal(true)
+    const newFormData = { ...formData }
+    newFormData.children.splice(index, 1)
+    setFormData(newFormData)
   }
 
   return (
@@ -90,38 +75,6 @@ export default function SubcategoryForm({
           </div>
         </div>
       )}
-
-      {/* delete modal */}
-      <Modal
-        bg='bg-[#F9F9F9]'
-        title={t("O'chirib yuborish")}
-        open={openDeleteModal}
-        size='lg/2'
-        onClose={handleCloseDeleteModal}
-      >
-        <div className='my-4 block bg-white p-6'>
-          <p className='text-center'>
-            {t("Siz ushbu Gruppa tibbiy xizmatini o'chirib yubormoqchimisiz?")}
-          </p>
-        </div>
-        <div className='flex justify-end gap-1 py-2'>
-          <Button
-            variant='outlined'
-            color='secondary'
-            onClick={handleCloseDeleteModal}
-          >
-            {t('Bekor qilish')}
-          </Button>
-          <Button
-            variant='contained'
-            className='bg-[#E6533C]'
-            color='error'
-            onClick={handleDeleteItem}
-          >
-            {t("O'chirish")}
-          </Button>
-        </div>
-      </Modal>
     </div>
   )
 }

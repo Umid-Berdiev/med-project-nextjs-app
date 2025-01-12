@@ -1,5 +1,6 @@
 const endpoints = {
   services: 'client/service/index',
+  deleteService: 'client/service/delete',
   auth: {
     login: '/auth/user/login',
     register: '/auth/register',

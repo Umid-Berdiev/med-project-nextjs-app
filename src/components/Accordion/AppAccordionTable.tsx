@@ -6,7 +6,7 @@ export type AccordionProps = {
   title?: string
   header?: React.ReactNode
   content: React.ReactNode
-  iconPosition?: 'start' | 'end'
+  iconPosition?: string
   checkbox?: boolean
   className?: string
   border?: boolean
