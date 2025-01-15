@@ -47,7 +47,7 @@ const LoginPage = () => {
       const res = await withAxios().post(endpoints.auth.login, data)
       Cookies.set('_med_control_token', res.data.result?.access_token)
       toast.success(t('Tizimga muvaffaqiyatli kirdingiz'))
-      router.push(`/${locale}/patients`)
+      router.push(`/${locale}/home`)
     } catch (e) {
       const { response } = e as IResponseError
       const { errors } = response.data

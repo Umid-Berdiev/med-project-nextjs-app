@@ -36,7 +36,7 @@ export default function MedicalServicesPage() {
   useEffect(() => {
     getServicesQuery({ parent: 1 }).then(res => {
       const resData = res?.result?.data?.map((item: IServices) => ({
-        id: item.id.toString(),
+        id: item.id ? item.id.toString() : '',
         label: item.title,
         content: <GroupV2 services={item.child || []} />
       }))
