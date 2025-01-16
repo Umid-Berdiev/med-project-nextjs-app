@@ -4,12 +4,12 @@ import AppLogo from '@/src/components/icons/AppLogo'
 import { ISidebarItemProps } from '@/src/utils/interfaces'
 import { useParams, usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { BiCog } from 'react-icons/bi'
+import BuildingIcon from './icons/BuildingIcon'
 import DiagnosticIcon from './icons/DiagnosticIcon'
+import GearIcon from './icons/GearIcon'
 import ListIcon from './icons/ListIcon'
 import MoneyWithCalcIcon from './icons/MoneyWithCalcIcon'
 import SyringeIcon from './icons/SyringeIcon'
-import UnorderedListIcon from './icons/UnorderedListIcon'
 import UsersIcon from './icons/UsersIcon'
 import UserSuitcaseIcon from './icons/UserSuitcaseIcon'
 import SidebarItem from './SidebarItem'
@@ -132,30 +132,34 @@ export default function MakeSidebar() {
       text: 'Hisobot',
       path: '/report'
     },
-    {
-      icon: <UnorderedListIcon />,
-      text: "Ma'lumotlar",
-      path: '/information'
-    },
     // {
-    //   icon: <BiUser />,
-    //   subMenu: [
-    //     {
-    //       icon: '•',
-    //       text: 'Profile',
-    //       path: '/profile'
-    //     },
-    //     {
-    //       icon: '•',
-    //       text: 'Settings',
-    //       path: '/settings'
-    //     }
-    //   ],
-    //   text: 'Profile'
+    //   icon: <UnorderedListIcon />,
+    //   text: "Ma'lumotlar",
+    //   path: '/information'
     // },
-
     {
-      icon: <BiCog />,
+      icon: <BuildingIcon />,
+      subMenu: [
+        {
+          icon: '•',
+          text: 'Kontragentlar',
+          path: '/pharmacy/counteragents'
+        },
+        {
+          icon: '•',
+          text: 'Mahsulotlar',
+          path: '/pharmacy/products'
+        },
+        {
+          icon: '•',
+          text: 'Qoldiq kiritish',
+          path: '/pharmacy/stock-in'
+        }
+      ],
+      text: 'Dorixona'
+    },
+    {
+      icon: <GearIcon />,
       text: 'Sozlamalar',
       path: '/settings',
       subMenu: [

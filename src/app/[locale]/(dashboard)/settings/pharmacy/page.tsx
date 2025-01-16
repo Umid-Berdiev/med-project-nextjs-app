@@ -8,6 +8,7 @@ import { useTranslations } from '@/src/configs/t'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
 import PharmacyCategoryGroup from '@/src/views/settings/pharmacy/PharmacyCategoryGroup'
 import PharmacyProductGroup from '@/src/views/settings/pharmacy/PharmacyProductGroup'
+import PharmacyUnitGroup from '@/src/views/settings/pharmacy/PharmacyUnitGroup'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -28,7 +29,7 @@ export default function PharmacyPage() {
     {
       id: '3',
       label: t("O'lchov birliklar"),
-      content: <PharmacyCategoryGroup />
+      content: <PharmacyUnitGroup />
     }
   ]
   const [activeTab, setActiveTab] = useState<string>(
