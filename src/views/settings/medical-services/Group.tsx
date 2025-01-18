@@ -8,10 +8,11 @@ import Modal from '@/src/components/Modal'
 import Pagination from '@/src/components/pagination/Pagination'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
+import { getServicesQuery } from '@/src/utils/api/api-services'
 import classnames from 'classnames'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BiFile, BiPencil, BiPlusCircle, BiTrash } from 'react-icons/bi'
 
 export default function Group() {
@@ -120,90 +121,6 @@ export default function Group() {
         </div>
       ),
       title: ''
-    },
-    {
-      content: (
-        <>
-          <div className='flex gap-2'></div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Ekspress test</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDelete(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
-    },
-    {
-      content: (
-        <>
-          <div className='flex gap-2'></div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Ormarkerlar</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDelete(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
-    },
-    {
-      content: (
-        <>
-          <div className='flex gap-2'></div>
-        </>
-      ),
-      iconPosition: 'start',
-      border: false,
-      header: (
-        <div className='flex w-full items-center justify-between'>
-          <div className='text-sm'>Koagulogramma</div>
-          <div className='flex gap-2'>
-            <button className='rounded-md bg-white p-1'>
-              <BiPencil size={20} />
-            </button>
-            <button
-              className='rounded-md bg-white p-1'
-              onClick={() => {
-                setOpenDelete(true)
-              }}
-            >
-              <BiTrash color='red' size={20} />
-            </button>
-          </div>
-        </div>
-      ),
-      title: ''
     }
   ]
 
@@ -223,6 +140,15 @@ export default function Group() {
   const handleCloseDelete = () => {
     setOpenDelete(false)
   }
+  useEffect(() => {
+    getServicesQuery({
+      // parent: 1,
+      // parent_id: 1
+      // expand: 'child'
+    }).then(res => {
+      console.log(res)
+    })
+  }, [])
 
   return (
     <div className='flex flex-col gap-4'>
@@ -252,6 +178,7 @@ export default function Group() {
           changePerPage={e => console.log(e)}
         />
       </div>
+
       <Modal
         bg='bg-background'
         title="Qo'shish"
@@ -315,9 +242,10 @@ export default function Group() {
           <Button className='mt-4'>{t("Qo'shish")}</Button>
         </div>
       </Modal>
+
       <Modal
         bg='bg-[#F9F9F9]'
-        title='Ochirib yuborish'
+        title={t("O'chirib yuborish")}
         open={openDelete}
         size='lg/2'
         onClose={handleCloseDelete}

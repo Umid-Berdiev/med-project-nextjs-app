@@ -1,17 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { i18n, Locale } from './configs/i18n'
 
 const customMiddleware = async (
   req: NextRequest
 ): Promise<NextResponse | undefined> => {
-  const locale = req.cookies.get('NEXT_LOCALE')?.value || 'ru'
+  const potentialLang = req.nextUrl.pathname.split('/')[1]
+  const locale = i18n.locales.includes(potentialLang as Locale)
+    ? potentialLang
+    : i18n.defaultLocale
   const token = req.cookies.get('_med_control_token')?.value
+  console.log(locale)
 
   // Agar `/login` yoki `/patients` sahifasida bo'lsa, qayta yo'naltirmaslik uchun
   if (
     req.nextUrl.pathname === `/${locale}/login` ||
-    req.nextUrl.pathname === `/${locale}/patients`
+    req.nextUrl.pathname === `/${locale}/home`
   ) {
     return undefined
+  }
+  if (req.nextUrl.pathname === `/`) {
+    return NextResponse.redirect(new URL(`/${locale}`, req.url))
   }
 
   if (!token) {
@@ -21,7 +29,7 @@ const customMiddleware = async (
 
   if (req.nextUrl.pathname === `/${locale}`) {
     console.log('Redirecting to patients...')
-    return NextResponse.redirect(new URL(`/${locale}/patients`, req.url))
+    return NextResponse.redirect(new URL(`/${locale}/home`, req.url))
   }
 
   return undefined // Agar shartlardan hech biri bajarilmasa
