@@ -2,27 +2,32 @@ export const tableData: Record<string, any>[] = [
   {
     name: 'Gumanitar yordam',
     order: '2',
-    supplier: 'Kontragent'
+    supplier: 'Kontragent',
+    id: 1
   },
   {
     name: 'Shartnoma',
     order: '1',
-    supplier: "Yo'q"
+    supplier: "Yo'q",
+    id: 2
   },
   {
     name: 'Markazda',
     order: '3',
-    supplier: 'Kontragent'
+    supplier: 'Kontragent',
+    id: 3
   },
   {
     name: 'Kontragent',
     order: '4',
-    supplier: 'Kontragent'
+    supplier: 'Kontragent',
+    id: 4
   },
   {
     name: 'Korxona',
     order: '5',
-    supplier: 'Kontragent'
+    supplier: 'Kontragent',
+    id: 5
   }
 ]
 

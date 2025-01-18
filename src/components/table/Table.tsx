@@ -61,9 +61,9 @@ export default function Table<T>({
         '
         >
           <table
-            className={`table ${stripped ? 'table-zebra' : ''} ${className}`}
+            className={`table ${stripped ? 'table-zebra' : ''} ${className} !rounded-xl`}
           >
-            <thead className='rounded'>
+            <thead className=''>
               <tr>
                 {columns.map((column, index) => (
                   <th
