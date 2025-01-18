@@ -1,6 +1,11 @@
-import React from 'react'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 
 export default function ProfileBlock() {
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
+
   return (
     <div>
       <div className='flex w-full items-center justify-between rounded-lg bg-white p-4  sm:flex-col md:flex md:flex-col lg:flex-row'>
@@ -30,7 +35,9 @@ export default function ProfileBlock() {
           </div>
           <div className='h-[58px] w-px bg-[#2324271A]'></div>
           <div className='ml-1 flex flex-col'>
-            <span className='text-xs  text-[#23242780]'>Tug’ilgan sanasi:</span>
+            <span className='text-xs  text-[#23242780]'>
+              {t("Tug'ilgan sanasi")}:
+            </span>
             <p className='text-lg font-semibold text-textDark'>12.02.2000</p>
           </div>
         </div>

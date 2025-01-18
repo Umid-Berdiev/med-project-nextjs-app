@@ -73,3 +73,117 @@ export const productTableData: Record<string, any>[] = [
     status: 'Aktiv'
   }
 ]
+
+export const pharmacyProductsTableData: Record<string, any>[] = [
+  {
+    id: 39482,
+    barcode: '11015155515',
+    name: 'HBsAg - Gepatit B virusi uchun bir bosqichli test, Butun qon/Sivorotka, Test-kassetalar',
+    unit: 'Qadoq',
+    category: 'Reagentlar',
+    conteragents: 'Kontragentlar soni: 3',
+    producer: 'Terra MCHJ',
+    quantity: 10,
+    status: 'Aktiv'
+  },
+  {
+    id: 39483,
+    barcode: '11015155515',
+    name: 'HBsAg - Gepatit B virusi uchun bir bosqichli test, Butun qon/Sivorotka, Test-kassetalar',
+    unit: 'Qadoq',
+    category: 'Reagentlar',
+    conteragents: 'Kontragentlar soni: 3',
+    producer: 'Terra MCHJ',
+    quantity: 10,
+    status: 'Aktiv'
+  },
+  {
+    id: 39484,
+    barcode: '11015155515',
+    name: 'HBsAg - Gepatit B virusi uchun bir bosqichli test, Butun qon/Sivorotka, Test-kassetalar',
+    unit: 'Qadoq',
+    category: 'Reagentlar',
+    conteragents: 'Kontragentlar soni: 3',
+    producer: 'Terra MCHJ',
+    quantity: 10,
+    status: 'Aktiv'
+  },
+  {
+    id: 39485,
+    barcode: '11015155515',
+    name: 'HBsAg - Gepatit B virusi uchun bir bosqichli test, Butun qon/Sivorotka, Test-kassetalar',
+    unit: 'Qadoq',
+    category: 'Reagentlar',
+    conteragents: 'Kontragentlar soni: 3',
+    producer: 'Terra MCHJ',
+    quantity: 10,
+    status: 'Aktiv'
+  },
+  {
+    id: 39486,
+    barcode: '11015155515',
+    name: 'HBsAg - Gepatit B virusi uchun bir bosqichli test, Butun qon/Sivorotka, Test-kassetalar',
+    unit: 'Qadoq',
+    category: 'Reagentlar',
+    conteragents: 'Kontragentlar soni: 3',
+    producer: 'Terra MCHJ',
+    quantity: 10,
+    status: 'Aktiv'
+  },
+  {
+    id: 39487,
+    barcode: '11015155515',
+    name: 'HBsAg - Gepatit B virusi uchun bir bosqichli test, Butun qon/Sivorotka, Test-kassetalar',
+    unit: 'Qadoq',
+    category: 'Reagentlar',
+    conteragents: 'Kontragentlar soni: 3',
+    producer: 'Terra MCHJ',
+    quantity: 10,
+    status: 'Aktiv'
+  }
+]
+
+export const pharmacyStockInTableData: Record<string, any>[] = [
+  {
+    id: 39482,
+    total_sum: 450000000,
+    date: '2021-09-10',
+    income_type: 'Kelishuv',
+    departments: 'Surunkali yurak yetishmovchiligi bo’limi'
+  },
+  {
+    id: 39483,
+    total_sum: 450000000,
+    date: '2021-09-10',
+    income_type: 'Kelishuv',
+    departments: 'Surunkali yurak yetishmovchiligi bo’limi'
+  },
+  {
+    id: 39484,
+    total_sum: 450000000,
+    date: '2021-09-10',
+    income_type: 'Kelishuv',
+    departments: 'Surunkali yurak yetishmovchiligi bo’limi'
+  },
+  {
+    id: 39485,
+    total_sum: 450000000,
+    date: '2021-09-10',
+    income_type: 'Kelishuv',
+    departments: 'Surunkali yurak yetishmovchiligi bo’limi'
+  },
+  {
+    id: 39486,
+    total_sum: 450000000,
+    date: '2021-09-10',
+    income_type: 'Kelishuv',
+    departments: 'Surunkali yurak yetishmovchiligi bo’limi'
+  },
+  {
+    id: 39487,
+    total_sum: 450000000,
+    date: '2021-09-10',
+    income_type: 'Kelishuv',
+    departments: 'Surunkali yurak yetishmovchiligi bo’limi'
+  }
+]

@@ -36,7 +36,7 @@ const Modal = ({
   return (
     <div className={modalClass}>
       <div
-        className={`modal-box ${bg} ${size === 'lg' ? ' max-w-screen-2xl' : size === 'md' ? 'max-w-5xl' : size === 'lg/2' ? 'max-w-[640px]' : 'max-w-sm'}`}
+        className={`modal-box bg-background ${bg} ${size === 'lg' ? ' max-w-screen-2xl' : size === 'md' ? 'max-w-5xl' : size === 'lg/2' ? 'max-w-[640px]' : 'max-w-sm'}`}
         ref={ref}
       >
         <button

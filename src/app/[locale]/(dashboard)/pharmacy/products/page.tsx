@@ -13,12 +13,12 @@ import Table, { ITableColumn } from '@/src/components/table/Table'
 import Heading4 from '@/src/components/typography/Heading4'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
-import { tableData } from '@/src/views/settings/pharmacy/mock-data'
+import { pharmacyProductsTableData } from '@/src/views/settings/pharmacy/mock-data'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
-export default function PharmacyCounteragentsPage() {
+export default function PharmacyProductsPage() {
   const { locale, id } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [formModalOpen, setFormModalOpen] = useState(false)
@@ -39,18 +39,51 @@ export default function PharmacyCounteragentsPage() {
       sortable: true
     },
     {
+      header: t('Shtrix kodi'),
+      col: (row: Record<string, any>) => row.barcode,
+      sortable: true
+    },
+    {
       header: t('Nomi'),
       col: (row: Record<string, any>) => row.name,
+      sortable: true,
+      width: '!w-[400px] !min-w-[400px]'
+    },
+    {
+      header: t("O'lchov birligi"),
+      col: (row: Record<string, any>) => row.unit,
       sortable: true
     },
     {
-      header: t('STIR'),
-      col: (row: Record<string, any>) => row.order,
+      header: t('Guruh'),
+      col: (row: Record<string, any>) => row.category,
       sortable: true
     },
     {
-      header: t("Bog'lanish"),
-      col: (row: Record<string, any>) => row.supplier,
+      header: t('Kontragentlar'),
+      col: (row: Record<string, any>) => row.conteragents,
+      sortable: true
+    },
+    {
+      header: t('Ishlab chiqaruvchi'),
+      col: (row: Record<string, any>) => row.producer,
+      sortable: true
+    },
+    {
+      header: t('Soni'),
+      col: (row: Record<string, any>) => row.quantity,
+      sortable: true
+    },
+    {
+      header: t('Holati'),
+      col: (row: Record<string, any>) => {
+        // return as badge (if active return green, if inactive return red)
+        return (
+          <span className='rounded bg-[#00A569] px-2 py-1 text-white'>
+            {row.status}
+          </span>
+        )
+      },
       sortable: true
     },
     {
@@ -97,11 +130,11 @@ export default function PharmacyCounteragentsPage() {
   return (
     <div>
       <Breadcrumb
-        breadcrumbs={[{ label: 'Dorixona' }, { label: 'Kontragentlar' }]}
+        breadcrumbs={[{ label: 'Dorixona' }, { label: 'Mahsulotlar' }]}
       />
-      <Heading4 className=''>{t('Kontragentlar')}</Heading4>
+      <Heading4 className=''>{t('Mahsulotlar')}</Heading4>
       <div className='my-4 flex flex-col gap-4'>
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center'>
           <div className='w-full max-w-72'>
             <AppInput
               isSearch
@@ -109,6 +142,11 @@ export default function PharmacyCounteragentsPage() {
               placeholder={t('Qidirish')}
             />
           </div>
+          <Button variant='text' color='primary' className='ml-auto'>
+            <span className='border-b border-dashed border-secondary'>
+              {t('Filtr')}
+            </span>
+          </Button>
           <Button onClick={() => setFormModalOpen(true)}>
             {t("Qo'shish")} <PlusCircleIcon />
           </Button>
@@ -117,7 +155,7 @@ export default function PharmacyCounteragentsPage() {
           <Table
             className='bg-white'
             columns={columns}
-            data={tableData}
+            data={pharmacyProductsTableData}
             sortBy={sortBy}
             setSortBy={handleSort}
             hoverable={false}

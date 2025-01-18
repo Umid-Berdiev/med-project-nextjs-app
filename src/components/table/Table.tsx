@@ -29,7 +29,7 @@ export default function Table<T>({
   columns = [],
   data = [],
   hoverable = false,
-  stripped = true,
+  stripped = false,
   classRow = () => '',
   sortBy,
   setSortBy
@@ -68,7 +68,12 @@ export default function Table<T>({
                 {columns.map((column, index) => (
                   <th
                     key={index}
-                    className={`bg-white ${column.width ?? ''}`}
+                    className={`
+                      bg-white 
+                      ${column.width ?? ''} 
+                      ${index === 0 ? 'rounded-ss-xl' : ''}
+                      ${index === columns.length - 1 ? 'rounded-se-xl' : ''}
+                    `}
                     onClick={() =>
                       column.sortable &&
                       setSortBy &&
