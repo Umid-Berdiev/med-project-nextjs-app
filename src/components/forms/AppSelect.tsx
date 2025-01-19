@@ -13,18 +13,18 @@ export default function AppSelect(props: IProps) {
   return (
     <select
       id='select'
-      defaultValue={props.selectedValue || ''}
       className={classnames(
-        'h-9 w-full cursor-pointer appearance-none rounded-lg border border-[#2324271A] px-3 text-sm text-[#161624] outline-none',
+        'h-9 w-auto !min-w-40 cursor-pointer appearance-none rounded-lg border border-[#2324271A] px-3 text-sm text-[#161624] outline-none',
         'bg-[url(/images/SelectArrow.svg)]',
         'bg-[position:right_12px_center]',
         'bg-no-repeat',
         `${props.color ? `select-${props.color}` : ''}`,
         props.className
       )}
+      defaultValue={props.selectedValue || ''}
     >
       {props.placeholder && (
-        <option value='' disabled>
+        <option value='' disabled hidden>
           {props.placeholder}
         </option>
       )}

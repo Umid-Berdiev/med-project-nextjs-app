@@ -130,7 +130,7 @@ export default function PatientsAddPage({
               <AppInput placeholder='Otasining ismi' />
             </div>
             <div>
-              <AppLabel isRequired={true} text='Tug’ilgan sanasi' />
+              <AppLabel isRequired={true} text={t("Tug'ilgan sanasi")} />
               <AppInputDate placeholder='KK.OO.YYYY' />
             </div>
             <div>

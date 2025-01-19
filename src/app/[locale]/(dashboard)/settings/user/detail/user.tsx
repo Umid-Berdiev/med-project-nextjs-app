@@ -116,7 +116,7 @@ export default function UserTableWrapper() {
           <Link
             href='#'
             onClick={() => setOpenDelete(true)}
-            className='text-danger flex size-7 items-center justify-center rounded bg-white p-0 shadow-sm'
+            className='flex size-7 items-center justify-center rounded bg-white p-0 text-danger shadow-sm'
           >
             <DeleteIcon />
           </Link>
@@ -474,10 +474,10 @@ export default function UserTableWrapper() {
                 <AppInput placeholder={t('Telefon raqam kiriting')} />
               </div>
               <div className='col-span-6 mb-3'>
-                <AppLabel text={t('Tug’ilgan sanasi')} />
+                <AppLabel text={t("Tug'ilgan sanasi")} />
                 <AppInputDate
                   mode='single'
-                  placeholder={t('Tug’ilgan sanasi')}
+                  placeholder={t("Tug'ilgan sanasi")}
                 />
               </div>
             </div>

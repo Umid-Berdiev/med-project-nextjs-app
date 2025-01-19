@@ -7,6 +7,9 @@ import AppInputRadio from '@/src/components/forms/AppInputRadio'
 import AppLabel from '@/src/components/forms/AppLabel'
 import AppSelect from '@/src/components/forms/AppSelect'
 import Heading6 from '@/src/components/typography/Heading6'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 
 export default function MedicalRecord() {
   const handleTabChange = (selectedValue: string) => {
@@ -55,6 +58,8 @@ export default function MedicalRecord() {
     { label: 'Link', value: '0' }
   ]
   const numbers = Array.from({ length: 10 }, (_, index) => index + 1)
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
 
   return (
     <div>
@@ -89,7 +94,7 @@ export default function MedicalRecord() {
             <AppInput placeholder='Otasining ismi' />
           </div>
           <div>
-            <AppLabel isRequired={true} text='Tug’ilgan sanasi' />
+            <AppLabel isRequired={true} text={t("Tug'ilgan sanasi")} />
             <AppInputDate placeholder='KK.OO.YYYY' />
           </div>
           <div>

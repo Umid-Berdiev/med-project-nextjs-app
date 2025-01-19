@@ -18,7 +18,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
-export default function CounteragentsPage() {
+export default function PharmacyCounteragentsPage() {
   const { locale, id } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [formModalOpen, setFormModalOpen] = useState(false)

@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import React, { useRef } from 'react'
-import { useOnClickOutside } from 'usehooks-ts'
 type Props = {
   children: React.ReactNode
   open: boolean
@@ -21,11 +20,11 @@ const Modal = ({
   bg
 }: Props) => {
   const ref = useRef(null)
-  useOnClickOutside(ref, () => {
-    if (!disableClickOutside) {
-      onClose()
-    }
-  })
+  // useOnClickOutside(ref, () => {
+  //   if (!disableClickOutside) {
+  //     onClose()
+  //   }
+  // })
 
   const modalClass = cn(
     {
@@ -33,14 +32,15 @@ const Modal = ({
     },
     'modal '
   )
+
   return (
     <div className={modalClass}>
       <div
-        className={`modal-box ${bg} ${size === 'lg' ? ' max-w-screen-2xl' : size === 'md' ? 'max-w-5xl' : size === 'lg/2' ? 'max-w-[640px]' : 'max-w-sm'}`}
+        className={`modal-box bg-background ${bg} ${size === 'lg' ? ' max-w-screen-2xl' : size === 'md' ? 'max-w-5xl' : size === 'lg/2' ? 'max-w-[640px]' : 'max-w-sm'}`}
         ref={ref}
       >
         <button
-          className='btn btn-circle btn-ghost btn-sm absolute right-2 top-2'
+          className='btn btn-circle btn-ghost btn-sm absolute right-3 top-3'
           onClick={onClose}
         >
           ✕

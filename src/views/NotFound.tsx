@@ -12,9 +12,12 @@ const NotFound = ({ locale }: { locale: Locale }) => {
   return (
     <div className='relative flex h-full items-center justify-center overflow-x-hidden p-6'>
       <div className='flex flex-col items-center text-center'>
-        <div className='is-[90vw] sm:is-[unset] my-8 flex flex-col gap-2'>
+        <div className='is-[90vw] sm:is-[unset] my-8 flex flex-col items-center gap-2'>
           <div className='text-8xl font-medium text-primary'>404</div>
-          <div className=' text-lg'>{t('Sahifa topilmadi')} ⚠️</div>
+          <div className='flex gap-1 align-bottom'>
+            <span className=''>⚠️</span>
+            <span className='text-lg'>{t('Sahifa topilmadi')}</span>
+          </div>
         </div>
 
         <Button>

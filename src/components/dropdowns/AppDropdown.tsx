@@ -45,9 +45,9 @@ export default function AppDropdown({
   // }, [isDropdownOpen])
 
   return (
-    <div className={`dropdown font-semibold`} ref={appDropdownRef}>
+    <div className={`dropdown`} ref={appDropdownRef}>
       <div
-        className={`btn btn-sm h-9 rounded-lg border-info text-info hover:border-info hover:bg-secondary-light ${isDropdownOpen ? 'bg-secondary-light' : 'bg-white'}`}
+        className={`flex h-9 w-full items-center justify-between rounded-lg border border-[#2324271A] px-3 text-sm text-[#161624] ${isDropdownOpen ? 'bg-secondary-light' : 'bg-white'}`}
         role='button'
         tabIndex={0}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
