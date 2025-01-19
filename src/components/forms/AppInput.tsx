@@ -10,7 +10,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export default function AppInput(props: IProps) {
   const { isSearch, icon, iconPosition, ...rest } = props
   const defaultIcon = props.isSearch ? (
-    <IoIosSearch color='#23242780' />
+    <IoIosSearch color='#23242780' size={20} />
   ) : (
     props.icon
   )
