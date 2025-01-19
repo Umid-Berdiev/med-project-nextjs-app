@@ -77,7 +77,7 @@ export default function AppDropdownWithCheckboxV2({
                       {option.subtitle}
                     </p>
                   </div>
-                  <div className='flex items-center justify-end gap-2 text-right text-[13px]'>
+                  <div className='flex items-center justify-end gap-2 text-right text-sm'>
                     <input
                       className='checkbox checkbox-sm rounded border-secondary [--chkbg:theme(colors.secondary)] [--chkfg:white]'
                       type='checkbox'

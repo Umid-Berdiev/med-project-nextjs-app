@@ -70,7 +70,7 @@ export default function AppDropdownWithCheckbox({
               <li key={index}>
                 <label className='label flex w-full cursor-pointer px-2'>
                   <span className='label-text font-normal'>{option.name}</span>
-                  <div className='flex items-center justify-end gap-2 text-right text-[13px]'>
+                  <div className='flex items-center justify-end gap-2 text-right text-sm'>
                     {option.price}
                     <input
                       className='checkbox checkbox-sm rounded border-secondary [--chkbg:theme(colors.secondary)] [--chkfg:white]'

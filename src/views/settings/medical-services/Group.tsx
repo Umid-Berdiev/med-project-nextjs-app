@@ -203,7 +203,7 @@ export default function Group() {
                     setStates([...states])
                   }}
                   placeholder={t('Nomini kiriting')}
-                  className='col-span-11 h-9 w-full rounded-lg border border-[#2324271A] px-3 text-[13px] font-normal text-[#161624] outline-none  focus:border-secondary focus:shadow-custom-blue'
+                  className='col-span-11 h-9 w-full rounded-lg border border-[#2324271A] px-3 text-sm font-normal text-[#161624] outline-none  focus:border-secondary focus:shadow-custom-blue'
                 />
               ) : (
                 <div className='col-span-11 px-3 text-sm'>{res.name}</div>

@@ -276,7 +276,7 @@ export default function PriceTableWrapper() {
               <thead>
                 <tr>
                   {columns11.map((col, index) => (
-                    <th className='py-3 pl-4 text-[13px] font-bold' key={index}>
+                    <th className='py-3 pl-4 text-sm font-bold' key={index}>
                       {editingColumn === col ? (
                         <AppInput
                           type='text'
@@ -324,7 +324,7 @@ export default function PriceTableWrapper() {
               </thead>
               <tbody>
                 {datas.map((row, rowIndex) => (
-                  <tr className='text-[13px] text-[#232427]' key={rowIndex}>
+                  <tr className='text-sm text-[#232427]' key={rowIndex}>
                     {columns11.map((col, colIndex) => (
                       <td
                         style={{ width: '240px', minWidth: '240px' }}
