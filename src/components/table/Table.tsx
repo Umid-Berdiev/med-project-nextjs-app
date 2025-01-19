@@ -57,7 +57,7 @@ export default function Table<T>({
     <div className='mt-4 h-full'>
       {data.length ? (
         <div
-          className='overflow-x-auto
+          className='overflow-hidden overflow-x-auto
         '
         >
           <table
