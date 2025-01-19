@@ -1,4 +1,4 @@
-export default function ListsIcon() {
+export default function inputListsIcon() {
   return (
     <svg
       width='14'
