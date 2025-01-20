@@ -65,7 +65,7 @@ export default function MedicalRecord() {
     <div>
       <RoundedBlock className='mb-4'>
         <div className='grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-          <div>
+          <div className='flex flex-col justify-end gap-1'>
             <AppLabel isRequired={true} text='Karta turi' />
             <AppSelect selectedValue='1' options={cardTypes} />
           </div>
@@ -124,51 +124,51 @@ export default function MedicalRecord() {
         </div>
         <hr className='col-span-12' />
         <div className='col-span-12 grid grid-cols-5 gap-5 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Xujjat turi' />
             <AppSelect options={documentOptions} />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Xujjat seriyasi va raqami' />
             <AppInput placeholder='AB1234567' />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Berilgan sanasi' />
             <AppInputDate placeholder='KK.OO.YYYY' />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Amal qilish muddati' />
             <AppInputDate placeholder='KK.OO.YYYY' />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Kim tomonidan berilgan' />
             <AppInput placeholder='Toshkent shahar, Yunusobod IIB' />
           </div>
         </div>
         <div className='col-span-12 grid grid-cols-4 gap-5 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Davlat' />
             <AppSelect options={stateOptions} />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Viloyat' />
             <AppSelect options={regionOptions} />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Tuman' />
             <AppSelect options={districtOptions} />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Ro’yxatda turgan manzil' />
             <AppInput placeholder='Abdulla Qodiriy 14' />
           </div>
         </div>
         <div className='col-span-12 grid grid-cols-2 gap-5'>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Yashash manzili' />
             <AppInput placeholder='Abdulla Qodiriy 14' />
           </div>
-          <div>
+          <div className='flex flex-col gap-1'>
             <AppLabel text='Ish joyi' />
             <AppInput placeholder='Toshkent Shahar hokimligi' />
           </div>

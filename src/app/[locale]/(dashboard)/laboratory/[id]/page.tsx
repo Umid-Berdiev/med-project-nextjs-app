@@ -14,6 +14,7 @@ import ProfileBlock from '@/src/views/doctors-profile/detail/ProfileBlock'
 import DiagnosticTable from '@/src/views/laboratory/detail/DiagnosticTable'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
+
 const tabs: ITab[] = [
   { id: 'Koagulogramma', label: 'Koagulogramma' },
   { id: 'Fermentlar', label: 'Fermentlar' },
@@ -41,10 +42,12 @@ const tabContents: ITabContent[] = [
   { id: 'Statsionar', content: 'Statsionar' },
   { id: 'Barchasi', content: 'Barchasi' }
 ]
+
 export default function LabaratoryResultPage() {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [activeTab, setActiveTab] = useState('Koagulogramma')
+
   return (
     <>
       <div className='flex flex-col gap-3 py-4'>
@@ -68,32 +71,32 @@ export default function LabaratoryResultPage() {
           </div>
         </div>
         <div className='col-span-12 grid grid-cols-8 gap-5 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8'>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text='Natija raqami' />
             <AppInput placeholder='Natija raqami' />
           </div>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text='Qabul qilingan sana' />
             <AppInputDate mode='single' placeholder='Qabul qilingan sana' />
           </div>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text='Natija sanasi' />
             <AppInputDate mode='single' placeholder='Natija sanasi' />
           </div>
-          <div className='col-span-1'>
+          <div className='col-span-1 flex flex-col gap-1'>
             <AppLabel text={t('Vazni')} />
             <AppInput placeholder={t('Vazni')} disabled />
           </div>
-          <div className='col-span-1'>
+          <div className='col-span-1 flex flex-col gap-1'>
             <AppLabel text={t("Bo'yi")} />
             <AppInput placeholder={t("Bo'yi")} disabled />
           </div>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text={t('FISH shifokor labarant')} />
 
             <AppInput placeholder={t('Shifokor labarant')} />
           </div>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text={t('Ijrochi')} />
             <AppSelect
               options={[
@@ -105,11 +108,11 @@ export default function LabaratoryResultPage() {
               selectedValue='Abdullayev Alibek - II toifa'
             />
           </div>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text={t('Tavsiya')} />
             <AppInput />
           </div>
-          <div className='col-span-2'>
+          <div className='col-span-2 flex flex-col gap-1'>
             <AppLabel text={t('Bolim')} />
             <AppInput placeholder={t('Bolim')} />
           </div>
@@ -130,10 +133,10 @@ export default function LabaratoryResultPage() {
       </RoundedBlock>
       <div className='flex justify-end gap-1 py-2'>
         <Button variant='outlined' color='secondary'>
-          Bekor qilish
+          {t('Bekor qilish')}
         </Button>
         <Button variant='contained' color='secondary'>
-          Saqlash
+          {t('Saqlash')}
         </Button>
       </div>
     </>

@@ -2,12 +2,13 @@ import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
-import AppDropdownWithRadio from '../dropdowns/AppDropdownWithRadio'
 import AppDropdownWithCheckbox from '../dropdowns/AppDropdownWithCheckbox'
+import AppDropdownWithRadio from '../dropdowns/AppDropdownWithRadio'
+import AppInputDate from '../forms/AppInputDate'
+import AppLabel from '../forms/AppLabel'
 import AppSelect from '../forms/AppSelect'
 import Heading6 from '../typography/Heading6'
 import RoundedBlock from './RoundedBlock'
-import AppInputDate from '../forms/AppInputDate'
 
 export default function ServicesBlock({ className }: { className?: string }) {
   const { locale } = useParams()
@@ -93,7 +94,7 @@ export default function ServicesBlock({ className }: { className?: string }) {
       name: t('Qondagi_leykotsidlar_tahlili'),
       value: '3',
       price: '88 000 som'
-    },
+    }
   ]
 
   return (
@@ -153,106 +154,120 @@ export default function ServicesBlock({ className }: { className?: string }) {
       {selectedReception === 'allergolog' && (
         <div className=''>
           <p className='text-base font-semibold'>{t('Allergolog')}</p>
-          <div className='flex w-full gap-5'>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Shifokor')}</span>
+          <div className='mt-3 grid grid-cols-2 gap-5 '>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Shifokor')} />
               <AppSelect selectedValue={selectedDoctor} options={doctorsList} />
-            </label>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Xizmat turi')}</span>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Xizmat turi')} />
               <AppSelect selectedValue={selectedDoctor} options={doctorsList} />
-            </label>
+            </div>
           </div>
         </div>
       )}
       {selectedReception === 'allergolog' && (
         <div className=''>
           <p className='text-base font-semibold'>{t('Statsionar')}</p>
-          <div className='flex w-full gap-5 mb-5'>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Javobgar shifokor')}</span>
-              <AppSelect options={[
-                {
-                  label: 'Istalgan shifokor',
-                  value: "1"
-                },
-                {
-                  label: 'Istalgan shifokor 2',
-                  value: "2"
-                }
-              ]} />
-            </label>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Hamshira')}</span>
-              <AppSelect options={[
-                {
-                  label: 'Yoq',
-                  value: "1"
-                },
-                {
-                  label: 'Bor',
-                  value: "2"
-                }
-              ]} />
-            </label>
-          </div>
-          <div className='flex w-full gap-5 mb-5'>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Palata')}</span>
-              <AppSelect options={[
-                {
-                  label: 'Palata 1',
-                  value: "1"
-                },
-                {
-                  label: 'Palata 2',
-                  value: "2"
-                }
-              ]} />
-            </label>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Tarif')}</span>
-              <AppSelect options={[
-                {
-                  label: 'Tarif 1',
-                  value: "1"
-                },
-                {
-                  label: 'Tarif 2',
-                  value: "2"
-                }
-              ]} />
-            </label>
-          </div>
-          <div className='flex w-full gap-5'>
-            <label className='basis-1/2'>
-              <span className='text-xs font-semibold'>{t('Ovqatlanish')}</span>
-              <AppDropdownWithCheckbox title={t('Ovqatlanish')} selectedOption={selectedReception2}
-                setSelectedOption={setSelectedReception2}
-                name='food-checkbox' options={testBloodOptions} />
-            </label>
-            <div className='basis-1/2 flex w-full gap-5'>
-              <label className='basis-1/2'>
-                <span className='text-xs font-semibold'>{t('Kunlar soni')}</span>
-                <AppSelect options={[
+          <div className='mb-5 mt-3 grid grid-cols-2 gap-5'>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Javobgar shifokor')} />
+              <AppSelect
+                options={[
                   {
-                    label: '10',
-                    value: "1"
+                    label: 'Istalgan shifokor',
+                    value: '1'
                   },
                   {
-                    label: '20',
-                    value: "2"
+                    label: 'Istalgan shifokor 2',
+                    value: '2'
                   }
-                ]} />
-              </label>
-              <label className='basis-1/2'>
-                <span className='text-xs font-semibold'>{t('Boshlanish kuni')}</span>
-                <AppInputDate />
-              </label>
+                ]}
+              />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Hamshira')} />
+              <AppSelect
+                options={[
+                  {
+                    label: 'Yoq',
+                    value: '1'
+                  },
+                  {
+                    label: 'Bor',
+                    value: '2'
+                  }
+                ]}
+              />
+            </div>
+          </div>
+          <div className='mb-5 grid grid-cols-2 gap-5'>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Palata')} />
+              <AppSelect
+                options={[
+                  {
+                    label: 'Palata 1',
+                    value: '1'
+                  },
+                  {
+                    label: 'Palata 2',
+                    value: '2'
+                  }
+                ]}
+              />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Tarif')} />
+              <AppSelect
+                options={[
+                  {
+                    label: 'Tarif 1',
+                    value: '1'
+                  },
+                  {
+                    label: 'Tarif 2',
+                    value: '2'
+                  }
+                ]}
+              />
+            </div>
+          </div>
+          <div className='grid grid-cols-2 gap-5'>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Ovqatlanish')} />
+              <AppDropdownWithCheckbox
+                title={t('Ovqatlanish')}
+                selectedOption={selectedReception2}
+                setSelectedOption={setSelectedReception2}
+                name='food-checkbox'
+                options={testBloodOptions}
+              />
+            </div>
+            <div className='flex w-full basis-1/2 gap-5'>
+              <div className='flex flex-col gap-1'>
+                <AppLabel text={t('Kunlar soni')} />
+                <AppSelect
+                  options={[
+                    {
+                      label: '10',
+                      value: '1'
+                    },
+                    {
+                      label: '20',
+                      value: '2'
+                    }
+                  ]}
+                />
+              </div>
+              <div className='flex flex-col gap-1'>
+                <AppLabel text={t('Boshlanish kuni')} />
+                <AppInputDate placeholder={t('Sana tanlang')} />
+              </div>
             </div>
           </div>
         </div>
-      )} 
+      )}
     </RoundedBlock>
   )
 }

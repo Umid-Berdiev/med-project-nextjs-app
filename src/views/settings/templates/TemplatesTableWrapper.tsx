@@ -195,15 +195,15 @@ export default function TemplateTableWrapper() {
       >
         <div className='grid w-full grid-cols-12 gap-4'>
           <RoundedBlock className='col-span-3 !gap-4'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired text={t('Shablon nomi')} />
               <AppInput placeholder={t('Shablon nomini kiriting')} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Shablon turi' />
               <AppSelect placeholder='Shablon turini kiriting' options={[]} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Kategoriya' />
               <AppSelect placeholder='Tanlang' options={[]} />
             </div>

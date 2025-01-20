@@ -12,6 +12,7 @@ import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { SlOptionsVertical } from 'react-icons/sl'
@@ -19,7 +20,6 @@ import { TbTableOptions } from 'react-icons/tb'
 import ProfileBlock from '../doctors-profile/detail/ProfileBlock'
 import ImageUpload from './ImageUpload'
 import MRIBrain from './MRI-brain'
-import Link from 'next/link'
 
 const tabs: ITab[] = [
   { id: 'MRI-brain', label: 'MRT bosh miyasi' },
@@ -250,32 +250,32 @@ const LaboratoryTable = () => {
             </div>
           </div>
           <div className='col-span-12 grid grid-cols-8 gap-5 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8'>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text='Natija raqami' />
               <AppInput placeholder='Natija raqami' />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text='Qabul qilingan sana' />
               <AppInputDate mode='single' placeholder='Qabul qilingan sana' />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text='Natija sanasi' />
               <AppInputDate mode='single' placeholder='Natija sanasi' />
             </div>
-            <div className='col-span-1'>
+            <div className='col-span-1 flex flex-col gap-1'>
               <AppLabel text={t('Vazni')} />
               <AppInput placeholder={t('Vazni')} disabled />
             </div>
-            <div className='col-span-1'>
+            <div className='col-span-1 flex flex-col gap-1'>
               <AppLabel text={t("Bo'yi")} />
               <AppInput placeholder={t("Bo'yi")} disabled />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text={t('FISH shifokor labarant')} />
 
               <AppInput placeholder={t('Shifokor labarant')} />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text={t('Ijrochi')} />
               <AppSelect
                 options={[
@@ -287,11 +287,11 @@ const LaboratoryTable = () => {
                 selectedValue='Abdullayev Alibek - II toifa'
               />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text={t('Tavsiya')} />
               <AppInput />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-2 flex flex-col gap-1'>
               <AppLabel text={t('Bolim')} />
               <AppInput placeholder={t('Bolim')} />
             </div>

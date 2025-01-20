@@ -219,38 +219,38 @@ export default function DiagnosticsTableWrapper() {
             </div>
           </div>
           <div className='grid grid-cols-4 gap-4'>
-            <div className=''>
+            <div className='flex flex-col gap-1'>
               <AppLabel text={t('Natija raqami')} />
               <AppInput placeholder={t('Natija raqami')} />
             </div>
-            <div className=''>
+            <div className='flex flex-col gap-1'>
               <AppLabel text={t('Qabul qilingan sana')} />
               <AppInputDate
                 mode='single'
                 placeholder={t('Qabul qilingan sana')}
               />
             </div>
-            <div className=''>
+            <div className='flex flex-col gap-1'>
               <AppLabel text={t('Natija sanasi')} />
               <AppInputDate mode='single' placeholder={t('Natija sanasi')} />
             </div>
             <div className=''>
               <div className='flex gap-4'>
-                <div>
+                <div className='flex flex-col gap-1'>
                   <AppLabel text={t('Vazni')} />
                   <AppInput placeholder={t('Vazni')} />
                 </div>
-                <div>
+                <div className='flex flex-col gap-1'>
                   <AppLabel text={t("Bo'yi")} />
                   <AppInput placeholder={t("Bo'yi")} />
                 </div>
               </div>
             </div>
-            <div className=''>
+            <div className='flex flex-col gap-1'>
               <AppLabel text={t('FISH shifokor labarant')} />
               <AppInput placeholder={t('FISH shifokor labarant')} />
             </div>
-            <div className=''>
+            <div className='flex flex-col gap-1'>
               <AppLabel text={t('Ijrochi')} />
               <AppSelect
                 options={[
@@ -260,18 +260,18 @@ export default function DiagnosticsTableWrapper() {
                 ]}
               />
             </div>
-            <div className=''>
+            <div className='flex flex-col gap-1'>
               <AppLabel text={t('Tavsiya')} />
               <AppInput placeholder={t('Tavsiya')} />
             </div>
-            <div className=''>
-              <AppLabel text={t("Bo'lim")} /> 
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t("Bo'lim")} />
               <AppInput placeholder={t("Bo'lim")} />
             </div>
           </div>
         </div>
         <div className='my-4'>
-          {/* create buttons group with active one */}  
+          {/* create buttons group with active one */}
           <div className='flex gap-1 overflow-x-auto rounded-lg border p-1'>
             {tabs.map(tab => (
               <Button

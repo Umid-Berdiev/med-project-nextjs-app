@@ -399,18 +399,18 @@ export default function CashboxPage() {
         <div className='col-span-4'>
           <RoundedBlock>
             <Heading5>{t('Tolov')}</Heading5>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Kartani tanlang' />
               <AppInput
                 value='12845 - 2024 Cтационарный карта 27.09.2024'
                 placeholder='Karta'
               />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Tolov turi' />
               <AppSelect options={selectOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel
                 isRequired={true}
                 text='Terminaldan yechish uchun summa'
@@ -420,7 +420,7 @@ export default function CashboxPage() {
                 placeholder='Terminaldan yechish uchun summa'
               />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Naqd pul olinadigan summa' />
               <AppInput value='36764' placeholder='Naqd pul olinadigan summa' />
             </div>

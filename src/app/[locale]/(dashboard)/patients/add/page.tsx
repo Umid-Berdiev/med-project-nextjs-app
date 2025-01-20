@@ -95,15 +95,15 @@ export default function PatientsAddPage({
         </div>
         <RoundedBlock className='my-4 xl:grid-cols-12'>
           <div className='grid gap-5 lg:grid-cols-3 xl:col-span-8'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Karta turi' />
               <AppSelect options={selectOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Tartib raqam' />
               <AppInput defaultValue='36764' placeholder='Familiya' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Sana' />
               <AppInputDate mode='single' />
             </div>
@@ -117,42 +117,42 @@ export default function PatientsAddPage({
         </RoundedBlock>
         <RoundedBlock className='mb-4'>
           <div className='grid gap-5 lg:grid-cols-2 xl:grid-cols-3'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Familiya' />
               <AppInput placeholder='Familiya' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Ism' />
               <AppInput placeholder='Ism' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Otasining ismi' />
               <AppInput placeholder='Otasining ismi' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text={t("Tug'ilgan sanasi")} />
               <AppInputDate placeholder='KK.OO.YYYY' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Jinsi' />
               <AppInputRadio onChange={handleTabChange} options={maleOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Ligota' />
               <AppInputRadio
                 onChange={handleTabChange}
                 options={ligotaOptions}
               />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel isRequired={true} text='Telefon raqami' />
               <AppInput placeholder='+998 90 123 45 67' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Qo’shimcha telefon raqami' />
               <AppInput placeholder='+998 90 123 45 67' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Natijani korish' />
               <AppInputCheckbox
                 className='grid-cols-4'
@@ -163,51 +163,51 @@ export default function PatientsAddPage({
           </div>
           <hr className='col-span-12' />
           <div className='col-span-12 grid gap-5 lg:grid-cols-2 xl:grid-cols-5'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Xujjat turi' />
               <AppSelect options={documentOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Xujjat seriyasi va raqami' />
               <AppInput placeholder='AB1234567' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Berilgan sanasi' />
               <AppInputDate placeholder='KK.OO.YYYY' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Amal qilish muddati' />
               <AppInputDate placeholder='KK.OO.YYYY' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Kim tomonidan berilgan' />
               <AppInput placeholder='Toshkent shahar, Yunusobod IIB' />
             </div>
           </div>
           <div className='col-span-12 grid gap-5 lg:grid-cols-2 xl:grid-cols-4'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Davlat' />
               <AppSelect options={stateOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Viloyat' />
               <AppSelect options={regionOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Tuman' />
               <AppSelect options={districtOptions} />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Ro’yxatda turgan manzil' />
               <AppInput placeholder='Abdulla Qodiriy 14' />
             </div>
           </div>
           <div className='col-span-12 grid grid-cols-2 gap-5'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Yashash manzili' />
               <AppInput placeholder='Abdulla Qodiriy 14' />
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <AppLabel text='Ish joyi' />
               <AppInput placeholder='Toshkent Shahar hokimligi' />
             </div>
