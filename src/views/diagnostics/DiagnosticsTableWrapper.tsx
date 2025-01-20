@@ -265,13 +265,13 @@ export default function DiagnosticsTableWrapper() {
               <AppInput placeholder={t('Tavsiya')} />
             </div>
             <div className=''>
-              <AppLabel text={t("Bo'lim")} />
+              <AppLabel text={t("Bo'lim")} /> 
               <AppInput placeholder={t("Bo'lim")} />
             </div>
           </div>
         </div>
         <div className='my-4'>
-          {/* create buttons group with active one */}
+          {/* create buttons group with active one */}  
           <div className='flex gap-1 overflow-x-auto rounded-lg border p-1'>
             {tabs.map(tab => (
               <Button

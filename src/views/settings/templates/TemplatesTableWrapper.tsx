@@ -4,8 +4,6 @@ import RoundedBlock from '@/src/components/blocks/RoundedBlock'
 import Button from '@/src/components/Button'
 import AppInput from '@/src/components/forms/AppInput'
 import AppInputCheckbox from '@/src/components/forms/AppInputCheckbox'
-import AppInputDate from '@/src/components/forms/AppInputDate'
-import AppInputRadioRound from '@/src/components/forms/AppInputRadioRound'
 import AppLabel from '@/src/components/forms/AppLabel'
 import AppSelect from '@/src/components/forms/AppSelect'
 import DeleteIcon from '@/src/components/icons/DeleteIcon'
@@ -13,22 +11,17 @@ import ListsIcon from '@/src/components/icons/ListsIcon'
 import PencilIcon from '@/src/components/icons/PencilIcon'
 import PlusCircleIcon from '@/src/components/icons/PlusCircleIcon'
 import Modal from '@/src/components/Modal'
-import Pagination from '@/src/components/pagination/Pagination'
-import Table from '@/src/components/table/Table'
 import Heading4 from '@/src/components/typography/Heading4'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
-import { IPrice } from '@/src/utils/interfaces'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // import { useState } from 'react'
-import { FaFileAlt } from 'react-icons/fa'
-import { tableData } from './mock-data'
-import PlusRoundIcon from '@/src/components/icons/PlusRoundIcon'
-import { BiPrinter, BiSolidPrinter } from 'react-icons/bi'
 import CustomEditor from '@/src/components/CustomEditor'
+import DownArrowIcon from '@/src/components/icons/DownArrowIcon'
+import { BiSolidPrinter } from 'react-icons/bi'
 import TemplatesConstructor from './TemplatesConstructor'
 
 type RowDatas = { [key: string]: string }
@@ -216,7 +209,7 @@ export default function TemplateTableWrapper() {
             </div>
             {/* akkordion */}
             <div className='mx-auto mt-10 w-full max-w-3xl'>
-              <div className='rounded-md border border-base-300'>
+              <div className='overflow-hidden rounded-md border border-b-0 border-[E9EAEA]'>
                 {/* First Row (Main Accordion) */}
                 <div className='border-b border-base-300'>
                   <input
@@ -226,18 +219,17 @@ export default function TemplateTableWrapper() {
                   />
                   <label
                     htmlFor='firstAccordion'
-                    className='flex cursor-pointer items-center justify-between bg-base-100 px-4 py-2 text-sm font-medium hover:bg-base-200'
+                    className='mb-0 flex cursor-pointer items-center border-b border-b-[#E9EAEA] bg-base-100 px-4 
+                    py-2 text-sm font-medium hover:bg-base-200'
                   >
-                    <span>First Section</span>
-                    <span className='transition-transform duration-200 peer-checked:rotate-90'>
-                      ▶
+                    <span className='me-3 transition-transform duration-200 peer-checked:rotate-180'>
+                      <DownArrowIcon />
                     </span>
+                    <span>Bioximiya izlanish</span>
                   </label>
-                  <div className='bg-base-50 hidden px-4 py-2 text-xs peer-checked:block'>
-                    <p>This is the detailed content for the first section.</p>
-
+                  <div className='bg-base-50 hidden border-b-[#E9EAEA] text-xs peer-checked:block'>
                     {/* Nested Accordion (Second Level) */}
-                    <div className='mt-4 border-b border-base-300'>
+                    <div className=' border-base-300'>
                       <input
                         type='checkbox'
                         id='secondAccordion'
@@ -245,41 +237,25 @@ export default function TemplateTableWrapper() {
                       />
                       <label
                         htmlFor='secondAccordion'
-                        className='flex cursor-pointer items-center justify-between bg-base-100 px-4 py-2 text-sm font-medium hover:bg-base-200'
+                        className='mb-0 flex cursor-pointer items-center border-b border-b-[#E9EAEA] bg-base-100 px-11 
+                    py-2 text-sm font-medium hover:bg-base-200'
                       >
-                        <span>Second Section (Nested)</span>
-                        <span className='transition-transform duration-200 peer-checked:rotate-90'>
-                          ▶
+                        <span className='me-3 transition-transform duration-200 peer-checked:rotate-90'>
+                          <DownArrowIcon />
                         </span>
+                        <span>Qon ivish vaqti</span>
                       </label>
-                      <div className='bg-base-50 hidden px-4 py-2 text-xs peer-checked:block'>
-                        <p>
-                          This is the detailed content for the second section.
-                        </p>
-
-                        {/* Nested Accordion (Third Level) */}
-                        <div className='mt-4 border-b border-base-300'>
-                          <input
-                            type='checkbox'
-                            id='thirdAccordion'
-                            className='peer hidden'
-                          />
-                          <label
-                            htmlFor='thirdAccordion'
-                            className='flex cursor-pointer items-center justify-between bg-base-100 px-4 py-2 text-sm font-medium hover:bg-base-200'
-                          >
-                            <span>Third Section (Nested)</span>
-                            <span className='transition-transform duration-200 peer-checked:rotate-90'>
-                              ▶
-                            </span>
-                          </label>
-                          <div className='bg-base-50 hidden px-4 py-2 text-xs peer-checked:block'>
-                            <p>
-                              This is the detailed content for the third
-                              section.
-                            </p>
-                          </div>
-                        </div>
+                      <div className='bg-base-50 hidden px-11 text-xs peer-checked:block'>
+                        <AppInputCheckbox
+                          className='block text-[13px] font-medium'
+                          onChange={handleTabChange}
+                          options={[
+                            {
+                              value: '1',
+                              label: 'Qon ivish vaqti'
+                            }
+                          ]}
+                        />
                       </div>
                     </div>
                   </div>
@@ -294,17 +270,45 @@ export default function TemplateTableWrapper() {
                   />
                   <label
                     htmlFor='secondMainAccordion'
-                    className='flex cursor-pointer items-center justify-between bg-base-100 px-4 py-2 text-sm font-medium hover:bg-base-200'
+                    className='mb-0 flex cursor-pointer items-center border-b border-b-[#E9EAEA] bg-base-100 px-4 
+                    py-2 text-sm font-medium hover:bg-base-200'
                   >
-                    <span>Second Main Section</span>
-                    <span className='transition-transform duration-200 peer-checked:rotate-90'>
-                      ▶
+                    <span className='me-3 transition-transform duration-200 peer-checked:rotate-180'>
+                      <DownArrowIcon />
                     </span>
+                    <span>Ekspress test</span>
                   </label>
-                  <div className='bg-base-50 hidden px-4 py-2 text-xs peer-checked:block'>
-                    <p>
-                      This is the detailed content for the second main section.
-                    </p>
+                  <div className='bg-base-50 hidden border-b-[#E9EAEA] text-xs peer-checked:block'>
+                    {/* Nested Accordion (Second Level) */}
+                    <div className=' border-base-300'>
+                      <input
+                        type='checkbox'
+                        id='secondMMAccordion'
+                        className='peer hidden'
+                      />
+                      <label
+                        htmlFor='secondMMAccordion'
+                        className='mb-0 flex cursor-pointer items-center border-b border-b-[#E9EAEA] bg-base-100 px-11 
+                    py-2 text-sm font-medium hover:bg-base-200'
+                      >
+                        <span className='me-3 transition-transform duration-200 peer-checked:rotate-90'>
+                          <DownArrowIcon />
+                        </span>
+                        <span>Qon olish xizmati</span>
+                      </label>
+                      <div className='bg-base-50 hidden px-11 text-xs peer-checked:block'>
+                        <AppInputCheckbox
+                          className='block text-[13px] font-medium'
+                          onChange={handleTabChange}
+                          options={[
+                            {
+                              value: '1',
+                              label: 'Qon olish xizmati'
+                            }
+                          ]}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
