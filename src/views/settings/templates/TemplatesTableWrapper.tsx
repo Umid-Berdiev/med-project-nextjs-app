@@ -61,7 +61,7 @@ export default function TemplateTableWrapper() {
         : { column, direction: 'asc' }
     )
   }
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
 
   type UserTableCellType = {

@@ -9,12 +9,14 @@ import AppLabel from '../forms/AppLabel'
 import AppSelect from '../forms/AppSelect'
 import Heading6 from '../typography/Heading6'
 import RoundedBlock from './RoundedBlock'
+import AppDropdownWithCheckboxV3 from '../dropdowns/AppDropdownWithCheckboxV3'
 
 export default function ServicesBlock({ className }: { className?: string }) {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [selectedReception, setSelectedReception] = useState('allergolog')
   const [selectedReception2, setSelectedReception2] = useState('')
+  const [selectedReception3, setSelectedReception3] = useState('')
   const [selectedDiagnostic, setSelectedDiagnostic] = useState('allergolog')
   const [selectedAdditionService, setSelectedAdditionService] =
     useState('allergolog')
@@ -94,6 +96,52 @@ export default function ServicesBlock({ className }: { className?: string }) {
       name: t('Qondagi_leykotsidlar_tahlili'),
       value: '3',
       price: '88 000 som'
+    }
+  ]
+
+
+  const selectConsult = [
+    {
+      name: t('Konsultatsiya'),
+      value: '1',
+      price: '110 000 som'
+    },
+    {
+      name: t('Xizmat turi 2'),
+      value: '2',
+      price: '88 000 som'
+    },
+    {
+      name: t('Xizmat turi 3'),
+      value: '3',
+      price: '88 000 som'
+    }
+  ]
+
+  const selectDoctor = [
+    {
+      name: t('Shifokor mavjud emas'),
+      value: '1',
+      statusVal: 0,
+      status: 'Mavjud emas'
+    },
+    {
+      name: t('Gaibova Nilufar Sobirjanovna'),
+      statusVal: 1,
+      value: '2',
+      status: 'Navbat yuqori'
+    },
+    {
+      name: t('To’xtayeva E’tibor Ro’zikulovna'),
+      statusVal: 2,
+      value: '3',
+      status: 'Kelmagan'
+    },
+    {
+      name: t('Tashtemirov Murat Almurodovich'),
+      statusVal: 3,
+      value: '4',
+      status: 'Mavjud'
     }
   ]
 
@@ -244,6 +292,7 @@ export default function ServicesBlock({ className }: { className?: string }) {
                 options={testBloodOptions}
               />
             </div>
+
             <div className='flex w-full basis-1/2 gap-5'>
               <div className='flex flex-col gap-1'>
                 <AppLabel text={t('Kunlar soni')} />
@@ -264,6 +313,26 @@ export default function ServicesBlock({ className }: { className?: string }) {
                 <AppLabel text={t('Boshlanish kuni')} />
                 <AppInputDate placeholder={t('Sana tanlang')} />
               </div>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Shifokor')} />
+              <AppDropdownWithCheckboxV3
+                title={t('Gaibova Nilufar Sobirjanovna')}
+                selectedOption={selectedReception3}
+                setSelectedOption={setSelectedReception3}
+                name='food-checkbox'
+                options={selectDoctor}
+              />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel text={t('Xizmat turi')} />
+              <AppDropdownWithCheckbox
+                title={t('Konsultatsiya')}
+                selectedOption={selectedReception2}
+                setSelectedOption={setSelectedReception2}
+                name='food-checkbox'
+                options={selectConsult}
+              />
             </div>
           </div>
         </div>

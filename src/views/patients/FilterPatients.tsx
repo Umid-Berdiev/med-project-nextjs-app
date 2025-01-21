@@ -16,9 +16,9 @@ export default function FilterPatients() {
       <AppInput isSearch placeholder={t('Bemor IDsi')} />
       <AppInput isSearch placeholder={t('F.I.SH')} />
       <AppInput isSearch placeholder={t('Telefon raqami')} />
-      <AppInputDate mode='range' placeholder='Sana:' />
+      <AppInputDate mode='range' placeholder={t('Sana:')} />
       <AppSelect
-        placeholder='Ligota:'
+        placeholder={t('Ligota:')}
         options={[
           { label: 'Barchasi', value: 'all' },
           { label: 'Aktiv', value: 'active' },
@@ -26,7 +26,7 @@ export default function FilterPatients() {
         ]}
       />
       <AppSelect
-        placeholder='Filial:'
+        placeholder={t('Filial:')}
         options={[
           { label: 'Barchasi', value: 'all' },
           { label: 'Aktiv', value: 'active' },
@@ -55,7 +55,7 @@ export default function FilterPatients() {
               <label
                 className={`flex cursor-pointer items-center justify-between gap-2 text-xs`}
               >
-                <span> Bemor IDsi</span>
+                <span> {t('Bemor IDsi')}</span>
                 <input
                   type='checkbox'
                   name='tabGroup'
@@ -67,7 +67,7 @@ export default function FilterPatients() {
               <label
                 className={`flex cursor-pointer items-center justify-between gap-2 text-xs`}
               >
-                <span> Telefon raqami</span>
+                <span>{t('Telefon raqami')}</span>
                 <input
                   type='checkbox'
                   name='tabGroup'
@@ -79,7 +79,7 @@ export default function FilterPatients() {
               <label
                 className={`flex cursor-pointer items-center justify-between gap-2 text-xs`}
               >
-                <span> Sana</span>
+                <span>{t('Sana')}</span>
                 <input
                   type='checkbox'
                   name='tabGroup'
