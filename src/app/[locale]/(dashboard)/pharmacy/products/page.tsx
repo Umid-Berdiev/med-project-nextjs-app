@@ -322,13 +322,6 @@ export default function PharmacyProductsPage() {
           </div>
           <div className='flex flex-col gap-1'>
             <AppLabel isRequired text={t('Kontragent')} />
-            {/* <AppSelect
-              placeholder={t('Kontragentni tanlang')}
-              options={[
-                { value: '1', label: 'Manba 1' },
-                { value: '2', label: 'Manba 2' }
-              ]}
-            /> */}
             <AppDropdownWithCheckboxV2
               title={t('Kontragentni tanlang')}
               options={[

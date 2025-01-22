@@ -79,7 +79,7 @@ export default function AppDropdownWithCheckboxV2({
                   </div>
                   <div className='flex items-center justify-end gap-2 text-right text-sm'>
                     <input
-                      className='checkbox checkbox-sm rounded border-secondary [--chkbg:theme(colors.secondary)] [--chkfg:white]'
+                      className='checkbox checkbox-sm rounded border-secondary py-2 [--chkbg:theme(colors.secondary)] [--chkfg:white]'
                       type='checkbox'
                       name={name}
                       defaultChecked={selectedOption === option.value}
