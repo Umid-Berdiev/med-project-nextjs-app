@@ -106,11 +106,11 @@ export default function MedicalRecord() {
             <AppInputRadio onChange={handleTabChange} options={ligotaOptions} />
           </div>
           <div>
-            <AppLabel isRequired={true} text='Telefon raqami' />
+            <AppLabel isRequired={true} text={t('Telefon raqami')} />
             <AppInput placeholder='+998 90 123 45 67' />
           </div>
           <div>
-            <AppLabel text='Qo’shimcha telefon raqami' />
+            <AppLabel text={t('Qo’shimcha telefon raqami')} />
             <AppInput placeholder='+998 90 123 45 67' />
           </div>
           <div>
@@ -125,29 +125,29 @@ export default function MedicalRecord() {
         <hr className='col-span-12' />
         <div className='col-span-12 grid grid-cols-5 gap-5 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
           <div className='flex flex-col gap-1'>
-            <AppLabel text='Xujjat turi' />
+            <AppLabel text={t('Xujjat turi')} />
             <AppSelect options={documentOptions} />
           </div>
           <div className='flex flex-col gap-1'>
-            <AppLabel text='Xujjat seriyasi va raqami' />
+            <AppLabel text={t('Xujjat seriyasi va raqami')} />
             <AppInput placeholder='AB1234567' />
           </div>
           <div className='flex flex-col gap-1'>
-            <AppLabel text='Berilgan sanasi' />
+            <AppLabel text={t('Berilgan sanasi')} />
             <AppInputDate placeholder='KK.OO.YYYY' />
           </div>
           <div className='flex flex-col gap-1'>
-            <AppLabel text='Amal qilish muddati' />
+            <AppLabel text={t('Amal qilish muddati')} />
             <AppInputDate placeholder='KK.OO.YYYY' />
           </div>
           <div className='flex flex-col gap-1'>
-            <AppLabel text='Kim tomonidan berilgan' />
+            <AppLabel text={t('Kim tomonidan berilgan')} />
             <AppInput placeholder='Toshkent shahar, Yunusobod IIB' />
           </div>
         </div>
         <div className='col-span-12 grid grid-cols-4 gap-5 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
           <div className='flex flex-col gap-1'>
-            <AppLabel text='Davlat' />
+            <AppLabel text={t('Davlat')} />
             <AppSelect options={stateOptions} />
           </div>
           <div className='flex flex-col gap-1'>

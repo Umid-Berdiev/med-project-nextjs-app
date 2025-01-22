@@ -28,7 +28,9 @@ export default function ProfileBlock() {
 
         <div className='flex items-center gap-2'>
           <div className='mr-1 flex flex-col'>
-            <span className='text-xs  text-[#23242780]'>Telefon raqami:</span>
+            <span className='text-xs  text-[#23242780]'>
+              {t('Telefon raqami')}:
+            </span>
             <p className='text-lg font-semibold text-textDark'>
               +998 83 956 6961
             </p>

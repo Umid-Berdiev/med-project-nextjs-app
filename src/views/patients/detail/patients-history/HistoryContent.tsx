@@ -7,8 +7,13 @@ import UserIdIcon from '@/src/components/icons/UserIdIcon'
 import React from 'react'
 import { PiPrinterFill } from 'react-icons/pi'
 import ContentItem from './ContentItem'
+import { useTranslations } from '@/src/configs/t'
+import { Locale } from '@/src/configs/i18n'
+import { useParams } from 'next/navigation'
 
 export default function HistoryContent() {
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const items: AccordionProps[] = [
     {
       checkbox: true,
@@ -20,11 +25,11 @@ export default function HistoryContent() {
             <div>
               <p className='text-sm font-semibold'>28.09.2024 07:00:00</p>
               <p className='text-xs text-gray-500'>
-                Registrator: BEGLARYAN LAURA EDUARDOVNA
+                {t('Registrator')}: BEGLARYAN LAURA EDUARDOVNA
               </p>
             </div>
             <div className='flex flex-col border-l px-4'>
-              <p className='text-xs text-gray-500'>Summa:</p>
+              <p className='text-xs text-gray-500'>{t('Summa')}:</p>
               <p className='text-sm font-bold text-green-600'>86 000 so`m</p>
             </div>
           </div>
@@ -32,13 +37,13 @@ export default function HistoryContent() {
           {/* O`ng qism */}
           <div className='col-span-6 flex flex-wrap items-center justify-end gap-4'>
             <button className='flex items-center rounded bg-gray-100 px-4 py-1 text-sm font-semibold text-black '>
-              Natijalar <PiPrinterFill className='ml-3' size={17.5} />
+              {t('Natijalar')} <PiPrinterFill className='ml-3' size={17.5} />
             </button>
             <button className='flex items-center rounded bg-gray-100 px-4 py-1 text-sm font-semibold text-black '>
-              Doktor ID sini qo`shish <UserIdIcon className='ml-3 ' />
+              {t('Doktor ID sini qo`shish')} <UserIdIcon className='ml-3 ' />
             </button>
             <button className='flex items-center rounded bg-gray-100 px-4 py-1 text-sm font-semibold text-black '>
-              O`zgartirish <PencilFillIcon className='ml-3' />
+              {t('O`zgartirish')} <PencilFillIcon className='ml-3' />
             </button>
           </div>
         </div>

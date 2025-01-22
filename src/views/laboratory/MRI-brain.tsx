@@ -115,7 +115,7 @@ const MRIBrain = () => {
               size='small'
               className='text-xs '
             >
-              Shablondan tanlash
+              {t('Shablondan tanlash')}
             </Button>
             <Button
               startIcon={<BiPlusCircle />}
@@ -124,7 +124,7 @@ const MRIBrain = () => {
               size='small'
               className='text-xs '
             >
-              Shablonga qo’shish
+              {t('Shablonga qo’shish')}
             </Button>
           </div>
         </div>

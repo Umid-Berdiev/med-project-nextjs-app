@@ -224,7 +224,7 @@ const LaboratoryTable = () => {
       />
       <Modal
         bg='bg-background'
-        title='Diagnostika natijalari'
+        title={t('Diagnostika natijalari')}
         open={open}
         size='lg'
         onClose={handleClose}
@@ -312,10 +312,10 @@ const LaboratoryTable = () => {
         </RoundedBlock>
         <div className='flex justify-end gap-1 py-2'>
           <Button variant='outlined' color='secondary' onClick={handleClose}>
-            Bekor qilish
+            {t('Bekor qilish')}
           </Button>
           <Button variant='contained' color='secondary'>
-            Saqlash
+            {t('Saqlash')}
           </Button>
         </div>
       </Modal>

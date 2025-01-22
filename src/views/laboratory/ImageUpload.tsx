@@ -61,7 +61,7 @@ export default function ImageUpload() {
               size='small'
               className='text-xs '
             >
-              Shablondan tanlash
+              {t('Shablondan tanlash')}
             </Button>
             <Button
               startIcon={<BiPlusCircle />}
@@ -70,13 +70,13 @@ export default function ImageUpload() {
               size='small'
               className='text-xs '
             >
-              Shablonga qo’shish
+              {t('Shablonga qo’shish')}
             </Button>
           </div>
         </div>
       </div>
       <div className='flex w-full items-center justify-center rounded-md border border-dashed border-[#23242740] p-10 text-[#23242740]'>
-        <PiPlusCircle /> Yangi qo`shish
+        <PiPlusCircle /> {t('Yangi qo`shish')}
       </div>
     </div>
   )

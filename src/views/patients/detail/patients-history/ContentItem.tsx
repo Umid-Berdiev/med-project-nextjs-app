@@ -3,10 +3,15 @@ import AppAccordion, {
 } from '@/src/components/Accordion/Accordion'
 import Button from '@/src/components/Button'
 import BiometralIcon from '@/src/components/icons/BiometralIcon'
+import { Locale } from '@/src/configs/i18n'
+import { useTranslations } from '@/src/configs/t'
+import { useParams } from 'next/navigation'
 import React from 'react'
 import { BiTrash } from 'react-icons/bi'
 
 export default function ContentItem() {
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const items: AccordionProps[] = [
     {
       content: (
@@ -82,7 +87,7 @@ export default function ContentItem() {
       border: false,
       header: (
         <div className='flex w-full items-center justify-between'>
-          <div>Umumiy qon tahlili</div>
+          <div>{t('Umumiy qon tahlili')}</div>
           <button className='rounded-md bg-white p-1'>
             <BiTrash color='red' />
           </button>
@@ -96,12 +101,12 @@ export default function ContentItem() {
       <table className='table w-full'>
         <thead className='border-none'>
           <tr className='border-none text-black'>
-            <th className='w-1/6 p-2'>Xizmat nomi</th>
-            <th className='w-1/6 p-2'>Bajaruvchi</th>
-            <th className='w-1/6 p-2'>Xulosa</th>
-            <th className='w-1/6 p-2'>LIS Barcode</th>
-            <th className='w-1/6 p-2'>Biomaterial</th>
-            <th className='w-1/6 p-2'>Narxi</th>
+            <th className='w-1/6 p-2'>{t('Xizmat nomi')}</th>
+            <th className='w-1/6 p-2'>{t('Bajaruvchi')}</th>
+            <th className='w-1/6 p-2'>{t('Xulosa')}</th>
+            <th className='w-1/6 p-2'>{t('LIS Barcode')}</th>
+            <th className='w-1/6 p-2'>{t('Biomaterial')}</th>
+            <th className='w-1/6 p-2'>{t('Narxi')}</th>
             <th className='w-1/6 p-2'></th>
           </tr>
         </thead>

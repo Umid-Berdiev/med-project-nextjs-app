@@ -46,7 +46,7 @@ const PdfFiles = () => {
     },
 
     {
-      header: <div className='text-center'>Yuklab olish</div>,
+      header: <div className='text-center'>{t('Yuklab olish')}</div>,
       col: (row: CellType) => (
         <div className=' text-center'>
           <BsDownload size={18} />

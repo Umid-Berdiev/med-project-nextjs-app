@@ -4,39 +4,43 @@ import { Tablist, Tabs } from '@/src/components/tabs/Tabs'
 import { ITab, ITabContent } from '@/src/utils/interfaces'
 import { useState } from 'react'
 import HistoryContent from './HistoryContent'
+import { useParams } from 'next/navigation'
+import { useTranslations } from '@/src/configs/t'
+import { Locale } from '@/src/configs/i18n'
 
 export default function PatientsHistory() {
   const [activeTab, setActiveTab] = useState('all')
-
+  const { locale } = useParams()
+  const { t } = useTranslations(locale as Locale)
   const tabs: ITab[] = [
-    { id: 'all', label: 'Hammasi' },
+    { id: 'all', label: t('Hammasi') },
     {
       id: 'diagnostic',
-      label: 'Diagnostika'
+      label: t('Diagnostika')
     },
     {
       id: 'consultation',
-      label: 'Konsultatsiya'
+      label: t('Konsultatsiya')
     },
     {
       id: 'labaratory',
-      label: 'Labaratoriya'
+      label: t('Labaratoriya')
     },
     {
       id: 'operatsiya',
-      label: 'Operatsiya'
+      label: t('Operatsiya')
     },
     {
       id: 'fizioterapiya',
-      label: 'Fizioterapiya'
+      label: t('Fizioterapiya')
     },
     {
       id: 'products',
-      label: 'Tovarlar'
+      label: t('Tovarlar')
     },
     {
       id: 'additional_services',
-      label: "Qo'shimcha xizmatlar"
+      label: t("Qo'shimcha xizmatlar")
     }
   ]
 

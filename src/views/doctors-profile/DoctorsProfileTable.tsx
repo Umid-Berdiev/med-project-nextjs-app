@@ -56,28 +56,28 @@ const DoctorsProfileTable = () => {
       sortable: true
     },
     {
-      header: 'Bemor ism familiyasi',
+      header: t('Bemor ism familiyasi'),
       headerAlign: 'center',
       alignItem: 'center',
       col: (row: CellType) => row.name,
       sortable: true
     },
     {
-      header: 'Tug`ilgan kun',
+      header: t('Tug`ilgan kun'),
       col: (row: CellType) => row.birthDate,
       sortable: true
     },
     {
-      header: 'Telefon raqami',
+      header: t('Telefon raqami'),
       col: (row: CellType) => row.phone
     },
     {
-      header: 'Tashrif buyurgan',
+      header: t('Tashrif buyurgan'),
       col: (row: CellType) => row.createdAt,
       sortable: true
     },
 
-    { header: 'Vrach', col: (row: CellType) => row.doctor, sortable: true },
+    { header: t('Vrach'), col: (row: CellType) => row.doctor, sortable: true },
     {
       header: (
         <div className='text-center'>
@@ -100,7 +100,7 @@ const DoctorsProfileTable = () => {
                   locale as Locale
                 )}
               >
-                Ko`rish
+                {t('Ko`rish')}
               </Link>
             </li>
             <li>
