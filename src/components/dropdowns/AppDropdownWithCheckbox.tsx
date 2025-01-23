@@ -50,12 +50,13 @@ export default function AppDropdownWithCheckbox({
         tabIndex={0}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        <span>{title}{summary}</span>
+        <span>{title}</span>
+        <div className='ml-auto'>{summary}</div>
         {isDropdownOpen ? (
           <BiChevronUp size={20} />
         ) : (
           <BiChevronDown size={20} />
-        )}
+        )} 
       </div>
       {isDropdownOpen && (
         <div className='dropdown-content z-[1] w-full rounded-box bg-base-100 p-2 shadow'>

@@ -328,7 +328,7 @@ export default function ServicesBlock({ className }: { className?: string }) {
               <AppLabel text={t('Xizmat turi')} />
               <AppDropdownWithCheckbox
                 title={t('Konsultatsiya')}
-                summary={t('103 000')}
+                summary={t('103 000 som')}
                 selectedOption={selectedReception2}
                 setSelectedOption={setSelectedReception2}
                 name='food-checkbox'
