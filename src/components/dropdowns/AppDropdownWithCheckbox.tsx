@@ -11,11 +11,13 @@ export default function AppDropdownWithCheckbox({
   title = 'Click',
   selectedOption,
   name = 'app-dropdown',
+  summary,
   setSelectedOption
 }: {
   options: Record<string, any>[]
   title?: string
   selectedOption?: string
+  summary?: string
   name?: string
   setSelectedOption?: (value: string) => void
 }) {
@@ -48,7 +50,7 @@ export default function AppDropdownWithCheckbox({
         tabIndex={0}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        <span>{title}</span>
+        <span>{title}{summary}</span>
         {isDropdownOpen ? (
           <BiChevronUp size={20} />
         ) : (
