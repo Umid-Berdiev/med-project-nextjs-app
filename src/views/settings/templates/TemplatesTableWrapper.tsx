@@ -23,6 +23,9 @@ import CustomEditor from '@/src/components/CustomEditor'
 import DownArrowIcon from '@/src/components/icons/DownArrowIcon'
 import { BiSolidPrinter } from 'react-icons/bi'
 import TemplatesConstructor from './TemplatesConstructor'
+import Table from '@/src/components/table/Table'
+import Pagination from '@/src/components/pagination/Pagination'
+import { tableData } from './mock-data'
 
 type RowDatas = { [key: string]: string }
 
@@ -61,7 +64,7 @@ export default function TemplateTableWrapper() {
         : { column, direction: 'asc' }
     )
   }
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
 
   type UserTableCellType = {
@@ -168,7 +171,7 @@ export default function TemplateTableWrapper() {
           </Button>
         </div>
       </div>
-      {/* <Table
+      <Table
         className='bg-white'
         columns={columns}
         data={tableData}
@@ -183,8 +186,7 @@ export default function TemplateTableWrapper() {
         totalCount={tableData.length}
         changeCurrentPage={e => setPage(e)}
         changePerPage={e => setPerPage(e)}
-      /> */}
-      <TemplatesConstructor />
+      />
 
       <Modal
         bg='bg-background'
@@ -315,6 +317,8 @@ export default function TemplateTableWrapper() {
             </div>
             {/* akkordion */}
           </RoundedBlock>
+          <TemplatesConstructor />
+
           <RoundedBlock className='col-span-9'>
             <CustomEditor />
           </RoundedBlock>

@@ -102,11 +102,11 @@ export default function CashboxPage() {
               <Link
                 href={getLocalizedUrl(`cashbox/${row.id}`, locale as Locale)}
               >
-                Ko`rish
+                {t('Ko`rish')}
               </Link>
             </li>
             <li>
-              <a>Item 2</a>
+              <a> {t('Item 2')}</a>
             </li>
           </ul>
         </div>
@@ -355,9 +355,9 @@ export default function CashboxPage() {
   }
   return (
     <div className='container'>
-      <Breadcrumb breadcrumbs={[{ label: 'Kassa' }]} />
+      <Breadcrumb breadcrumbs={[{ label: t('Kassa') }]} />
       <TableHeader
-        title='Kassa'
+        title={t('Kassa')}
         actions={
           <>
             <Button variant='text' color='primary'>
@@ -370,7 +370,7 @@ export default function CashboxPage() {
               color='secondary'
               endIcon={<FaFileAlt />}
             >
-              Export
+              {t('Export')}
             </Button>
           </>
         }

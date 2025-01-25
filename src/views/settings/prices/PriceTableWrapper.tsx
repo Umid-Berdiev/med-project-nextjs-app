@@ -39,13 +39,6 @@ type UserTableCellType = {
 export default function PriceTableWrapper() {
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
-  const passwordChangeOptions = [
-    { label: 'Ha', value: '1' },
-    { label: 'Yoq', value: '0' }
-  ]
-  const handleTabChange = (selectedValue: string) => {
-    console.log(`Selected tab: ${selectedValue}`)
-  }
   const [sortBy, setSortBy] = useState<
     | {
         column: string
@@ -80,15 +73,15 @@ export default function PriceTableWrapper() {
       header: t('Holati'),
       col: (row: IPrice) =>
         row.state === 'Tasdiqlangan' ? (
-          <span className='rounded-lg bg-success px-2 py-1 text-white'>
+          <span className='w-40 rounded-lg bg-success px-2 py-1 text-center text-white'>
             {row.state}
           </span>
         ) : row.state === 'Tanlanmadi' ? (
-          <span className='rounded-lg bg-contentTertiary px-2 py-1 text-white'>
+          <span className='w-40 rounded-lg bg-contentTertiary px-2 py-1 text-center text-white'>
             {row.state}
           </span>
         ) : (
-          <span className='rounded-lg bg-danger px-2 py-1 text-white'>
+          <span className='w-40 rounded-lg bg-danger px-2 py-1 text-center text-white'>
             {row.state}
           </span>
         ),

@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { BiChevronDown, BiChevronUp, BiSearch } from 'react-icons/bi'
 
-export default function AppDropdownWithCheckboxV2({
+export default function AppDropdownWithCheckboxV3({
   options,
   title = 'Click',
   selectedOption,
@@ -70,17 +70,27 @@ export default function AppDropdownWithCheckboxV2({
           <ul tabIndex={0} className='menu px-0'>
             {options.map((option, index) => (
               <li key={index}>
-                <label className='label flex w-full cursor-pointer px-2'>
-                  <div>
-                    <p className='text-sm font-medium'>{option.title}</p>
-                    <p className='text-xs text-textDark text-opacity-50'>
-                      {option.subtitle}
-                    </p>
-                  </div>
-                  <div className='flex items-center justify-end gap-2 text-right text-sm'>
+                <label className='label flex w-full cursor-pointer px-2 focus:!bg-[#EAFBFB]  active:!bg-[#EAFBFB] hover:!bg-[#EAFBFB]'>
+                  {/* <div> */}
+                  <p className='text-sm font-medium'>{option.name}</p>
+                  <p
+                    className={`inline-block rounded-lg px-2 py-1 text-xs ${
+                      option.statusVal === 0
+                        ? 'bg-[#ECEFF1] text-[#9A9A9A]' // Qora rang
+                        : option.statusVal === 1
+                          ? 'bg-[#FFF3E0] text-[#FB8C00]' // Yashil rang
+                          : option.statusVal === 2
+                            ? 'bg-[#FDEEEC] text-[#E6533C]' // Sariq rang
+                            : 'bg-[#EAF9F5] text-[#26BF94]'
+                    }`}
+                  >
+                    {option.status}
+                  </p>
+                  {/* </div> */}
+                  <div className='hidden items-center justify-end gap-2 text-right text-sm'>
                     <input
-                      className='checkbox checkbox-sm rounded border-secondary py-2 [--chkbg:theme(colors.secondary)] [--chkfg:white]'
-                      type='checkbox'
+                      className='checkbox checkbox-sm rounded border-secondary'
+                      type='radio'
                       name={name}
                       defaultChecked={selectedOption === option.value}
                       onChange={() =>
