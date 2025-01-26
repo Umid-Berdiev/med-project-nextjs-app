@@ -13,8 +13,9 @@ import { useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { TbTableOptions } from 'react-icons/tb'
-
+import FilterCashbox  from './FilterCashbox'
 export default function CashboxPage() {
+  const [open, setOpen] = useState(false)
   const { locale } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [sortBy, setSortBy] = useState<
@@ -360,11 +361,16 @@ export default function CashboxPage() {
         title={t('Kassa')}
         actions={
           <>
-            <Button variant='text' color='primary'>
-              <span className='border-b border-dashed border-secondary'>
-                {t('Filtr')}
-              </span>
-            </Button>
+             <Button
+                variant='text'
+                color={open ? 'secondary' : 'primary'}
+                onClick={() => setOpen(!open)}
+                className='rounded-none'
+              >
+                <span className='border-b border-dashed border-secondary'>
+                  {t('Filtr')}
+                </span>
+              </Button>
             <Button
               variant='outlined'
               color='secondary'
@@ -375,6 +381,7 @@ export default function CashboxPage() {
           </>
         }
       />
+       {open && <FilterCashbox />}
       <Table
         columns={columns}
         data={data.slice(page * perPage, page * perPage + perPage)}
