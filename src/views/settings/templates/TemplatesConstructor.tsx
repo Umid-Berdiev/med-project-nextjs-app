@@ -83,13 +83,18 @@ export default function TemplatesConstructor() {
               ))}
             </tr>
           ))}
-          <Button
-            variant='text'
-            className='text-primary'
-            onClick={handleAddRow}
-          >
-            {t("Pastki toifa qo'shish")} <PiPlusCircleFill size={20} />
-          </Button>
+
+          <tr>
+            <td colSpan={columns.length + 1}>
+              <Button
+                variant='text'
+                className='text-primary'
+                onClick={handleAddRow}
+              >
+                {t("Pastki toifa qo'shish")} <PiPlusCircleFill size={20} />
+              </Button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
