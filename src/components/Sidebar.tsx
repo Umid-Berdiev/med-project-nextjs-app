@@ -154,6 +154,11 @@ export default function MakeSidebar() {
           icon: '•',
           text: 'Qoldiq kiritish',
           path: '/pharmacy/stock-in'
+        },
+        {
+          icon: '•',
+          text: 'Tovar kirim',
+          path: '/pharmacy/product-incomes'
         }
       ],
       text: 'Dorixona'
