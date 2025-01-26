@@ -1,3 +1,5 @@
+'use client'
+
 import Breadcrumb from '@/src/components/Breadcrumbs'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
