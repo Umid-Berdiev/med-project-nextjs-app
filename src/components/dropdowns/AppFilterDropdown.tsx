@@ -20,7 +20,7 @@ export default function AppFilterDropdown({
       <div
         tabIndex={0}
         role='button'
-        className='btn btn-link btn-sm text-textDark no-underline'
+        className='btn btn-link btn-sm text-textDark no-underline hover:text-secondary hover:no-underline'
       >
         <span className='border-b border-dashed border-secondary'>
           {t('Filtr')}
