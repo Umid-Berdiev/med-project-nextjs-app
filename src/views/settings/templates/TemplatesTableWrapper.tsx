@@ -23,7 +23,7 @@ import CustomEditor from '@/src/components/CustomEditor'
 import DownArrowIcon from '@/src/components/icons/DownArrowIcon'
 import { BiSolidPrinter } from 'react-icons/bi'
 import TemplatesConstructor from './TemplatesConstructor'
-import Table from '@/src/components/table/Table'
+import Table, { ITableColumn } from '@/src/components/table/Table'
 import Pagination from '@/src/components/pagination/Pagination'
 import { tableData } from './mock-data'
 
@@ -77,7 +77,7 @@ export default function TemplateTableWrapper() {
     lastDate: string
   }
 
-  const columns: Record<string, any>[] = [
+  const columns: ITableColumn<ITemplate>[] = [
     {
       header: t('№'),
       col: (row: ITemplate) => row.id,
@@ -92,8 +92,8 @@ export default function TemplateTableWrapper() {
       header: t('Ketegoriya/Usluga'),
       col: (row: ITemplate) => (
         <div>
-          {row?.category[0]} /{' '}
-          <span className='text-[#23242780]'>{row?.category[1]}</span>
+          {String(row?.category[0])} /{' '}
+          <span className='text-[#23242780]'>{String(row?.category[1])}</span>
         </div>
       ),
       sortable: true
@@ -105,7 +105,7 @@ export default function TemplateTableWrapper() {
     },
     {
       header: t('Amallar'),
-      col: (row: UserTableCellType) => (
+      col: (row: ITemplate) => (
         <div className='flex items-center gap-3'>
           <Link
             href='#'
@@ -317,9 +317,10 @@ export default function TemplateTableWrapper() {
             </div>
             {/* akkordion */}
           </RoundedBlock>
-          <TemplatesConstructor />
 
           <RoundedBlock className='col-span-9'>
+            {/* <TemplatesConstructor /> */}
+
             <CustomEditor />
           </RoundedBlock>
         </div>
