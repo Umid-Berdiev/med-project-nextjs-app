@@ -8,6 +8,7 @@ export default function TemplatesPage() {
         breadcrumbs={[{ label: 'Sozlamalar' }, { label: 'Narxlar varaqasi' }]}
       />
       <PriceTableWrapper />
+      
     </div>
   )
 }
