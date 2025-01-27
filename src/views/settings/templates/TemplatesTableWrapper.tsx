@@ -141,7 +141,7 @@ export default function TemplateTableWrapper() {
 
   return (
     <>
-      <Heading4 className=''>{t('Narxlar varaqasi')}</Heading4>
+      <Heading4 className=''>{t('Shablonlar')}</Heading4>
       <div className='mt-5 flex items-center justify-between gap-3'>
         <div className='flex w-full gap-4'>
           <div className='max-w-60'>
@@ -194,8 +194,9 @@ export default function TemplateTableWrapper() {
         open={open}
         size='lg'
         onClose={handleClose}
+        
       >
-        <div className='grid w-full grid-cols-12 gap-4'>
+        <div className='grid w-full grid-cols-12 gap-4  min-h-[80vh]'>
           <RoundedBlock className='col-span-3 !gap-4'>
             <div className='flex flex-col gap-1'>
               <AppLabel isRequired text={t('Shablon nomi')} />
@@ -319,9 +320,9 @@ export default function TemplateTableWrapper() {
           </RoundedBlock>
 
           <RoundedBlock className='col-span-9'>
-            {/* <TemplatesConstructor /> */}
+            <TemplatesConstructor />
 
-            <CustomEditor />
+            {/* <CustomEditor /> */}
           </RoundedBlock>
         </div>
         <div className='mt-4 flex justify-end gap-4 bg-white p-4'>
