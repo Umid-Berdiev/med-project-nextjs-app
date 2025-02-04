@@ -187,3 +187,60 @@ export const pharmacyStockInTableData: Record<string, any>[] = [
     departments: 'Surunkali yurak yetishmovchiligi bo’limi'
   }
 ]
+
+export const productsRequestInTableData: Record<string, any>[] = [
+  {
+    id: 39482,
+    date: '2021-09-10',
+    sum: 450000000,
+    from: 'Dorixona',
+    to: 'Endokrinologiya bo’limi',
+    sender: 'Перемещение №759 от 29.04.2024',
+    status: 'Tasdiqlangan'
+  },
+  {
+    id: 39483,
+    date: '2021-09-10',
+    sum: 450000000,
+    from: 'Dorixona',
+    to: 'Endokrinologiya bo’limi',
+    sender: 'Перемещение №759 от 29.04.2024',
+    status: 'Bekor qilingan'
+  },
+  {
+    id: 39484,
+    date: '2021-09-10',
+    sum: 450000000,
+    from: 'Dorixona',
+    to: 'Endokrinologiya bo’limi',
+    sender: 'Перемещение №759 от 29.04.2024',
+    status: 'Bekor qilingan'
+  },
+  {
+    id: 39485,
+    date: '2021-09-10',
+    sum: 450000000,
+    from: 'Dorixona',
+    to: 'Endokrinologiya bo’limi',
+    sender: 'Перемещение №759 от 29.04.2024',
+    status: 'Tasdiqlangan'
+  },
+  {
+    id: 39486,
+    date: '2021-09-10',
+    sum: 450000000,
+    from: 'Dorixona',
+    to: 'Endokrinologiya bo’limi',
+    sender: 'Перемещение №759 от 29.04.2024',
+    status: 'Tasdiqlangan'
+  },
+  {
+    id: 39487,
+    date: '2021-09-10',
+    sum: 450000000,
+    from: 'Dorixona',
+    to: 'Endokrinologiya bo’limi',
+    sender: 'Перемещение №759 от 29.04.2024',
+    status: 'Bekor qilingan'
+  }
+]

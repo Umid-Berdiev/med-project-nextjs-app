@@ -337,7 +337,7 @@ export default function PharmacyCounteragentsPage() {
             </div>
             <div className='col-span-full flex'>
               <Button className='ml-auto' endIcon={<PlusCircleIcon />}>
-                <span>{t('Ro’yhatga qo’shish')}</span>
+                <span>{t("Ro'yhatga qo'shish")}</span>
               </Button>
             </div>
             <div className='col-span-full min-h-40'>

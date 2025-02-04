@@ -17,12 +17,12 @@ import Table, { ITableColumn } from '@/src/components/table/Table'
 import Heading4 from '@/src/components/typography/Heading4'
 import { Locale } from '@/src/configs/i18n'
 import { useTranslations } from '@/src/configs/t'
-import { pharmacyStockInTableData } from '@/src/views/settings/pharmacy/mock-data'
+import { productsRequestInTableData } from '@/src/views/settings/pharmacy/mock-data'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
-export default function PharmacyProductIncomesPage() {
+export default function PharmacyProductRequestsPage() {
   const { locale, id } = useParams()
   const { t } = useTranslations(locale as Locale)
   const [formModalOpen, setFormModalOpen] = useState(false)
@@ -54,15 +54,10 @@ export default function PharmacyProductIncomesPage() {
     }
   ]
 
-  const columns: ITableColumn<Record<string, any>>[] = [
+  const requestInColumns: ITableColumn<Record<string, any>>[] = [
     {
       header: t('ID'),
       col: (row: Record<string, any>) => row.id,
-      sortable: true
-    },
-    {
-      header: t('Summasi'),
-      col: (row: Record<string, any>) => row.total_sum,
       sortable: true
     },
     {
@@ -71,18 +66,23 @@ export default function PharmacyProductIncomesPage() {
       sortable: true
     },
     {
-      header: t('Kirim turi'),
-      col: (row: Record<string, any>) => row.income_type,
+      header: t('Summasi'),
+      col: (row: Record<string, any>) => row.sum,
       sortable: true
     },
     {
-      header: t("Bo'limlar ro'yxati"),
-      col: (row: Record<string, any>) => row.departments,
+      header: t('Kimdan'),
+      col: (row: Record<string, any>) => row.from,
       sortable: true
     },
     {
-      header: t('Kontragentlar'),
-      col: (row: Record<string, any>) => row.contractors,
+      header: t('Kimga'),
+      col: (row: Record<string, any>) => row.to,
+      sortable: true
+    },
+    {
+      header: t('Kim tomondan yuborilgan'),
+      col: (row: Record<string, any>) => row.sender,
       sortable: true
     },
     {
@@ -119,11 +119,6 @@ export default function PharmacyProductIncomesPage() {
       sortable: true
     },
     {
-      header: t('Kontragent'),
-      col: (row: Record<string, any>) => row.contractor,
-      sortable: true
-    },
-    {
       header: t("O'lchov birligi"),
       col: (row: Record<string, any>) => row.unit,
       sortable: true
@@ -139,16 +134,6 @@ export default function PharmacyProductIncomesPage() {
       sortable: true
     },
     {
-      header: t('Harajat shakli'),
-      col: (row: Record<string, any>) => row.packaging_type,
-      sortable: true
-    },
-    {
-      header: t('Miqdori'),
-      col: (row: Record<string, any>) => row.quantity,
-      sortable: true
-    },
-    {
       header: t('Narxi'),
       col: (row: Record<string, any>) => row.price,
       sortable: true
@@ -159,6 +144,11 @@ export default function PharmacyProductIncomesPage() {
       sortable: true
     },
     {
+      header: t('Qadoqda'),
+      col: (row: Record<string, any>) => row.packaging_quantity,
+      sortable: true
+    },
+    {
       header: t('Donada'),
       col: (row: Record<string, any>) => row.packaging_quantity,
       sortable: true
@@ -166,6 +156,11 @@ export default function PharmacyProductIncomesPage() {
     {
       header: t('Donada narxi'),
       col: (row: Record<string, any>) => row.packaging_price,
+      sortable: true
+    },
+    {
+      header: t('Boshidagi qiymati'),
+      col: (row: Record<string, any>) => row.quantity,
       sortable: true
     },
     {
@@ -212,9 +207,24 @@ export default function PharmacyProductIncomesPage() {
   return (
     <div>
       <Breadcrumb
-        breadcrumbs={[{ label: 'Dorixona' }, { label: 'Tovar kirim' }]}
+        breadcrumbs={[{ label: 'Dorixona' }, { label: 'Tovar talabnomasi' }]}
       />
-      <Heading4 className=''>{t('Tovar kirim')}</Heading4>
+      <Heading4 className=''>{t('Tovar talabnomasi')}</Heading4>
+      <div className='flex w-max gap-1 rounded-lg bg-[#2324270D] p-1'>
+        <input
+          name='request-type'
+          type='radio'
+          aria-label={t('Yuborilgan')}
+          className='btn btn-sm checked:!border-none checked:!bg-white checked:!text-textDark'
+          defaultChecked
+        />
+        <input
+          name='request-type'
+          type='radio'
+          aria-label={t('Kelib tushgan')}
+          className='btn btn-sm checked:!border-none checked:!bg-white checked:!text-textDark'
+        />
+      </div>
       <div className='my-4 flex flex-col gap-4'>
         <div className='flex items-center justify-between'>
           <div className='w-full max-w-72'>
@@ -288,8 +298,8 @@ export default function PharmacyProductIncomesPage() {
         <div className='rounded-md border-none'>
           <Table
             className='bg-white'
-            columns={columns}
-            data={pharmacyStockInTableData}
+            columns={requestInColumns}
+            data={productsRequestInTableData}
             sortBy={sortBy}
             setSortBy={handleSort}
           />
@@ -320,9 +330,8 @@ export default function PharmacyProductIncomesPage() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t('Manba')} />
+              <AppLabel isRequired text={t('Kimdan')} />
               <AppSelect
-                placeholder={t('Manbani tanlang')}
                 options={[
                   { value: '1', label: 'Manba 1' },
                   { value: '2', label: 'Manba 2' }
@@ -330,19 +339,8 @@ export default function PharmacyProductIncomesPage() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t("Bo'lim ro'yhati")} />
+              <AppLabel isRequired text={t('Kimga')} />
               <AppSelect
-                placeholder={t("Bo'lim ro'yhatini tanlang")}
-                options={[
-                  { value: '1', label: 'Manba 1' },
-                  { value: '2', label: 'Manba 2' }
-                ]}
-              />
-            </div>
-            <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t('Kontragent')} />
-              <AppSelect
-                placeholder={t('Kontragentni tanlang')}
                 options={[
                   { value: '1', label: 'Manba 1' },
                   { value: '2', label: 'Manba 2' }
@@ -359,30 +357,25 @@ export default function PharmacyProductIncomesPage() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t('Miqdori')} />
-              <AppInput />
-            </div>
-            <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t('Narxi')} />
-              <AppInput />
-            </div>
-            <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t('Summasi')} />
-              <AppInput disabled value={0} />
-            </div>
-            <div className='flex flex-col gap-1'>
               <AppLabel isRequired text={t('Yaroqlilik muddati')} />
               <AppInputDate placeholder={t('Sana')} defaultValue={new Date()} />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel isRequired text={t("O'lchov birligi")} />
+              <AppInput placeholder={t("O'lchov birligi")} />
             </div>
             <div className='flex flex-col gap-1'>
               <AppLabel isRequired text={t('Seriya')} />
               <AppInput />
             </div>
             <div className='flex flex-col gap-1'>
-              <AppLabel isRequired text={t('Harajat shakli')} />
+              <AppLabel isRequired text={t('Boshidagi qiymati')} />
+              <AppInput />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel isRequired text={t('Qadoqda')} />
               <AppInput
-                placeholder={t('Harajat shaklini kiriting')}
-                disabled
+                placeholder={t('Qadoqda')}
                 iconPosition='right'
                 icon={<span className='text-sm'>{t('шт')}</span>}
               />
@@ -399,6 +392,19 @@ export default function PharmacyProductIncomesPage() {
             <div className='flex flex-col gap-1'>
               <AppLabel isRequired text={t('Donasi narxi')} />
               <AppInput placeholder={t('Donasi narxini kiriting')} disabled />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel isRequired text={t('Narxi')} />
+              <AppInput
+                placeholder={t('Narxini kiriting')}
+                disabled
+                iconPosition='right'
+                icon={<span className='text-sm'>{t('шт')}</span>}
+              />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <AppLabel isRequired text={t('Summasi')} />
+              <AppInput disabled value={0} />
             </div>
             <div className='col-span-full flex'>
               <Button className='ml-auto' endIcon={<PlusCircleIcon />}>
@@ -438,7 +444,7 @@ export default function PharmacyProductIncomesPage() {
         <div className='my-4 block bg-white p-6'>
           <p className='text-center'>
             {t(
-              "Siz ushbu ID:1992 raqamli tovar kirimini o'chirib yubormoqchimisiz?"
+              "Siz ushbu ID:1992 raqamli Tovar talabnomasini o'chirib yubormoqchimisiz?"
             )}
           </p>
         </div>

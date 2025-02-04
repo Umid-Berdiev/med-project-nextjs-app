@@ -103,34 +103,34 @@ export default function MakeSidebar() {
     //   path: '/home'
     // },
     {
-      icon: <UsersIcon />,
       text: 'Bemorlar',
-      path: '/patients'
+      path: '/patients',
+      icon: <UsersIcon />
     },
     {
-      icon: <UserSuitcaseIcon />,
       text: 'Shifokor kabineti',
-      path: '/doctors-profile'
+      path: '/doctors-profile',
+      icon: <UserSuitcaseIcon />
     },
     {
-      icon: <DiagnosticIcon />,
       text: 'Diagnostika',
-      path: '/diagnostics'
+      path: '/diagnostics',
+      icon: <DiagnosticIcon />
     },
     {
-      icon: <SyringeIcon />,
       text: 'Laboratoriya',
-      path: '/laboratory'
+      path: '/laboratory',
+      icon: <SyringeIcon />
     },
     {
-      icon: <MoneyWithCalcIcon />,
       text: 'Kassa',
-      path: '/cashbox'
+      path: '/cashbox',
+      icon: <MoneyWithCalcIcon />
     },
     {
-      icon: <ListIcon />,
       text: 'Hisobot',
-      path: '/report'
+      path: '/report',
+      icon: <ListIcon />
     },
     // {
     //   icon: <UnorderedListIcon />,
@@ -138,65 +138,66 @@ export default function MakeSidebar() {
     //   path: '/information'
     // },
     {
+      text: 'Dorixona',
+      path: '/pharmacy',
       icon: <BuildingIcon />,
       subMenu: [
         {
-          icon: '•',
           text: 'Kontragentlar',
-          path: '/pharmacy/counteragents'
+          path: '/pharmacy/counteragents',
+          icon: '•'
         },
         {
-          icon: '•',
           text: 'Mahsulotlar',
-          path: '/pharmacy/products'
+          path: '/pharmacy/products',
+          icon: '•'
         },
         {
-          icon: '•',
           text: 'Qoldiq kiritish',
-          path: '/pharmacy/stock-in'
+          path: '/pharmacy/stock-in',
+          icon: '•'
         },
         {
-          icon: '•',
           text: 'Tovar kirim',
-          path: '/pharmacy/product-incomes'
+          path: '/pharmacy/product-incomes',
+          icon: '•'
+        },
+        {
+          text: 'Tovar talabnomasi',
+          path: '/pharmacy/product-requests',
+          icon: '•'
         }
-      ],
-      text: 'Dorixona'
+      ]
     },
     {
-      icon: <GearIcon />,
       text: 'Sozlamalar',
       path: '/settings',
+      icon: <GearIcon />,
       subMenu: [
         {
-          icon: '•',
           text: 'Foydalanuvchilar',
-          path: '/settings/user'
+          path: '/settings/user',
+          icon: '•'
         },
-        // {
-        //   icon: '•',
-        //   text: 'Turkum narxlari',
-        //   path: '/settings/prices'
-        // },
         {
-          icon: '•',
           text: 'Tibbiy xizmatlar',
-          path: '/settings/medical-services'
+          path: '/settings/medical-services',
+          icon: '•'
         },
         {
-          icon: '•',
           text: 'Narxlar varaqasi',
-          path: '/settings/prices'
+          path: '/settings/prices',
+          icon: '•'
         },
         {
-          icon: '•',
           text: 'Dorixona',
-          path: '/settings/pharmacy'
+          path: '/settings/pharmacy',
+          icon: '•'
         },
         {
-          icon: '•',
           text: 'Shablonlar',
-          path: '/settings/templates'
+          path: '/settings/templates',
+          icon: '•'
         }
       ]
     }
