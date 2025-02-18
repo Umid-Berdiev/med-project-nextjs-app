@@ -79,6 +79,9 @@
 .flatpickr-calendar.animate.open {
   padding: 20px !important;
 }
+.flatpickr-calendar {
+  width: 350px !important;
+}
 
 .custom-class {
   background-color: white !important;
